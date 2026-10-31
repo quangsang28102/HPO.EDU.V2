@@ -13,17 +13,22 @@ const welcomeVoiceUrl = new URL("../assets/voice-tram-guillaume.mp3", bundleUrl)
 
 function mount() {
   if (document.getElementById("hpo-robot")) return;
+  const homeHero = document.querySelector<HTMLElement>(".hpo-digital-hero");
   const companion = document.createElement("button");
   companion.id = "hpo-robot";
   companion.type = "button";
   companion.setAttribute(
     "aria-label",
-    "Robot Hiệp Phát — nhấn để xem 3D, kéo hoặc dùng phím mũi tên để di chuyển",
+    homeHero
+      ? "Robot Hiệp Phát — nhấn để xem 3D và tương tác"
+      : "Robot Hiệp Phát — nhấn để xem 3D, kéo hoặc dùng phím mũi tên để di chuyển",
   );
   companion.setAttribute("aria-haspopup", "dialog");
   companion.setAttribute("aria-controls", "hpo-robot-viewer");
   companion.setAttribute("aria-expanded", "false");
-  companion.title = "Kéo để di chuyển · Ném ra ngoài khung để ẩn · Nhấn để xem 3D";
+  companion.title = homeHero
+    ? "Nhấn để xem mô hình 3D và vẫy tay"
+    : "Kéo để di chuyển · Ném ra ngoài khung để ẩn · Nhấn để xem 3D";
   companion.innerHTML = fallback;
   const restoreButton = document.createElement("button");
   restoreButton.id = "hpo-robot-restore";
@@ -42,6 +47,7 @@ function mount() {
     "Xin chào! Tôi là trợ lý AI của Hiệp Phát. Rất vui được hỗ trợ bạn.";
   companion.setAttribute("aria-describedby", greeting.id);
   document.body.append(companion, restoreButton);
+  if (homeHero) document.body.classList.add("hpo-home-robot");
   const dockRestoreButton = () => {
     const floats = document.querySelector<HTMLElement>(".floats");
     if (!floats) return false;
@@ -202,6 +208,23 @@ function mount() {
   }
 
   function place() {
+    if (homeHero) {
+      companion.style.removeProperty("transform");
+      const headerHeight = (document.querySelector<HTMLElement>(".topbar")?.offsetHeight || 0) +
+        (document.getElementById("navbar")?.offsetHeight || 0);
+      const compact = matchMedia("(max-width: 1100px)").matches;
+      const gap = innerWidth <= 600 ? 12 : 16;
+      const naturalTop = compact
+        ? headerHeight + homeHero.offsetHeight - companion.offsetHeight - gap
+        : headerHeight + 122;
+      const visibleHeight = window.visualViewport?.height || innerHeight;
+      companion.style.top = `${Math.min(naturalTop, visibleHeight - companion.offsetHeight - 12)}px`;
+      companion.style.bottom = "auto";
+      greeting.style.removeProperty("left");
+      greeting.style.removeProperty("--greeting-tail");
+      updateGreeting();
+      return;
+    }
     if (!drag) wander.snapToEdge(position, width, height);
     companion.style.transform = `translate3d(${position.x + minX}px, ${position.y + minY}px, 0)`;
     const bubbleLeft = THREE.MathUtils.clamp(
@@ -217,6 +240,10 @@ function mount() {
     updateGreeting();
   }
   function resize(initial = false) {
+    if (homeHero) {
+      place();
+      return;
+    }
     const viewport = window.visualViewport;
     minX = (viewport?.offsetLeft || 0) + 8;
     const greetingSpace = Math.max(
@@ -244,6 +271,7 @@ function mount() {
   resize(true);
   new ResizeObserver(() => resize()).observe(companion);
   new ResizeObserver(() => resize()).observe(greeting);
+  if (homeHero) new ResizeObserver(() => resize()).observe(homeHero);
   window.addEventListener("resize", () => resize());
   window.visualViewport?.addEventListener("resize", () => resize());
   window.visualViewport?.addEventListener("scroll", () => resize());
@@ -251,6 +279,7 @@ function mount() {
   try {
     stage = new RobotStage(companion);
     stage.onRestore = resume;
+    if (homeHero && !media.matches) stage.robot.wave();
   } catch (error) {
     console.warn("Robot 3D không khả dụng; hiển thị hình thay thế.", error);
   }
@@ -267,20 +296,22 @@ function mount() {
     time += dt;
     if (viewer.isOpen) viewer.tick(dt, time, false);
     else {
-      wander.update(
-        dt,
-        position,
-        width,
-        height,
-        paused || hovered || keyboardFocused || !!drag || !!stage?.lost || robotHidden,
-        !drag,
-      );
-      place();
+      if (!homeHero) {
+        wander.update(
+          dt,
+          position,
+          width,
+          height,
+          paused || hovered || keyboardFocused || !!drag || !!stage?.lost || robotHidden,
+          !drag,
+        );
+        place();
+      }
       if (stage && !stage.lost && !robotHidden) {
-        stage.robot.group.rotation.y = wander.heading;
-        if (!drag && !stage.robot.isWaving && wander.takeGreeting())
+        stage.robot.group.rotation.y = homeHero ? 0 : wander.heading;
+        if (!homeHero && !drag && !stage.robot.isWaving && wander.takeGreeting())
           stage.robot.wave();
-        stage.robot.update(dt, time, pointer, false, wander.walking);
+        stage.robot.update(dt, time, pointer, false, !homeHero && wander.walking);
         stage.render();
       }
     }
@@ -301,6 +332,7 @@ function mount() {
   }
 
   companion.addEventListener("pointerdown", (event) => {
+    if (homeHero) return;
     if (!event.isPrimary || event.button !== 0 || drag) return;
     suppressClick = false;
     keyboardFocused = false;
@@ -447,6 +479,7 @@ function mount() {
     keyboardFocused = false;
   });
   companion.addEventListener("keydown", (event) => {
+    if (homeHero) return;
     const delta: Record<string, [number, number]> = {
       ArrowLeft: [-24, 0],
       ArrowRight: [24, 0],
