@@ -44,6 +44,9 @@
       rel="stylesheet"
       href="style.css?v=20261020-chapter-cta"
     />
+    <link rel="stylesheet" href="assets/css/homepage-header-robot.css" />
+    <link rel="stylesheet" href="assets/css/homepage-reference-hero.css" />
+    <link rel="stylesheet" href="assets/css/homepage-hpo-system-card-motion.css?v=20261031-hpo-card" />
   </head>
 
   <body>
@@ -75,28 +78,32 @@
           <div class="hpo-digital-hero-inner">
             <div class="hpo-digital-left hpo-slide-stage">
               <h1 class="hpo-digital-title hpo-slide-item hpo-slide-title">
-                <span>TIÊN PHONG ĐỘT PHÁ GIẢI PHÁP ỨNG DỤNG CÔNG NGHỆ</span>
-                <span
-                  >XÂY DỰNG HỆ SINH THÁI QUY TRÌNH ĐÀO TẠO LÁI XE CƠ GIỚI ĐƯỜNG
-                  BỘ</span
-                >
-                <span>TRÊN NỀN TẢNG SỐ TÍCH HỢP TRÍ TUỆ NHÂN TẠO AI</span>
+                <span>KỶ NGUYÊN AI</span>
+                <span>TRONG ĐÀO TẠO LÁI XE</span>
               </h1>
-            </div>
-            <div class="hpo-digital-visual">
-              <video
-                class="hpo-digital-video"
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="auto"
-              >
-                <source
-                  src="https://hpo.edu.vn/wp-content/uploads/2026/05/heroBanner.mp4"
-                  type="video/mp4"
-                />
-              </video>
+              <p class="hpo-digital-description">
+                Hệ sinh thái chuyển đổi số toàn diện cho đào tạo lái xe ô tô thông minh
+              </p>
+              <div class="hpo-sys-card" aria-label="Hệ thống HPO và trợ lý ảo AI">
+                <figure class="hpo-sys-item">
+                  <div class="hpo-sys-ring">
+                    <img src="assets/images/hero/hpo-system-circle.webp" alt="Sơ đồ hệ thống HPO: xác thực khuôn mặt, cloud, DAT, cabin, mô phỏng, đa nền tảng" width="362" height="362" />
+                    <!-- Lớp chuyển động phủ lên ảnh: tia quét, sóng lan từ xe, gói dữ liệu (SVG do JS vẽ) -->
+                    <span class="hpo-sys-sweep" aria-hidden="true"></span>
+                    <span class="hpo-sys-ripple" aria-hidden="true"></span>
+                    <span class="hpo-sys-ripple hpo-sys-ripple--late" aria-hidden="true"></span>
+                    <svg class="hpo-sys-motion" viewBox="0 0 362 362" aria-hidden="true"></svg>
+                  </div>
+                  <figcaption>HỆ THỐNG HPO</figcaption>
+                </figure>
+                <figure class="hpo-sys-item">
+                  <div class="hpo-sys-ai-stage">
+                    <span class="hpo-sys-chat-bubble" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <img class="hpo-sys-ai-robot" src="assets/images/hero/hpo-ai-assistant-robot-waving.webp" alt="Robot trợ lý ảo AI vẫy tay" width="159" height="235" />
+                  </div>
+                  <figcaption>TRỢ LÝ ẢO AI</figcaption>
+                </figure>
+              </div>
             </div>
           </div>
         </section>
@@ -3765,6 +3772,7 @@
     <script src="assets/js/engine-voice.js"></script>
     <script src="assets/js/learning.js"></script>
     <script src="assets/js/homepage.js?v=20261019-curriculum-ux"></script>
+    <script src="assets/js/homepage-hpo-system-card-motion.js?v=20261031-hpo-card"></script>
     <script src="assets/js/media.js?v=20261019-curriculum-ux"></script>
     <script src="assets/js/awards.js"></script>
     <script src="assets/js/cover-hero.js"></script>

@@ -1,0 +1,117 @@
+/* Homepage-only adjustments for the header logo and stationary hero companion. */
+#navbar .nav-inner > .logo .logo-mark {
+  height: 108px;
+}
+#navbar .nav-inner > .logo .logo-mark img {
+  width: auto;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+}
+@media (min-width: 1281px) {
+  #navbar .nav-inner { gap: 12px; }
+  #navbar .nav-links { font-size: 13px; }
+  #navbar .nav-links .nav-item > a { padding-inline: 5px; }
+  #navbar .nav-actions { gap: 8px; }
+  #navbar .nav-actions .btn { padding-inline: 16px; }
+  #navbar .nav-phone { padding-right: 8px; }
+}
+@media (max-width: 1280px) {
+  #navbar .nav-actions { margin-left: auto; }
+}
+@media (max-width: 1350px) {
+  #navbar .nav-links { display: none; }
+  #navbar .nav-burger { display: flex; }
+  #navbar .nav-actions { margin-left: auto; }
+}
+@media (max-width: 1280px) and (min-width: 721px) {
+  #navbar .nav-inner > .logo .logo-mark { height: 106px; }
+  #navbar .nav-inner { gap: 14px; }
+}
+@media (max-width: 720px) {
+  #navbar .nav-inner > .logo .logo-mark { height: 70px; }
+}
+@media (max-width: 600px) {
+  #navbar .nav-inner { gap: 8px; }
+  #navbar .nav-inner > .logo .logo-mark { height: 70px; }
+  #navbar .nav-actions { gap: 8px; }
+  #navbar .nav-actions .btn { gap: 6px; padding: 11px 9px; font-size: 12px; }
+  #navbar .nav-actions .btn svg { width: 14px; height: 14px; }
+  #navbar .nav-burger { width: 40px; }
+}
+@media (max-width: 499px) {
+  #navbar .nav-inner {
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    padding-block: 10px;
+  }
+  #navbar .nav-inner > .logo { flex: 0 0 100%; }
+  #navbar .nav-inner > .logo .logo-mark { height: 70px; }
+  #navbar .nav-actions {
+    flex: 0 0 100%;
+    justify-content: flex-end;
+  }
+}
+
+body.hpo-home-robot #hpo-robot {
+  position: fixed;
+  top: 266px;
+  left: 22px;
+  z-index: 180;
+  width: 145px;
+  height: 198px;
+  transform: none;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+body.hpo-home-robot #hpo-robot #hpo-robot-greeting {
+  top: auto;
+  bottom: calc(100% + 8px);
+  left: 0;
+  width: min(250px, calc(100vw - 28px));
+  transform: none;
+  transform-origin: 72px bottom;
+}
+body.hpo-home-robot #hpo-robot-greeting::after {
+  top: calc(100% - 5px);
+  left: 72px;
+  border: 0;
+  border-right: 1px solid #c7dff0;
+  border-bottom: 1px solid #c7dff0;
+  transform: translateX(-50%) rotate(45deg);
+}
+body #hpo-robot-viewer .hpo-wander-option,
+body #hpo-robot-viewer .hpo-speed-control { display: none; }
+@media (max-width: 1100px) {
+  body.hpo-home-robot #hpo-robot {
+    top: auto;
+    bottom: auto;
+    left: 16px;
+    width: 125px;
+    height: 171px;
+  }
+  body.hpo-home-robot #hpo-robot #hpo-robot-greeting {
+    top: auto;
+    bottom: calc(100% + 8px);
+    left: 0;
+    transform-origin: 62px bottom;
+  }
+  body.hpo-home-robot #hpo-robot-greeting::after {
+    left: 62px;
+  }
+}
+@media (max-width: 600px) {
+  body.hpo-home-robot #hpo-robot {
+    bottom: auto;
+    left: 12px;
+    width: 96px;
+    height: 135px;
+  }
+  body.hpo-home-robot #hpo-robot #hpo-robot-greeting {
+    width: min(232px, calc(100vw - 24px));
+    padding: 10px 12px;
+    font-size: 12px;
+    transform-origin: 48px bottom;
+  }
+  body.hpo-home-robot #hpo-robot-greeting::after { left: 48px; }
+}

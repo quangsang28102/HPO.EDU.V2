@@ -1,0 +1,73 @@
+/* Home Hero tuned to the approved reference; scoped to the first carousel slide. */
+.hpo-digital-hero {
+  min-height: clamp(740px, calc(100svh - 112px), 900px);
+  overflow: clip;
+  background: #fff;
+}
+.hpo-digital-hero-inner {
+  min-height: inherit;
+  display: block;
+  overflow: visible;
+  background: #fff;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.hpo-digital-left {
+  width: 100%;
+  max-width: 1480px;
+  padding: clamp(76px, 8.3vh, 104px) clamp(24px, 4vw, 72px) 42px;
+}
+.hpo-digital-title {
+  margin-inline: auto;
+  font-size: clamp(52px, 6.15vw, 104px);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -.045em;
+  text-shadow: none;
+}
+.hpo-digital-title span { white-space: nowrap; }
+.hpo-digital-title span:nth-child(1) {
+  padding: 0;
+  color: #1556ae;
+  font-size: 1em;
+  letter-spacing: inherit;
+}
+.hpo-digital-title span:nth-child(1)::before { display: none; }
+.hpo-digital-title span:nth-child(2) {
+  margin-top: 8px;
+  padding: 0;
+  background: none;
+  color: #e51f2b;
+  font-size: .81em;
+  line-height: 1.1;
+  filter: none;
+  text-shadow: none;
+  -webkit-text-fill-color: currentColor;
+}
+.hpo-digital-description {
+  max-width: 1040px;
+  margin: 13px auto 0;
+  color: #132957;
+  font-family: var(--ff-body);
+  font-size: clamp(19px, 1.9vw, 30px);
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: center;
+  text-wrap: balance;
+}
+@media (max-width: 1100px) {
+  .hpo-digital-hero { min-height: clamp(680px, calc(100svh - 92px), 840px); }
+  .hpo-digital-left { padding-top: clamp(90px, 10vh, 126px); }
+  .hpo-digital-title { font-size: clamp(48px, 7vw, 76px); }
+}
+@media (max-width: 700px) {
+  .hpo-digital-hero { min-height: 0; overflow: clip; }
+  .hpo-digital-left { padding: 192px 16px 34px; }
+  .hpo-digital-title { font-size: clamp(35px, 9.2vw, 52px); line-height: 1.08; }
+  .hpo-digital-title span { white-space: normal; }
+  .hpo-digital-title span:nth-child(2) { margin-top: 5px; font-size: .78em; }
+  .hpo-digital-description { margin-top: 12px; font-size: clamp(16px, 4.2vw, 19px); }
+}
+@media (max-width: 390px) {
+  .hpo-digital-left { padding-inline: 12px; }
+}
