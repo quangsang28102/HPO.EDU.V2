@@ -1,0 +1,144 @@
+/* Section "Hệ thống hạ tầng kỹ thuật hiện đại, đồng bộ, thông suốt" (trang chủ).
+   Giữ khung của .digital-learning-materials (awards.css); phần thân dùng class infra-*.
+   Màu theo Hiệp Phát Design System (tokens.css): logo-blue #2b26fb, primary-strong #1e3a8a,
+   logo-red #ea1e24, red-strong #b91c1c, logo-yellow #faec1a, ink #0a1330, ink-soft #334155.
+   Hiệu ứng hiện dần khi cuộn dùng sẵn [data-reveal] (core.js + awards.css). */
+
+/* ---- Tiêu đề: "Xanh Hiệp Phát" (dòng 1) + "Đỏ Hiệp Phát" (dòng 2), thanh dẫn xanh logo → vàng HP đặt TRÊN tiêu đề ---- */
+#digital-platform-title { text-shadow: none; }
+#digital-platform-title em { /* tắt gradient xanh-ngọc-vàng cũ của awards.css */
+  background: none; color: inherit; -webkit-text-fill-color: currentColor; filter: none; animation: none;
+}
+#digital-platform-title .infra-title__line {
+  display: inline-block; padding: .14em .02em .06em; background-size: 220% 100%;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  animation: infra-title-sheen 7s ease-in-out infinite alternate;
+}
+#digital-platform-title .infra-title__line--blue {
+  color: #1e3a8a; background-image: linear-gradient(100deg, #1e3a8a 0%, #2b26fb 45%, #2b26fb 55%, #1e3a8a 100%);
+  filter: drop-shadow(0 8px 18px rgba(43, 38, 251, .14));
+}
+#digital-platform-title .infra-title__line--red {
+  color: #b91c1c; background-image: linear-gradient(100deg, #b91c1c 0%, #ea1e24 45%, #ea1e24 55%, #b91c1c 100%);
+  filter: drop-shadow(0 8px 18px rgba(234, 30, 36, .12));
+}
+@keyframes infra-title-sheen { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+.digital-learning-materials[aria-labelledby="digital-platform-title"] .digital-learning-materials__head { padding: 30px 0 0; }
+.digital-learning-materials[aria-labelledby="digital-platform-title"] .digital-learning-materials__head::before {
+  background: radial-gradient(ellipse, rgba(43, 38, 251, .09), rgba(43, 38, 251, .03) 44%, transparent 72%);
+}
+.digital-learning-materials[aria-labelledby="digital-platform-title"] .digital-learning-materials__head::after { /* "Thanh dẫn" của DS */
+  top: 0; bottom: auto; width: 96px; height: 6px; border-radius: 3px;
+  background: linear-gradient(90deg, #2b26fb, #faec1a); box-shadow: 0 4px 12px rgba(43, 38, 251, .2);
+}
+
+.infra-layout {
+  --infra-navy: #0a1330;  /* ink */
+  --infra-blue: #2b26fb;  /* logo-blue */
+  --infra-red: #ea1e24;   /* logo-red */
+  --infra-muted: #334155; /* ink-soft */
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr); align-items: center;
+  gap: clamp(28px, 4.5vw, 72px); max-width: 1180px; margin: clamp(28px, 4vw, 56px) auto 0;
+}
+
+/* ---- Sân khấu ảnh ---- */
+.infra-stage {
+  position: relative; margin: 0; aspect-ratio: 1.12; border-radius: 32px; overflow: hidden;
+  display: grid; place-items: center;
+  background:
+    radial-gradient(60% 55% at 50% 55%, #ffffff 0%, rgba(255, 255, 255, .85) 38%, rgba(255, 255, 255, 0) 70%),
+    radial-gradient(120% 90% at 50% 0%, #e8f0ff 0%, #d9e6ff 45%, #c9dbff 100%);
+  border: 1px solid #dfe7f7;
+  box-shadow: 0 40px 80px -40px rgba(19, 35, 90, .45), inset 0 1px 0 #fff;
+}
+.infra-stage::before { /* lưới kỹ thuật mờ */
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+  background-image: linear-gradient(rgba(43, 38, 251, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(43, 38, 251, .07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(70% 70% at 50% 50%, #000 30%, transparent 80%);
+  mask-image: radial-gradient(70% 70% at 50% 50%, #000 30%, transparent 80%);
+}
+.infra-stage__orbit { /* mặt sàn nghiêng: vòng tròn ép dẹt; vòng con <i> quay nên chấm sáng chạy theo quỹ đạo elip */
+  position: absolute; left: 50%; top: 60%; aspect-ratio: 1; pointer-events: none;
+  transform: translate(-50%, -50%) scaleY(.4);
+}
+.infra-stage__orbit--outer { width: 98%; }
+.infra-stage__orbit--inner { width: 74%; }
+.infra-stage__orbit i {
+  position: absolute; inset: 0; border-radius: 50%; border: 2px dashed rgba(43, 38, 251, .22);
+  animation: infra-spin 26s linear infinite;
+}
+.infra-stage__orbit--inner i { border-style: solid; border-color: rgba(43, 38, 251, .13); animation-duration: 16s; animation-direction: reverse; }
+.infra-stage__orbit i::before {
+  content: ""; position: absolute; top: -7px; left: 50%; width: 12px; height: 12px; margin-left: -6px; border-radius: 50%;
+  background: #2b26fb; box-shadow: 0 0 0 5px rgba(43, 38, 251, .14), 0 0 16px rgba(43, 38, 251, .6);
+}
+@keyframes infra-spin { to { transform: rotate(1turn); } }
+
+.infra-stage__media {
+  position: relative; z-index: 1; width: 86%; cursor: zoom-in; border-radius: 20px; outline: none;
+  animation: infra-float 6s ease-in-out infinite;
+  /* Hòa nền trắng của ảnh vào sân khấu. Đặt ở lớp đang chuyển động (không đặt trên <img>):
+     transform của animation tạo stacking context riêng nên blend trên <img> sẽ không thấy nền. */
+  mix-blend-mode: multiply;
+}
+.infra-stage__media img {
+  display: block; width: 100%; height: auto;
+  transition: transform .5s cubic-bezier(.22, 1, .36, 1);
+}
+.infra-stage__media:hover img { transform: scale(1.03); }
+.infra-stage__media:focus-visible { box-shadow: 0 0 0 3px rgba(43, 38, 251, .45); }
+@keyframes infra-float { 50% { transform: translateY(-10px); } }
+
+.infra-stage__badge {
+  position: absolute; z-index: 2; left: 20px; top: 20px; display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 14px 8px 10px; border-radius: 999px; background: rgba(255, 255, 255, .9);
+  border: 1px solid #e4eaf5; box-shadow: 0 10px 24px -14px rgba(19, 35, 90, .45);
+  font-family: var(--ff-body, inherit); font-size: 13.5px; color: var(--infra-muted);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.infra-stage__badge svg { width: 18px; height: 18px; fill: none; stroke: var(--infra-blue); stroke-width: 1.9; stroke-linejoin: round; }
+.infra-stage__badge b { color: #e1061b; font-weight: 700; }
+
+/* ---- 3 trụ cột ---- */
+.infra-pillars { position: relative; display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; counter-reset: none; }
+.infra-pillars::before { /* đường nối dọc giữa các icon */
+  content: ""; position: absolute; left: 31px; top: 40px; bottom: 40px; width: 2px; border-radius: 2px;
+  background: linear-gradient(180deg, #2b26fb, #ea1e24);
+  opacity: .28;
+}
+.infra-pillar {
+  position: relative; display: flex; align-items: flex-start; gap: 18px; padding: 18px 20px 18px 0;
+  border-radius: 20px; transition: background-color .3s, box-shadow .3s, transform .3s cubic-bezier(.22, 1, .36, 1);
+}
+.infra-pillar:hover { background: #fff; box-shadow: 0 18px 40px -26px rgba(19, 35, 90, .5); transform: translateX(4px); }
+.infra-pillar__icon {
+  position: relative; z-index: 1; flex: none; display: grid; place-items: center; width: 64px; height: 64px; border-radius: 20px;
+  background: #fff; border: 1px solid #e4eaf5; box-shadow: 0 12px 26px -16px rgba(43, 38, 251, .55);
+}
+.infra-pillar__icon svg { width: 28px; height: 28px; fill: none; stroke: var(--infra-blue); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.infra-pillar:hover .infra-pillar__icon { background: var(--infra-blue); border-color: var(--infra-blue); }
+.infra-pillar:hover .infra-pillar__icon svg { stroke: #fff; }
+.infra-pillar__icon { transition: background-color .3s, border-color .3s; }
+.infra-pillar__num { font-family: var(--ff-body, inherit); font-size: 12px; font-weight: 700; letter-spacing: .14em; color: var(--infra-red); }
+.infra-pillar h3 {
+  margin: 2px 0 4px; font-family: var(--ff-display, inherit); font-size: clamp(20px, 1.7vw, 24px); font-weight: 800;
+  line-height: 1.2; letter-spacing: -.015em; color: var(--infra-navy);
+}
+.infra-pillar p { margin: 0; font-family: var(--ff-body, inherit); font-size: 16px; line-height: 1.55; color: var(--infra-muted); }
+
+@media (max-width: 960px) {
+  .infra-layout { grid-template-columns: 1fr; max-width: 640px; }
+}
+@media (max-width: 520px) {
+  .infra-stage { border-radius: 24px; }
+  .infra-stage__badge { left: 12px; top: 12px; font-size: 12.5px; }
+  .infra-pillar { gap: 14px; padding-block: 14px; }
+  .infra-pillar__icon { width: 54px; height: 54px; border-radius: 16px; }
+  .infra-pillars::before { left: 26px; }
+  .infra-pillar p { font-size: 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .infra-stage__orbit i, .infra-stage__media, #digital-platform-title .infra-title__line { animation: none; }
+  .infra-pillar, .infra-stage__media img { transition: none; }
+}

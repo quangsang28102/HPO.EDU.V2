@@ -1,0 +1,44 @@
+/* ==========================================================================
+   Menu sắp theo hành trình người học (2026-11-02):
+   Trang chủ · Khóa học & Học phí · Quy trình đào tạo · Ôn thi lý thuyết · Dành cho học viên ▾ ·
+   Giới thiệu ▾ · Liên hệ. Nhãn dài hơn + thêm "Liên hệ" → thu gọn để menu ngang vẫn vừa 1 hàng:
+   - Máy tính (≥1351px, khi có menu ngang): mục Trang chủ chỉ hiện icon ngôi nhà (vẫn có aria-label/
+     title "Trang chủ"; logo cũng về trang chủ; menu ☰ điện thoại vẫn ghi chữ "Trang chủ");
+   - Màn ≥1481px: khung header + thanh trên bỏ giới hạn 1480px (logo sát lề trái, nút sát lề phải,
+     lề 28px như cũ) → đủ chỗ hiện chữ tổng đài từ 1600px; ≤1599px tổng đài chỉ còn icon.
+     (Lịch sử: ngưỡng 1799px làm 1800–1849px thiếu chỗ → mũi tên nút "Đăng ký học" co về 0px;
+     sau đó 1899px làm mất số ở 1800–1899px.)
+   - Số tổng đài luôn có trên thanh tối phía trên (≥1101px, site-header.js .topbar-hotline).
+   - Mũi tên trong nút không bao giờ bị co (flex-shrink: 0).
+   ========================================================================== */
+/* Thanh tối phía trên luôn rộng bằng hàng header (trước max-width 1240px/88vw → lệch tới 117px ở 1281–1480px) */
+@media (min-width: 1101px) {
+  html body .topbar > .container { max-width: none; padding-left: 28px; padding-right: 28px; }
+}
+@media (min-width: 1481px) {
+  html body #navbar > .container { max-width: none; padding-left: 28px; padding-right: 28px; }
+}
+@media (max-width: 1599px) {
+  html body #navbar.nav .nav-phone { padding-right: 0; }
+  html body #navbar.nav .nav-phone-text {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+  }
+}
+/* ≥1600px: hiện chữ "Tổng đài" (ghi đè luật ẩn ≤1640px trong site-header-nav-refresh.css) */
+@media (min-width: 1600px) {
+  html body #navbar.nav .nav-phone { padding-right: 8px; }
+  html body #navbar.nav .nav-phone-text { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
+}
+@media (min-width: 1351px) {
+  html body #navbar.nav .nav-home-label {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+  }
+}
+
+/* Mũi tên tròn trong nút "Đăng ký học" (header + menu ☰): không cho co khi hàng header chật */
+html body #navbar .nav-actions .btn-primary svg,
+html body .mobile-menu-foot .btn-primary svg { flex-shrink: 0; }
+
+/* Tổng đài trên thanh tối phía trên: vàng Hiệp Phát, đậm (bấm để gọi) */
+html body .topbar .topbar-hotline { color: #faec1a; font-weight: 700; }
+html body .topbar .topbar-hotline:hover { color: #fff; }

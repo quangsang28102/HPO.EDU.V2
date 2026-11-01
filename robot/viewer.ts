@@ -47,10 +47,16 @@ export function createViewer(
           <p class="hpo-chat-welcome">Xin chào! Tôi là robot Hiệp Phát.</p>
           <p>Bạn có thể khám phá mô hình 3D bên cạnh. Tính năng trò chuyện sẽ có mặt tại đây trong thời gian tới.</p>
         </div>
-        <a class="hpo-enroll-cta" href="https://hpo.edu.vn/dang-ky-hoc/">
-          <span>Đăng ký học</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
+        <div class="hpo-contact-actions">
+          <a class="hpo-enroll-cta" href="https://hpo.edu.vn/dang-ky-hoc/">
+            <span>Đăng ký học</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="hpo-call-cta" href="tel:02836362362">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+            <span>Gọi tổng đài 028.36.362.362</span>
+          </a>
+        </div>
         <div class="hpo-chat-options">
           <label class="hpo-wander-option"><input type="checkbox" checked> Cho robot tự đi dạo</label>
           <label class="hpo-visibility-option"><input id="hpo-robot-visible" type="checkbox" checked> Hiện robot trên trang</label>

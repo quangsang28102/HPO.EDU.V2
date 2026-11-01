@@ -12,10 +12,41 @@
 })();
 
 (function () {
+  // Nhan chu cho nut (an tren may tinh, hien khi cum nut thanh thanh duoi day
+  // tren dien thoai) va chi hien nut "Len dau trang" sau khi da cuon qua 2 man hinh.
+  const enhanceFloatingActions = () => {
+    const floats = document.querySelector(".floats");
+    if (!floats || floats.dataset.enhanced) return;
+    floats.dataset.enhanced = "true";
+    const labels = { ".float-phone": "Gọi tư vấn", ".float-register": "Đăng ký học" };
+    Object.entries(labels).forEach(([selector, text]) => {
+      const button = floats.querySelector(selector);
+      if (button && !button.querySelector(".float-label")) {
+        button.insertAdjacentHTML("beforeend", `<span class="float-label">${text}</span>`);
+      }
+    });
+    let ticking = false;
+    const syncScrolled = () => {
+      ticking = false;
+      floats.classList.toggle("is-scrolled", window.scrollY > window.innerHeight * 2);
+    };
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(syncScrolled);
+        }
+      },
+      { passive: true },
+    );
+    syncScrolled();
+  };
+
   const mountFloatingActions = () => {
     // Trang chu da co san cum nut nay trong HTML. Cac trang con dung chung
     // footer se duoc bo sung tai day de luon chi co mot cum nut ho tro.
-    if (document.querySelector(".floats")) return;
+    if (document.querySelector(".floats")) return enhanceFloatingActions();
 
     document.querySelectorAll(".back-to-top").forEach((button) => button.remove());
 
@@ -53,6 +84,7 @@
     document.querySelector(".float-top").addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
+    enhanceFloatingActions();
   };
 
   if (document.readyState === "loading") {
@@ -69,13 +101,13 @@
 
   mount.outerHTML = `
     <!-- ── FOOTER ── -->
-    <footer class="footer">
+    <footer class="footer" id="lien-he">
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
             <a href="${href("index.html")}" class="logo" aria-label="Hiệp Phát">
               <div class="logo-mark">
-                <img src="${href("assets/images/logo.png")}" alt="Hiệp Phát" />
+                <img src="${href("assets/images/logo-white.png")}" alt="Hiệp Phát" />
               </div>
             </a>
             <p class="footer-desc">

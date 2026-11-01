@@ -29,9 +29,9 @@
   --white: #ffffff;
 
   /* Fonts */
-  --ff-display: "Sora", system-ui, sans-serif;
-  --ff-body: "Plus Jakarta Sans", system-ui, sans-serif;
-  --ff-serif: "Playfair Display", Georgia, serif;
+  --ff-display: "Be Vietnam Pro", system-ui, sans-serif;
+  --ff-body: "SVN-Gilroy", "Be Vietnam Pro", system-ui, sans-serif;
+  --ff-serif: "Be Vietnam Pro", system-ui, sans-serif;
 
   /* Motion */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);

@@ -4,9 +4,17 @@
 @import url("./assets/css/layout-responsive.css");
 @import url("./assets/css/learning.css");
 @import url("./assets/css/homepage.css?v=20261027-inspection-light");
+@import url("./assets/css/homepage-hero-slider-arrows-dots.css");
 @import url("./assets/css/awards.css?v=20261027-brand-light");
-@import url("./assets/css/scroll-story.css");
 @import url("./assets/css/courses-demo.css");
+@import url("./assets/css/site-header-nav-refresh.css");
+@import url("./assets/css/site-typography-be-vietnam-gilroy.css");
+@import url("./assets/css/site-floating-actions-dock.css");
+@import url("./assets/css/site-header-large-logo.css");
+@import url("./assets/css/site-header-nav-reorder.css");
+@import url("./assets/css/site-header-mobile-compact.css");
+@import url("./assets/css/site-footer-navy-white-logo.css");
+@import url("./assets/css/site-scrollbar-brand-blue.css");
 
 /* Hiển thị hai lộ trình theo chiều dọc để phần Lý thuyết có chỗ cho chương trình môn học. */
 .platform-v2-body--stacked {

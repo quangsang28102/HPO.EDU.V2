@@ -1,0 +1,55 @@
+/* ==========================================================================
+   Footer (mọi trang): giữ nền navy, logo phiên bản chữ trắng, chữ to + sáng hơn
+   Trước: logo màu gốc (chữ xanh/đỏ) trên nền navy chỉ ~1.9–3.3:1 → chìm; chữ 12–13.5px
+   màu trắng pha 50–72% trông xám đục. Theo cách SAPP/MindX/RMIT: nền tối = logo trắng.
+   - Logo: assets/images/logo-white.png (site-footer.js), tạo từ logo.png bằng
+     công cụ make-white-logo-from-png.py (sandbox 2026_11_02_Footer_Navy_White_Logo/02_Build/tools):
+     vòng biểu tượng giữ màu gốc, khối chữ → trắng. Đổi logo gốc thì chạy lại để tạo bản trắng.
+   - Chữ nội dung 14–15px, trắng 86%; tiêu đề cột 15px đậm; nhãn cơ sở vàng Hiệp Phát #faec1a.
+   - Thanh màu thương hiệu xanh logo → vàng HP (4px) trên cùng footer.
+   ========================================================================== */
+
+html body .footer { color: rgba(255, 255, 255, .86); }
+html body .footer::before {
+  height: 4px;
+  background: linear-gradient(90deg, #2b26fb, #faec1a);
+}
+
+html body .footer-desc,
+html body .footer-contact-item,
+html body .footer-app-desc {
+  font-size: 15px;
+  line-height: 1.6;
+}
+html body .footer-col h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+}
+html body .footer-loc strong {
+  font-size: 13px;
+  color: #faec1a;
+}
+html body .footer-loc p,
+html body .footer-loc a {
+  font-size: 14px;
+  color: rgba(255, 255, 255, .86);
+}
+html body .footer-contact-icon,
+html body .footer-social a {
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+}
+html body .footer-social a:hover { background: #2b26fb; }
+html body .footer-loc a:hover,
+html body .footer-contact-item a:hover { color: #faec1a; }
+html body .footer-bottom {
+  font-size: 13px;
+  color: rgba(255, 255, 255, .7);
+}
+
+@media (max-width: 600px) {
+  html body .footer-desc,
+  html body .footer-contact-item,
+  html body .footer-app-desc { font-size: 14.5px; }
+}

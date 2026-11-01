@@ -3,6 +3,10 @@ import * as THREE from "three";
 import { RobotStage, fallback } from "./scene";
 import { Wander } from "./wander";
 import { createViewer } from "./viewer";
+import { ROBOT_HEAD_AVATAR } from "./robot-head-avatar-data-uri";
+
+const GREETING_TEXT =
+  "Xin chào! Tôi là trợ lý AI của Hiệp Phát. Rất vui được hỗ trợ bạn.";
 
 const bundleUrl =
   document.currentScript instanceof HTMLScriptElement
@@ -39,12 +43,19 @@ function mount() {
   restoreButton.setAttribute("aria-controls", "hpo-robot-viewer");
   restoreButton.setAttribute("aria-expanded", "false");
   restoreButton.title = "Mở robot Hiệp Phát";
-  restoreButton.innerHTML = fallback;
+  // Nút robot = đầu robot 3D (ảnh render sẵn) + bong bóng chào. Bong bóng nằm trong nút
+  // nên bấm vào bong bóng cũng mở hộp thoại.
+  restoreButton.innerHTML = `<img class="hpo-robot-head" src="${ROBOT_HEAD_AVATAR}" alt="" width="64" height="64" decoding="async">`;
+  const dockGreeting = document.createElement("span");
+  dockGreeting.id = "hpo-robot-dock-greeting";
+  dockGreeting.className = "is-hidden";
+  dockGreeting.textContent = GREETING_TEXT;
+  restoreButton.append(dockGreeting);
+  restoreButton.setAttribute("aria-describedby", dockGreeting.id);
   restoreButton.hidden = true;
   const greeting = document.createElement("span");
   greeting.id = "hpo-robot-greeting";
-  greeting.textContent =
-    "Xin chào! Tôi là trợ lý AI của Hiệp Phát. Rất vui được hỗ trợ bạn.";
+  greeting.textContent = GREETING_TEXT;
   companion.setAttribute("aria-describedby", greeting.id);
   document.body.append(companion, restoreButton);
   if (homeHero) document.body.classList.add("hpo-home-robot");
@@ -107,13 +118,29 @@ function mount() {
   let greetingLastX = position.x,
     greetingLastY = position.y;
   let greetingMovementUntil = 0;
+  // Lời chào chỉ hiện một lần mỗi phiên để không che nội dung lặp đi lặp lại.
+  let greeted = false;
+  let greetingStarted = false;
+  // Robot chỉ đứng trên trang khi hero trang chủ còn trong khung nhìn; còn lại
+  // (trang con, hoặc đã cuộn qua hero) robot thu vào nút trong cụm hỗ trợ nhanh.
+  let docked = !homeHero;
   try {
     robotHidden = localStorage.getItem("hpo-robot-hidden") === "true";
   } catch {
     /* Storage can be unavailable; keep the default visibility. */
   }
-  companion.hidden = robotHidden;
-  restoreButton.hidden = !robotHidden;
+  try {
+    greeted = sessionStorage.getItem("hpo-robot-greeted") === "true";
+    greetingStarted = greeted;
+  } catch {
+    /* Without storage the greeting still shows only once on this page. */
+  }
+  const onStage = () => !robotHidden && !docked;
+  function syncDock() {
+    companion.hidden = !onStage();
+    restoreButton.hidden = onStage();
+  }
+  syncDock();
   const viewer = createViewer(
     companion,
     welcomeVoiceUrl,
@@ -147,10 +174,10 @@ function mount() {
     }
     window.clearTimeout(hideTimer);
     companion.classList.remove("is-throwing-away");
-    restoreButton.hidden = visible;
     wander.pause();
     if (visible) {
-      companion.hidden = false;
+      syncDock();
+      if (!onStage()) return updateGreeting();
       resize();
       position.set(
         THREE.MathUtils.clamp(position.x, 0, width),
@@ -159,6 +186,7 @@ function mount() {
       wander.snapToEdge(position, width, height);
       place();
     } else if (throwDirection && !media.matches) {
+      restoreButton.hidden = false;
       const direction = throwDirection.clone();
       if (direction.lengthSq() < 1) direction.set(1, 1);
       direction.normalize();
@@ -181,7 +209,7 @@ function mount() {
         companion.classList.remove("is-throwing-away");
       }, media.matches ? 0 : 340);
     } else {
-      companion.hidden = true;
+      syncDock();
     }
     updateGreeting();
   }
@@ -192,16 +220,31 @@ function mount() {
     greetingLastY = position.y;
     if (moving) greetingMovementUntil = now + 120;
     const unavailable =
+      greeted ||
       moving ||
       now < greetingMovementUntil ||
       !!drag ||
       viewer.isOpen ||
-      robotHidden ||
+      !onStage() ||
       document.hidden;
     if (unavailable) greetingIdleSince = null;
     else if (greetingIdleSince === null) greetingIdleSince = now;
+    // Điện thoại: bong bóng nằm trên chữ của hero nên hiện ngắn hơn.
+    const greetingDuration = matchMedia("(max-width: 600px)").matches ? 4000 : 6000;
     const visible =
-      greetingIdleSince !== null && (now - greetingIdleSince) % 11000 < 6000;
+      greetingIdleSince !== null && now - greetingIdleSince < greetingDuration;
+    if (visible && !greetingStarted) {
+      greetingStarted = true;
+      try {
+        sessionStorage.setItem("hpo-robot-greeted", "true");
+      } catch {
+        /* The in-memory flag still prevents repeats on this page. */
+      }
+    }
+    if (unavailable && greetingStarted) greeted = true;
+    if (greetingIdleSince !== null && !visible) {
+      greeted = true;
+    }
     greeting.classList.toggle("is-hidden", !visible);
     if (visible) companion.setAttribute("aria-describedby", greeting.id);
     else companion.removeAttribute("aria-describedby");
@@ -218,7 +261,11 @@ function mount() {
         ? headerHeight + homeHero.offsetHeight - companion.offsetHeight - gap
         : headerHeight + 122;
       const visibleHeight = window.visualViewport?.height || innerHeight;
-      companion.style.top = `${Math.min(naturalTop, visibleHeight - companion.offsetHeight - 12)}px`;
+      // Trên điện thoại cụm hỗ trợ nhanh là thanh dưới đáy: chừa chỗ để robot không đè lên.
+      const bottomBar = matchMedia("(max-width: 600px)").matches
+        ? document.querySelector<HTMLElement>(".floats")?.offsetHeight || 0
+        : 0;
+      companion.style.top = `${Math.min(naturalTop, visibleHeight - bottomBar - companion.offsetHeight - 12)}px`;
       companion.style.bottom = "auto";
       greeting.style.removeProperty("left");
       greeting.style.removeProperty("--greeting-tail");
@@ -271,17 +318,56 @@ function mount() {
   resize(true);
   new ResizeObserver(() => resize()).observe(companion);
   new ResizeObserver(() => resize()).observe(greeting);
-  if (homeHero) new ResizeObserver(() => resize()).observe(homeHero);
+  if (homeHero) {
+    new ResizeObserver(() => resize()).observe(homeHero);
+    // Hero nằm trong băng chuyền (class is-active) và được ghim suốt phần cuộn kể chuyện,
+    // nên không dựa vào việc hero còn trong khung nhìn: robot chỉ đứng trên trang khi slide
+    // hero đang hiện và trang còn ở đầu; ngoài ra thu vào cụm nút.
+    // Cuộn về đầu trang sau khi đã rời hero ≥ 3 giây → robot chào lại (chờ 0.5 giây cho
+    // robot đứng yên). Băng chuyền đổi slide không tính, để bong bóng không bật mỗi 3 giây.
+    let scrolledAway = false,
+      awaySince = 0;
+    const syncHeroDock = () => {
+      const now = performance.now();
+      const away = scrollY > innerHeight * 0.25;
+      if (away && !scrolledAway) awaySince = now;
+      if (!away && scrolledAway && now - awaySince >= 3000) {
+        greeted = false;
+        greetingStarted = false;
+        greetingMovementUntil = now + 500;
+      }
+      scrolledAway = away;
+      const nextDocked = !homeHero.classList.contains("is-active") || away;
+      if (nextDocked === docked) return;
+      docked = nextDocked;
+      syncDock();
+      if (onStage()) {
+        resize();
+        resume();
+      }
+      updateGreeting();
+    };
+    new MutationObserver(syncHeroDock).observe(homeHero, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    window.addEventListener("scroll", syncHeroDock, { passive: true });
+    syncHeroDock();
+  }
   window.addEventListener("resize", () => resize());
   window.visualViewport?.addEventListener("resize", () => resize());
   window.visualViewport?.addEventListener("scroll", () => resize());
 
-  try {
-    stage = new RobotStage(companion);
-    stage.onRestore = resume;
-    if (homeHero && !media.matches) stage.robot.wave();
-  } catch (error) {
-    console.warn("Robot 3D không khả dụng; hiển thị hình thay thế.", error);
+  // Trang con không đặt robot 3D trên trang (chỉ có nút), nên không cần tạo WebGL ở đây;
+  // hộp thoại 3D vẫn tự tạo renderer riêng khi mở.
+  if (homeHero) {
+    try {
+      stage = new RobotStage(companion);
+      stage.onRestore = resume;
+      if (!media.matches) stage.robot.wave();
+    } catch (error) {
+      console.warn("Robot 3D không khả dụng; hiển thị hình thay thế.", error);
+    }
   }
   // RobotStage replaces the host contents, so attach the greeting afterwards,
   // including when WebGL initialization falls back to the static illustration.
@@ -295,19 +381,19 @@ function mount() {
     last = now;
     time += dt;
     if (viewer.isOpen) viewer.tick(dt, time, false);
-    else {
+    else if (onStage()) {
       if (!homeHero) {
         wander.update(
           dt,
           position,
           width,
           height,
-          paused || hovered || keyboardFocused || !!drag || !!stage?.lost || robotHidden,
+          paused || hovered || keyboardFocused || !!drag || !!stage?.lost || !onStage(),
           !drag,
         );
         place();
       }
-      if (stage && !stage.lost && !robotHidden) {
+      if (stage && !stage.lost && onStage()) {
         stage.robot.group.rotation.y = homeHero ? 0 : wander.heading;
         if (!homeHero && !drag && !stage.robot.isWaving && wander.takeGreeting())
           stage.robot.wave();
@@ -461,7 +547,30 @@ function mount() {
     viewer.open();
     updateGreeting();
   });
+  // Bong bóng chào cạnh đầu robot: tự hiện ~6 giây sau khi tải trang (nếu robot đang ở
+  // dạng nút), hiện lại khi rê chuột/focus; luôn tự ẩn để không che nội dung lâu.
+  let dockGreetingTimer = 0;
+  const hideDockGreeting = () => {
+    window.clearTimeout(dockGreetingTimer);
+    dockGreeting.classList.add("is-hidden");
+  };
+  const showDockGreeting = (duration: number) => {
+    if (restoreButton.hidden || viewer.isOpen) return;
+    dockGreeting.classList.remove("is-hidden");
+    window.clearTimeout(dockGreetingTimer);
+    dockGreetingTimer = window.setTimeout(hideDockGreeting, duration);
+  };
+  window.setTimeout(() => showDockGreeting(6000), 1200);
+  restoreButton.addEventListener("pointerenter", (event) => {
+    if (event.pointerType === "mouse") showDockGreeting(4000);
+  });
+  restoreButton.addEventListener("pointerleave", hideDockGreeting);
+  restoreButton.addEventListener("focus", () => {
+    if (restoreButton.matches(":focus-visible")) showDockGreeting(4000);
+  });
+  restoreButton.addEventListener("blur", hideDockGreeting);
   restoreButton.addEventListener("click", () => {
+    hideDockGreeting();
     viewer.open();
     updateGreeting();
   });

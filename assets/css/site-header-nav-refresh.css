@@ -1,0 +1,144 @@
+/* Làm mới cụm menu + tổng đài + nút "Đăng ký học" trên header (markup từ assets/js/site-header.js, không đổi).
+   Nạp cuối style.css để áp cho mọi trang. Selector bắt đầu bằng #navbar.nav để thắng các rule #navbar … của
+   homepage-header-robot.css (file đó nạp sau style.css ở trang chủ). Breakpoint ẩn/hiện menu giữ nguyên như cũ. */
+
+#navbar.nav {
+  --hdr-navy: #13235a;
+  --hdr-ink: #1d2742;
+  --hdr-blue: #2643e9;
+  --hdr-blue-deep: #1b2fa8;
+  --hdr-track: #f3f6fc;
+  --hdr-track-line: #e4eaf5;
+  --hdr-ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+/* ---- Thanh menu dạng "viên trượt" ---- */
+#navbar.nav .nav-links {
+  gap: 2px; padding: 5px; border-radius: 999px;
+  background: var(--hdr-track); border: 1px solid var(--hdr-track-line);
+  box-shadow: inset 0 1px 2px rgba(19, 35, 90, .04);
+}
+#navbar.nav .nav-links .nav-item > a {
+  gap: 7px; height: 40px; padding: 0 14px; border-radius: 999px;
+  font-size: 14.5px; font-weight: 500; color: var(--hdr-ink); letter-spacing: -.005em;
+  transition: color .2s, background-color .2s, box-shadow .25s var(--hdr-ease);
+}
+#navbar.nav .nav-links .nav-item > a:hover,
+#navbar.nav .nav-links .nav-item.has-dropdown:hover > a {
+  color: var(--hdr-blue); background: rgba(255, 255, 255, .75);
+}
+/* Trang hiện tại: viên trắng nổi, chữ xanh (thay cho chữ cam) */
+#navbar.nav .nav-links .nav-item > a[aria-current="page"] {
+  color: var(--hdr-blue); font-weight: 600; background: #fff;
+  box-shadow: 0 1px 2px rgba(19, 35, 90, .08), 0 6px 16px -8px rgba(38, 67, 233, .45);
+}
+#navbar.nav .nav-links .nav-item > a:focus-visible { outline: 2px solid var(--hdr-blue); outline-offset: 2px; }
+#navbar.nav .nav-home-link svg { width: 19px; height: 19px; }
+
+/* Mũi tên xổ xuống gọn hơn */
+#navbar.nav .nav-item.has-dropdown > a::after {
+  width: 5px; height: 5px; margin: -3px 0 0 1px; opacity: .7;
+  border-right-width: 1.6px; border-bottom-width: 1.6px;
+}
+#navbar.nav .nav-item.has-dropdown:hover > a::after { opacity: 1; }
+
+/* Danh sách xổ xuống: có mũi nhọn chỉ lên mục cha */
+#navbar.nav .nav-dropdown {
+  top: calc(100% + 14px); min-width: 280px; padding: 8px; border-radius: 18px;
+  border-color: var(--hdr-track-line);
+  box-shadow: 0 24px 50px -20px rgba(19, 35, 90, .35), 0 4px 12px rgba(19, 35, 90, .06);
+}
+#navbar.nav .nav-dropdown::before {
+  content: ""; position: absolute; top: -7px; left: 28px; width: 12px; height: 12px;
+  background: #fff; border-left: 1px solid var(--hdr-track-line); border-top: 1px solid var(--hdr-track-line);
+  transform: rotate(45deg); border-top-left-radius: 3px;
+}
+#navbar.nav .nav-dropdown::after { /* cầu nối vô hình để rê chuột từ mục cha xuống không bị mất */
+  content: ""; position: absolute; left: 0; right: 0; top: -16px; height: 16px;
+}
+#navbar.nav .nav-dropdown a { padding: 12px 14px; border-radius: 12px; font-size: 14px; color: var(--hdr-ink); }
+#navbar.nav .nav-dropdown a:hover { background: var(--hdr-track); color: var(--hdr-blue); }
+#navbar.nav .nav-dropdown a .dd-dot { width: 7px; height: 7px; background: #c7d2fe; }
+#navbar.nav .nav-dropdown a:hover .dd-dot { background: var(--hdr-blue); }
+#navbar.nav .nav-dropdown a[aria-current="page"] {
+  color: var(--hdr-blue); background: #eef2ff; box-shadow: inset 3px 0 0 var(--hdr-blue);
+}
+#navbar.nav .nav-dropdown a[aria-current="page"] .dd-dot { background: var(--hdr-blue); }
+
+/* ---- Tổng đài: bỏ nền xám, ngăn cách bằng vạch mảnh ---- */
+#navbar.nav .nav-actions { gap: 16px; }
+#navbar.nav .nav-phone {
+  position: relative; gap: 11px; padding: 4px 6px 4px 18px; border-radius: 0; background: none;
+}
+#navbar.nav .nav-phone::before {
+  content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: var(--hdr-track-line);
+}
+#navbar.nav .nav-phone:hover { background: none; }
+#navbar.nav .nav-phone-icon {
+  position: relative; width: 38px; height: 38px; color: var(--hdr-blue);
+  background: #eef2ff; box-shadow: inset 0 0 0 1px #dfe6ff;
+  transition: background-color .2s, color .2s;
+}
+#navbar.nav .nav-phone-icon::after { /* vòng sóng nhẹ gợi ý gọi được */
+  content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1.5px solid rgba(38, 67, 233, .25);
+  animation: hdr-ring 2.6s ease-out infinite;
+}
+#navbar.nav .nav-phone:hover .nav-phone-icon { background: var(--hdr-blue); color: #fff; }
+#navbar.nav .nav-phone-text small { font-size: 10.5px; font-weight: 600; letter-spacing: .12em; color: #7a849c; }
+#navbar.nav .nav-phone-text strong { font-size: 15.5px; color: var(--hdr-navy); letter-spacing: .01em; }
+#navbar.nav .nav-phone:hover .nav-phone-text strong { color: var(--hdr-blue); }
+
+/* ---- Nút "Đăng ký học": gradient, mũi tên trong chấm tròn ---- */
+#navbar.nav .nav-actions .btn-primary {
+  gap: 12px; height: 48px; padding: 0 7px 0 22px; border-radius: 999px;
+  font-size: 15px; font-weight: 600; letter-spacing: 0;
+  background: linear-gradient(135deg, #3355ff 0%, var(--hdr-blue) 45%, var(--hdr-blue-deep) 100%);
+  box-shadow: 0 10px 22px -10px rgba(38, 67, 233, .75), inset 0 1px 0 rgba(255, 255, 255, .2);
+}
+#navbar.nav .nav-actions .btn-primary svg {
+  width: 34px; height: 34px; padding: 9px; border-radius: 50%;
+  background: rgba(255, 255, 255, .18); transition: transform .3s var(--hdr-ease), background-color .2s;
+}
+#navbar.nav .nav-actions .btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px -10px rgba(38, 67, 233, .85), inset 0 1px 0 rgba(255, 255, 255, .2);
+}
+#navbar.nav .nav-actions .btn-primary:hover svg { transform: translateX(3px); background: rgba(255, 255, 255, .28); }
+
+@keyframes hdr-ring { from { transform: scale(.85); opacity: 1; } to { transform: scale(1.25); opacity: 0; } }
+
+/* ---- Màn vừa: co dần để menu vẫn đủ chỗ trước khi chuyển sang nút ☰ (trang chủ logo lớn nên chật hơn) ---- */
+@media (max-width: 1720px) {
+  #navbar.nav .nav-links .nav-item > a { padding: 0 11px; font-size: 14px; }
+  #navbar.nav .nav-actions { gap: 12px; }
+  #navbar.nav .nav-phone { padding-left: 14px; }
+}
+@media (max-width: 1660px) {
+  #navbar.nav .nav-links { padding: 4px; }
+  #navbar.nav .nav-links .nav-item > a { height: 38px; padding: 0 9px; font-size: 13.5px; }
+  #navbar.nav .nav-actions .btn-primary { height: 44px; padding-left: 18px; font-size: 14px; }
+  #navbar.nav .nav-actions .btn-primary svg { width: 30px; height: 30px; padding: 8px; }
+}
+/* Màn hẹp: tổng đài chỉ còn icon (số vẫn có ở nút gọi nổi và trong aria-label của link tel:) */
+@media (max-width: 1640px) {
+  #navbar.nav .nav-phone { padding-right: 0; }
+  #navbar.nav .nav-phone-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  #navbar.nav .nav-links .nav-item > a { padding: 0 8px; }
+  #navbar.nav .nav-home-link svg { width: 17px; height: 17px; }
+}
+@media (max-width: 1400px) {
+  #navbar.nav .nav-links { gap: 0; }
+  #navbar.nav .nav-links .nav-item > a { padding: 0 7px; font-size: 13px; gap: 5px; }
+}
+/* Khi menu chuyển sang nút ☰: đẩy cụm nút sang phải (trang con trước đây bị dính sát logo) */
+@media (max-width: 1280px) {
+  #navbar.nav .nav-actions { margin-left: auto; }
+}
+/* Nút "Đăng ký học" ở màn nhỏ: giữ gọn như cũ */
+@media (max-width: 600px) {
+  #navbar.nav .nav-actions .btn-primary { height: 42px; gap: 8px; padding: 0 5px 0 14px; font-size: 13px; }
+  #navbar.nav .nav-actions .btn-primary svg { width: 30px; height: 30px; padding: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #navbar.nav .nav-phone-icon::after { animation: none; opacity: 0; }
+}

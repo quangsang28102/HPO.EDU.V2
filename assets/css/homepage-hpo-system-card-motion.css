@@ -1,39 +1,39 @@
-/* Card "Hệ thống HPO + Trợ lý ảo AI" trong hero trang chủ (thay cho .hpo-system-card vẽ SVG cũ).
+/* Card "Hệ thống HPO" trong hero trang chủ: vòng HPO động (trái) + 6 thành phần (phải).
    Mọi class mang tiền tố hpo-sys-; nạp SAU homepage-reference-hero.css.
-   Chuyển động của vòng HPO do assets/js/homepage-hpo-system-card-motion.js vẽ. */
+   Chuyển động + đồng bộ danh sách do assets/js/homepage-hpo-system-card-motion.js điều khiển.
+   Hero cuộn bình thường (đã gỡ hiệu ứng scroll-story xe + rèm, 2026-11-02). */
 
 .hpo-sys-card {
-  display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 20px;
-  width: min(618px, 100%); margin: clamp(34px, 5.5vh, 62px) auto 0; padding: 0 30px 0 22px;
-  background: #fff; border-radius: 26px;
-  box-shadow: 0 24px 60px -24px rgba(30, 64, 175, .28), 0 2px 10px rgba(15, 23, 42, .05);
-}
-.hpo-sys-item { display: flex; flex-direction: column; align-items: center; margin: 0; }
-.hpo-sys-item figcaption {
-  padding: 4px 0 9px; font-family: var(--ff-display, inherit); font-size: 19px; font-weight: 800;
-  color: #2240c4; letter-spacing: -.01em; white-space: nowrap;
+  --hpo-sys-navy: #13235a;
+  --hpo-sys-blue: #2b4bf2;
+  --hpo-sys-muted: #5b6782;
+  --hpo-sys-ring: clamp(240px, 28vw, 340px);
+  display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: clamp(20px, 3vw, 44px);
+  width: min(1080px, 100%); margin: clamp(28px, 4.5vh, 56px) auto 0; padding: clamp(14px, 1.8vw, 22px) clamp(18px, 2.6vw, 36px);
+  text-align: left; background: #fff; border: 1px solid #e6ecf6; border-radius: 28px;
+  box-shadow: 0 30px 70px -36px rgba(19, 35, 90, .35), 0 2px 10px rgba(15, 23, 42, .04);
 }
 
 /* ---- vòng HPO ---- */
 .hpo-sys-ring {
   --tilt-x: 0deg; --tilt-y: 0deg;
-  position: relative; width: 362px; max-width: 100%;
+  position: relative; width: var(--hpo-sys-ring); aspect-ratio: 1;
   transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
   transition: transform .4s ease-out;
 }
-.hpo-sys-ring img { display: block; width: 100%; height: auto; border-radius: 50%; }
+.hpo-sys-ring img { display: block; width: 100%; height: 100%; border-radius: 50%; }
 .hpo-sys-ring::after { /* quầng sáng nhịp thở quanh vòng */
   content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
   animation: hpo-sys-pulse 3.2s ease-out infinite;
 }
 .hpo-sys-sweep, .hpo-sys-ripple, .hpo-sys-motion { position: absolute; pointer-events: none; mix-blend-mode: screen; }
 .hpo-sys-sweep { /* tia quét kiểu radar — 6s/vòng, khớp SWEEP_SECONDS trong JS */
-  inset: 3px; border-radius: 50%;
+  inset: 1%; border-radius: 50%;
   background: conic-gradient(from 0deg, transparent 0 290deg, rgba(90, 200, 255, .05) 310deg, rgba(150, 228, 255, .3) 359deg, transparent 360deg);
   animation: hpo-sys-spin 6s linear infinite;
 }
 .hpo-sys-ripple { /* sóng lan từ chiếc xe ở tâm */
-  left: 50%; top: 50.5%; width: 96px; height: 96px; margin: -48px 0 0 -48px; border-radius: 50%;
+  left: 50%; top: 50.5%; width: 26.5%; aspect-ratio: 1; translate: -50% -50%; border-radius: 50%;
   border: 2px solid rgba(160, 232, 255, .7);
   animation: hpo-sys-ripple 3s ease-out infinite;
 }
@@ -45,42 +45,60 @@
 }
 .hpo-sys-motion .hpo-sys-packet { fill: #f2fdff; filter: drop-shadow(0 0 4px #6fdcff) drop-shadow(0 0 8px #3fb8ff); }
 .hpo-sys-motion .hpo-sys-orbit { transform-origin: 181px 181px; animation: hpo-sys-spin 40s linear infinite; }
+.hpo-sys-motion .hpo-sys-focus { /* vòng khoanh thành phần khi rê chuột/focus vào danh sách */
+  fill: none; stroke: #ffffff; stroke-width: 2.4; opacity: 0; transform-box: fill-box; transform-origin: center;
+  transform: scale(.8); transition: opacity .25s, transform .25s;
+}
+.hpo-sys-motion .hpo-sys-focus.is-on { opacity: .95; transform: scale(1); }
 
-/* ---- trợ lý ảo AI ----
-   Trục thân robot nằm ở 39% chiều rộng ảnh (tay vẫy làm ảnh lệch phải) →
-   đặt trục thân đúng giữa cột để chữ "TRỢ LÝ ẢO AI" cân giữa robot */
-.hpo-sys-ai-stage { --robot-w: 159px; position: relative; width: 175px; padding-top: 64px; }
-.hpo-sys-ai-robot {
-  display: block; width: var(--robot-w); height: auto; margin-left: calc(50% - var(--robot-w) * .39);
-  animation: hpo-sys-hover 4s ease-in-out infinite;
+/* ---- thông tin + 6 thành phần ---- */
+.hpo-sys-info { min-width: 0; }
+.hpo-sys-eyebrow {
+  margin: 0; color: var(--hpo-sys-blue); font-family: var(--ff-body, inherit); font-size: 12.5px; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
 }
-.hpo-sys-chat-bubble {
-  position: absolute; top: 2px; right: -14px; width: 68px; height: 44px; border-radius: 12px;
-  display: flex; align-items: center; justify-content: center; gap: 6px;
-  background: linear-gradient(180deg, #5ab4f0, #1f7fd0); border: 2px solid #d9eefc;
-  box-shadow: 0 6px 14px -4px rgba(31, 127, 208, .6), inset 0 1px 0 rgba(255, 255, 255, .5);
-  animation: hpo-sys-hover 4s ease-in-out infinite reverse;
+.hpo-sys-title {
+  margin: 4px 0 2px; color: var(--hpo-sys-navy); font-family: var(--ff-display, inherit);
+  font-size: clamp(22px, 2vw, 30px); font-weight: 800; line-height: 1.15; letter-spacing: -.02em;
 }
-.hpo-sys-chat-bubble::after { /* đuôi bong bóng */
-  content: ""; position: absolute; bottom: -12px; left: 18px; width: 14px; height: 14px;
-  background: #1f7fd0; border: solid #d9eefc; border-width: 0 2px 2px 0; transform: skewY(40deg) rotate(10deg);
-  clip-path: polygon(0 0, 100% 0, 0 100%);
+.hpo-sys-lead { margin: 0 0 12px; color: var(--hpo-sys-muted); font-family: var(--ff-body, inherit); font-size: 14.5px; line-height: 1.45; }
+.hpo-sys-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
+.hpo-sys-list li {
+  display: flex; align-items: flex-start; gap: 10px; padding: 9px 10px; border-radius: 14px;
+  border: 1px solid transparent; cursor: default; outline: none;
+  transition: background-color .3s, border-color .3s, box-shadow .3s;
 }
-.hpo-sys-chat-bubble i { width: 9px; height: 9px; border-radius: 50%; background: #fff; animation: hpo-sys-typing 1.2s infinite; }
-.hpo-sys-chat-bubble i:nth-child(2) { animation-delay: .15s; }
-.hpo-sys-chat-bubble i:nth-child(3) { animation-delay: .3s; }
+.hpo-sys-list li > svg {
+  flex: none; width: 34px; height: 34px; padding: 7px; border-radius: 10px;
+  fill: none; stroke: var(--hpo-sys-blue); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+  background: #eef2ff; transition: background-color .3s, stroke .3s;
+}
+.hpo-sys-list b { display: block; color: var(--hpo-sys-navy); font-family: var(--ff-body, inherit); font-size: 14.5px; font-weight: 700; line-height: 1.3; }
+.hpo-sys-list small { display: block; margin-top: 2px; color: var(--hpo-sys-muted); font-family: var(--ff-body, inherit); font-size: 12.5px; line-height: 1.4; }
+/* Mục đang được tia quét chiếu tới, hoặc đang được rê chuột/focus */
+.hpo-sys-list li.is-active, .hpo-sys-list li:hover, .hpo-sys-list li:focus-visible {
+  background: #f3f6ff; border-color: #dbe3ff; box-shadow: 0 10px 24px -18px rgba(43, 75, 242, .55);
+}
+.hpo-sys-list li.is-active > svg, .hpo-sys-list li:hover > svg, .hpo-sys-list li:focus-visible > svg {
+  background: var(--hpo-sys-blue); stroke: #fff;
+}
+.hpo-sys-list li:focus-visible { box-shadow: 0 0 0 3px rgba(43, 75, 242, .35); }
 
 @keyframes hpo-sys-spin { to { transform: rotate(1turn); } }
 @keyframes hpo-sys-flow { to { stroke-dashoffset: -24; } }
 @keyframes hpo-sys-ripple { from { transform: scale(.7); opacity: .9; } to { transform: scale(2.3); opacity: 0; } }
 @keyframes hpo-sys-pulse { 0% { box-shadow: 0 0 0 0 rgba(43, 109, 240, .25); } 80%, 100% { box-shadow: 0 0 0 12px rgba(43, 109, 240, 0); } }
-@keyframes hpo-sys-hover { 50% { transform: translateY(-6px); } }
-@keyframes hpo-sys-typing { 0%, 60%, 100% { transform: translateY(0); opacity: .9; } 30% { transform: translateY(-4px); opacity: 1; } }
 
-@media (max-width: 640px) {
-  .hpo-sys-card { grid-template-columns: 1fr; justify-items: center; padding: 18px 16px 8px; margin-top: 26px; }
-  .hpo-sys-ring { width: min(300px, 100%); }
-  .hpo-sys-ai-stage { --robot-w: 130px; width: 150px; }
+/* ---- Màn hẹp: xếp dọc ---- */
+@media (max-width: 1099px) {
+  .hpo-sys-card { grid-template-columns: 1fr; justify-items: center; text-align: center; width: min(720px, 100%); }
+  .hpo-sys-ring { --hpo-sys-ring: min(320px, 100%); }
+  .hpo-sys-info { width: 100%; }
+  .hpo-sys-list { grid-template-columns: repeat(2, minmax(0, 1fr)); text-align: left; }
+}
+@media (max-width: 520px) {
+  .hpo-sys-card { padding: 18px 14px; border-radius: 22px; }
+  .hpo-sys-list { grid-template-columns: 1fr; gap: 4px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hpo-sys-card *, .hpo-sys-card *::before, .hpo-sys-card *::after { animation: none !important; transition: none !important; }

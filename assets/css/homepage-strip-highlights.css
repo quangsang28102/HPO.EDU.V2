@@ -1,0 +1,73 @@
+/* ==========================================================================
+   Dải điểm nổi bật dưới băng chuyền hero (trang chủ) — thay dải chữ navy in hoa
+   Tham khảo dải "Đối tác đồng hành" của SAPP: nền sáng liền mạch với section, mỗi mục là
+   thẻ bo tròn có biểu tượng + mô tả ngắn, 2 mép mờ dần, chạy chậm (60 giây/vòng).
+   Markup: .strip.strip--highlights > .strip-track > .strip-group ×2 (nhóm 2 aria-hidden, giống
+   hệt nhóm 1) → dịch -50% (keyframes tickerScroll trong site-sections.css) là vòng liền mạch.
+   Rê chuột → dừng (có sẵn); giảm chuyển động → đứng yên và kéo ngang được.
+   ========================================================================== */
+
+html body .strip.strip--highlights {
+  background: linear-gradient(180deg, #ffffff 0%, #f4f7fe 100%);
+  border-top: 1px solid #e5eaf5;
+  border-bottom: 1px solid #e5eaf5;
+  color: #1e3a8a;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
+html body .strip--highlights .strip-track {
+  gap: 0;
+  width: max-content;
+  padding: 16px 0;
+  animation-duration: 60s;
+}
+/* Mỗi nhóm có khoảng cách cuối bằng khoảng cách giữa các thẻ → 2 nhóm bằng nhau tuyệt đối */
+html body .strip--highlights .strip-group {
+  display: flex;
+  gap: 14px;
+  padding-right: 14px;
+}
+html body .strip--highlights .strip-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  padding: 8px 18px 8px 8px;
+  border: 1px solid #dbe3f3;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(16, 42, 86, .06);
+  font-size: 15px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+html body .strip--highlights .strip-chip b { color: #1e3a8a; font-weight: 700; }
+html body .strip--highlights .strip-chip__desc { color: #475569; }
+html body .strip--highlights .strip-chip__icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #eef2ff;
+  color: #2b26fb;
+}
+html body .strip--highlights .strip-chip__icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 600px) {
+  html body .strip--highlights .strip-track { padding: 12px 0; }
+  html body .strip--highlights .strip-chip { font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body .strip.strip--highlights { overflow-x: auto; }
+  html body .strip--highlights .strip-track { animation: none; }
+  html body .strip--highlights .strip-group[aria-hidden="true"] { display: none; }
+}

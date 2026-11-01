@@ -1,0 +1,129 @@
+/* ==========================================================================
+   Băng chuyền hero trang chủ (.company-slider): mũi tên 2 bên + chấm vị trí
+   - Trước: mũi tên chỉ hiện khi rê chuột → người dùng không biết còn slide bên cạnh.
+   - Máy tính (≥1280px): mũi tên luôn hiện ở giữa 2 bên, sát mép (ngoài vùng chữ của cả 2
+     slide ở 1280–1920), chấm ở đáy slider.
+   - ≤1279px: hàng điều khiển dưới slider [‹] [chấm] [›] (≤1000px có sẵn trong homepage.css;
+     1001–1279px thêm ở đây vì nội dung 2 slide chiếm gần hết chiều ngang, mũi tên 2 bên đè chữ).
+   - Chấm đang chọn kéo dài thành thanh chạy hết trong --company-slide-ms (homepage.js)
+     khi đang tự chuyển; tự chuyển tạm ngưng (rê chuột, focus, đang chạm) → thanh đứng yên đầy.
+   ========================================================================== */
+
+.company-slider .company-slider-controls button[data-company-step] {
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+
+.company-slider .company-slider-dots {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 4px 16px rgba(16, 42, 86, 0.15);
+  pointer-events: auto;
+}
+/* Chấm cũng là <button> trong .company-slider-controls → gỡ các kiểu của mũi tên trong
+   homepage.css (ẩn khi không rê chuột, định vị tuyệt đối, left/right theo :first/:last-child). */
+.company-slider .company-slider-dots button,
+.company-slider:hover .company-slider-dots button,
+.company-slider:focus-within .company-slider-dots button {
+  position: relative;
+  inset: auto;
+  transform: none;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  opacity: 1;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: width 0.3s ease;
+}
+.company-slider .company-slider-dots button::before,
+.company-slider .company-slider-dots button[aria-current]::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 7px;
+  height: 10px;
+  border-radius: 999px;
+  translate: 0 -50%;
+}
+.company-slider .company-slider-dots button::before {
+  width: 10px;
+  background: #c3cde3;
+  transition: width 0.3s ease, background 0.2s ease;
+}
+.company-slider .company-slider-dots button:hover::before { background: #8ea0c8; }
+.company-slider .company-slider-controls .company-slider-dots button[aria-current] { width: 50px; }
+.company-slider .company-slider-dots button[aria-current]::before {
+  width: 36px;
+  background: #d6defa;
+}
+.company-slider .company-slider-dots button[aria-current]::after {
+  width: 36px;
+  background: #2b26fb;
+}
+.company-slider.is-autoplaying .company-slider-dots button[aria-current]::after {
+  animation: company-dot-progress var(--company-slide-ms, 6000ms) linear forwards;
+}
+@keyframes company-dot-progress {
+  from { width: 10px; }
+  to { width: 36px; }
+}
+.company-slider .company-slider-dots button:focus-visible {
+  outline: 2px solid #2b26fb;
+  outline-offset: 2px;
+  border-radius: 999px;
+}
+
+/* Cụm điều khiển nằm trên nội dung hero (trước đây bị .hpo-digital-left phủ lên) */
+.company-slider .company-slider-controls { z-index: 6; }
+
+@media (min-width: 1001px) and (max-width: 1279px) {
+  .company-slider { padding-bottom: 58px; background: #f2f7ff; }
+  .company-slider .company-slider-controls {
+    inset: auto 0 7px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+  }
+  .company-slider .company-slider-controls button[data-company-step] {
+    position: static;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (min-width: 1280px) {
+  .company-slider .company-slider-controls button[data-company-step] {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.92);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .company-slider .company-slider-controls button[data-company-step="-1"] { left: clamp(4px, calc((100vw - 1366px) / 2 + 4px), 36px); }
+  .company-slider .company-slider-controls button[data-company-step="1"] { right: clamp(4px, calc((100vw - 1366px) / 2 + 4px), 36px); }
+  .company-slider .company-slider-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    padding: 0 6px;
+    translate: -50% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .company-slider .company-slider-dots button,
+  .company-slider .company-slider-dots button::before { transition: none; }
+}

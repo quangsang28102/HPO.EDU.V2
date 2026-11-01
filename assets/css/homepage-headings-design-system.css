@@ -1,0 +1,92 @@
+/* Đồng bộ tiêu đề section trang chủ theo Hiệp Phát Design System (tokens.css).
+   Quy tắc:
+   - Tiêu đề 1 dòng  → gradient "Xanh Hiệp Phát"  primary-strong #1e3a8a → logo-blue #2b26fb.
+   - Tiêu đề 2 vế     → vế 1 Xanh Hiệp Phát, vế 2 "Đỏ Hiệp Phát" red-strong #b91c1c → logo-red #ea1e24
+                         (cùng cặp với tiêu đề hero "Kỷ nguyên AI" và section hạ tầng).
+   - "Thanh dẫn"      → 96×6px, logo-blue #2b26fb → logo-yellow #faec1a, đặt TRÊN tiêu đề.
+   - Quầng sáng sau tiêu đề → xanh logo nhạt (thay xanh ngọc).
+   Thay cho các gradient xanh-ngọc-vàng cũ (không có trong DS) ở homepage.css, awards.css, site-sections.css,
+   courses-demo.css. Nạp SAU tất cả CSS trang chủ; tiền tố "html body" để thắng các rule cũ chồng nhiều lớp.
+   Tiêu đề section hạ tầng (#digital-platform-title) do homepage-infrastructure-section.css xử lý. */
+
+:root {
+  --hp-ds-title-blue: linear-gradient(100deg, #1e3a8a 0%, #2b26fb 45%, #2b26fb 55%, #1e3a8a 100%);
+  --hp-ds-title-red: linear-gradient(100deg, #b91c1c 0%, #ea1e24 45%, #ea1e24 55%, #b91c1c 100%);
+  --hp-ds-lead-bar: linear-gradient(90deg, #2b26fb, #faec1a);
+  --hp-ds-glow: radial-gradient(ellipse, rgba(43, 38, 251, .09) 0%, rgba(43, 38, 251, .03) 44%, transparent 72%);
+}
+
+/* ---- Chữ gradient dùng chung ---- */
+html body .company-banner .company-banner-heading h2,
+html body .brand-protection__head h2,
+html body .brand-protection .brand-protection__head h2,
+html body .inspection-record .inspection-record__heading h2,
+html body .courses-section .section-head__title,
+html body .platform-v2-title--new-color,
+html body .hpo-unified-title-wrap:not(.hpo-unified-title-wrap--inverse) .hpo-unified-title,
+html body .intro-video__head h2 > span,
+html body .intro-video__head h2 > em {
+  background-image: var(--hp-ds-title-blue);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #1e3a8a;
+  text-shadow: none;
+  filter: drop-shadow(0 8px 18px rgba(43, 38, 251, .14));
+  animation: hp-ds-title-sheen 7s ease-in-out infinite alternate;
+}
+/* Vế 2 của tiêu đề 2 vế: Đỏ Hiệp Phát */
+html body .intro-video__head h2 > em {
+  background-image: var(--hp-ds-title-red);
+  color: #b91c1c;
+  font-style: normal;
+  filter: drop-shadow(0 8px 18px rgba(234, 30, 36, .12));
+}
+html body .intro-video__head h2 { background: none; -webkit-text-fill-color: currentColor; color: #1e3a8a; }
+html body .intro-video__head h2 > em .intro-video__nowrap { -webkit-text-fill-color: transparent; }
+@keyframes hp-ds-title-sheen { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+
+/* ---- Thanh dẫn DS, đặt trên tiêu đề ---- */
+html body .company-banner .company-banner-heading::after,
+html body .brand-protection__head::after,
+html body .brand-protection .brand-protection__head::after,
+html body .hpo-unified-title-wrap::after,
+html body .intro-video__head::after {
+  top: 0; bottom: auto; width: 96px; height: 6px; border-radius: 3px;
+  background: var(--hp-ds-lead-bar);
+  box-shadow: 0 4px 12px rgba(43, 38, 251, .2);
+}
+html body .company-banner .company-banner-heading { padding-top: 34px; padding-bottom: 14px; }
+html body .brand-protection__head,
+html body .hpo-unified-title-wrap,
+html body .intro-video__head { padding-top: 26px; padding-bottom: 0; }
+/* "Đào tạo lái xe trên nền tảng số": thanh dẫn là thẻ div sau tiêu đề → đưa lên trên bằng order */
+html body .platform-v2-head { display: flex; flex-direction: column; align-items: center; }
+html body .platform-v2-head .platform-v2-dash {
+  order: -1; width: 96px; height: 6px; margin: 0 auto 20px; border-radius: 3px;
+  background: var(--hp-ds-lead-bar); box-shadow: 0 4px 12px rgba(43, 38, 251, .2);
+}
+html body .platform-v2-head .platform-v2-dash span { background: var(--hp-ds-lead-bar); }
+html body .platform-v2-head .platform-v2-dash i { background: #2b26fb; }
+
+/* ---- Quầng sáng sau tiêu đề ---- */
+html body .brand-protection__head::before,
+html body .brand-protection .brand-protection__head::before,
+html body .hpo-unified-title-wrap::before,
+html body .digital-learning-materials__head::before { background: var(--hp-ds-glow); }
+
+/* Phụ đề khóa học: dấu gạch giữa theo đỏ logo */
+html body .courses-section .section-head__subtitle { color: #1e3a8a; }
+html body .courses-section .section-head__subtitle .sep { color: #ea1e24; }
+
+@media (prefers-reduced-motion: reduce) {
+  html body .company-banner .company-banner-heading h2,
+  html body .brand-protection__head h2,
+html body .brand-protection .brand-protection__head h2,
+  html body .courses-section .section-head__title,
+  html body .platform-v2-title--new-color,
+  html body .hpo-unified-title,
+  html body .intro-video__head h2 > span,
+  html body .intro-video__head h2 > em { animation: none; }
+}

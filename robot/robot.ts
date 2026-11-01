@@ -2,10 +2,11 @@ import * as THREE from 'three';
 import { EyeMotion } from './eye-motion';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 import { HIEPPHAT_CHEST_LOGO } from './hiepphat-chest-logo-data-uri';
+import { DEFAULT_ROBOT_THEME, type RobotTheme } from './robot-themes';
 
 export type Expression = 'happy' | 'neutral' | 'thinking';
 
-/** Procedural model styled after the approved 'Trợ lý ảo AI' artwork (white shell, sky-blue pads, navy joints). Public methods can be called by a future chat controller. */
+/** Procedural model; colours, materials, eyes and LED trim come from a RobotTheme (default: Navy & Gold). Public methods can be called by a future chat controller. */
 export class Robot {
   readonly group = new THREE.Group();
   readonly head = new THREE.Group();
@@ -18,27 +19,31 @@ export class Robot {
   private eyeMotion = new EyeMotion();
   private expression: Expression = 'happy';
   private waveTime = -1;
-  // Glossy white shell, satin sky-blue pads and dark navy joint rings, as in the hero artwork.
-  private white = new THREE.MeshPhysicalMaterial({ color: '#f8fbff', metalness: 0, roughness: .3, clearcoat: 1, clearcoatRoughness: .12 });
-  private blue = new THREE.MeshPhysicalMaterial({ color: '#3f93e6', metalness: .05, roughness: .32, clearcoat: .7, clearcoatRoughness: .25 });
-  private lightBlue = new THREE.MeshPhysicalMaterial({ color: '#8fc8f5', metalness: .05, roughness: .35, clearcoat: .5 });
-  private navy = new THREE.MeshStandardMaterial({ color: '#1f2d42', metalness: .25, roughness: .45 });
+  // Materials come from the theme (robot-themes.ts); the default theme matches the 'Trợ lý ảo AI' artwork.
+  private shell!: THREE.MeshPhysicalMaterial;
+  private accent!: THREE.MeshPhysicalMaterial;
+  private accentSoft!: THREE.MeshPhysicalMaterial;
+  private jointMat!: THREE.MeshStandardMaterial;
 
-  constructor() {
-    const box = (parent: THREE.Object3D, size: number[], pos: number[], mat: THREE.Material = this.white, radius = .1) => {
+  constructor(readonly theme: RobotTheme = DEFAULT_ROBOT_THEME) {
+    this.shell = new THREE.MeshPhysicalMaterial({ ...theme.shell, clearcoatRoughness: .12 });
+    this.accent = new THREE.MeshPhysicalMaterial({ ...theme.accent, clearcoat: .7, clearcoatRoughness: .25 });
+    this.accentSoft = new THREE.MeshPhysicalMaterial({ color: theme.accentSoft, metalness: .05, roughness: .35, clearcoat: .5 });
+    this.jointMat = new THREE.MeshStandardMaterial(theme.joint);
+    const box = (parent: THREE.Object3D, size: number[], pos: number[], mat: THREE.Material = this.shell, radius = .1) => {
       const mesh = new THREE.Mesh(new RoundedBoxGeometry(size[0], size[1], size[2], 5, radius), mat);
       mesh.position.set(pos[0], pos[1], pos[2]); mesh.castShadow = true; mesh.receiveShadow = true; parent.add(mesh); return mesh;
     };
-    const sphere = (parent: THREE.Object3D, radius: number, pos: number[], mat: THREE.Material = this.navy) => {
+    const sphere = (parent: THREE.Object3D, radius: number, pos: number[], mat: THREE.Material = this.jointMat) => {
       const mesh = new THREE.Mesh(new THREE.SphereGeometry(radius, 32, 20), mat);
       mesh.position.set(pos[0], pos[1], pos[2]); mesh.castShadow = true; parent.add(mesh); return mesh;
     };
-    const cylinder = (parent: THREE.Object3D, radius: number, depth: number, pos: number[], mat: THREE.Material = this.navy) => {
+    const cylinder = (parent: THREE.Object3D, radius: number, depth: number, pos: number[], mat: THREE.Material = this.jointMat) => {
       const mesh = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius, depth, 40), mat);
       mesh.position.set(pos[0], pos[1], pos[2]); mesh.castShadow = true; parent.add(mesh); return mesh;
     };
     /** Vertical capsule centred at pos; length is the straight part between the caps. */
-    const capsule = (parent: THREE.Object3D, radius: number, length: number, pos: number[], mat: THREE.Material = this.white) => {
+    const capsule = (parent: THREE.Object3D, radius: number, length: number, pos: number[], mat: THREE.Material = this.shell) => {
       const mesh = new THREE.Mesh(new THREE.CapsuleGeometry(radius, length, 8, 24), mat);
       mesh.position.set(pos[0], pos[1], pos[2]); mesh.castShadow = true; parent.add(mesh); return mesh;
     };
@@ -55,7 +60,7 @@ export class Robot {
       shellPositions.setXYZ(i, rounded(shellPositions.getX(i)), .91 * rounded(shellPositions.getY(i)), .84 * rounded(shellPositions.getZ(i)));
     }
     shellGeometry.computeVertexNormals();
-    const helmet = new THREE.Mesh(shellGeometry, this.white); this.head.add(helmet);
+    const helmet = new THREE.Mesh(shellGeometry, this.shell); this.head.add(helmet);
     helmet.castShadow = true;
     // Thin curved patches follow the helmet surface: no stacked protruding boxes.
     const faceZ = (x: number, y: number) => .84 * Math.max(0, 1 - Math.abs(x) ** 2.4 - Math.abs(y / .91) ** 2.4) ** (1 / 2.4);
@@ -77,16 +82,20 @@ export class Robot {
       geometry.setIndex(indices); geometry.computeVertexNormals();
       const mesh = new THREE.Mesh(geometry, material); this.head.add(mesh); return mesh;
     };
-    const visor = new THREE.MeshPhysicalMaterial({ color: '#05080e', metalness: .1, roughness: .15, clearcoat: 1, clearcoatRoughness: .04 });
+    if (theme.trim) {
+      // Thin glowing LED frame just outside the screen.
+      facePatch(1.6, 1.18, .009, new THREE.MeshStandardMaterial({ color: theme.trim, emissive: theme.trim, emissiveIntensity: theme.trimIntensity ?? 1.4, toneMapped: false }));
+    }
+    const visor = new THREE.MeshPhysicalMaterial({ color: theme.visor, metalness: .1, roughness: .15, clearcoat: 1, clearcoatRoughness: .04 });
     facePatch(1.52, 1.1, .012, visor);
 
     for (const side of [-1, 1]) {
       // Glowing LED eyes; the shader closes vertically on the curved face without moving the eye width.
-      const eyeX = side * .27, eyeY = -.03;
+      const eyeX = side * theme.eyes.spacing, eyeY = -.03;
       const geometry = new THREE.PlaneGeometry(2.4, 2.4, 24, 24);
       const positions = geometry.attributes.position;
       for (let i = 0; i < positions.count; i++) {
-        const x = positions.getX(i) * .105, y = positions.getY(i) * .175;
+        const x = positions.getX(i) * theme.eyes.size[0], y = positions.getY(i) * theme.eyes.size[1];
         positions.setXYZ(i, x, y, faceZ(eyeX + x, eyeY + y) - faceZ(eyeX, eyeY) + .024);
       }
       geometry.computeVertexNormals();
@@ -95,9 +104,9 @@ export class Robot {
         uniforms: {
           closure: { value: 0 },
           gaze: { value: this.eyeMotion.gaze },
-          core: { value: new THREE.Color('#a9dcff') },
-          led: { value: new THREE.Color('#7cc6f7') },
-          deep: { value: new THREE.Color('#4a9fe6') },
+          core: { value: new THREE.Color(theme.eyes.core) },
+          led: { value: new THREE.Color(theme.eyes.led) },
+          deep: { value: new THREE.Color(theme.eyes.deep) },
         },
         vertexShader: `varying vec2 eyeUv; void main(){ eyeUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
         fragmentShader: `
@@ -136,16 +145,16 @@ export class Robot {
       this.head.add(eye); this.eyes.push(eye);
 
       // Round sky-blue ear pods with a light-blue ring.
-      const ear = cylinder(this.head, .31, .16, [side * .96, -.04, -.04], this.blue); ear.rotation.z = Math.PI / 2;
-      const ring = cylinder(this.head, .23, .08, [side * 1.05, -.04, -.04], this.lightBlue); ring.rotation.z = Math.PI / 2;
-      const core = cylinder(this.head, .15, .06, [side * 1.075, -.04, -.04], this.blue); core.rotation.z = Math.PI / 2;
+      const ear = cylinder(this.head, .31, .16, [side * .96, -.04, -.04], this.accent); ear.rotation.z = Math.PI / 2;
+      const ring = cylinder(this.head, .23, .08, [side * 1.05, -.04, -.04], this.accentSoft); ring.rotation.z = Math.PI / 2;
+      const core = cylinder(this.head, .15, .06, [side * 1.075, -.04, -.04], this.accent); core.rotation.z = Math.PI / 2;
     }
     // ---- Torso: rounded white chest, navy waist band and the Hiệp Phát badge ----
     this.torso.position.y = 2.04;
-    cylinder(this.torso, .16, .32, [0, .56, 0], this.navy);
-    box(this.torso, [1.14, .96, .74], [0, 0, 0], this.white, .35);
-    box(this.torso, [1.0, .13, .66], [0, -.38, 0], this.navy, .06);
-    const badgeRing = cylinder(this.torso, .3, .04, [0, .07, .365], this.blue); badgeRing.rotation.x = Math.PI / 2;
+    cylinder(this.torso, .16, .32, [0, .56, 0], this.jointMat);
+    box(this.torso, [1.14, .96, .74], [0, 0, 0], this.shell, .35);
+    box(this.torso, [1.0, .13, .66], [0, -.38, 0], new THREE.MeshStandardMaterial({ color: theme.belt, roughness: .4, metalness: .2 }), .06);
+    const badgeRing = cylinder(this.torso, .3, .04, [0, .07, .365], this.accent); badgeRing.rotation.x = Math.PI / 2;
     // Unlit + no tone mapping so the logo keeps its exact brand colours.
     const logoMaterial = new THREE.MeshBasicMaterial({ color: '#2b26fb', toneMapped: false });
     if (typeof document !== 'undefined') {
@@ -159,16 +168,16 @@ export class Robot {
     logo.position.set(0, .07, .387); this.torso.add(logo);
 
     // Waist and hips.
-    cylinder(this.group, .26, .22, [0, 1.46, 0], this.navy);
-    box(this.group, [.88, .34, .76], [0, 1.3, 0], this.white, .16);
-    for (const side of [-1, 1]) box(this.group, [.1, .26, .52], [side * .44, 1.3, 0], this.blue, .045);
+    cylinder(this.group, .26, .22, [0, 1.46, 0], this.jointMat);
+    box(this.group, [.88, .34, .76], [0, 1.3, 0], this.shell, .16);
+    for (const side of [-1, 1]) box(this.group, [.1, .26, .52], [side * .44, 1.3, 0], this.accent, .045);
 
     // Navy ball joints, as in the artwork.
-    const hinge = (parent: THREE.Object3D, radius: number, y: number, z = 0, mat: THREE.Material = this.navy) => sphere(parent, radius, [0, y, z], mat);
+    const hinge = (parent: THREE.Object3D, radius: number, y: number, z = 0, mat: THREE.Material = this.jointMat) => sphere(parent, radius, [0, y, z], mat);
     /** Sky-blue pad wrapped by a navy ring (elbows and knees). */
     const pad = (parent: THREE.Object3D, radius: number, y: number, z = 0) => {
-      hinge(parent, radius, y, z, this.blue);
-      const ring = new THREE.Mesh(new THREE.TorusGeometry(radius * .98, radius * .16, 12, 40), this.navy);
+      hinge(parent, radius, y, z, this.accent);
+      const ring = new THREE.Mesh(new THREE.TorusGeometry(radius * .98, radius * .16, 12, 40), this.jointMat);
       ring.position.set(0, y, z); ring.rotation.y = Math.PI / 2; parent.add(ring);
     };
 
@@ -176,17 +185,17 @@ export class Robot {
       const side = i === 0 ? -1 : 1;
       // ---- Arm: sky-blue shoulder cap, white capsules, blue elbow pad, white mitten hand ----
       const arm = this.arms[i]; arm.position.set(side * .72, 2.32, 0); arm.rotation.z = side * .13;
-      hinge(arm, .23, 0, 0, this.blue);
+      hinge(arm, .23, 0, 0, this.accent);
       capsule(arm, .17, .18, [0, -.29, 0]);
       const elbow = this.elbows[i]; elbow.position.y = -.56; arm.add(elbow);
       pad(elbow, .14, 0);
       capsule(elbow, .175, .16, [0, -.25, .01]);
-      cylinder(elbow, .18, .06, [0, -.36, .01], this.blue);
+      cylinder(elbow, .18, .06, [0, -.36, .01], this.accent);
       const wrist = this.wrists[i]; wrist.position.y = -.505; elbow.add(wrist);
-      sphere(wrist, .085, [0, 0, 0], this.navy);
-      box(wrist, [.27, .21, .2], [0, -.14, .01], this.white, .095);
+      sphere(wrist, .085, [0, 0, 0], this.jointMat);
+      box(wrist, [.27, .21, .2], [0, -.14, .01], this.shell, .095);
       // Palm faces local -Z; forearm supination presents it during the greeting.
-      const palm = box(wrist, [.17, .13, .025], [0, -.14, -.09], this.lightBlue, .025);
+      const palm = box(wrist, [.17, .13, .025], [0, -.14, -.09], this.accentSoft, .025);
       palm.name = 'palm';
       for (let f = 0; f < 3; f++) {
         const x = (f - 1) * .072;
@@ -200,9 +209,9 @@ export class Robot {
       capsule(leg, .22, .08, [0, -.25, 0]);
       pad(leg, .18, -.48, .02);
       capsule(leg, .22, .14, [side * .02, -.72, 0]);
-      cylinder(leg, .225, .08, [side * .02, -.88, 0], this.blue);
-      box(leg, [.54, .27, .74], [side * .03, -1.0, .12], this.white, .12);
-      box(leg, [.54, .08, .74], [side * .03, -1.12, .12], this.navy, .035);
+      cylinder(leg, .225, .08, [side * .02, -.88, 0], this.accent);
+      box(leg, [.54, .27, .74], [side * .03, -1.0, .12], this.shell, .12);
+      box(leg, [.54, .08, .74], [side * .03, -1.12, .12], this.jointMat, .035);
     }
   }
 

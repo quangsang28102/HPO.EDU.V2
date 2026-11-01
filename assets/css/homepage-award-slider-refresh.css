@@ -1,0 +1,140 @@
+/* Làm mới giao diện slider "Dấu ấn hành trình phát triển thành tựu" (#awardSlider) theo Hiệp Phát Design System.
+   CHỈ đổi giao diện: giữ nguyên markup, class/ID mà assets/js/awards.js + scroll-story.js dùng, bố cục lưới,
+   kích thước poster và các biến ghim khi cuộn (--award-frame-opacity/y…). Selector "html body #awardSlider" để thắng
+   các lớp rule cũ trong awards.css. Token: logo-blue #2b26fb, primary-strong #1e3a8a, ink #0a1330, ink-soft #334155,
+   line #e6ebf5, primary-soft #eff6ff, logo-yellow #faec1a. */
+
+html body #awardSlider {
+  --aw-blue: #2b26fb;
+  --aw-navy: #1e3a8a;
+  --aw-ink: #0a1330;
+  --aw-soft: #334155;
+  --aw-line: #e6ebf5;
+  --aw-wash: #eff6ff;
+}
+
+/* ---- Dòng địa điểm · ngày (JS đổi nội dung theo giải): nhãn bo tròn có icon định vị ---- */
+html body #awardSlider .award-slider__heading-sub {
+  position: relative; display: table; width: auto; max-width: 100%; min-height: 0;
+  margin: 14px auto clamp(22px, 2.6vw, 34px); padding: 9px 20px 9px 42px; border-radius: 999px;
+  background: var(--aw-wash); border: 1px solid #dbe4ff; color: var(--aw-navy);
+  font-family: var(--ff-body, inherit); font-size: clamp(13px, 1.05vw, 15.5px); font-weight: 700; line-height: 1.4;
+  letter-spacing: .02em; text-transform: none; white-space: normal; text-align: center;
+}
+html body #awardSlider .award-slider__heading-sub::before {
+  content: ""; position: absolute; left: 16px; top: 50%; width: 18px; height: 18px; translate: 0 -50%;
+  background: var(--aw-blue);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* ---- Cột chọn giải: dòng thời gian, một hệ màu chung ---- */
+html body #awardSlider .award-slider__selector { position: relative; gap: 14px; }
+html body #awardSlider .award-slider__selector::before { /* đường nối dọc giữa các số */
+  content: ""; position: absolute; z-index: 0; left: 40px; top: 18%; bottom: 30%; width: 2px; border-radius: 2px;
+  background: linear-gradient(180deg, var(--aw-blue), var(--aw-navy) 60%, rgba(43, 38, 251, .15));
+  opacity: .25;
+}
+html body #awardSlider .award-slider__choice {
+  --choice-accent: var(--aw-blue);
+  --choice-ink: var(--aw-ink);
+  --choice-wash: var(--aw-wash);
+  --choice-border: var(--aw-line);
+  z-index: 1; grid-template-columns: 46px minmax(0, 1fr); gap: 14px; min-height: 104px; padding: 16px 40px 16px 18px;
+  border: 1px solid var(--aw-line); border-radius: 20px; background: #fff; color: var(--aw-ink);
+  box-shadow: 0 14px 30px -24px rgba(10, 19, 48, .45);
+}
+html body #awardSlider .award-slider__choice:hover {
+  border-color: #c7d2fe; transform: translateY(-2px); box-shadow: 0 18px 34px -22px rgba(43, 38, 251, .35);
+}
+html body #awardSlider .award-slider__choice::before { /* icon cúp góc phải */
+  content: ""; position: absolute; right: 14px; top: 14px; width: 18px; height: 18px;
+  background: #c7d2fe; transition: background-color .25s;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4ZM7 6H4v1a4 4 0 0 0 4 4M17 6h3v1a4 4 0 0 1-4 4'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4ZM7 6H4v1a4 4 0 0 0 4 4M17 6h3v1a4 4 0 0 1-4 4'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+/* ::after cũ (vòng tròn trang trí) → thanh tiến trình tự chuyển nằm ở đáy nút đang chọn */
+html body #awardSlider .award-slider__choice::after {
+  top: auto; right: auto; left: 0; bottom: 0; z-index: 1; width: 100%; height: 3px; border-radius: 0;
+  background: linear-gradient(90deg, var(--aw-blue), #faec1a); opacity: 0;
+  transform: scaleX(0); transform-origin: left; transition: none;
+}
+html body #awardSlider .award-slider__choice-number {
+  width: 44px; height: 44px; border-radius: 14px; background: var(--aw-wash); color: var(--aw-blue);
+  box-shadow: inset 0 0 0 1px #dbe4ff; font-size: 20px;
+}
+html body #awardSlider .award-slider__choice-copy { gap: 2px; }
+html body #awardSlider .award-slider__choice-copy strong { color: var(--aw-ink); font-size: clamp(16px, 1.25vw, 19px); font-weight: 800; }
+html body #awardSlider .award-slider__choice-copy small {
+  color: var(--aw-soft); font-family: var(--ff-body, inherit); font-size: clamp(13.5px, 1vw, 15px); line-height: 1.4;
+}
+/* Nút đang chọn: nền Xanh Hiệp Phát, chữ trắng */
+html body #awardSlider .award-slider__choice.is-active {
+  border-color: transparent; background: linear-gradient(135deg, var(--aw-navy) 0%, var(--aw-blue) 100%);
+  box-shadow: 0 22px 40px -20px rgba(43, 38, 251, .7);
+}
+html body #awardSlider .award-slider__choice.is-active::before { background: #faec1a; }
+html body #awardSlider .award-slider__choice.is-active .award-slider__choice-number { background: #fff; color: var(--aw-blue); box-shadow: none; }
+html body #awardSlider .award-slider__choice.is-active .award-slider__choice-copy strong { color: #fff; }
+html body #awardSlider .award-slider__choice.is-active .award-slider__choice-copy small { color: rgba(255, 255, 255, .82); }
+html body #awardSlider .award-slider__choice.is-active::after { opacity: 1; transform: scaleX(1); background: rgba(255, 255, 255, .22); }
+html body #awardSlider.is-running .award-slider__choice.is-active::after {
+  background: linear-gradient(90deg, #ffffff, #faec1a);
+  animation: hp-award-choice-progress var(--slider-duration, 6500ms) linear forwards;
+}
+@keyframes hp-award-choice-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+html body #awardSlider .award-slider__autoplay-toggle {
+  justify-self: start; min-height: 40px; padding: 6px 14px; border: 1px solid var(--aw-line); background: #fff;
+  color: var(--aw-navy); font-size: 13px; font-weight: 700;
+}
+html body #awardSlider .award-slider__autoplay-toggle:hover { border-color: #c7d2fe; background: var(--aw-wash); }
+
+/* ---- Poster ---- */
+html body #awardSlider .award-slider__viewport {
+  /* Khung chỉ cao bằng poster (trước đây bị kéo cao theo cột nút chọn → thừa khoảng trắng dưới poster) */
+  align-self: center; height: auto; min-height: 0;
+  border-radius: 26px; box-shadow: 0 44px 80px -44px rgba(10, 19, 48, .55), 0 0 0 1px rgba(43, 38, 251, .1);
+}
+html body #awardSlider .award-slide__topline strong {
+  min-height: 34px; padding: 5px 16px; border: 1px solid rgba(255, 255, 255, .28);
+  background-color: rgba(10, 19, 48, .62); box-shadow: 0 10px 24px -12px rgba(0, 0, 0, .6);
+  font-family: var(--ff-body, inherit); font-size: 12.5px; font-weight: 700; letter-spacing: .14em;
+}
+html body #awardSlider .award-slide__topline strong::before { /* chấm vàng HP trước ngày */
+  content: ""; width: 7px; height: 7px; margin-right: 10px; border-radius: 50%; background: #faec1a;
+  box-shadow: 0 0 0 3px rgba(250, 236, 26, .25);
+}
+html body #awardSlider .award-slider__arrows button {
+  width: 46px; height: 46px; border: 1px solid rgba(255, 255, 255, .7); background: rgba(255, 255, 255, .86);
+  color: var(--aw-navy); box-shadow: 0 12px 26px -12px rgba(10, 19, 48, .55);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+html body #awardSlider .award-slider__arrows button:hover { border-color: var(--aw-blue); background: var(--aw-blue); color: #fff; }
+
+/* Thanh tiến trình cũ (đường kẻ xám dài dưới poster) → đã chuyển vào nút đang chọn */
+html body #awardSlider .award-slider__progress { display: none; }
+
+html body #awardSlider .award-slider__choice:focus-visible,
+html body #awardSlider .award-slider__autoplay-toggle:focus-visible,
+html body #awardSlider .award-slider__arrows button:focus-visible { outline: 3px solid rgba(43, 38, 251, .5); outline-offset: 3px; }
+
+/* ---- Màn hẹp: 3 nút thành hàng ngang phía trên poster ---- */
+@media (max-width: 900px) {
+  html body #awardSlider .award-slider__selector::before { display: none; }
+  html body #awardSlider .award-slider__choice { min-height: 86px; padding: 12px 30px 12px 12px; gap: 10px; grid-template-columns: 36px minmax(0, 1fr); }
+  html body #awardSlider .award-slider__choice::before { right: 10px; top: 10px; width: 15px; height: 15px; }
+  html body #awardSlider .award-slider__choice-number { width: 36px; height: 36px; border-radius: 11px; font-size: 17px; }
+}
+@media (max-width: 680px) {
+  html body #awardSlider .award-slider__choice { grid-template-columns: 1fr; justify-items: center; padding: 12px 8px 14px; text-align: center; }
+  html body #awardSlider .award-slider__choice::before { display: none; }
+  html body #awardSlider .award-slider__choice-number { width: 32px; height: 32px; font-size: 15px; }
+  html body #awardSlider .award-slider__choice-copy strong { font-size: 13.5px; }
+  html body #awardSlider .award-slider__choice-copy small { font-size: 12px; line-height: 1.35; }
+  html body #awardSlider .award-slider__heading-sub { padding: 8px 14px 8px 36px; font-size: 13px; }
+  html body #awardSlider .award-slider__heading-sub::before { left: 12px; width: 16px; height: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body #awardSlider.is-running .award-slider__choice.is-active::after { animation: none; }
+}

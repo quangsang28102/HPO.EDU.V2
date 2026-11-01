@@ -1,0 +1,37 @@
+/* ==========================================================================
+   Header điện thoại (≤600px): luôn 1 hàng
+   Trước đây trang chủ phóng logo 70px nên nút bị đẩy xuống hàng 2 (header dính
+   cao ~139px, chiếm 16–18% màn hình điện thoại).
+   - [logo 56px, cùng cỡ ở mọi trang] … [☰]. Bỏ nút "Đăng ký học" ở header vì thanh
+     dưới đáy (site-floating-actions-dock.css) đã có nút này lớn và luôn hiện.
+   - Tablet/máy tính giữ nguyên (đã 1 hàng).
+   Tiền tố `html body` để thắng homepage-header-robot.css (link sau style.css).
+   ========================================================================== */
+
+@media (max-width: 600px) {
+  html body #navbar .nav-inner {
+    flex-wrap: nowrap;
+    gap: 12px;
+    padding-block: 8px;
+  }
+  html body #navbar .nav-inner > .logo {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+  html body #navbar .nav-inner > .logo .logo-mark { height: 56px; }
+  html body #navbar .nav-inner > .logo .logo-mark img {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+  }
+  html body #navbar .nav-actions {
+    flex: 0 0 auto;
+    margin-left: auto;
+  }
+  html body #navbar .nav-actions .btn-primary { display: none; }
+  html body #navbar .nav-burger {
+    width: 44px;
+    height: 44px;
+  }
+}

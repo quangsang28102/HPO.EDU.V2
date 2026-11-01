@@ -1,0 +1,99 @@
+/* Section "Thương hiệu" (#so-huu-tri-tue): lưới văn bằng bảo hộ, thay cho .brand-protection__list cũ.
+   Giữ header của section (màu tiêu đề do homepage-headings-design-system.css). Class mới: brand-cert-*.
+   Màu theo Hiệp Phát Design System: logo-blue #2b26fb, primary-strong #1e3a8a, ink #0a1330, ink-soft #334155,
+   line #e6ebf5, primary-soft #eff6ff. Lightbox giữ nhóm data-img-group="brand-protection" (media.js). */
+
+.brand-cert-grid {
+  --cert-blue: #2b26fb;
+  --cert-navy: #1e3a8a;
+  --cert-ink: #0a1330;
+  --cert-soft: #334155;
+  --cert-line: #e6ebf5;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px);
+  max-width: 1200px; margin: clamp(28px, 3.5vw, 48px) auto 0;
+}
+.brand-cert[hidden] { display: none; }
+
+.brand-cert {
+  position: relative; display: flex; flex-direction: column; overflow: hidden;
+  background: #fff; border: 1px solid var(--cert-line); border-radius: 24px;
+  box-shadow: 0 24px 50px -34px rgba(10, 19, 48, .35);
+  transition: transform .4s cubic-bezier(.22, 1, .36, 1), box-shadow .4s;
+}
+.brand-cert::before { /* vạch xanh Hiệp Phát trên đỉnh thẻ */
+  content: ""; position: absolute; z-index: 2; inset: 0 0 auto; height: 4px;
+  background: linear-gradient(90deg, var(--cert-navy), var(--cert-blue));
+}
+.brand-cert:hover { transform: translateY(-6px); box-shadow: 0 36px 70px -38px rgba(30, 58, 138, .5); }
+
+/* ---- Ảnh văn bằng: "tờ giấy" nghiêng nhẹ trên nền lưới xanh nhạt ---- */
+.brand-cert__media {
+  /* Khung cố định 4:3 cho mọi thẻ; ảnh dọc/ngang co vừa bên trong (flex + max-height cần chiều cao xác định) */
+  position: relative; display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 3; padding: 50px 28px 22px;
+  overflow: hidden; cursor: zoom-in; outline: none;
+  background:
+    linear-gradient(rgba(43, 38, 251, .05) 1px, transparent 1px) 0 0 / 22px 22px,
+    linear-gradient(90deg, rgba(43, 38, 251, .05) 1px, transparent 1px) 0 0 / 22px 22px,
+    radial-gradient(90% 80% at 50% 60%, #ffffff 0%, #eff6ff 70%, #e4ecff 100%);
+}
+.brand-cert__media img {
+  display: block; flex: none; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;
+  border-radius: 4px; background: #fff;
+  box-shadow: 0 2px 4px rgba(10, 19, 48, .08), 0 18px 34px -16px rgba(10, 19, 48, .45);
+  transform: rotate(-2.2deg); transition: transform .5s cubic-bezier(.22, 1, .36, 1);
+}
+.brand-cert:nth-child(even) .brand-cert__media img { transform: rotate(2deg); }
+.brand-cert:hover .brand-cert__media img,
+.brand-cert__media:focus-visible img { transform: rotate(0) scale(1.04); }
+.brand-cert__media:focus-visible { box-shadow: inset 0 0 0 3px rgba(43, 38, 251, .45); }
+
+.brand-cert__tag {
+  position: absolute; z-index: 1; left: 16px; top: 16px; display: inline-flex; align-items: center; gap: 6px;
+  max-width: calc(100% - 84px); padding: 6px 11px 6px 8px; border-radius: 999px;
+  background: rgba(255, 255, 255, .92); border: 1px solid var(--cert-line);
+  font-family: var(--ff-body, inherit); font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--cert-navy); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.brand-cert__tag svg { flex: none; width: 16px; height: 16px; fill: none; stroke: var(--cert-blue); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.brand-cert__num {
+  position: absolute; z-index: 1; right: 18px; top: 10px;
+  font-family: var(--ff-display, inherit); font-size: 40px; font-weight: 900; line-height: 1; letter-spacing: -.04em;
+  color: transparent; -webkit-text-stroke: 1.5px rgba(43, 38, 251, .35);
+}
+.brand-cert__zoom {
+  position: absolute; z-index: 1; right: 14px; bottom: 14px; padding: 7px 12px; border-radius: 999px;
+  background: var(--cert-blue); color: #fff; font-family: var(--ff-body, inherit); font-size: 12.5px; font-weight: 600;
+  box-shadow: 0 8px 18px -8px rgba(43, 38, 251, .8);
+  opacity: 0; transform: translateY(6px); transition: opacity .25s, transform .25s;
+}
+.brand-cert:hover .brand-cert__zoom, .brand-cert__media:focus-visible .brand-cert__zoom { opacity: 1; transform: none; }
+
+/* ---- Nội dung ---- */
+.brand-cert__body { display: flex; flex: 1; flex-direction: column; gap: 10px; padding: 20px 22px 22px; }
+.brand-cert__body h3 {
+  margin: 0; font-family: var(--ff-display, inherit); font-size: clamp(17px, 1.35vw, 20px); font-weight: 800;
+  line-height: 1.3; letter-spacing: -.01em; color: var(--cert-ink); text-transform: none;
+}
+.brand-cert__body > p { margin: 0; font-family: var(--ff-body, inherit); font-size: 14.5px; line-height: 1.55; color: var(--cert-soft); }
+.brand-cert__facts { margin: 4px 0 0; padding: 12px 0 0; border-top: 1px dashed var(--cert-line); display: grid; gap: 7px; }
+.brand-cert__facts div { display: flex; justify-content: space-between; gap: 12px; font-family: var(--ff-body, inherit); font-size: 13.5px; line-height: 1.4; }
+.brand-cert__facts dt { margin: 0; color: #64748b; }
+.brand-cert__facts dd { margin: 0; font-weight: 700; color: var(--cert-ink); text-align: right; }
+.brand-cert__link {
+  align-self: flex-start; margin-top: auto; display: inline-flex; align-items: center; gap: 6px; padding: 9px 14px; border-radius: 999px;
+  background: #eff6ff; color: var(--cert-blue); font-family: var(--ff-body, inherit); font-size: 13.5px; font-weight: 700;
+  transition: background-color .2s, color .2s;
+}
+.brand-cert__link:hover, .brand-cert__link:focus-visible { background: var(--cert-blue); color: #fff; }
+.brand-cert__body > .brand-cert__facts + .brand-cert__link { margin-top: 6px; }
+
+@media (max-width: 1024px) {
+  .brand-cert-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; }
+}
+@media (max-width: 640px) {
+  .brand-cert-grid { grid-template-columns: 1fr; max-width: 460px; }
+  .brand-cert__num { font-size: 34px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-cert, .brand-cert__media img, .brand-cert__zoom { transition: none; }
+}

@@ -1,57 +1,5 @@
-/* Homepage-only adjustments for the header logo and stationary hero companion. */
-#navbar .nav-inner > .logo .logo-mark {
-  height: 108px;
-}
-#navbar .nav-inner > .logo .logo-mark img {
-  width: auto;
-  height: 100%;
-  max-width: none;
-  object-fit: contain;
-}
-@media (min-width: 1281px) {
-  #navbar .nav-inner { gap: 12px; }
-  #navbar .nav-links { font-size: 13px; }
-  #navbar .nav-links .nav-item > a { padding-inline: 5px; }
-  #navbar .nav-actions { gap: 8px; }
-  #navbar .nav-actions .btn { padding-inline: 16px; }
-  #navbar .nav-phone { padding-right: 8px; }
-}
-@media (max-width: 1280px) {
-  #navbar .nav-actions { margin-left: auto; }
-}
-@media (max-width: 1350px) {
-  #navbar .nav-links { display: none; }
-  #navbar .nav-burger { display: flex; }
-  #navbar .nav-actions { margin-left: auto; }
-}
-@media (max-width: 1280px) and (min-width: 721px) {
-  #navbar .nav-inner > .logo .logo-mark { height: 106px; }
-  #navbar .nav-inner { gap: 14px; }
-}
-@media (max-width: 720px) {
-  #navbar .nav-inner > .logo .logo-mark { height: 70px; }
-}
-@media (max-width: 600px) {
-  #navbar .nav-inner { gap: 8px; }
-  #navbar .nav-inner > .logo .logo-mark { height: 70px; }
-  #navbar .nav-actions { gap: 8px; }
-  #navbar .nav-actions .btn { gap: 6px; padding: 11px 9px; font-size: 12px; }
-  #navbar .nav-actions .btn svg { width: 14px; height: 14px; }
-  #navbar .nav-burger { width: 40px; }
-}
-@media (max-width: 499px) {
-  #navbar .nav-inner {
-    flex-wrap: wrap;
-    gap: 4px 8px;
-    padding-block: 10px;
-  }
-  #navbar .nav-inner > .logo { flex: 0 0 100%; }
-  #navbar .nav-inner > .logo .logo-mark { height: 70px; }
-  #navbar .nav-actions {
-    flex: 0 0 100%;
-    justify-content: flex-end;
-  }
-}
+/* Homepage-only adjustments for the stationary hero companion.
+   Header/logo lớn đã chuyển sang assets/css/site-header-large-logo.css (áp mọi trang). */
 
 body.hpo-home-robot #hpo-robot {
   position: fixed;

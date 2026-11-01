@@ -1,20 +1,24 @@
-// Chuyển động cho vòng "Hệ thống HPO".
+// Chuyển động cho card "Hệ thống HPO" (vòng HPO + danh sách 6 thành phần).
 // Ảnh vòng là 1 lớp phẳng, nên hiệu ứng được vẽ bằng SVG phủ lên (viewBox 362 = kích thước ảnh):
 //  - mỗi thành phần có 1 tia nối về xe ở tâm, vạch sáng chảy liên tục;
-//  - tia quét (CSS .hpo-sys-sweep, 6s/vòng) đi qua thành phần nào thì 1 gói dữ liệu vừa chạy tới đó và thành phần sáng lên;
+//  - tia quét (CSS .hpo-sys-sweep, 6s/vòng) đi qua thành phần nào thì 1 gói dữ liệu vừa chạy tới đó, thành phần sáng lên
+//    và mục tương ứng trong .hpo-sys-list được gắn .is-active;
+//  - rê chuột/focus vào 1 mục trong danh sách → khoanh sáng thành phần đó trên vòng;
 //  - nghiêng nhẹ theo con trỏ.
 (function () {
-  const ring = document.querySelector('.hpo-sys-ring');
+  const card = document.querySelector('.hpo-sys-card');
+  const ring = card && card.querySelector('.hpo-sys-ring');
   const svg = ring && ring.querySelector('.hpo-sys-motion');
   if (!svg) return;
 
   const NS = 'http://www.w3.org/2000/svg';
   const CENTER = { x: 181, y: 183 };
-  const SWEEP_SECONDS = 6;          // phải trùng thời lượng animation hpo-sys-spin trong CSS
+  const SWEEP_SECONDS = 6;          // phải trùng thời lượng animation hpo-sys-spin của .hpo-sys-sweep trong CSS
   const TRAVEL = 0.18;              // phần chu kỳ gói dữ liệu chạy từ tâm ra
   const GLOW_PEAK = 0.2;            // thời điểm thành phần sáng nhất (ngay khi tia quét đi qua)
+  const ACTIVE_SECONDS = 1.4;       // thời gian mục trong danh sách giữ trạng thái sáng sau khi tia quét đi qua
 
-  // Tâm biểu tượng đo trên ảnh assets/images/hero/hpo-system-circle.webp
+  // Tâm biểu tượng đo trên ảnh hpo-system-circle.webp; name khớp data-hpo-node trong HTML
   const NODES = [
     { name: 'face', x: 117, y: 100 },
     { name: 'cloud', x: 250, y: 92 },
@@ -42,6 +46,11 @@
   el('circle', { cx: 181, cy: 181, r: 172, fill: 'none', stroke: '#cfeeff', 'stroke-opacity': '.35', 'stroke-width': '1', 'stroke-dasharray': '2 7' }, orbit);
   el('circle', { cx: 181, cy: 9, r: 2.6, fill: '#e6fbff' }, orbit);
 
+  const items = new Map();
+  card.querySelectorAll('[data-hpo-node]').forEach((li) => items.set(li.dataset.hpoNode, li));
+  const schedule = [];   // { name, hitAt } — lúc tia quét đi qua từng thành phần
+  const focusRings = new Map();
+
   NODES.forEach((n) => {
     const dx = n.x - CENTER.x, dy = n.y - CENTER.y;
     const len = Math.hypot(dx, dy), ux = dx / len, uy = dy / len;
@@ -55,6 +64,7 @@
     // góc theo chiều kim đồng hồ tính từ hướng 12 giờ (giống conic-gradient) → lúc tia quét đi qua
     const angle = (Math.atan2(dx, -dy) * 180 / Math.PI + 360) % 360;
     const hitAt = (angle / 360) * SWEEP_SECONDS;
+    schedule.push({ name: n.name, hitAt });
     const begin = `${(hitAt - GLOW_PEAK * SWEEP_SECONDS).toFixed(2)}s`;
     const common = { dur: `${SWEEP_SECONDS}s`, begin, repeatCount: 'indefinite' };
 
@@ -65,10 +75,45 @@
     const packet = el('circle', { r: 3.4, class: 'hpo-sys-packet', opacity: 0 }, svg);
     el('animateMotion', { path: d, keyPoints: '0;1;1', keyTimes: `0;${TRAVEL};1`, calcMode: 'linear', ...common }, packet);
     el('animate', { attributeName: 'opacity', values: '0;1;1;0;0', keyTimes: `0;0.02;${TRAVEL - 0.02};${TRAVEL + 0.01};1`, ...common }, packet);
+
+    focusRings.set(n.name, el('circle', { cx: n.x, cy: n.y, r: 40, class: 'hpo-sys-focus' }, svg));
   });
 
+  // ---- Đồng bộ danh sách với tia quét (dùng đồng hồ SMIL của chính SVG nên luôn khớp gói dữ liệu) ----
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const syncMotionPreference = () => (reduceMotion.matches ? svg.pauseAnimations() : svg.unpauseAnimations());
+  let pinned = null;     // mục đang được rê chuột/focus → tạm dừng tự chạy
+  let activeName = null;
+  const setActive = (name) => {
+    if (name === activeName) return;
+    if (activeName && items.get(activeName)) items.get(activeName).classList.remove('is-active');
+    activeName = name;
+    if (name && items.get(name)) items.get(name).classList.add('is-active');
+  };
+  const tick = () => {
+    if (!pinned && !reduceMotion.matches) {
+      const t = svg.getCurrentTime() % SWEEP_SECONDS;
+      const hit = schedule.find((s) => ((t - s.hitAt + SWEEP_SECONDS) % SWEEP_SECONDS) < ACTIVE_SECONDS);
+      setActive(hit ? hit.name : null);
+    }
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+
+  const pin = (name) => {
+    pinned = name;
+    focusRings.forEach((ringEl, key) => ringEl.classList.toggle('is-on', key === name));
+    setActive(name);
+  };
+  items.forEach((li, name) => {
+    li.addEventListener('pointerenter', () => pin(name));
+    li.addEventListener('focus', () => pin(name));
+    li.addEventListener('pointerleave', () => pin(null));
+    li.addEventListener('blur', () => pin(null));
+  });
+
+  const syncMotionPreference = () => {
+    if (reduceMotion.matches) { svg.pauseAnimations(); setActive(null); } else svg.unpauseAnimations();
+  };
   syncMotionPreference();
   reduceMotion.addEventListener('change', syncMotionPreference);
 

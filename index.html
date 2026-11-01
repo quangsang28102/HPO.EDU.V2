@@ -22,19 +22,6 @@
       href="assets/images/favicon.png"
     />
 
-    <link
-      rel="preconnect"
-      href="https://fonts.googleapis.com"
-    />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
 
     <link
       rel="stylesheet"
@@ -42,12 +29,18 @@
     />
     <link
       rel="stylesheet"
-      href="style.css?v=20261020-chapter-cta"
+      href="style.css?v=20261102-hotline"
     />
     <link rel="stylesheet" href="assets/css/homepage-header-robot.css" />
     <link rel="stylesheet" href="assets/css/homepage-reference-hero.css" />
     <link rel="stylesheet" href="assets/css/homepage-hero-title-gradient.css?v=20261031-title" />
-    <link rel="stylesheet" href="assets/css/homepage-hpo-system-card-motion.css?v=20261031-hpo-card" />
+    <link rel="stylesheet" href="assets/css/homepage-hpo-system-card-motion.css?v=20261031-hpo-card-v2" />
+    <link rel="stylesheet" href="assets/css/homepage-infrastructure-section.css?v=20261031-infra" />
+    <link rel="stylesheet" href="assets/css/homepage-brand-certificates.css?v=20261101-brand" />
+    <link rel="stylesheet" href="assets/css/homepage-award-slider-refresh.css?v=20261101-awards" />
+    <link rel="stylesheet" href="assets/css/homepage-headings-design-system.css?v=20261031-ds-headings" />
+    <link rel="stylesheet" href="assets/css/homepage-section-headings-compact.css?v=20261102-compact" />
+    <link rel="stylesheet" href="assets/css/homepage-strip-highlights.css?v=20261102-strip" />
   </head>
 
   <body>
@@ -56,7 +49,7 @@
       data-base=""
       data-page="home"
     ></div>
-    <script src="assets/js/site-header.js"></script>
+    <script src="assets/js/site-header.js?v=20261102-hotline"></script>
 
     <!-- ── HPO DIGITAL HERO — tiêu đề trên, video toàn chiều rộng bên dưới ── -->
     <div
@@ -74,7 +67,7 @@
         <section
           class="hpo-digital-hero"
           role="group"
-          aria-label="1 / 2: Digital Hero"
+          aria-label="1 / 2: Kỷ nguyên AI trong đào tạo lái xe"
         >
           <div class="hpo-digital-hero-inner">
             <div class="hpo-digital-left hpo-slide-stage">
@@ -85,25 +78,47 @@
               <p class="hpo-digital-description">
                 Hệ sinh thái chuyển đổi số toàn diện cho đào tạo lái xe ô tô thông minh
               </p>
-              <div class="hpo-sys-card" aria-label="Hệ thống HPO và trợ lý ảo AI">
-                <figure class="hpo-sys-item">
-                  <div class="hpo-sys-ring">
-                    <img src="assets/images/hero/hpo-system-circle.webp" alt="Sơ đồ hệ thống HPO: xác thực khuôn mặt, cloud, DAT, cabin, mô phỏng, đa nền tảng" width="362" height="362" />
-                    <!-- Lớp chuyển động phủ lên ảnh: tia quét, sóng lan từ xe, gói dữ liệu (SVG do JS vẽ) -->
-                    <span class="hpo-sys-sweep" aria-hidden="true"></span>
-                    <span class="hpo-sys-ripple" aria-hidden="true"></span>
-                    <span class="hpo-sys-ripple hpo-sys-ripple--late" aria-hidden="true"></span>
-                    <svg class="hpo-sys-motion" viewBox="0 0 362 362" aria-hidden="true"></svg>
-                  </div>
-                  <figcaption>HỆ THỐNG HPO</figcaption>
-                </figure>
-                <figure class="hpo-sys-item">
-                  <div class="hpo-sys-ai-stage">
-                    <span class="hpo-sys-chat-bubble" aria-hidden="true"><i></i><i></i><i></i></span>
-                    <img class="hpo-sys-ai-robot" src="assets/images/hero/hpo-ai-assistant-robot-waving.webp" alt="Robot trợ lý ảo AI vẫy tay" width="159" height="235" />
-                  </div>
-                  <figcaption>TRỢ LÝ ẢO AI</figcaption>
-                </figure>
+              <div class="hpo-sys-card" aria-labelledby="hpoSysTitle">
+                <div class="hpo-sys-ring">
+                  <img src="assets/images/hero/hpo-system-circle.webp" alt="Sơ đồ hệ thống HPO: xác thực khuôn mặt, cloud, DAT, cabin, mô phỏng, đa nền tảng" width="362" height="362" />
+                  <!-- Lớp chuyển động phủ lên ảnh: tia quét, sóng lan từ xe, gói dữ liệu (SVG do JS vẽ) -->
+                  <span class="hpo-sys-sweep" aria-hidden="true"></span>
+                  <span class="hpo-sys-ripple" aria-hidden="true"></span>
+                  <span class="hpo-sys-ripple hpo-sys-ripple--late" aria-hidden="true"></span>
+                  <svg class="hpo-sys-motion" viewBox="0 0 362 362" aria-hidden="true"></svg>
+                </div>
+                <div class="hpo-sys-info">
+                  <p class="hpo-sys-eyebrow">Hệ sinh thái số</p>
+                  <h2 class="hpo-sys-title" id="hpoSysTitle">Hệ thống HPO</h2>
+                  <p class="hpo-sys-lead">6 thành phần kết nối trên một nền tảng</p>
+                  <!-- data-hpo-node khớp NODES trong homepage-hpo-system-card-motion.js -->
+                  <ul class="hpo-sys-list">
+                    <li data-hpo-node="face" tabindex="0">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3m8 0h3a1 1 0 0 1 1 1v3m0 8v3a1 1 0 0 1-1 1h-3m-8 0H5a1 1 0 0 1-1-1v-3M9 10h.01M15 10h.01M9.5 15a3.5 3.5 0 0 0 5 0" /></svg>
+                      <span><b>Xác thực khuôn mặt</b><small>Nhận diện học viên khi học</small></span>
+                    </li>
+                    <li data-hpo-node="cloud" tabindex="0">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" /></svg>
+                      <span><b>Cloud (server)</b><small>Lưu trữ dữ liệu tập trung</small></span>
+                    </li>
+                    <li data-hpo-node="dat" tabindex="0">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14l4-4M3.34 19a10 10 0 1 1 17.32 0" /></svg>
+                      <span><b>DAT</b><small>Giám sát quãng đường thực hành</small></span>
+                    </li>
+                    <li data-hpo-node="cabin" tabindex="0">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="2" /><path d="M12 14v7M10 12H3M14 12h7" /></svg>
+                      <span><b>Cabin</b><small>Cabin học lái mô phỏng</small></span>
+                    </li>
+                    <li data-hpo-node="sim" tabindex="0">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4M10 7.5v5l4-2.5z" /></svg>
+                      <span><b>Mô phỏng</b><small>Luyện tình huống giao thông</small></span>
+                    </li>
+                    <li data-hpo-node="platform" tabindex="0">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="1.5" /><path d="M6 18h6M9 14v4" /><rect x="17" y="8" width="5" height="11" rx="1" /></svg>
+                      <span><b>Đa nền tảng</b><small>Học trên mọi thiết bị</small></span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -205,25 +220,25 @@
       </div>
     </div>
 
-    <!-- ── STRIP / TICKER ── -->
-    <div class="strip">
-      <div
-        class="strip-track"
-        id="stripTrack"
-      >
-        <span class="strip-item">Hạng B</span>
-        <span class="strip-item">Hạng C1</span>
-        <span class="strip-item">Ứng dụng AI</span>
-        <span class="strip-item">Sa hình</span>
-        <span class="strip-item">DAT</span>
-        <span class="strip-item">Top 5 ASEAN</span>
-        <!-- duplicate for seamless loop -->
-        <span class="strip-item">Hạng B</span>
-        <span class="strip-item">Hạng C1</span>
-        <span class="strip-item">Ứng dụng AI</span>
-        <span class="strip-item">Sa hình</span>
-        <span class="strip-item">DAT</span>
-        <span class="strip-item">Top 5 ASEAN</span>
+    <!-- ── STRIP: ĐIỂM NỔI BẬT (nền sáng, thẻ có biểu tượng; nhóm 2 lặp lại để chạy vòng liền mạch) ── -->
+    <div class="strip strip--highlights" role="region" aria-label="Điểm nổi bật của Hiệp Phát">
+      <div class="strip-track" id="stripTrack">
+        <div class="strip-group">
+        <span class="strip-chip"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="17" r="1.6"/><circle cx="16" cy="17" r="1.6"/><path d="M5 17h14M6 17l1.5-5h9L18 17M7.5 12l1.2-3.2A2 2 0 0 1 10.6 7.5h2.8a2 2 0 0 1 1.9 1.3L16.5 12"/></svg></span><b>Hạng B</b><span class="strip-chip__desc">số tự động &amp; số cơ khí</span></span>
+        <span class="strip-chip"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/><path d="M2 7h11v9H2zM13 10h4l3 3v3h-7"/></svg></span><b>Hạng C1</b><span class="strip-chip__desc">xe tải</span></span>
+        <span class="strip-chip"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V8l8-4 8 4v12M9 20v-6h6v6M4 12h16"/></svg></span><b>Sân sa hình</b><span class="strip-chip__desc">tập lái &amp; sát hạch cùng một nơi</span></span>
+        <span class="strip-chip"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 12l4-3M12 4v2M20 12h-2M12 20v-2M4 12h2"/></svg></span><b>DAT</b><span class="strip-chip__desc">giám sát quãng đường thực hành</span></span>
+        <span class="strip-chip"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4M10 10h4v4h-4z"/></svg></span><b>Ứng dụng AI</b><span class="strip-chip__desc">trong đào tạo lái xe</span></span>
+        <span class="strip-chip"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/></svg></span><b>Top 5 ASEAN</b><span class="strip-chip__desc">Thương hiệu mạnh 2026</span></span>
+        </div>
+        <div class="strip-group" aria-hidden="true">
+        <span class="strip-chip"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="17" r="1.6"/><circle cx="16" cy="17" r="1.6"/><path d="M5 17h14M6 17l1.5-5h9L18 17M7.5 12l1.2-3.2A2 2 0 0 1 10.6 7.5h2.8a2 2 0 0 1 1.9 1.3L16.5 12"/></svg></span><b>Hạng B</b><span class="strip-chip__desc">số tự động &amp; số cơ khí</span></span>
+        <span class="strip-chip"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/><path d="M2 7h11v9H2zM13 10h4l3 3v3h-7"/></svg></span><b>Hạng C1</b><span class="strip-chip__desc">xe tải</span></span>
+        <span class="strip-chip"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V8l8-4 8 4v12M9 20v-6h6v6M4 12h16"/></svg></span><b>Sân sa hình</b><span class="strip-chip__desc">tập lái &amp; sát hạch cùng một nơi</span></span>
+        <span class="strip-chip"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 12l4-3M12 4v2M20 12h-2M12 20v-2M4 12h2"/></svg></span><b>DAT</b><span class="strip-chip__desc">giám sát quãng đường thực hành</span></span>
+        <span class="strip-chip"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4M10 10h4v4h-4z"/></svg></span><b>Ứng dụng AI</b><span class="strip-chip__desc">trong đào tạo lái xe</span></span>
+        <span class="strip-chip"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/></svg></span><b>Top 5 ASEAN</b><span class="strip-chip__desc">Thương hiệu mạnh 2026</span></span>
+        </div>
       </div>
     </div>
 
@@ -428,218 +443,204 @@
           </p>
         </header>
 
-        <div class="brand-protection__list">
+        <!-- Lưới văn bằng: mỗi thẻ = ảnh văn bằng (bấm mở lightbox nhóm brand-protection) + tên + mô tả + thông tin chính -->
+        <div class="brand-cert-grid">
           <article
-            class="protection-item"
+            class="brand-cert"
             data-reveal
           >
-            <span class="protection-item__number">01</span>
             <div
-              class="protection-item__thumb"
+              class="brand-cert__media"
               data-img-group="brand-protection"
               data-img-idx="0"
               role="button"
               tabindex="0"
               aria-label="Xem Giấy chứng nhận đăng ký nhãn hiệu số 537625"
             >
+              <span class="brand-cert__tag">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /><path d="m9 12 2 2 4-4" /></svg>
+                Sở hữu trí tuệ
+              </span>
+              <span class="brand-cert__num" aria-hidden="true">01</span>
               <img
                 src="assets/images/so-huu-tri-tue/nhanHieu.png"
                 alt="Giấy chứng nhận đăng ký nhãn hiệu số 537625"
+                width="1190"
+                height="837"
                 loading="lazy"
-              /><span class="protection-item__zoom">Xem ảnh</span>
+              />
+              <span class="brand-cert__zoom" aria-hidden="true">Xem ảnh</span>
             </div>
-            <div class="protection-item__copy">
-              <span>Sở hữu trí tuệ</span>
+            <div class="brand-cert__body">
               <h3>Giấy chứng nhận đăng ký nhãn hiệu</h3>
-              <p class="protection-item__summary">
-                Văn bằng ghi nhận nhãn hiệu của Công ty TNHH Ô Tô Hiệp Phát được bảo
-                hộ cho dịch vụ thuộc Nhóm 41 – Giáo dục.
-              </p>
-              <p>
-                Chủ sở hữu:
-                <strong>Công ty TNHH Ô Tô Hiệp Phát</strong><br />
-                Số chứng nhận:
-                <strong>537625</strong><br />
-                Quyết định số:
-                <strong>46269/QĐ-SHTT</strong><br />
-                Ngày cấp:
-                <strong>11/04/2025</strong><br />
-                Danh mục dịch vụ:
-                <strong>Nhóm 41 – Giáo dục</strong>
-              </p>
+              <p>Văn bằng ghi nhận nhãn hiệu của Công ty TNHH Ô Tô Hiệp Phát được bảo hộ cho dịch vụ thuộc Nhóm 41 – Giáo dục.</p>
+              <dl class="brand-cert__facts">
+                <div><dt>Số chứng nhận</dt><dd>537625</dd></div>
+                <div><dt>Quyết định</dt><dd>46269/QĐ-SHTT</dd></div>
+                <div><dt>Ngày cấp</dt><dd>11/04/2025</dd></div>
+              </dl>
             </div>
           </article>
 
-          <a
-            class="protection-item protection-item--link"
-            href="http://online.gov.vn/Website/chi-tiet-135372"
-            target="_blank"
-            rel="noopener"
+          <article
+            class="brand-cert"
             data-reveal
-            data-delay="2"
+            data-delay="1"
           >
-            <span class="protection-item__number">02</span>
             <div
-              class="protection-item__thumb"
+              class="brand-cert__media"
               data-img-group="brand-protection"
               data-img-idx="3"
               role="button"
               tabindex="0"
               aria-label="Xem thông tin website hpo.edu.vn đã thông báo Bộ Công Thương"
             >
+              <span class="brand-cert__tag">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h18l-1.5-5h-15L3 9Zm0 0v11h18V9M9 20v-6h6v6" /></svg>
+                Website thương mại điện tử
+              </span>
+              <span class="brand-cert__num" aria-hidden="true">02</span>
               <img
                 src="assets/images/so-huu-tri-tue/boCngThuong.png"
                 alt="Thông tin website hpo.edu.vn đã thông báo Bộ Công Thương"
+                width="606"
+                height="948"
                 loading="lazy"
-              /><span class="protection-item__zoom">Xem ảnh</span>
+              />
+              <span class="brand-cert__zoom" aria-hidden="true">Xem ảnh</span>
             </div>
-            <div class="protection-item__copy">
-              <span>Website thương mại điện tử</span>
+            <div class="brand-cert__body">
               <h3>Website đã thông báo Bộ Công Thương</h3>
-              <p class="protection-item__summary">
-                Ảnh chụp trên Cổng online.gov.vn ghi nhận hpo.edu.vn là nền tảng đặt
-                hàng trực tuyến đã thông báo Bộ Công Thương.
-              </p>
-              <p>
-                Website:
-                <strong>hpo.edu.vn</strong><br />
-                Loại hình:
-                <strong>Nền tảng đặt hàng trực tuyến</strong><br />
-                Doanh nghiệp:
-                <strong>Công ty TNHH Ô Tô Hiệp Phát</strong><br />
-                Mã số thuế:
-                <strong>0309987279</strong><br />
-                Trạng thái:
-                <strong>Đã thông báo Bộ Công Thương</strong>
-              </p>
+              <p>Cổng online.gov.vn ghi nhận hpo.edu.vn là nền tảng đặt hàng trực tuyến đã thông báo Bộ Công Thương.</p>
+              <dl class="brand-cert__facts">
+                <div><dt>Website</dt><dd>hpo.edu.vn</dd></div>
+                <div><dt>Mã số thuế</dt><dd>0309987279</dd></div>
+                <div><dt>Trạng thái</dt><dd>Đã thông báo Bộ Công Thương</dd></div>
+              </dl>
+              <a
+                class="brand-cert__link"
+                href="http://online.gov.vn/Website/chi-tiet-135372"
+                target="_blank"
+                rel="noopener"
+                >Xem trên online.gov.vn <span aria-hidden="true">↗</span></a
+              >
             </div>
-            <span
-              class="protection-item__arrow"
-              aria-hidden="true"
-              >↗</span
-            >
-          </a>
+          </article>
 
           <article
-            class="protection-item protection-item--domain"
+            class="brand-cert"
             data-reveal
             data-delay="2"
           >
-            <span class="protection-item__number">03</span>
             <div
-              class="protection-item__thumb protection-item__thumb--domain"
+              class="brand-cert__media"
               data-img-group="brand-protection"
               data-img-idx="4"
               role="button"
               tabindex="0"
               aria-label="Xem Giấy chứng nhận đăng ký tên miền hpo.edu.vn"
             >
+              <span class="brand-cert__tag">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></svg>
+                Tài nguyên Internet
+              </span>
+              <span class="brand-cert__num" aria-hidden="true">03</span>
               <img
                 src="assets/images/so-huu-tri-tue/tenMien.png"
                 alt="Giấy chứng nhận đăng ký tên miền hpo.edu.vn"
+                width="652"
+                height="922"
                 loading="lazy"
-              /><span class="protection-item__zoom">Xem ảnh</span>
+              />
+              <span class="brand-cert__zoom" aria-hidden="true">Xem ảnh</span>
             </div>
-            <div class="protection-item__copy">
-              <span>Tài nguyên Internet</span>
+            <div class="brand-cert__body">
               <h3>Giấy chứng nhận đăng ký tên miền “hpo.edu.vn”</h3>
-              <p class="protection-item__summary">
-                Giấy chứng nhận của P.A Việt Nam ghi nhận tên miền hpo.edu.vn do Công
-                ty TNHH Ô Tô Hiệp Phát đăng ký.
-              </p>
-              <p>
-                Tên miền:
-                <strong>hpo.edu.vn</strong><br />
-                Chủ thể đăng ký:
-                <strong>Công ty TNHH Ô Tô Hiệp Phát</strong><br />
-                Ngày đăng ký:
-                <strong>23/02/2021</strong><br />
-                Ngày hết hạn:
-                <strong>23/02/2027</strong><br />
-                Nhà đăng ký:
-                <strong>Công ty TNHH P.A Việt Nam</strong>
-              </p>
+              <p>Giấy chứng nhận của P.A Việt Nam ghi nhận tên miền hpo.edu.vn do Công ty TNHH Ô Tô Hiệp Phát đăng ký.</p>
+              <dl class="brand-cert__facts">
+                <div><dt>Tên miền</dt><dd>hpo.edu.vn</dd></div>
+                <div><dt>Ngày đăng ký</dt><dd>23/02/2021</dd></div>
+                <div><dt>Nhà đăng ký</dt><dd>P.A Việt Nam</dd></div>
+              </dl>
             </div>
           </article>
 
+          <!-- 04, 05: đang ẩn theo commit "Hide homepage items 04 and 05"; bỏ thuộc tính hidden để hiện lại -->
           <article
-            class="protection-item"
+            class="brand-cert"
             data-reveal
             data-delay="3"
             hidden
-            style="display: none"
           >
-            <span class="protection-item__number">04</span>
             <div
-              class="protection-item__thumb"
+              class="brand-cert__media"
               data-img-group="brand-protection"
               data-img-idx="1"
               role="button"
               tabindex="0"
               aria-label="Xem Giấy chứng nhận quyền tác giả bài giảng video"
             >
+              <span class="brand-cert__tag">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4M10 7.5v5l4-2.5z" /></svg>
+                Quyền tác giả bài giảng
+              </span>
+              <span class="brand-cert__num" aria-hidden="true">04</span>
               <img
                 src="assets/images/so-huu-tri-tue/tacGiaBaiGiang.png"
                 alt="Giấy chứng nhận quyền tác giả bài giảng video"
+                width="673"
+                height="979"
                 loading="lazy"
-              /><span class="protection-item__zoom">Xem ảnh</span>
+              />
+              <span class="brand-cert__zoom" aria-hidden="true">Xem ảnh</span>
             </div>
-            <div class="protection-item__copy">
-              <span>Quyền tác giả bài giảng</span>
+            <div class="brand-cert__body">
               <h3>Học liệu điện tử</h3>
-              <p class="protection-item__summary">
-                Giấy chứng nhận đăng ký quyền tác giả cho bài giảng video đào tạo lái
-                xe ô tô hạng B và hạng C theo mô hình tập trung trên nền tảng số.
-              </p>
-              <p>
-                Loại hình: <strong>Bài giảng</strong><br />
-                Tác giả:
-                <strong>
-                  Nguyễn Đình Hùng, Phạm Trần Đăng Quang, Nguyễn Thanh Bình </strong
-                ><br />
-                Chủ sở hữu: <strong>Công ty TNHH Ô Tô Hiệp Phát</strong><br />
-                Số chứng nhận: <strong>0780/2025/QTG</strong><br />
-                Ngày cấp: <strong>22/01/2025</strong>
-              </p>
+              <p>Giấy chứng nhận đăng ký quyền tác giả cho bài giảng video đào tạo lái xe ô tô hạng B và hạng C theo mô hình tập trung trên nền tảng số.</p>
+              <dl class="brand-cert__facts">
+                <div><dt>Số chứng nhận</dt><dd>0780/2025/QTG</dd></div>
+                <div><dt>Ngày cấp</dt><dd>22/01/2025</dd></div>
+                <div><dt>Loại hình</dt><dd>Bài giảng</dd></div>
+              </dl>
             </div>
           </article>
 
           <article
-            class="protection-item"
+            class="brand-cert"
             data-reveal
             data-delay="4"
             hidden
-            style="display: none"
           >
-            <span class="protection-item__number">05</span>
             <div
-              class="protection-item__thumb"
+              class="brand-cert__media"
               data-img-group="brand-protection"
               data-img-idx="2"
               role="button"
               tabindex="0"
               aria-label="Xem Giấy chứng nhận quyền tác giả phần mềm đào tạo lái xe"
             >
+              <span class="brand-cert__tag">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14" /></svg>
+                Quyền tác giả phần mềm
+              </span>
+              <span class="brand-cert__num" aria-hidden="true">05</span>
               <img
                 src="assets/images/so-huu-tri-tue/tacGiaPhanMem.png"
                 alt="Giấy chứng nhận quyền tác giả phần mềm đào tạo lái xe"
+                width="717"
+                height="959"
                 loading="lazy"
-              /><span class="protection-item__zoom">Xem ảnh</span>
+              />
+              <span class="brand-cert__zoom" aria-hidden="true">Xem ảnh</span>
             </div>
-            <div class="protection-item__copy">
-              <span>Quyền tác giả phần mềm</span>
+            <div class="brand-cert__body">
               <h3>Hệ thống đào tạo lái xe ô tô</h3>
-              <p class="protection-item__summary">
-                Giấy chứng nhận đăng ký quyền tác giả cho phần mềm đào tạo lái xe ô
-                tô theo mô hình tập trung trên nền tảng số.
-              </p>
-              <p>
-                Loại hình: <strong>Chương trình máy tính</strong><br />
-                Tác giả: <strong>Đinh Thế Hiển</strong><br />
-                Chủ sở hữu: <strong>Công ty TNHH Ô Tô Hiệp Phát</strong><br />
-                Số chứng nhận: <strong>6392/2025/QTG</strong><br />
-                Ngày cấp: <strong>01/08/2025</strong>
-              </p>
+              <p>Giấy chứng nhận đăng ký quyền tác giả cho phần mềm đào tạo lái xe ô tô theo mô hình tập trung trên nền tảng số.</p>
+              <dl class="brand-cert__facts">
+                <div><dt>Số chứng nhận</dt><dd>6392/2025/QTG</dd></div>
+                <div><dt>Ngày cấp</dt><dd>01/08/2025</dd></div>
+                <div><dt>Loại hình</dt><dd>Chương trình máy tính</dd></div>
+              </dl>
             </div>
           </article>
         </div>
@@ -689,42 +690,81 @@
           data-reveal
         >
           <h2 id="digital-platform-title">
-            <!-- Phần mềm đào tạo lái xe -->
+            <!-- 2 dòng tô màu riêng theo Design System: Xanh Hiệp Phát + Đỏ Hiệp Phát (cặp giống tiêu đề hero) -->
             <em
-              >Hệ thống hạ tầng kỹ thuật <br />hiện đại, đồng bộ, thông suốt <br
-            /></em>
+              ><span class="infra-title__line infra-title__line--blue">Hệ thống hạ tầng kỹ thuật</span><br /><span class="infra-title__line infra-title__line--red">hiện đại, đồng bộ, thông suốt</span></em
+            >
           </h2>
         </header>
-        <div class="digital-learning-materials__layout">
-          <aside
-            class="digital-learning-materials__criteria"
-            id="digital-learning-driver"
+
+        <div class="infra-layout">
+          <!-- Ảnh Viettel IDC trên "sân khấu" động; bấm mở lightbox (nhóm riêng "infrastructure" — trước đây trùng số 2 với ảnh tác giả phần mềm nên mở nhầm ảnh) -->
+          <figure
+            class="infra-stage"
             data-reveal
             data-delay="1"
-          ></aside>
-
-          <article
-            class="protection-item"
-            id="building-software-card"
-            data-reveal
-            data-delay="2"
           >
+            <span class="infra-stage__orbit infra-stage__orbit--outer" aria-hidden="true"><i></i></span>
+            <span class="infra-stage__orbit infra-stage__orbit--inner" aria-hidden="true"><i></i></span>
             <div
-              class="protection-item__thumb"
-              id="building-software-item__thumb"
-              data-img-group="brand-protection"
-              data-img-idx="2"
+              class="infra-stage__media"
+              data-img-group="infrastructure"
+              data-img-idx="0"
               role="button"
               tabindex="0"
-              aria-label="Xem hình ảnh"
+              aria-label="Xem ảnh hạ tầng máy chủ Viettel IDC"
             >
               <img
                 src="assets/images/so-huu-tri-tue/HaTangKyThuat.jpg"
-                alt="Giấy chứng nhận quyền tác giả phần mềm đào tạo lái xe"
+                alt="Hạ tầng máy chủ đám mây Viettel IDC của hệ thống HPO"
+                width="829"
+                height="635"
                 loading="lazy"
               />
             </div>
-          </article>
+            <figcaption class="infra-stage__badge">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" /></svg>
+              Lưu trữ tại <b>Viettel IDC</b>
+            </figcaption>
+          </figure>
+
+          <!-- 3 trụ cột khớp với tiêu đề: hiện đại · đồng bộ · thông suốt -->
+          <ol
+            class="infra-pillars"
+            data-reveal
+            data-delay="2"
+          >
+            <li class="infra-pillar">
+              <span class="infra-pillar__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="2" /><rect x="3" y="14" width="18" height="7" rx="2" /><path d="M7 6.5h.01M7 17.5h.01M11 6.5h6M11 17.5h6" /></svg>
+              </span>
+              <div>
+                <span class="infra-pillar__num">01</span>
+                <h3>Hiện đại</h3>
+                <p>Máy chủ đặt tại trung tâm dữ liệu Viettel IDC.</p>
+              </div>
+            </li>
+            <li class="infra-pillar">
+              <span class="infra-pillar__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-15.5 6.2M3 12a9 9 0 0 1 15.5-6.2M21 4v5h-5M3 20v-5h5" /></svg>
+              </span>
+              <div>
+                <span class="infra-pillar__num">02</span>
+                <h3>Đồng bộ</h3>
+                <p>Xác thực khuôn mặt, DAT, cabin, mô phỏng chung một hệ thống HPO.</p>
+              </div>
+            </li>
+            <li class="infra-pillar">
+              <span class="infra-pillar__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
+              </span>
+              <div>
+                <span class="infra-pillar__num">03</span>
+                <h3>Thông suốt</h3>
+                <p>Truy cập mọi lúc trên máy tính, điện thoại, máy tính bảng.</p>
+              </div>
+            </li>
+          </ol>
         </div>
       </div>
     </section>
@@ -3362,7 +3402,7 @@
       id="siteFooter"
       data-base=""
     ></div>
-    <script src="assets/js/site-footer.js"></script>
+    <script src="assets/js/site-footer.js?v=20261102-footer"></script>
 
     <!-- ── FLOATING ACTIONS ── -->
     <div class="floats">
@@ -3778,12 +3818,11 @@
     <script src="assets/js/engine-media.js"></script>
     <script src="assets/js/engine-voice.js"></script>
     <script src="assets/js/learning.js"></script>
-    <script src="assets/js/homepage.js?v=20261019-curriculum-ux"></script>
-    <script src="assets/js/homepage-hpo-system-card-motion.js?v=20261031-hpo-card"></script>
+    <script src="assets/js/homepage.js?v=20261102-slider-dots"></script>
+    <script src="assets/js/homepage-hpo-system-card-motion.js?v=20261031-hpo-card-v2"></script>
     <script src="assets/js/media.js?v=20261019-curriculum-ux"></script>
     <script src="assets/js/awards.js"></script>
     <script src="assets/js/cover-hero.js"></script>
-    <script src="assets/js/scroll-story.js"></script>
     <script src="assets/js/courses-demo-vehicle-config.js"></script>
     <script src="assets/js/courses-demo-stage-renderer.js"></script>
     <script src="assets/js/courses-demo-interactions.js"></script>
