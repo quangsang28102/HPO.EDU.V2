@@ -6,6 +6,9 @@
   const page = mount.dataset.page || "";
   const href = (path) => base + path;
   const current = (...names) => (names.includes(page) ? ' aria-current="page"' : "");
+  // Chữ mục menu desktop: giữ sẵn chỗ bằng bản chữ đậm (::after ẩn, site-header-stable-across-pages.css)
+  // → mục đang chọn đậm hơn nhưng không làm menu rộng ra/xê dịch khi chuyển trang.
+  const label = (text) => `<span class="nav-label" data-label="${text}">${text}</span>`;
   const activeClass = (...names) => (names.includes(page) ? " is-active" : "");
 
   mount.outerHTML = `
@@ -83,24 +86,24 @@
                 <span class="nav-home-label">Trang chủ</span>
               </a>
             </li>
-            <li class="nav-item"><a href="${href("hoc-phi/")}"${current("tuition")}>Khóa học &amp; Học phí</a></li>
-            <li class="nav-item"><a href="${href("quy-dinh-chuong-trinh-hoc-lai-xe/")}"${current("process")}>Quy trình đào tạo</a></li>
-            <li class="nav-item"><a href="${href("on-tap/")}"${current("quiz")}>Ôn thi lý thuyết</a></li>
+            <li class="nav-item"><a href="${href("hoc-phi/")}"${current("tuition")}>${label("Khóa học &amp; Học phí")}</a></li>
+            <li class="nav-item"><a href="${href("quy-dinh-chuong-trinh-hoc-lai-xe/")}"${current("process")}>${label("Quy trình đào tạo")}</a></li>
+            <li class="nav-item"><a href="${href("on-tap/")}"${current("quiz")}>${label("Ôn thi lý thuyết")}</a></li>
             <li class="nav-item has-dropdown">
-              <a href="${href("danh-sach-benh-vien/")}"${current("hospital-lookup", "payment-qr")}>Dành cho học viên</a>
+              <a href="${href("danh-sach-benh-vien/")}"${current("hospital-lookup", "payment-qr")}>${label("Dành cho học viên")}</a>
               <div class="nav-dropdown">
                 <a href="${href("danh-sach-benh-vien/")}"${current("hospital-lookup")}><span class="dd-dot"></span> Nơi khám sức khỏe lái xe</a>
                 <a href="${href("tra-cuu-qr/")}"${current("payment-qr")}><span class="dd-dot"></span> Mã QR thanh toán lệ phí sát hạch</a>
               </div>
             </li>
             <li class="nav-item has-dropdown">
-              <a href="${href("gioi-thieu/trung-tam-giao-duc-nghe-nghiep/")}"${current("training-center", "exam-center")}>Giới thiệu</a>
+              <a href="${href("gioi-thieu/trung-tam-giao-duc-nghe-nghiep/")}"${current("training-center", "exam-center")}>${label("Giới thiệu")}</a>
               <div class="nav-dropdown">
                 <a href="${href("gioi-thieu/trung-tam-giao-duc-nghe-nghiep/")}"${current("training-center")}><span class="dd-dot"></span> Trung tâm giáo dục nghề nghiệp</a>
                 <a href="${href("gioi-thieu/trung-tam-sat-hach/")}"${current("exam-center")}><span class="dd-dot"></span> Trung tâm sát hạch lái xe ô tô</a>
               </div>
             </li>
-            <li class="nav-item"><a href="#lien-he">Liên hệ</a></li>
+            <li class="nav-item"><a href="#lien-he">${label("Liên hệ")}</a></li>
           </ul>
 
           <div class="nav-actions">

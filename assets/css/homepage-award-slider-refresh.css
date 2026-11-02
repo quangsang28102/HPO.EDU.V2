@@ -1,5 +1,5 @@
 /* Làm mới giao diện slider "Dấu ấn hành trình phát triển thành tựu" (#awardSlider) theo Hiệp Phát Design System.
-   CHỈ đổi giao diện: giữ nguyên markup, class/ID mà assets/js/awards.js + scroll-story.js dùng, bố cục lưới,
+   CHỈ đổi giao diện: giữ nguyên markup, class/ID mà assets/js/awards.js dùng, bố cục lưới,
    kích thước poster và các biến ghim khi cuộn (--award-frame-opacity/y…). Selector "html body #awardSlider" để thắng
    các lớp rule cũ trong awards.css. Token: logo-blue #2b26fb, primary-strong #1e3a8a, ink #0a1330, ink-soft #334155,
    line #e6ebf5, primary-soft #eff6ff, logo-yellow #faec1a. */

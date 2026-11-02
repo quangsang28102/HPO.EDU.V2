@@ -1,0 +1,11 @@
+/* ==========================================================================
+   Slide "Giới thiệu công ty" (hero trang chủ): câu nhấn "Đào tạo và sát hạch cùng một địa điểm"
+   đặt LÊN TRÊN danh sách "Thành lập năm 2010…" (trước: nằm dưới cùng). Các rule cũ trong
+   homepage.css cho .company-banner-motto đều là margin-top → đổi thành khoảng cách phía dưới.
+   ========================================================================== */
+html body .company-banner-copy .company-banner-motto {
+  margin: 0 0 16px;
+}
+@media (max-width: 600px) {
+  html body .company-banner-copy .company-banner-motto { margin-bottom: 10px; }
+}
