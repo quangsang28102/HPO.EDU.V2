@@ -3,10 +3,10 @@
   const base = new URL('../../robot/', document.currentScript.src);
   const css = document.createElement('link');
   css.rel = 'stylesheet';
-  css.href = new URL('dist/companion.css?v=20261103-robot-lap', base).href;
+  css.href = new URL('dist/companion.css?v=20261103-robot-thanh-day', base).href;
   document.head.append(css);
   const script = document.createElement('script');
-  script.src = new URL('dist/companion.js?v=20261103-robot-lap', base).href;
+  script.src = new URL('dist/companion.js?v=20261103-robot-thanh-day', base).href;
   script.defer = true;
   document.head.append(script);
 })();

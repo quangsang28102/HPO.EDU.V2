@@ -135,7 +135,8 @@ function mount() {
   let greetingStarted = false;
   // Robot đứng trên trang khi trang còn ở đầu (trang chủ: cả khi băng chuyền sang slide
   // "Giới thiệu công ty"); lướt xuống thì robot thu vào nút đầu robot ở góc.
-  let docked = false;
+  const phoneLayout = matchMedia("(max-width: 600px)");
+  let docked = phoneLayout.matches;
   try {
     robotHidden = localStorage.getItem("hpo-robot-hidden") === "true";
   } catch {
@@ -347,7 +348,8 @@ function mount() {
     const syncHeroDock = () => {
       const now = performance.now();
       const away = scrollY > innerHeight * 0.25;
-      const nextDocked = away;
+      // Điện thoại: robot luôn đứng cố định trên thanh nút đáy (không bật ra trang khi lướt lên đầu).
+      const nextDocked = away || phoneLayout.matches;
       if (nextDocked === docked) return;
       docked = nextDocked;
       if (!docked) {
@@ -364,6 +366,7 @@ function mount() {
       updateGreeting();
     };
     window.addEventListener("scroll", syncHeroDock, { passive: true });
+    phoneLayout.addEventListener("change", syncHeroDock);
     syncHeroDock();
   }
   window.addEventListener("resize", () => resize());
