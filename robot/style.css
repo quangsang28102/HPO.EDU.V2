@@ -347,11 +347,11 @@ body:not(.hpo-home-robot) #hpo-robot-viewer .hpo-visibility-option { display: no
   #hpo-robot-restore .hpo-robot-head, #hpo-robot-dock-greeting { transition: none; }
 }
 #hpo-robot-restore:not([hidden]) { animation: hpo-robot-dock-in .32s cubic-bezier(.22, 1, .36, 1); }
-body.hpo-home-robot #hpo-robot:not([hidden]) { animation: hpo-robot-undock .36s cubic-bezier(.22, 1, .36, 1); }
+body.hpo-home-robot #hpo-robot:not([hidden]), body.hpo-page-robot #hpo-robot:not([hidden]) { animation: hpo-robot-undock .36s cubic-bezier(.22, 1, .36, 1); }
 @keyframes hpo-robot-dock-in { from { opacity: 0; scale: .6; } }
 @keyframes hpo-robot-undock { from { opacity: 0; scale: .85; } }
 @media (prefers-reduced-motion: reduce) {
-  #hpo-robot-restore:not([hidden]), body.hpo-home-robot #hpo-robot:not([hidden]) { animation: none; }
+  #hpo-robot-restore:not([hidden]), body.hpo-home-robot #hpo-robot:not([hidden]), body.hpo-page-robot #hpo-robot:not([hidden]) { animation: none; }
 }
 
 /* ── Đầu robot ở góc: vòng sáng xanh tỏa nhạt (kiểu SAPP) + thỉnh thoảng rung nhẹ (kiểu PREP) ──
@@ -431,3 +431,78 @@ body.hpo-home-robot #hpo-robot:not([hidden]) { animation: hpo-robot-undock .36s 
 }
 #hpo-robot-viewer .hpo-call-cta:hover { background: #eef2ff; border-color: #a5b4fc; }
 #hpo-robot-viewer .hpo-call-cta svg { width: 20px; height: 20px; flex: none; fill: currentColor; }
+
+/* ── Trang con: robot đứng ở mép phải lúc vừa vào trang (chào + vẫy tay), lướt xuống thì thu về
+   nút đầu robot ở góc phải. Đặt bên phải vì bên trái hero trang con là tiêu đề, đoạn giới thiệu và nút
+   "Đăng ký tư vấn". Vị trí dọc (top) do main.ts tính; bong bóng mọc sang trái, đuôi chỉ xuống robot. ── */
+body.hpo-page-robot #hpo-robot {
+  left: auto;
+  right: 28px;
+  z-index: 180;
+  width: 145px;
+  height: 198px;
+  transform: none;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+body.hpo-page-robot #hpo-robot #hpo-robot-greeting {
+  top: auto;
+  bottom: calc(100% + 8px);
+  left: auto;
+  right: 0;
+  width: min(250px, calc(100vw - 28px));
+  transform: none;
+  transform-origin: calc(100% - 72px) bottom;
+}
+body.hpo-page-robot #hpo-robot-greeting::after {
+  top: calc(100% - 5px);
+  left: auto;
+  right: 72px;
+  border: 0;
+  border-right: 1px solid #c7dff0;
+  border-bottom: 1px solid #c7dff0;
+  transform: translateX(50%) rotate(45deg);
+}
+@media (max-width: 1100px) {
+  body.hpo-page-robot #hpo-robot { right: 20px; width: 125px; height: 171px; }
+  body.hpo-page-robot #hpo-robot #hpo-robot-greeting { transform-origin: calc(100% - 62px) bottom; }
+  body.hpo-page-robot #hpo-robot-greeting::after { right: 62px; }
+}
+@media (max-width: 600px) {
+  body.hpo-page-robot #hpo-robot { right: 12px; width: 96px; height: 135px; }
+  body.hpo-page-robot #hpo-robot #hpo-robot-greeting {
+    width: min(232px, calc(100vw - 24px));
+    padding: 10px 12px;
+    font-size: 12px;
+    transform-origin: calc(100% - 48px) bottom;
+  }
+  body.hpo-page-robot #hpo-robot-greeting::after { right: 48px; }
+}
+
+/* ── Điện thoại: robot ĐỦ THÂN đứng trên thanh nút đáy (thay đầu robot) ──
+   Thanh giữ cao 64px; chân robot đứng trong ô 48px đầu thanh, đầu nhô lên trên mép thanh ~30px
+   nên chỉ che một mẩu nhỏ góc dưới bên trái. Ảnh render từ mô hình 3D (robot-full-body-avatar-data-uri.ts). */
+#hpo-robot-restore .hpo-robot-full { display: none; }
+@media (max-width: 600px) {
+  .floats > #hpo-robot-restore { overflow: visible; }
+  #hpo-robot-restore .hpo-robot-head { display: none; }
+  #hpo-robot-restore .hpo-robot-full {
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    width: auto;
+    height: 92px;
+    transform: translateX(-50%);
+    transform-origin: 50% 100%;
+    filter: drop-shadow(0 6px 10px rgba(10, 19, 48, .25));
+    pointer-events: none;
+    animation: hpo-robot-wiggle 7s ease-in-out 2s infinite;
+  }
+  /* bong bóng chào nằm trên đầu robot (đầu đã nhô ~30px khỏi nút) */
+  #hpo-robot-dock-greeting { bottom: calc(100% + 44px); }
+  #hpo-robot-restore:has(#hpo-robot-dock-greeting:not(.is-hidden)) .hpo-robot-full { animation-play-state: paused; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #hpo-robot-restore .hpo-robot-full { animation: none; }
+}

@@ -3,10 +3,10 @@
   const base = new URL('../../robot/', document.currentScript.src);
   const css = document.createElement('link');
   css.rel = 'stylesheet';
-  css.href = new URL('dist/companion.css', base).href;
+  css.href = new URL('dist/companion.css?v=20261103-robot-lap', base).href;
   document.head.append(css);
   const script = document.createElement('script');
-  script.src = new URL('dist/companion.js', base).href;
+  script.src = new URL('dist/companion.js?v=20261103-robot-lap', base).href;
   script.defer = true;
   document.head.append(script);
 })();
@@ -175,7 +175,7 @@
             </div>
             <div class="footer-loc">
               <strong>3. VP Tuyển Sinh</strong>
-              <p>276 Minh Phụng, TP. HCM</p>
+              <p>276 Minh Phụng, Phường Minh Phụng, TP. HCM</p>
               <a href="tel:0912799129">0912.799.129</a>
             </div>
           </div>
@@ -183,7 +183,7 @@
           <div class="footer-col">
             <h4>Tải ứng dụng</h4>
             <p class="footer-app-desc">
-              Học online miễn phí. Trải nghiệm ngay trên Hiệp Phát Edu.
+              Trải nghiệm ngay trên Hiệp Phát Edu.
             </p>
             <div class="footer-app">
               <a href="https://play.google.com/store/apps/details?id=com.hpo.edugo" target="_blank" rel="noopener" aria-label="Tải Hiệp Phát Edu trên Google Play">

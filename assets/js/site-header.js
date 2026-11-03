@@ -78,23 +78,13 @@
 
           <ul class="nav-links">
             <li class="nav-item">
-              <a href="${href("index.html")}" class="nav-home-link" aria-label="Trang chủ" title="Trang chủ"${current("home")}>
+              <a href="${href("index.html")}" class="nav-home-link" aria-label="Cổng thông tin điện tử – Trang chủ" title="Trang chủ"${current("home")}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                   <path d="m3 10 9-7 9 7" />
                   <path d="M5.5 9v11h13V9M9.5 20v-6h5v6" />
                 </svg>
-                <span class="nav-home-label">Trang chủ</span>
+                <span class="nav-home-label">Cổng thông tin điện tử</span>
               </a>
-            </li>
-            <li class="nav-item"><a href="${href("hoc-phi/")}"${current("tuition")}>${label("Khóa học &amp; Học phí")}</a></li>
-            <li class="nav-item"><a href="${href("quy-dinh-chuong-trinh-hoc-lai-xe/")}"${current("process")}>${label("Quy trình đào tạo")}</a></li>
-            <li class="nav-item"><a href="${href("on-tap/")}"${current("quiz")}>${label("Ôn thi lý thuyết")}</a></li>
-            <li class="nav-item has-dropdown">
-              <a href="${href("danh-sach-benh-vien/")}"${current("hospital-lookup", "payment-qr")}>${label("Dành cho học viên")}</a>
-              <div class="nav-dropdown">
-                <a href="${href("danh-sach-benh-vien/")}"${current("hospital-lookup")}><span class="dd-dot"></span> Nơi khám sức khỏe lái xe</a>
-                <a href="${href("tra-cuu-qr/")}"${current("payment-qr")}><span class="dd-dot"></span> Mã QR thanh toán lệ phí sát hạch</a>
-              </div>
             </li>
             <li class="nav-item has-dropdown">
               <a href="${href("gioi-thieu/trung-tam-giao-duc-nghe-nghiep/")}"${current("training-center", "exam-center")}>${label("Giới thiệu")}</a>
@@ -103,7 +93,16 @@
                 <a href="${href("gioi-thieu/trung-tam-sat-hach/")}"${current("exam-center")}><span class="dd-dot"></span> Trung tâm sát hạch lái xe ô tô</a>
               </div>
             </li>
-            <li class="nav-item"><a href="#lien-he">${label("Liên hệ")}</a></li>
+            <li class="nav-item"><a href="${href("hoc-phi/")}"${current("tuition")}>${label("Học phí")}</a></li>
+            <li class="nav-item"><a href="${href("quy-dinh-chuong-trinh-hoc-lai-xe/")}"${current("process")}>${label("Quy trình đào tạo")}</a></li>
+            <li class="nav-item has-dropdown">
+              <a href="${href("danh-sach-benh-vien/")}"${current("hospital-lookup", "payment-qr")}>${label("Tra cứu")}</a>
+              <div class="nav-dropdown">
+                <a href="${href("danh-sach-benh-vien/")}"${current("hospital-lookup")}><span class="dd-dot"></span> Danh sách bệnh viện</a>
+                <a href="${href("tra-cuu-qr/")}"${current("payment-qr")}><span class="dd-dot"></span> Mã QR thanh toán sát hạch</a>
+              </div>
+            </li>
+            <li class="nav-item"><a href="${href("on-tap/")}"${current("quiz")}>${label("Ôn tập")}</a></li>
           </ul>
 
           <div class="nav-actions">
@@ -144,21 +143,20 @@
         </div>
         <nav class="mobile-menu-list">
           <a href="${href("index.html")}"${current("home")}>Trang chủ</a>
-          <a href="${href("hoc-phi/")}"${current("tuition")}>Khóa học &amp; Học phí</a>
-          <a href="${href("quy-dinh-chuong-trinh-hoc-lai-xe/")}"${current("process")}>Quy trình đào tạo</a>
-          <a href="${href("on-tap/")}"${current("quiz")}>Ôn thi lý thuyết</a>
-          <div class="mobile-menu-group">
-            <span class="mobile-menu-label${activeClass("hospital-lookup", "payment-qr")}">Dành cho học viên</span>
-            <a class="mobile-menu-child" href="${href("danh-sach-benh-vien/")}"${current("hospital-lookup")}>Nơi khám sức khỏe lái xe</a>
-            <a class="mobile-menu-child" href="${href("tra-cuu-qr/")}"${current("payment-qr")}>Mã QR thanh toán lệ phí sát hạch</a>
-          </div>
           <div class="mobile-menu-group">
             <span class="mobile-menu-label${activeClass("training-center", "exam-center")}">Giới thiệu</span>
             <a class="mobile-menu-child" href="${href("gioi-thieu/trung-tam-giao-duc-nghe-nghiep/")}"${current("training-center")}>Trung tâm giáo dục nghề nghiệp</a>
             <a class="mobile-menu-child" href="${href("gioi-thieu/trung-tam-sat-hach/")}"${current("exam-center")}>Trung tâm sát hạch lái xe</a>
           </div>
+          <a href="${href("hoc-phi/")}"${current("tuition")}>Học phí</a>
+          <a href="${href("quy-dinh-chuong-trinh-hoc-lai-xe/")}"${current("process")}>Quy trình đào tạo</a>
+          <div class="mobile-menu-group">
+            <span class="mobile-menu-label${activeClass("hospital-lookup", "payment-qr")}">Tra cứu</span>
+            <a class="mobile-menu-child" href="${href("danh-sach-benh-vien/")}"${current("hospital-lookup")}>Danh sách bệnh viện</a>
+            <a class="mobile-menu-child" href="${href("tra-cuu-qr/")}"${current("payment-qr")}>Mã QR thanh toán sát hạch</a>
+          </div>
           <a href="https://hpo.edu.vn/thong-tin/">Thông tin</a>
-          <a href="#lien-he">Liên hệ</a>
+          <a href="${href("on-tap/")}"${current("quiz")}>Ôn tập</a>
         </nav>
         <div class="mobile-menu-foot">
           <a href="tel:02836362362" class="btn btn-outline" style="justify-content: center">

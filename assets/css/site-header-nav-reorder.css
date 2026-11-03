@@ -1,9 +1,8 @@
 /* ==========================================================================
-   Menu sắp theo hành trình người học (2026-11-02):
-   Trang chủ · Khóa học & Học phí · Quy trình đào tạo · Ôn thi lý thuyết · Dành cho học viên ▾ ·
-   Giới thiệu ▾ · Liên hệ. Nhãn dài hơn + thêm "Liên hệ" → thu gọn để menu ngang vẫn vừa 1 hàng:
-   - Máy tính (≥1351px, khi có menu ngang): mục Trang chủ chỉ hiện icon ngôi nhà (vẫn có aria-label/
-     title "Trang chủ"; logo cũng về trang chủ; menu ☰ điện thoại vẫn ghi chữ "Trang chủ");
+   Menu (2026-11-02, theo góp ý họp: lấy lại các mục menu CŨ, giữ giao diện mới):
+   ⌂ Cổng thông tin điện tử · Giới thiệu ▾ · Học phí · Quy trình đào tạo · Tra cứu ▾ · Ôn tập.
+   Nhãn ngắn → chữ "Cổng thông tin điện tử" hiện đủ cạnh icon nhà ở mọi khổ có menu ngang (≥1351px).
+   (Bản trước "Trang chủ · Khóa học & Học phí · … · Liên hệ" phải ẩn chữ, chỉ còn icon.)
    - Màn ≥1481px: khung header + thanh trên bỏ giới hạn 1480px (logo sát lề trái, nút sát lề phải,
      lề 28px như cũ) → đủ chỗ hiện chữ tổng đài từ 1600px; ≤1599px tổng đài chỉ còn icon.
      (Lịch sử: ngưỡng 1799px làm 1800–1849px thiếu chỗ → mũi tên nút "Đăng ký học" co về 0px;
@@ -28,11 +27,6 @@
 @media (min-width: 1600px) {
   html body #navbar.nav .nav-phone { padding-right: 8px; }
   html body #navbar.nav .nav-phone-text { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
-}
-@media (min-width: 1351px) {
-  html body #navbar.nav .nav-home-label {
-    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
-  }
 }
 
 /* Mũi tên tròn trong nút "Đăng ký học" (header + menu ☰): không cho co khi hàng header chật */

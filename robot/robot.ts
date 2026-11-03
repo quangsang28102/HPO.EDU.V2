@@ -217,14 +217,30 @@ export class Robot {
 
   get isWaving() { return this.waveTime >= 0; }
   wave() { if (this.isWaving) return false; this.waveTime = 0; return true; }
+  /** Thời lượng một lần chào (giây): giơ tay ~0.55s → vẫy ~1.1s → hạ tay ~0.6s. */
+  static readonly WAVE_SECONDS = 2.25;
   setGreetingPose(amount: number, time = 0, elbowAmount = amount) {
-    // Raise, settle, two gentle forearm sweeps, then lower. The wrist stays locked.
-    const swayWindow = THREE.MathUtils.smootherstep(time, .95, 1.2) * (1 - THREE.MathUtils.smootherstep(time, 2.4, 2.65));
-    const sway = Math.sin((time - .95) * Math.PI * 2 * 1.15) * swayWindow;
-    this.arms[1].rotation.set(-amount * .24, 0, .13 + amount * (.98 + sway * .035));
+    // Vẫy từ khuỷu tay như người thật: 2–3 nhịp nhanh (~2.2 lần/giây), biên độ giảm dần, vai đung đưa
+    // trễ nhịp theo cẳng tay (chuyển động chồng lớp). Cổ tay khóa để lòng bàn tay luôn hướng về người xem.
+    const swayWindow = THREE.MathUtils.smootherstep(time, .5, .68) * (1 - THREE.MathUtils.smootherstep(time, 1.5, 1.68));
+    const phase = (time - .55) * Math.PI * 2 * 2.2;
+    const decay = 1 - THREE.MathUtils.clamp((time - .55) / 1.1, 0, 1) * .35;
+    const sway = Math.sin(phase) * swayWindow * decay;
+    const shoulderSway = Math.sin(phase - .7) * swayWindow * decay;
+    this.arms[1].rotation.set(-amount * .24, 0, .13 + amount * (.98 + shoulderSway * .06));
     // Bend first, then roll around the forearm's own axis; no wrist rotation.
-    this.elbows[1].rotation.set(-elbowAmount * .08, elbowAmount * Math.PI, elbowAmount * (1.57 + sway * .25), 'ZXY');
+    this.elbows[1].rotation.set(-elbowAmount * .08, elbowAmount * Math.PI, elbowAmount * (1.57 + sway * .28), 'ZXY');
     this.wrists[1].rotation.set(0, 0, 0);
+  }
+  /** Chuyển động phụ khi chào: lấy đà (hạ người) → nhún lên, nghiêng đầu về phía tay vẫy, người hơi nghiêng ngược lại. */
+  private greetingBody(t: number) {
+    const on = THREE.MathUtils.smootherstep(t, 0, .45) * (1 - THREE.MathUtils.smootherstep(t, 1.6, 2.2));
+    const dip = -Math.sin(THREE.MathUtils.clamp(t / .22, 0, 1) * Math.PI) * .035;
+    const hop = Math.sin(THREE.MathUtils.clamp((t - .22) / .4, 0, 1) * Math.PI) * .05;
+    this.group.position.y += dip + hop;
+    this.group.rotation.z = -on * .045;
+    this.head.rotation.z += on * .14 + Math.sin((t - .55) * Math.PI * 2 * 1.1) * on * .03;
+    this.arms[0].rotation.z -= on * .08;
   }
   setBlink(closure: number) {
     const amount = THREE.MathUtils.clamp(closure, 0, 1);
@@ -246,12 +262,14 @@ export class Robot {
     if (this.waveTime >= 0) {
       this.waveTime += dt;
       const t = this.waveTime;
-      const envelope = THREE.MathUtils.smootherstep(t, 0, .85) * (1 - THREE.MathUtils.smootherstep(t, 2.65, 3.5));
-      const elbowEnvelope = THREE.MathUtils.smootherstep(t, .12, 1.0) * (1 - THREE.MathUtils.smootherstep(t, 2.55, 3.4));
+      const end = Robot.WAVE_SECONDS;
+      const envelope = THREE.MathUtils.smootherstep(t, 0, .58) * (1 - THREE.MathUtils.smootherstep(t, end - .6, end));
+      const elbowEnvelope = THREE.MathUtils.smootherstep(t, 0, .72) * (1 - THREE.MathUtils.smootherstep(t, end - .72, end));
       this.setGreetingPose(envelope, t, elbowEnvelope);
-      if (t >= 3.5) { this.waveTime = -1; this.setGreetingPose(0); }
+      if (t >= end) { this.waveTime = -1; this.setGreetingPose(0); this.group.rotation.z = 0; }
     } else this.arms[1].rotation.z = .13 + (reducedMotion ? 0 : Math.sin(time * 1.8) * .025);
     this.arms[0].rotation.z = -.13 - (reducedMotion ? 0 : Math.sin(time * 1.8) * .025);
+    if (this.waveTime >= 0 && !reducedMotion) this.greetingBody(this.waveTime);
     const stride = walking && !reducedMotion ? Math.sin(time * 8) * .42 : 0;
     this.legs.forEach((leg, i) => leg.rotation.x = THREE.MathUtils.lerp(leg.rotation.x, i === 0 ? stride : -stride, smooth));
     this.arms[0].rotation.x = THREE.MathUtils.lerp(this.arms[0].rotation.x, -stride * .75, smooth);

@@ -1,0 +1,120 @@
+/* ==========================================================================
+   Trang Trung tâm giáo dục nghề nghiệp — đưa về Hiệp Phát Design System (03/11/2026)
+   Theo báo cáo plans/reports/ui-ux-audit-261103-trung-tam-giao-duc-nghe-nghiep (bước 2 + 3),
+   kiểm bằng Impeccable detect (low-contrast, undersized-ui-text, dark-glow, unbalanced-heading).
+   Bước 2 — MÀU:
+   - Token trang: --about-blue #123f96 → primary-strong #1e3a8a; --about-navy #071a3a → ink #0a1330;
+     --about-orange #ff6b35 → đỏ DS #dc2626 (cam DS chỉ để trang trí; chữ trắng trên cam / chữ cam trên trắng
+     chỉ 2,4–2,8:1, dưới chuẩn 4,5:1). Đỏ #dc2626: chữ trắng 4,83:1.
+   - Chữ nhấn trên nền tối (#ff8356, #8bb2ff, #8fb3f4, #9bb8ed) → vàng DS #facc15.
+   - "Tiết kiệm …" → nền xanh lá đặc #15803d chữ trắng (giống trang Học phí).
+   - Bỏ quầng sáng cam nhấp nháy quanh nút (consultPulse) → bóng trung tính.
+   Bước 3 — CHỮ: nhãn phụ ≥13–14px đậm, mô tả ≥15px, bỏ in hoa ở nhãn nhỏ; h2 về thang 32–48px
+   + chia dòng cân đối (trước 57–60px, cột hẹp làm "Công nghệ đồng / hành / …" vỡ 4 dòng).
+   Link SAU ./style.css; tiền tố `html body` để thắng rule gốc cùng tên.
+   ========================================================================== */
+
+/* ---------- Bước 2: màu ---------- */
+html body.about-page {
+  --about-blue: #1e3a8a;
+  --about-navy: #0a1330;
+  --about-orange: #dc2626;
+}
+
+/* Nút chính (hero, cuối trang, thẻ khóa học): đỏ DS, bóng trung tính, không nhấp nháy quầng cam */
+html body .btn-hero-consult,
+html body .cta-actions .btn-final-consult,
+html body .course-cta {
+  border-color: #dc2626;
+  background: #dc2626;
+  box-shadow: 0 14px 30px -14px rgba(10, 19, 48, .45);
+  animation: none;
+}
+html body .btn-hero-consult:hover,
+html body .cta-actions .btn-final-consult:hover,
+html body .course-cta:hover {
+  border-color: #b91c1c;
+  background: #b91c1c;
+  box-shadow: 0 18px 36px -14px rgba(10, 19, 48, .5);
+}
+
+/* Chữ nhấn trên nền tối → vàng DS */
+html body .hero-proof strong,
+html body .courses-offer strong,
+html body .facility-card__overlay > span,
+html body .digital h2 span,
+html body .courses-head h2 span { color: #facc15; }
+html body .section-label--light { color: #facc15; }
+
+/* Số liệu / nhãn trên nền sáng */
+html body .exam-center__stats strong,
+html body .course-saving strong { color: #dc2626; }
+html body .event-meta { color: #1e40af; }
+
+/* Nhãn khóa học */
+html body .course-deal { background: #15803d; color: #fff; }
+html body .course-badge { background: #dc2626; }
+html body .partner-feature__image > span { background: #dc2626; }
+
+/* ---------- Bước 3: chữ ---------- */
+/* Tiêu đề section: thang 32–48px (h1 hero giữ nguyên), chia dòng cân đối */
+html body .intro h2,
+html body .section-head h2,
+html body .digital h2,
+html body .cta-section h2,
+html body .courses-head h2,
+html body .exam-center__content h2 { font-size: clamp(32px, 3.3vw, 48px); text-wrap: balance; }
+html body.about-page h3 { text-wrap: balance; }
+html body.about-page main p { text-wrap: pretty; }
+
+/* Nhãn section: giãn chữ theo DS (.08em) — trước .2em, nhãn dài xuống 2 dòng trên điện thoại */
+html body .section-label { letter-spacing: .1em; }
+
+/* Hero */
+html body .hero-proof span { font-size: 14px; }
+html body .hero-phone span { font-size: 13px; letter-spacing: .08em; color: rgba(255, 255, 255, .82); }
+html body .exam-center__cert span { font-size: 13px; text-transform: none; letter-spacing: 0; }
+
+/* Liên kết "Đăng ký tư vấn chương trình học" */
+html body .exam-center__link { font-size: 15px; }
+
+/* Chuyển đổi số */
+html body .digital-badge span { font-size: 14px; }
+
+/* Hợp tác & liên kết */
+html body .event-content p,
+html body .partner-list p { font-size: 15px; line-height: 1.55; }
+html body .partner-list em { font-size: 14px; }
+html body .partner-list span { font-size: 13px; }
+html body .partner-tags span { font-size: 13px; }
+html body .partner-feature__image > span { font-size: 13px; letter-spacing: .06em; }
+
+/* Cơ sở vật chất */
+html body .facility-card p { font-size: 15px; }
+
+/* Khóa học */
+html body .courses-offer span,
+html body .courses-offer small { font-size: 13px; letter-spacing: .06em; color: rgba(255, 255, 255, .78); }
+html body .course-badge { font-size: 14px; letter-spacing: .04em; }
+html body .course-deal { font-size: 14px; letter-spacing: 0; text-transform: none; }
+html body .course-type { font-size: 14px; letter-spacing: 0; text-transform: none; }
+html body .course-summary { font-size: 15px; line-height: 1.5; }
+html body .course-benefits li { font-size: 15px; }
+html body .course-price small { font-size: 14px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+html body .course-price del { font-size: 15px; }
+html body .course-saving span { font-size: 13px; }
+html body .course-cta__copy small { font-size: 13px; }
+
+/* Khối kêu gọi cuối trang */
+html body .cta-actions > a:last-child { font-size: 15px; }
+
+@media (max-width: 620px) {
+  html body .hero-proof span { font-size: 13px; }
+  /* nhãn số liệu to hơn → khối số liệu (đặt absolute ở đáy hero) cao thêm ~22px; nới hero để không che số hotline */
+  html body .about-hero,
+  html body .about-hero__inner { min-height: 790px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body .btn-hero-consult,
+  html body .cta-actions .btn-final-consult { animation: none; }
+}

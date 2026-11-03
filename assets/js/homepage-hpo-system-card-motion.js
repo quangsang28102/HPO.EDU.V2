@@ -12,20 +12,21 @@
   if (!svg) return;
 
   const NS = 'http://www.w3.org/2000/svg';
-  const CENTER = { x: 181, y: 183 };
+  const CENTER = { x: 181, y: 186 };
   const SWEEP_SECONDS = 6;          // phải trùng thời lượng animation hpo-sys-spin của .hpo-sys-sweep trong CSS
   const TRAVEL = 0.18;              // phần chu kỳ gói dữ liệu chạy từ tâm ra
   const GLOW_PEAK = 0.2;            // thời điểm thành phần sáng nhất (ngay khi tia quét đi qua)
   const ACTIVE_SECONDS = 1.4;       // thời gian mục trong danh sách giữ trạng thái sáng sau khi tia quét đi qua
 
-  // Tâm biểu tượng đo trên ảnh hpo-system-circle.webp; name khớp data-hpo-node trong HTML
+  // Tâm biểu tượng trên ảnh hpo-system-circle.webp (dựng lại 2026-11-02 bằng icon + xe gốc của hpo.edu.vn,
+  // toạ độ lấy đúng từ NODES của file dựng ảnh); name khớp data-hpo-node trong HTML
   const NODES = [
-    { name: 'face', x: 117, y: 100 },
-    { name: 'cloud', x: 250, y: 92 },
-    { name: 'dat', x: 313, y: 186 },
-    { name: 'cabin', x: 242, y: 280 },
-    { name: 'sim', x: 110, y: 265 },
-    { name: 'platform', x: 52, y: 160 },
+    { name: 'face', x: 117, y: 104 },
+    { name: 'cloud', x: 250, y: 98 },
+    { name: 'dat', x: 309, y: 178 },
+    { name: 'cabin', x: 246, y: 268 },
+    { name: 'sim', x: 114, y: 264 },
+    { name: 'platform', x: 58, y: 166 },
   ];
 
   const el = (tag, attrs, parent) => {

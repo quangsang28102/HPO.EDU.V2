@@ -1,0 +1,31 @@
+/* ==========================================================================
+   Trang Ôn tập — phần đầu trang + 3 thẻ chọn hình thức luyện thi, theo Hiệp Phát Design System (03/11/2026)
+   Báo cáo: plans/reports/ui-ux-audit-261103-4-trang-con (O1–O5).
+   - Chữ nhấn/ số trên nền navy: cam #ff8356 → vàng DS #facc15 (DS: cam chỉ trang trí).
+   - Nhãn thẻ 11px in hoa xám (3,9:1) → 14px đậm chữ thường #475569; mô tả 14 → 16px #334155.
+   - Thẻ hạng B: chữ/nút cam #d94e20 (4,15:1) → cam đậm DS #c2410c (5,2:1); viền trên cam giữ (trang trí).
+   Phần làm bài (sau khi bấm vào ôn) KHÔNG đổi trong gói này.
+   ========================================================================== */
+
+/* Token trang → DS (cam --quiz-orange giữ: chỉ còn dùng trang trí viền thẻ hạng B / phần làm bài) */
+html body.quiz-page { --quiz-navy: #0a1330; --quiz-blue: #1e3a8a; --quiz-green: #15803d; }
+
+/* ---- Đầu trang (nền navy) ---- */
+html body.quiz-page .quiz-hero h1 span { color: #facc15; }
+html body.quiz-page .quiz-hero__stats strong { color: #facc15; }
+html body.quiz-page .quiz-hero__stats span { font-size: 15px; }
+html body.quiz-page .quiz-eyebrow { color: #dbe4f5; font-size: 16px; }
+
+/* ---- Khối "Chọn hình thức luyện thi" ---- */
+html body.quiz-page .quiz-entry-kicker { color: #1e40af; font-size: 15px; }
+html body.quiz-page .quiz-entry-heading p { color: #334155; font-size: 17px; }
+html body.quiz-page .quiz-entry-label { color: #475569; font-size: 14px; font-weight: 700; letter-spacing: 0; text-transform: none; }
+html body.quiz-page .quiz-entry-description { color: #334155; font-size: 16px; line-height: 1.55; }
+html body.quiz-page .quiz-entry-details span { color: #334155; font-size: 14px; }
+html body.quiz-page .quiz-entry-cta { font-size: 16px; }
+html body.quiz-page .quiz-entry-card--b .quiz-entry-icon,
+html body.quiz-page .quiz-entry-card--b .quiz-entry-cta { color: #c2410c; }
+
+@media (max-width: 520px) {
+  html body.quiz-page .quiz-hero__stats span { font-size: 14px; }
+}

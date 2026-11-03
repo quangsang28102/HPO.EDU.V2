@@ -1,0 +1,110 @@
+/* ==========================================================================
+   Trang Ôn tập — PHẦN LÀM BÀI (ôn tập 600 câu, thi thử, kết quả) theo Hiệp Phát Design System (03/11/2026)
+   Báo cáo: plans/reports/ui-ux-audit-261103-on-tap-phan-lam-bai (L1–L4, T1–T8).
+   - Chữ: đáp án 12px (điện thoại) → 16px; ô số câu 11 → 14px; nút 13 → 16px; nhãn phụ / màn kết quả 10–11 → 13–15px.
+   - Màu: đồng hồ thi cam #ff6b35 (2,8:1) → cam đậm DS #c2410c, còn dưới 1 phút đỏ #b91c1c;
+     chữ đỏ trên nền hồng #d9363e (4,2:1) → #b91c1c; xám #718098 / #63728a (3,7–4,0:1) → #475569.
+     Cam DS chỉ còn ở viền / vòng chọn (trang trí).
+   - Điện thoại, chế độ ôn tập: hộp "Lưu ý câu điểm liệt" chuyển xuống sau câu hỏi, câu hỏi lên cao hơn.
+   Chỉ CSS, không đổi HTML / JS / nội dung. Link SAU quiz-entry-design-system.css.
+   ========================================================================== */
+
+html body.quiz-page { --quiz-red: #dc2626; }
+
+/* ---------- Danh sách chương (cột trái) ---------- */
+html body.quiz-page .quiz-sidebar .topic-copy small,
+html body.quiz-page .topic-count { font-size: 14px; }
+html body.quiz-page .topic-button.is-active small { color: #dbe4f5; }
+html body.quiz-page .topic-button[data-topic="critical"]:not(:hover):not(.is-active) { color: #b91c1c; }
+html body.quiz-page .sidebar-tip strong { font-size: 15px; }
+html body.quiz-page .sidebar-tip p { font-size: 14px; line-height: 1.5; }
+html body.quiz-page .sidebar-tip > span { background: #c2410c; }
+
+/* ---------- Thanh tiến độ + đồng hồ ---------- */
+html body.quiz-page .question-progress > div:first-child { font-size: 14px; }
+html body.quiz-page .quiz-shell.is-mock-mode #scoreLabel { font-size: 15px; }
+html body.quiz-page .mock-clock {
+  color: #c2410c !important;
+  font-size: 16px;
+  font-weight: 800;
+}
+html body.quiz-page .mock-clock.is-low { color: #b91c1c !important; }
+
+/* ---------- Câu hỏi + đáp án ---------- */
+html body.quiz-page .question-meta > span:first-child { font-size: 14px; letter-spacing: .08em; }
+html body.quiz-page .danger-tag { color: #b91c1c; font-size: 14px; }
+html body.quiz-page .answer-letter { font-size: 16px; }
+html body.quiz-page .answer-text { font-size: 17px; line-height: 1.55; }
+html body.quiz-page .btn-restart,
+html body.quiz-page .btn-next,
+html body.quiz-page .btn-result { font-size: 16px; }
+html body.quiz-page .answer-feedback.wrong { color: #991b1b; }
+
+/* ---------- Bảng chọn câu (cột phải) ---------- */
+html body.quiz-page .palette-head small { font-size: 14px; }
+html body.quiz-page .palette-legend,
+html body.quiz-page .palette-legend span { font-size: 14px; }
+html body.quiz-page .palette-legend i { width: 14px; height: 14px; }
+html body.quiz-page .palette-item { font-size: 14px; font-weight: 700; }
+html body.quiz-page .quiz-shell.is-mock-mode .palette-item.is-critical::after,
+html body.quiz-page .palette-item.is-answered::before { width: 15px; height: 15px; font-size: 11px; }
+html body.quiz-page .quiz-shell.is-mock-mode .palette-item.is-critical::after { background: #b91c1c; }
+
+/* ---------- Nút thi thử + tab chế độ ---------- */
+html body.quiz-page .mock-button { font-size: 16px; }
+html body.quiz-page .quiz-mode-tab { font-size: 15px; color: #334155; }
+html body.quiz-page .quiz-mode-tab.is-active { color: #fff; }
+
+/* ---------- Màn kết quả + đáp án chi tiết ---------- */
+html body.quiz-page .mock-dialog-kicker { font-size: 14px; letter-spacing: .1em; }
+html body.quiz-page .mock-result-summary > p { color: #475569; font-size: 16px; }
+html body.quiz-page .mock-result-summary.is-fail h3 { color: #b91c1c; }
+html body.quiz-page .mock-result-score span { color: #475569; font-size: 15px; }
+html body.quiz-page .mock-result-fact { color: #334155; font-size: 14px; }
+html body.quiz-page .mock-result-fact.is-fail { color: #b91c1c; }
+html body.quiz-page .mock-result-fact.is-unanswered { color: #78350f; }
+html body.quiz-page .mock-review-heading > span { color: #475569; font-size: 15px; }
+html body.quiz-page .mock-review-legend > span { color: #334155; font-size: 14px; }
+html body.quiz-page .mock-review-legend i { width: 20px; height: 20px; font-size: 13px; }
+html body.quiz-page .mock-review-legend i.is-critical { width: 20px; height: 20px; background: #b91c1c; }
+html body.quiz-page .mock-review-kicker { color: #475569; }
+html body.quiz-page .mock-review-number { font-size: 15px; }
+html body.quiz-page .mock-review-critical { width: 20px; height: 20px; background: #b91c1c; font-size: 12px; }
+html body.quiz-page .mock-review-detail-heading > strong { font-size: 16px; }
+html body.quiz-page .mock-review-critical-label,
+html body.quiz-page .mock-review-status { font-size: 14px; }
+html body.quiz-page .mock-review-critical-label,
+html body.quiz-page .mock-review-status.is-wrong,
+html body.quiz-page .mock-review-option.is-selected-wrong .mock-review-option-note { color: #b91c1c; }
+html body.quiz-page .mock-review-question-title { color: #0a1330; font-size: 17px; }
+html body.quiz-page .mock-review-option { color: #334155; font-size: 16px; }
+html body.quiz-page .mock-review-option-letter { width: 32px; height: 32px; color: #334155; font-size: 15px; }
+html body.quiz-page .mock-review-option.is-correct .mock-review-option-letter,
+html body.quiz-page .mock-review-option.is-selected-wrong .mock-review-option-letter { color: #fff; }
+html body.quiz-page .mock-review-option { grid-template-columns: 34px minmax(0, 1fr) auto; }
+html body.quiz-page .mock-review-option-note { font-size: 14px; }
+
+/* ---------- Điện thoại ---------- */
+@media (max-width: 520px) {
+  html body.quiz-page .answer-text { font-size: 16px; }
+  html body.quiz-page .question-card h2 { font-size: 19px; }
+  html body.quiz-page .quiz-mode-tab { min-height: 44px; font-size: 14px; }
+  /* thi thử: 3 thông tin trên thanh tiến độ (câu đang xem · đã trả lời · đồng hồ) 10px → 14–16px, cho xuống dòng */
+  html body.quiz-page .quiz-shell.is-mock-mode .question-progress > div:first-child { flex-wrap: wrap; row-gap: 4px; }
+  html body.quiz-page .quiz-shell.is-mock-mode #progressLabel { flex: 1 1 100%; font-size: 14px; }
+  html body.quiz-page .quiz-shell.is-mock-mode #scoreLabel { font-size: 14px; }
+  html body.quiz-page .quiz-shell.is-mock-mode .mock-clock { margin-left: auto; font-size: 16px; }
+  /* kết quả: ghi chú "Bạn đã chọn / Đáp án đúng" xuống dòng dưới nội dung đáp án, đáp án đủ rộng */
+  html body.quiz-page .mock-review-option { grid-template-columns: 34px minmax(0, 1fr); }
+  html body.quiz-page .mock-review-option-note { grid-column: 2; text-align: left; }
+
+  /* ôn tập: câu hỏi lên trước hộp "Lưu ý câu điểm liệt" (chỉ đổi thứ tự hiển thị) */
+  html body.quiz-page .quiz-shell:not(.is-mock-mode) { display: flex; flex-direction: column; }
+  html body.quiz-page .quiz-shell:not(.is-mock-mode) .quiz-sidebar { display: contents; }
+  html body.quiz-page .quiz-shell:not(.is-mock-mode) .sidebar-head { order: 1; }
+  html body.quiz-page .quiz-shell:not(.is-mock-mode) .topic-list { order: 2; width: 100%; min-width: 0; }
+  html body.quiz-page .quiz-shell:not(.is-mock-mode) .selected-exam { order: 3; }
+  html body.quiz-page .quiz-shell:not(.is-mock-mode) .quiz-main { order: 4; }
+  html body.quiz-page .quiz-shell:not(.is-mock-mode) .sidebar-tip { order: 5; margin: 14px 0 0; }
+  html body.quiz-page .quiz-shell:not(.is-mock-mode) .question-palette { order: 6; }
+}

@@ -1,7 +1,8 @@
 /* Section "Thương hiệu" (#so-huu-tri-tue): lưới văn bằng bảo hộ, thay cho .brand-protection__list cũ.
    Giữ header của section (màu tiêu đề do homepage-headings-design-system.css). Class mới: brand-cert-*.
    Màu theo Hiệp Phát Design System: logo-blue #2b26fb, primary-strong #1e3a8a, ink #0a1330, ink-soft #334155,
-   line #e6ebf5, primary-soft #eff6ff. Lightbox giữ nhóm data-img-group="brand-protection" (media.js). */
+   line #e6ebf5, primary-soft #eff6ff. Lightbox giữ nhóm data-img-group="brand-protection" (media.js).
+   5 thẻ (2026-11-02 hiện lại 04, 05): ≥1025px 3 + 2 căn giữa; 641–1024px 2 + 2 + 1 căn giữa; ≤640px 1 cột. */
 
 .brand-cert-grid {
   --cert-blue: #2b26fb;
@@ -9,10 +10,13 @@
   --cert-ink: #0a1330;
   --cert-soft: #334155;
   --cert-line: #e6ebf5;
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px);
+  /* 6 cột ảo, mỗi thẻ chiếm 2 → hàng đầu 3 thẻ; 2 thẻ cuối (04, 05) nằm giữa hàng 2 */
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px);
   max-width: 1200px; margin: clamp(28px, 3.5vw, 48px) auto 0;
 }
 .brand-cert[hidden] { display: none; }
+.brand-cert { grid-column: span 2; }
+.brand-cert:nth-child(4):nth-last-child(2) { grid-column: 2 / span 2; }
 
 .brand-cert {
   position: relative; display: flex; flex-direction: column; overflow: hidden;
@@ -26,7 +30,7 @@
 }
 .brand-cert:hover { transform: translateY(-6px); box-shadow: 0 36px 70px -38px rgba(30, 58, 138, .5); }
 
-/* ---- Ảnh văn bằng: "tờ giấy" nghiêng nhẹ trên nền lưới xanh nhạt ---- */
+/* ---- Ảnh văn bằng: "tờ giấy" đứng thẳng trên nền lưới xanh nhạt ---- */
 .brand-cert__media {
   /* Khung cố định 4:3 cho mọi thẻ; ảnh dọc/ngang co vừa bên trong (flex + max-height cần chiều cao xác định) */
   position: relative; display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 3; padding: 50px 28px 22px;
@@ -40,11 +44,11 @@
   display: block; flex: none; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;
   border-radius: 4px; background: #fff;
   box-shadow: 0 2px 4px rgba(10, 19, 48, .08), 0 18px 34px -16px rgba(10, 19, 48, .45);
-  transform: rotate(-2.2deg); transition: transform .5s cubic-bezier(.22, 1, .36, 1);
+  transition: transform .5s cubic-bezier(.22, 1, .36, 1);
 }
-.brand-cert:nth-child(even) .brand-cert__media img { transform: rotate(2deg); }
+/* Ảnh văn bằng luôn đứng thẳng; rê chuột/focus chỉ phóng nhẹ */
 .brand-cert:hover .brand-cert__media img,
-.brand-cert__media:focus-visible img { transform: rotate(0) scale(1.04); }
+.brand-cert__media:focus-visible img { transform: scale(1.04); }
 .brand-cert__media:focus-visible { box-shadow: inset 0 0 0 3px rgba(43, 38, 251, .45); }
 
 .brand-cert__tag {
@@ -58,7 +62,7 @@
 .brand-cert__num {
   position: absolute; z-index: 1; right: 18px; top: 10px;
   font-family: var(--ff-display, inherit); font-size: 40px; font-weight: 900; line-height: 1; letter-spacing: -.04em;
-  color: transparent; -webkit-text-stroke: 1.5px rgba(43, 38, 251, .35);
+  color: #1e40af; /* chữ đặc, không viền — DS primary */
 }
 .brand-cert__zoom {
   position: absolute; z-index: 1; right: 14px; bottom: 14px; padding: 7px 12px; border-radius: 999px;
@@ -88,10 +92,14 @@
 .brand-cert__body > .brand-cert__facts + .brand-cert__link { margin-top: 6px; }
 
 @media (max-width: 1024px) {
-  .brand-cert-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; }
+  /* 2 thẻ/hàng; thẻ lẻ cuối cùng (05) căn giữa */
+  .brand-cert-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 760px; }
+  .brand-cert:nth-child(4):nth-last-child(2) { grid-column: span 2; }
+  .brand-cert:last-child:nth-child(odd) { grid-column: 2 / span 2; }
 }
 @media (max-width: 640px) {
   .brand-cert-grid { grid-template-columns: 1fr; max-width: 460px; }
+  .brand-cert, .brand-cert:nth-child(4):nth-last-child(2), .brand-cert:last-child:nth-child(odd) { grid-column: auto; }
   .brand-cert__num { font-size: 34px; }
 }
 @media (prefers-reduced-motion: reduce) {

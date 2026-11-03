@@ -4,9 +4,14 @@ import { RobotStage, fallback } from "./scene";
 import { Wander } from "./wander";
 import { createViewer } from "./viewer";
 import { ROBOT_HEAD_AVATAR } from "./robot-head-avatar-data-uri";
+import { ROBOT_FULL_BODY_AVATAR } from "./robot-full-body-avatar-data-uri";
 
 const GREETING_TEXT =
   "Xin chào! Tôi là trợ lý AI của Hiệp Phát. Rất vui được hỗ trợ bạn.";
+// Robot đứng trên trang thì chào lặp lại: bong bóng + vẫy tay hiện GREETING_SHOW_MS,
+// nghỉ GREETING_GAP_MS rồi chào tiếp. Lướt xuống (robot thu về góc) thì dừng.
+const GREETING_SHOW_MS = 3500;
+const GREETING_GAP_MS = 2000;
 
 const bundleUrl =
   document.currentScript instanceof HTMLScriptElement
@@ -18,19 +23,22 @@ const welcomeVoiceUrl = new URL("../assets/voice-tram-guillaume.mp3", bundleUrl)
 function mount() {
   if (document.getElementById("hpo-robot")) return;
   const homeHero = document.querySelector<HTMLElement>(".hpo-digital-hero");
+  // Mọi trang: robot đứng yên trên trang lúc vừa vào (chào + vẫy tay), lướt xuống thì thu về góc.
+  // Chế độ đi dạo / kéo thả (Wander) chỉ còn giữ trong code, không bật.
+  const stationary = true;
   const companion = document.createElement("button");
   companion.id = "hpo-robot";
   companion.type = "button";
   companion.setAttribute(
     "aria-label",
-    homeHero
+    stationary
       ? "Robot Hiệp Phát — nhấn để xem 3D và tương tác"
       : "Robot Hiệp Phát — nhấn để xem 3D, kéo hoặc dùng phím mũi tên để di chuyển",
   );
   companion.setAttribute("aria-haspopup", "dialog");
   companion.setAttribute("aria-controls", "hpo-robot-viewer");
   companion.setAttribute("aria-expanded", "false");
-  companion.title = homeHero
+  companion.title = stationary
     ? "Nhấn để xem mô hình 3D và vẫy tay"
     : "Kéo để di chuyển · Ném ra ngoài khung để ẩn · Nhấn để xem 3D";
   companion.innerHTML = fallback;
@@ -45,7 +53,8 @@ function mount() {
   restoreButton.title = "Mở robot Hiệp Phát";
   // Nút robot = đầu robot 3D (ảnh render sẵn) + bong bóng chào. Bong bóng nằm trong nút
   // nên bấm vào bong bóng cũng mở hộp thoại.
-  restoreButton.innerHTML = `<img class="hpo-robot-head" src="${ROBOT_HEAD_AVATAR}" alt="" width="64" height="64" decoding="async">`;
+  // Máy tính/máy tính bảng: đầu robot. Điện thoại: robot đủ thân đứng trên thanh nút đáy (CSS chọn ảnh).
+  restoreButton.innerHTML = `<img class="hpo-robot-head" src="${ROBOT_HEAD_AVATAR}" alt="" width="64" height="64" decoding="async"><img class="hpo-robot-full" src="${ROBOT_FULL_BODY_AVATAR}" alt="" width="116" height="240" decoding="async">`;
   const dockGreeting = document.createElement("span");
   dockGreeting.id = "hpo-robot-dock-greeting";
   dockGreeting.className = "is-hidden";
@@ -58,7 +67,7 @@ function mount() {
   greeting.textContent = GREETING_TEXT;
   companion.setAttribute("aria-describedby", greeting.id);
   document.body.append(companion, restoreButton);
-  if (homeHero) document.body.classList.add("hpo-home-robot");
+  document.body.classList.add(homeHero ? "hpo-home-robot" : "hpo-page-robot");
   const dockRestoreButton = () => {
     const floats = document.querySelector<HTMLElement>(".floats");
     if (!floats) return false;
@@ -118,23 +127,21 @@ function mount() {
   let greetingLastX = position.x,
     greetingLastY = position.y;
   let greetingMovementUntil = 0;
-  // Lời chào chỉ hiện một lần mỗi phiên để không che nội dung lặp đi lặp lại.
+  // greeted = vừa chào xong một lượt; greetAgainAt = thời điểm chào lượt kế tiếp (0 = chưa hẹn).
   let greeted = false;
+  let greetAgainAt = 0;
+  // Chỉ chào sau khi đã thử tạo robot 3D, để vẫy tay khớp lúc bong bóng bật ra.
+  let stageReady = false;
   let greetingStarted = false;
-  // Robot chỉ đứng trên trang khi hero trang chủ còn trong khung nhìn; còn lại
-  // (trang con, hoặc đã cuộn qua hero) robot thu vào nút trong cụm hỗ trợ nhanh.
-  let docked = !homeHero;
+  // Robot đứng trên trang khi trang còn ở đầu (trang chủ: cả khi băng chuyền sang slide
+  // "Giới thiệu công ty"); lướt xuống thì robot thu vào nút đầu robot ở góc.
+  let docked = false;
   try {
     robotHidden = localStorage.getItem("hpo-robot-hidden") === "true";
   } catch {
     /* Storage can be unavailable; keep the default visibility. */
   }
-  try {
-    greeted = sessionStorage.getItem("hpo-robot-greeted") === "true";
-    greetingStarted = greeted;
-  } catch {
-    /* Without storage the greeting still shows only once on this page. */
-  }
+  // Mỗi lần vào trang đều chào (bong bóng + vẫy tay); không còn giới hạn 1 lần/phiên.
   const onStage = () => !robotHidden && !docked;
   function syncDock() {
     companion.hidden = !onStage();
@@ -219,7 +226,14 @@ function mount() {
     greetingLastX = position.x;
     greetingLastY = position.y;
     if (moving) greetingMovementUntil = now + 120;
+    // Hết thời gian nghỉ giữa 2 lượt chào → mở lượt mới (vẫy tay lại cùng bong bóng).
+    if (greeted && greetAgainAt && now >= greetAgainAt && onStage() && !viewer.isOpen) {
+      greeted = false;
+      greetingStarted = false;
+      greetAgainAt = 0;
+    }
     const unavailable =
+      !stageReady ||
       greeted ||
       moving ||
       now < greetingMovementUntil ||
@@ -229,21 +243,22 @@ function mount() {
       document.hidden;
     if (unavailable) greetingIdleSince = null;
     else if (greetingIdleSince === null) greetingIdleSince = now;
-    // Điện thoại: bong bóng nằm trên chữ của hero nên hiện ngắn hơn.
-    const greetingDuration = matchMedia("(max-width: 600px)").matches ? 4000 : 6000;
     const visible =
-      greetingIdleSince !== null && now - greetingIdleSince < greetingDuration;
+      greetingIdleSince !== null && now - greetingIdleSince < GREETING_SHOW_MS;
     if (visible && !greetingStarted) {
       greetingStarted = true;
-      try {
-        sessionStorage.setItem("hpo-robot-greeted", "true");
-      } catch {
-        /* The in-memory flag still prevents repeats on this page. */
-      }
+      // Vẫy tay đúng lúc bong bóng bật ra (giảm chuyển động: chỉ hiện bong bóng).
+      if (!media.matches && stage && !stage.lost) stage.robot.wave();
     }
-    if (unavailable && greetingStarted) greeted = true;
+    if (unavailable && greetingStarted) {
+      // Bị ngắt giữa lượt (mở hộp thoại, thu về góc…) → vẫn hẹn lượt sau để vòng chào không dừng hẳn.
+      greeted = true;
+      if (!greetAgainAt) greetAgainAt = now + GREETING_GAP_MS;
+    }
     if (greetingIdleSince !== null && !visible) {
       greeted = true;
+      // Chào xong trọn một lượt → hẹn lượt sau sau khoảng nghỉ.
+      if (!greetAgainAt) greetAgainAt = now + GREETING_GAP_MS;
     }
     greeting.classList.toggle("is-hidden", !visible);
     if (visible) companion.setAttribute("aria-describedby", greeting.id);
@@ -251,21 +266,28 @@ function mount() {
   }
 
   function place() {
-    if (homeHero) {
+    if (stationary) {
       companion.style.removeProperty("transform");
       const headerHeight = (document.querySelector<HTMLElement>(".topbar")?.offsetHeight || 0) +
         (document.getElementById("navbar")?.offsetHeight || 0);
       const compact = matchMedia("(max-width: 1100px)").matches;
       const gap = innerWidth <= 600 ? 12 : 16;
-      const naturalTop = compact
-        ? headerHeight + homeHero.offsetHeight - companion.offsetHeight - gap
-        : headerHeight + 122;
+      // Trang con: robot đứng ở mép phải, khoảng giữa phần màn hình dưới header (bên trái là chữ +
+      // nút của hero; góc dưới phải là cụm nút nổi). Điện thoại: sát trên thanh nút đáy.
+      const visibleForPage = window.visualViewport?.height || innerHeight;
+      const naturalTop = !homeHero
+        ? innerWidth <= 600
+          ? Number.POSITIVE_INFINITY
+          : headerHeight + Math.max(0, (visibleForPage - headerHeight - companion.offsetHeight) / 2) + 40
+        : compact
+          ? headerHeight + homeHero.offsetHeight - companion.offsetHeight - gap
+          : headerHeight + 108; // 108 (trước 122): ở slide "Giới thiệu công ty" chân robot không chạm câu nhấn
       const visibleHeight = window.visualViewport?.height || innerHeight;
       // Trên điện thoại cụm hỗ trợ nhanh là thanh dưới đáy: chừa chỗ để robot không đè lên.
       const bottomBar = matchMedia("(max-width: 600px)").matches
         ? document.querySelector<HTMLElement>(".floats")?.offsetHeight || 0
         : 0;
-      companion.style.top = `${Math.min(naturalTop, visibleHeight - bottomBar - companion.offsetHeight - 12)}px`;
+      companion.style.top = `${Math.min(naturalTop, visibleHeight - bottomBar - companion.offsetHeight - (homeHero ? 12 : gap + 8))}px`;
       companion.style.bottom = "auto";
       greeting.style.removeProperty("left");
       greeting.style.removeProperty("--greeting-tail");
@@ -287,7 +309,7 @@ function mount() {
     updateGreeting();
   }
   function resize(initial = false) {
-    if (homeHero) {
+    if (stationary) {
       place();
       return;
     }
@@ -318,28 +340,22 @@ function mount() {
   resize(true);
   new ResizeObserver(() => resize()).observe(companion);
   new ResizeObserver(() => resize()).observe(greeting);
-  if (homeHero) {
-    new ResizeObserver(() => resize()).observe(homeHero);
-    // Hero nằm trong băng chuyền (class is-active) và được ghim suốt phần cuộn kể chuyện,
-    // nên không dựa vào việc hero còn trong khung nhìn: robot chỉ đứng trên trang khi slide
-    // hero đang hiện và trang còn ở đầu; ngoài ra thu vào cụm nút.
-    // Cuộn về đầu trang sau khi đã rời hero ≥ 3 giây → robot chào lại (chờ 0.5 giây cho
-    // robot đứng yên). Băng chuyền đổi slide không tính, để bong bóng không bật mỗi 3 giây.
-    let scrolledAway = false,
-      awaySince = 0;
+  {
+    if (homeHero) new ResizeObserver(() => resize()).observe(homeHero);
+    // Robot chỉ thu về góc khi lướt xuống (> 25% màn hình); băng chuyền đổi slide trên trang
+    // chủ không còn làm robot thu lại. Lướt lên lại → robot đứng ra, chào lại sau 0.5 giây.
     const syncHeroDock = () => {
       const now = performance.now();
       const away = scrollY > innerHeight * 0.25;
-      if (away && !scrolledAway) awaySince = now;
-      if (!away && scrolledAway && now - awaySince >= 3000) {
-        greeted = false;
-        greetingStarted = false;
-        greetingMovementUntil = now + 500;
-      }
-      scrolledAway = away;
-      const nextDocked = !homeHero.classList.contains("is-active") || away;
+      const nextDocked = away;
       if (nextDocked === docked) return;
       docked = nextDocked;
+      if (!docked) {
+        greeted = false;
+        greetingStarted = false;
+        greetAgainAt = 0;
+        greetingMovementUntil = now + 500;
+      }
       syncDock();
       if (onStage()) {
         resize();
@@ -347,10 +363,6 @@ function mount() {
       }
       updateGreeting();
     };
-    new MutationObserver(syncHeroDock).observe(homeHero, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
     window.addEventListener("scroll", syncHeroDock, { passive: true });
     syncHeroDock();
   }
@@ -358,16 +370,15 @@ function mount() {
   window.visualViewport?.addEventListener("resize", () => resize());
   window.visualViewport?.addEventListener("scroll", () => resize());
 
-  // Trang con không đặt robot 3D trên trang (chỉ có nút), nên không cần tạo WebGL ở đây;
-  // hộp thoại 3D vẫn tự tạo renderer riêng khi mở.
-  if (homeHero) {
+  // Robot 3D đứng trên mọi trang; vẫy tay bắt đầu cùng lúc bong bóng chào (updateGreeting).
+  {
     try {
       stage = new RobotStage(companion);
       stage.onRestore = resume;
-      if (!media.matches) stage.robot.wave();
     } catch (error) {
       console.warn("Robot 3D không khả dụng; hiển thị hình thay thế.", error);
     }
+    stageReady = true;
   }
   // RobotStage replaces the host contents, so attach the greeting afterwards,
   // including when WebGL initialization falls back to the static illustration.
@@ -382,7 +393,7 @@ function mount() {
     time += dt;
     if (viewer.isOpen) viewer.tick(dt, time, false);
     else if (onStage()) {
-      if (!homeHero) {
+      if (!stationary) {
         wander.update(
           dt,
           position,
@@ -394,10 +405,10 @@ function mount() {
         place();
       }
       if (stage && !stage.lost && onStage()) {
-        stage.robot.group.rotation.y = homeHero ? 0 : wander.heading;
-        if (!homeHero && !drag && !stage.robot.isWaving && wander.takeGreeting())
+        stage.robot.group.rotation.y = stationary ? 0 : wander.heading;
+        if (!stationary && !drag && !stage.robot.isWaving && wander.takeGreeting())
           stage.robot.wave();
-        stage.robot.update(dt, time, pointer, false, !homeHero && wander.walking);
+        stage.robot.update(dt, time, pointer, false, !stationary && wander.walking);
         stage.render();
       }
     }
@@ -418,7 +429,7 @@ function mount() {
   }
 
   companion.addEventListener("pointerdown", (event) => {
-    if (homeHero) return;
+    if (stationary) return;
     if (!event.isPrimary || event.button !== 0 || drag) return;
     suppressClick = false;
     keyboardFocused = false;
@@ -588,7 +599,7 @@ function mount() {
     keyboardFocused = false;
   });
   companion.addEventListener("keydown", (event) => {
-    if (homeHero) return;
+    if (stationary) return;
     const delta: Record<string, [number, number]> = {
       ArrowLeft: [-24, 0],
       ArrowRight: [24, 0],

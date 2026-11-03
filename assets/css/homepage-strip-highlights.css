@@ -62,6 +62,106 @@ html body .strip--highlights .strip-chip__icon svg {
   stroke-linejoin: round;
 }
 
+/* ---- Báo chí đưa tin (2026-11-02): .strip--press = nhãn đứng yên bên trái + vùng thẻ chạy ngang ----
+   Mỗi thẻ là <a> mở bài báo ở tab mới. Rê chuột hoặc Tab vào thẻ → dải dừng để đọc/bấm.
+   Mép mờ dần chuyển từ cả dải sang riêng vùng chạy (nhãn không bị mờ).
+   Tốc độ ~35px/giây (≈ tốc độ dải cũ): 17 thẻ dài hơn → thời lượng vòng dài hơn. */
+html body .strip.strip--press {
+  display: flex;
+  align-items: center;
+  -webkit-mask-image: none;
+          mask-image: none;
+}
+html body .strip--press .strip-press__label {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0 18px 0 clamp(16px, 2vw, 28px); /* thẳng lề trái header (28px) */
+  border-right: 1px solid #dbe3f3;
+  color: #1e3a8a;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+html body .strip--press .strip-press__label-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #1e40af;
+  color: #fff;
+}
+html body .strip--press .strip-press__label-icon svg,
+html body .strip--press .strip-chip__go {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+html body .strip--press .strip-press__label-icon svg { width: 21px; height: 21px; }
+html body .strip--press .strip-press__viewport {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 94%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 94%, transparent 100%);
+}
+html body .strip--press .strip-track { animation-duration: 300s; }
+html body .strip--press:focus-within .strip-track { animation-play-state: paused; }
+
+html body .strip--press .strip-chip--press {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+/* Tiêu đề dài → 1 dòng, cắt "…" (đủ tiêu đề trong title + aria-label) */
+html body .strip--press .strip-chip--press .strip-chip__desc {
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+html body .strip--press .strip-chip__go {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  color: #94a3b8;
+  transition: color .2s, transform .2s;
+}
+html body .strip--press .strip-chip--press:hover,
+html body .strip--press .strip-chip--press:focus-visible {
+  border-color: #1e40af;
+  box-shadow: 0 8px 22px rgba(30, 64, 175, .16);
+  transform: translateY(-2px);
+  outline: none;
+}
+html body .strip--press .strip-chip--press:hover .strip-chip__desc,
+html body .strip--press .strip-chip--press:focus-visible .strip-chip__desc { color: #0a1330; }
+html body .strip--press .strip-chip--press:hover .strip-chip__go,
+html body .strip--press .strip-chip--press:focus-visible .strip-chip__go { color: #1e40af; transform: translate(2px, -2px); }
+/* chừa chỗ cho thẻ nhích lên 2px khi rê chuột (vùng chạy có overflow: hidden) */
+html body .strip--press .strip-track { padding-top: 18px; padding-bottom: 18px; }
+
+@media (max-width: 600px) {
+  html body .strip--press .strip-press__label { gap: 0; padding: 0 10px 0 12px; }
+  html body .strip--press .strip-press__label > span:last-child {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+  }
+  html body .strip--press .strip-press__label-icon { width: 34px; height: 34px; }
+  html body .strip--press .strip-chip--press .strip-chip__desc { max-width: 230px; }
+  html body .strip--press .strip-track { padding-top: 14px; padding-bottom: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body .strip.strip--press { overflow: hidden; }
+  html body .strip--press .strip-press__viewport { overflow-x: auto; }
+}
+
 @media (max-width: 600px) {
   html body .strip--highlights .strip-track { padding: 12px 0; }
   html body .strip--highlights .strip-chip { font-size: 14px; }

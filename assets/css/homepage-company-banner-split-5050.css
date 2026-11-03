@@ -1,0 +1,61 @@
+/* ==========================================================================
+   Slide "Giới thiệu công ty" (băng chuyền hero trang chủ) — 2026-11-03
+   - Câu nhấn "Đào tạo và sát hạch cùng một địa điểm": to rõ (24→32px, đậm 800), chữ ĐỨNG (quy tắc chữ nhấn DS),
+     đỏ DS #dc2626; mép trái thẳng hàng với 3 dòng bên dưới (trước: câu nhấn lệch trái ~24px so với danh sách).
+   - 3 dòng thành danh sách gạch đầu dòng (chấm xanh primary), chấm nằm đúng mép trái của câu nhấn.
+   - Chia 50:50: nửa trái chữ, nửa phải hình. Khung hình CỐ ĐỊNH chiều cao để slide không cao thêm;
+     2 ảnh hiện tại là tạm — sẽ thay bằng ảnh anh Quốc gửi (chỉ cần đổi src 2 <img>, khung tự cắt vừa).
+   Nạp SAU homepage-company-banner-motto-on-top.css; tiền tố `html body .company-banner` để thắng các lớp cũ trong homepage.css.
+   ========================================================================== */
+
+html body .company-banner .company-banner-sheet {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: clamp(28px, 4vw, 64px);
+}
+
+/* ---- Nửa trái: chữ ---- */
+html body .company-banner .company-banner-copy {
+  grid-column: 1; align-self: center; padding: 0; border: 0; background: none;
+}
+html body .company-banner .company-banner-copy .company-banner-motto {
+  margin: 0 0 18px; padding: 0; border: 0; background: none;
+  color: #dc2626; font-family: var(--ff-display, inherit); font-size: clamp(24px, 2.2vw, 32px);
+  font-style: normal; font-weight: 800; line-height: 1.25; letter-spacing: -0.015em; text-wrap: balance;
+}
+html body .company-banner .company-banner-copy ul { margin: 0; padding: 0; list-style: none; }
+html body .company-banner .company-banner-copy li {
+  position: relative; padding-left: 26px;
+  color: #0a1330; font-size: clamp(18px, 1.5vw, 22px); line-height: 1.55;
+}
+html body .company-banner .company-banner-copy li + li { margin-top: 10px; }
+html body .company-banner .company-banner-copy li::before {
+  content: ""; position: absolute; left: 0; top: .62em;
+  width: 9px; height: 9px; border-radius: 50%; background: #1e40af;
+}
+html body .company-banner .company-banner-copy strong { color: #1e40af; }
+
+/* ---- Nửa phải: khung hình (cao cố định, 2 ảnh xếp chồng lệch) ---- */
+html body .company-banner .company-banner-photos {
+  grid-column: 2; grid-row: 2; justify-self: stretch; align-self: center;
+  position: relative; width: 100%; max-width: none; height: clamp(250px, 24vw, 340px);
+  margin: 0; padding: 0; border: 0; background: none;
+}
+html body .company-banner .company-banner-photos img {
+  position: absolute; margin: 0; object-fit: cover;
+  border: 3px solid #fff; border-radius: 22px; box-shadow: 0 16px 34px -20px rgba(20, 62, 121, .55);
+}
+html body .company-banner .company-photo-building { left: 0; top: 0; width: 74%; height: 72%; z-index: 2; }
+html body .company-banner .company-photo-fleet { right: 0; bottom: 0; width: 54%; height: 62%; z-index: 1; }
+
+/* ---- Điện thoại: 1 cột, hình trên, chữ dưới (giữ thứ tự cũ) ---- */
+@media (max-width: 600px) {
+  html body .company-banner .company-banner-sheet { grid-template-columns: minmax(0, 1fr); }
+  html body .company-banner .company-banner-copy { grid-column: 1; grid-row: 3; }
+  html body .company-banner .company-banner-photos { grid-column: 1; grid-row: 2; height: 240px; }
+  html body .company-banner .company-banner-copy .company-banner-motto { font-size: 22px; margin-bottom: 14px; }
+  html body .company-banner .company-banner-copy li { font-size: 17px; padding-left: 22px; }
+  html body .company-banner .company-banner-copy li::before { width: 8px; height: 8px; }
+}
+
+/* ---- Tiêu đề "GIỚI THIỆU CÔNG TY": chia dòng cân đối → "GIỚI THIỆU / CÔNG TY" (trước: lẻ chữ "TY" ở điện thoại) ---- */
+html body .company-banner .company-banner-heading h2 { text-wrap: balance; }

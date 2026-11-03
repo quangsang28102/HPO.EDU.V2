@@ -53,3 +53,6 @@ html body .footer-bottom {
   html body .footer-contact-item,
   html body .footer-app-desc { font-size: 14.5px; }
 }
+
+/* Đoạn mô tả công ty: tránh lẻ một chữ ở dòng cuối (vd "11/05/2010." trên điện thoại) — 03/11/2026 */
+html body .footer-desc { text-wrap: pretty; }

@@ -1,0 +1,101 @@
+/* ==========================================================================
+   Section "Đào tạo lái xe trên nền tảng số" (trang chủ) — cụm 01 Lý thuyết / 02 Thực hành (2026-11-02)
+   Thứ bậc to → nhỏ: [01 LÝ THUYẾT 22–32px] > [tiêu đề cụm 21–27px] > [tiêu đề danh sách môn 21–26px]
+   > [tên môn 18–21px] > [mô tả 16px]. Trước: nhãn 14px nhỏ nhất, tiêu đề danh sách môn ~48px to nhất.
+   Màu theo Hiệp Phát Design System: Lý thuyết primary #1e40af / primary-strong #1e3a8a / primary-soft #eff6ff;
+   Thực hành orange-strong #c2410c trên orange-soft #fff4ed. 6 môn: màu DS chỉ ở số (biến --subject-chip).
+   Giữ nguyên các mục mở/đóng (tự mở mục đầu khi lướt tới: homepage-platform-accordion-autoopen.js).
+   Tiền tố `html body` + !important ở danh sách môn: style.css gốc có selector lồng nhiều lớp.
+   ========================================================================== */
+
+/* ---- Đầu cụm: ô số + nhãn lớn (markup: span.pv-num + span.pv-label trong .platform-v2-panel-eyebrow) ---- */
+html body .platform-v2-panel-eyebrow { display: flex; align-items: center; gap: 14px; color: #1e3a8a; font-size: clamp(22px, 2.1vw, 32px); font-weight: 800; letter-spacing: .05em; }
+html body .platform-v2-panel-eyebrow .pv-num { display: grid; place-items: center; width: 1.85em; height: 1.85em; border-radius: 14px; background: #1e40af; color: #fff; font-size: .9em; letter-spacing: 0; box-shadow: 0 12px 28px -14px rgba(30, 64, 175, .75); }
+html body .platform-v2-panel--practice .platform-v2-panel-eyebrow { color: #c2410c; }
+html body .platform-v2-panel--practice .platform-v2-panel-eyebrow .pv-num { background: #c2410c; box-shadow: 0 12px 28px -14px rgba(194, 65, 12, .7); }
+html body .platform-v2-panel-head { padding-bottom: 22px; }
+html body .platform-v2-panel-head h3 { margin-top: 12px; font-size: clamp(21px, 1.8vw, 27px); }
+
+/* ---- Mô tả + ô điều kiện: 16px, tối đa ~75 ký tự/dòng ---- */
+html body .platform-v2-panel-description { max-width: 860px; gap: 12px; margin-top: 8px; }
+html body .platform-v2-panel-description p, html body .platform-v2-threshold p,
+html body .platform-v2-panel-description ul { font-size: 16px; line-height: 1.6; color: #334155; }
+html body .platform-v2-threshold { width: fit-content; max-width: 100%; padding: 12px 18px; border-color: #dbe3f0; border-left-color: #1e40af; background: #eff6ff; }
+html body .platform-v2-threshold strong { color: #1e3a8a; }
+html body .platform-v2-panel--practice .platform-v2-panel-description ul { width: fit-content; max-width: 100%; background: #fff4ed; border-color: #fed7aa; color: #431407; }
+html body .platform-v2-panel--practice .platform-v2-panel-description li strong { color: #9a3412; }
+
+/* ---- Danh sách 6 môn: còn 1 lớp khung, tiêu đề cấp dưới cụm, chữ đứng ---- */
+html body .platform-v2-curriculum.syll.syll--chapters { margin-top: 30px; padding: 26px 0 0; border: 0; border-top: 1px solid #dbe3f0; border-radius: 0; background: transparent !important; }
+html body .platform-v2-curriculum .curr-head--chapters { max-width: none; margin: 0 0 16px; }
+html body .platform-v2-curriculum .curr-head--chapters .eyebrow { display: none; }
+html body .platform-v2-curriculum .curr-head--chapters .sec-title--new-color { font-size: clamp(21px, 1.8vw, 26px) !important; letter-spacing: -.015em; color: #0a1330; -webkit-text-fill-color: #0a1330; }
+html body .platform-v2-curriculum .pv-accent { color: #1e40af; -webkit-text-fill-color: #1e40af; }
+html body .platform-v2-curriculum .syll-list--chapters { border-color: #dbe3f0; box-shadow: none; }
+html body .platform-v2-curriculum .syll-row[data-mon="01"] { --subject-chip: #dc2626; }
+html body .platform-v2-curriculum .syll-row[data-mon="02"] { --subject-chip: #1e40af; }
+html body .platform-v2-curriculum .syll-row[data-mon="03"] { --subject-chip: #78350f; }
+html body .platform-v2-curriculum .syll-row[data-mon="04"] { --subject-chip: #15803d; }
+html body .platform-v2-curriculum .syll-row[data-mon="05"] { --subject-chip: #c2410c; }
+html body .platform-v2-curriculum .syll-row[data-mon="06"] { --subject-chip: #2d3489; }
+html body .platform-v2-curriculum .syll-list--chapters .syll-row { --subject-text: #475569; padding: 16px 20px !important; box-shadow: none !important; }
+html body .platform-v2-curriculum .syll-list--chapters .syll-row .syll-num { color: var(--subject-chip) !important; font-size: 20px !important; font-weight: 800; }
+html body .platform-v2-curriculum .syll-list--chapters .syll-row .syll-title,
+html body .platform-v2-curriculum .syll-list--chapters .syll-row .syll-title-main { font-size: clamp(18px, 1.5vw, 21px) !important; font-weight: 700 !important; line-height: 1.35 !important; color: #0a1330 !important; }
+html body .platform-v2-curriculum.syll--chapters-color-bg .syll-list--chapters .syll-row .syll-meta { border: 0 !important; background: #eaf0fa !important; color: #334155 !important; font-size: 14px !important; font-weight: 600 !important; letter-spacing: 0 !important; text-transform: none !important; padding: 3px 10px !important; }
+html body .platform-v2-curriculum .syll-list--chapters .syll-row .syll-down { width: 40px !important; height: 40px !important; border: 1px solid #b8c5db !important; background: #fff !important; color: #1e40af !important; }
+
+/* ---- Khung ảnh / video LUÔN hiện bên phải (Mẫu A, 2026-11-02) ----
+   Trước: mở mục → cột ảnh nở 0→340px + khung trượt/phóng + ảnh co 80% nhảy lên 45px (.is-face-preview) + chữ xuống dòng lại.
+   Nay: 2 cột cố định từ đầu, khung đứng yên; đổi mục chỉ mờ chéo ảnh (homepage.js swap: opacity 0 → đổi src → 1). */
+html body .platform-v2-panel--theory .platform-v2-theory-layout,
+html body .platform-v2-panel--theory.has-active-accordion .platform-v2-theory-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 400px); gap: 28px; align-items: stretch; transition: none;
+}
+html body .platform-v2-panel--theory .platform-v2-theory-layout .platform-v2-visual,
+html body .platform-v2-panel--practice .platform-v2-practice-layout .platform-v2-visual--practice {
+  display: block; visibility: visible; opacity: 1; transform: none; transition: none;
+}
+html body .platform-v2-panel--theory .platform-v2-theory-layout .platform-v2-visual { max-width: none; }
+html body .platform-v2-panel--theory .platform-v2-theory-layout .platform-circle--v2 {
+  height: 100%; min-height: 260px; aspect-ratio: auto; padding: 22px;
+  border: 1px solid #dbe3f0; border-radius: 20px; box-shadow: none;
+  background: radial-gradient(70% 70% at 50% 45%, #ffffff 0%, #eff6ff 60%, #e3ecfb 100%);
+}
+html body .platform-v2-panel--theory .platform-v2-theory-layout .platform-circle--v2 img,
+html body .platform-v2-panel--theory .platform-v2-theory-layout .platform-v2-visual.is-face-preview .platform-circle--v2 img {
+  max-height: 230px; transform: none; transition: opacity .35s ease;
+  filter: drop-shadow(0 14px 22px rgba(30, 58, 138, .22));
+}
+html body .platform-v2-panel--practice .platform-v2-practice-layout,
+html body .platform-v2-panel--practice.has-active-accordion .platform-v2-practice-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 580px); gap: 28px; transition: none;
+}
+@media (max-width: 900px) {
+  html body .platform-v2-panel--practice .platform-v2-practice-layout,
+  html body .platform-v2-panel--practice.has-active-accordion .platform-v2-practice-layout { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+}
+@media (max-width: 768px) {
+  html body .platform-v2-panel--theory .platform-v2-theory-layout,
+  html body .platform-v2-panel--theory.has-active-accordion .platform-v2-theory-layout { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  html body .platform-v2-panel--theory .platform-v2-theory-layout .platform-v2-visual { max-width: none; justify-self: stretch; }
+  html body .platform-v2-panel--theory .platform-v2-theory-layout .platform-circle--v2 { min-height: 220px; }
+  html body .platform-v2-panel--theory .platform-v2-theory-layout .platform-circle--v2 img { max-height: 190px; }
+}
+
+/* ---- A+: viền sáng 1 lần khi mục đầu TỰ mở (lướt tới) — xanh cho Lý thuyết, cam cho Thực hành ---- */
+html body .platform-v2-panel .pacc-item.is-auto-highlight { --pv-glow: 30, 64, 175; animation: pv-auto-highlight 1.6s ease-out 0.35s 1 both; }
+html body .platform-v2-panel--practice .pacc-item.is-auto-highlight { --pv-glow: 194, 65, 12; }
+@keyframes pv-auto-highlight {
+  0% { box-shadow: 0 0 0 0 rgba(var(--pv-glow), 0); }
+  25% { box-shadow: 0 0 0 4px rgba(var(--pv-glow), .45), 0 10px 26px -10px rgba(var(--pv-glow), .45); }
+  100% { box-shadow: 0 0 0 10px rgba(var(--pv-glow), 0), 0 10px 26px -10px rgba(var(--pv-glow), 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body .platform-v2-panel .pacc-item.is-auto-highlight { animation: none; }
+}
+
+@media (max-width: 640px) {
+  html body .platform-v2-panel-description p, html body .platform-v2-threshold p, html body .platform-v2-panel-description ul { font-size: 15.5px; }
+  html body .platform-v2-curriculum .syll-list--chapters .syll-row { padding: 14px 12px !important; }
+}
