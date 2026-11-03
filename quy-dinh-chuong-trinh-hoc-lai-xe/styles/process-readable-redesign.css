@@ -1,0 +1,413 @@
+/* ==========================================================================
+   Trang Quy trình đào tạo: bản "to rõ, lướt thấy hết" (link SAU style.css của trang)
+   1. Hero 2 cột: tiêu đề bên trái, tóm tắt 5 bước ("bạn cần làm gì") bên phải. Bỏ khoảng trống 400px.
+   2. Thanh bước: 5 cột đều, nhãn bước 3 rút gọn ("Kiểm tra hoàn thành").
+   3. Chữ nhỏ tăng: nội dung ≥ 16px, nhãn phụ ≥ 13–14px đậm; bảng khung chương trình 14 → 16px.
+   4. Bước 4: "Giấy tờ của học viên" lên trước; 5 giấy tờ nội bộ gom vào "Do trung tâm chuẩn bị".
+   5. Chữ và màu chữ theo Hiệp Phát Design System (tokens.css, mục 0 bên dưới).
+   ========================================================================== */
+
+/* ==========================================================================
+   0. Hiệp Phát Design System (tokens.css) cho trang này
+   - Chữ: tiêu đề Be Vietnam Pro (h1 32→52, h2 28→40, h3 20→24, h4 18), nội dung SVN-Gilroy
+     (lead 19, body 18, small 16), eyebrow 16 đậm 700 giãn .08em, nút 17.
+   - Màu chữ: ink #0a1330 (chính), ink-soft #334155 (mô tả), primary #1e40af (eyebrow, số bước),
+     red #dc2626 (chữ nhấn, nút đăng ký), green #15803d (mức đạt); trên nền navy: tiêu đề trắng,
+     chữ #dbe4f5, nhấn vàng #facc15.
+   - Cam #ff6b35 (web V1) chỉ được trang trí, KHÔNG làm màu chữ → token --accent của trang đổi sang
+     red. Riêng hàng "Đào tạo thực hành" dùng cặp nhãn Thực hành: orange-strong #c2410c trên orange-soft #fff4ed.
+   - Tiêu đề 2 vế giống trang chủ (homepage-headings-design-system.css): vế 1 gradient
+     "Xanh Hiệp Phát" #1e3a8a → #2b26fb, vế nhấn (em) gradient "Đỏ Hiệp Phát" #b91c1c → #ea1e24.
+   ========================================================================== */
+html body.process-page {
+  --hp-ink: #0a1330;
+  --hp-ink-soft: #334155;
+  --hp-primary: #1e40af;
+  --hp-primary-strong: #1e3a8a;
+  --hp-primary-soft: #eff6ff;
+  --hp-red: #dc2626;
+  --hp-red-hover: #b91c1c;
+  --hp-ink-on-navy: #dbe4f5;
+  --hp-yellow: #facc15;
+  --hp-title-blue: linear-gradient(100deg, #1e3a8a 0%, #2b26fb 45%, #2b26fb 55%, #1e3a8a 100%);
+  --hp-title-red: linear-gradient(100deg, #b91c1c 0%, #ea1e24 45%, #ea1e24 55%, #b91c1c 100%);
+  --hp-lead-bar: linear-gradient(90deg, #2b26fb, #faec1a);
+  /* token của trang (process.css) → giá trị DS */
+  --navy: #0a1330;
+  --accent: #dc2626;
+  --accent-soft: #fef2f2;
+  --green: #15803d;
+  --green-soft: #f0fdf4;
+  --line: #dbe3f0;
+  --line-strong: #b8c5db;
+  color: var(--hp-ink);
+}
+
+/* Tiêu đề trang + tiêu đề bước: vế 1 Xanh Hiệp Phát, chữ nhấn Đỏ Hiệp Phát */
+html body.process-page .process-hero h1,
+html body.process-page .process-section .section-head h2 {
+  background-image: var(--hp-title-blue);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--hp-primary-strong);
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+html body.process-page .process-hero h1 em,
+html body.process-page .process-section .section-head h2 em {
+  background-image: var(--hp-title-red);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--hp-red-hover);
+  padding-right: .08em; /* chữ nghiêng không bị cắt mép phải */
+}
+html body.process-page .process-section .section-head h2 { font-size: clamp(28px, 2.8vw, 40px); }
+html body.process-page .process-section .section-head p:not(.eyebrow) { color: var(--hp-ink-soft); font-size: 18px; line-height: 1.65; }
+
+/* Eyebrow: primary, 16px, đậm 700, giãn .08em; vạch đỏ */
+html body.process-page .eyebrow {
+  color: var(--hp-primary);
+  font-family: var(--ff-display);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+html body.process-page .eyebrow::before { background: var(--hp-red); }
+
+/* Dải nền navy (khối "Bạn đã chuẩn bị đủ hồ sơ?", Bước 5): tiêu đề trắng, chữ #dbe4f5, nhấn vàng */
+html body.process-page .admission-cta h2,
+html body.process-page .license-banner h2 { color: #fff; font-size: clamp(28px, 2.8vw, 40px); letter-spacing: -0.015em; }
+html body.process-page .admission-cta h2 em,
+html body.process-page .license-banner h2 em { color: var(--hp-yellow); }
+html body.process-page .admission-cta__eyebrow,
+html body.process-page .license-banner .eyebrow--light,
+html body.process-page .registration-option__label { color: var(--hp-yellow); }
+html body.process-page .license-banner .eyebrow--light::before { background: var(--hp-yellow); }
+html body.process-page .admission-cta p:not(.admission-cta__eyebrow),
+html body.process-page .registration-locations li,
+html body.process-page .license-banner p:not(.eyebrow) { color: var(--hp-ink-on-navy); }
+html body.process-page .admission-cta__intro::before { background: linear-gradient(180deg, var(--hp-red), rgba(220, 38, 38, 0)); }
+html body.process-page .license-banner::after { background: var(--hp-lead-bar); }
+
+/* Nút đăng ký: red, chữ trắng 17px, bo 12px, cao ≥52px */
+html body.process-page .admission-cta__button {
+  min-height: 52px;
+  border-radius: 12px;
+  background: var(--hp-red);
+  border-color: var(--hp-red);
+  color: #fff;
+  font-family: var(--ff-display);
+  font-size: 17px;
+  font-weight: 700;
+}
+html body.process-page .admission-cta__button:hover,
+html body.process-page .admission-cta__button:focus-visible { background: var(--hp-red-hover); border-color: var(--hp-red-hover); }
+
+/* Số thứ tự: primary (thống nhất với 5 bước ở đầu trang); trên nền navy dùng vàng + chữ navy */
+html body.process-page .condition-card__number,
+html body.process-page .review-card__index { background: var(--hp-primary); color: #fff; }
+html body.process-page .exam-sublist__number { background: var(--hp-primary-soft); color: var(--hp-primary-strong); }
+html body.process-page .exam-content li::before { background: var(--hp-yellow); color: var(--hp-ink); }
+
+/* Mức đạt ("Đạt từ 5,0 trở lên"): green */
+html body.process-page .review-card__result { border-left-color: var(--green); background: var(--green-soft); color: var(--hp-ink); }
+
+/* Hàng "II. Đào tạo thực hành": cặp nhãn Thực hành của DS */
+html body.process-page .training-table__section--practice th,
+html body.process-page .training-table__section--practice td { background: #fff4ed; }
+html body.process-page .training-table__section--practice .mon-cell,
+html body.process-page .training-table__section--practice .mon-cell::after { color: #c2410c; }
+
+/* Mô tả trong thẻ: ink-soft */
+html body.process-page .info-card p,
+html body.process-page .check-card p,
+html body.process-page .process-card p,
+html body.process-page .exam-center-list { color: var(--hp-ink-soft); }
+
+/* Nền hero: quầng xanh logo nhạt thay quầng cam */
+html body.process-page .process-hero {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.88) 44%, rgba(239, 246, 255, 0.72) 100%),
+    radial-gradient(circle at 82% 28%, rgba(43, 38, 251, 0.10), transparent 30%),
+    linear-gradient(var(--surface) 1px, transparent 1px),
+    linear-gradient(90deg, var(--surface) 1px, transparent 1px);
+  background-size: auto, auto, 28px 28px, 28px 28px;
+}
+html body.process-page .completion-panel--accent { background: linear-gradient(180deg, #fef2f2, var(--white) 36%); }
+
+/* ---- 1. Hero 2 cột + tóm tắt 5 bước ---- */
+html body .process-hero { min-height: 0; }
+html body .process-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(440px, 0.9fr);
+  gap: clamp(32px, 4vw, 64px);
+  align-items: center;
+  width: 100%;
+  padding-top: clamp(40px, 4vw, 64px);
+  padding-bottom: clamp(40px, 4vw, 64px);
+}
+html body .process-hero h1 { font-size: clamp(32px, 3.6vw, 52px); text-wrap: balance; }
+html body .process-hero__lead { margin-top: 20px; font-size: 19px; line-height: 1.5; }
+
+.process-overview {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.process-overview a {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  column-gap: 14px;
+  row-gap: 2px;
+  align-items: center;
+  padding: 12px 18px 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+  color: var(--navy);
+  text-decoration: none;
+  transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+}
+.process-overview a:hover,
+.process-overview a:focus-visible {
+  border-color: var(--blue-600);
+  box-shadow: 0 10px 24px rgba(30, 64, 175, 0.14);
+}
+.process-overview__num {
+  grid-row: span 2;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: var(--blue-600);
+  color: var(--white);
+  font-family: var(--ff-display);
+  font-size: 19px;
+  font-weight: 800;
+}
+.process-overview strong {
+  font-family: var(--ff-display);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+.process-overview__text { font-size: 16px; line-height: 1.45; color: var(--hp-ink-soft); }
+
+/* ---- 2. Thanh bước: 5 cột đều, nhãn to ---- */
+@media (min-width: 901px) {
+  html body .process-subnav__scroller {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    min-height: 0;
+    padding-top: 12px;
+    padding-bottom: 10px;
+  }
+  html body .process-subnav__link { min-height: 76px; }
+  html body .process-subnav__label { font-size: 17px; white-space: nowrap; }
+}
+
+/* ---- 3a. Bước 1: thẻ giấy tờ + khối đăng ký ---- */
+html body .info-card__index { font-size: 15px; min-width: 40px; min-height: 30px; }
+html body .info-card h3 { font-size: 20px; }
+html body .info-card p { font-size: 16px; line-height: 1.6; }
+html body .admission-cta__eyebrow,
+html body .registration-option__label { font-size: 14px; letter-spacing: .06em; }
+html body .registration-locations li { font-size: 16px; }
+
+/* ---- 3b. Bước 2: bảng khung chương trình ---- */
+html body .training-table caption,
+html body .training-table-card__head span { font-size: 16px; }
+html body .training-table th,
+html body .training-table td { font-size: 16px; line-height: 1.4; }
+html body .training-table thead th { font-size: 15px; }
+html body .training-table .mon-cell { font-size: 16px; }
+html body .training-tab { font-size: 16px; }
+
+/* ---- 3c. Bước 2: danh sách 6 môn (accordion) và nội dung mở ra ----
+   Cỡ chữ gốc nằm trong style.css chung với selector lồng tới 5 class (.platform-v2-curriculum .syll-detail .chap.is-featured > .chap-row …),
+   nên chỉ ở khối này dùng !important, giới hạn trong body.process-page để không ảnh hưởng trang chủ. */
+html body.process-page .platform-v2-curriculum .syll-meta,
+html body.process-page .platform-v2-curriculum .syll-tag,
+html body.process-page .platform-v2-curriculum .syll-title small { font-size: 13.5px !important; }
+html body.process-page .platform-v2-curriculum .chap-chip,
+html body.process-page .platform-v2-curriculum .chap-tag { font-size: 14px !important; }
+html body.process-page .platform-v2-curriculum .chap-num-wrap { font-size: 13px !important; }
+html body.process-page .platform-v2-curriculum .phan-desc,
+html body.process-page .platform-v2-curriculum .chap-desc { font-size: 16px !important; line-height: 1.5 !important; }
+html body.process-page .platform-v2-curriculum .sa-num { font-size: 15px !important; }
+html body.process-page .platform-v2-curriculum .phan-chip,
+html body.process-page .platform-v2-curriculum .phan-count-meta { font-size: 13px !important; }
+html body.process-page .training-table-card .training-table thead tr th { font-size: 14.5px; }
+/* Màu chữ 6 môn theo DS (bảng màu gốc có tím #6d28d9, vàng #f4c430 1.6:1 trên trắng — ngoài DS).
+   Vạch màu bên trái thẻ giữ nguyên (trang trí). Cùng lý do !important như trên. */
+html body.process-page .platform-v2-curriculum .syll-row[data-mon="01"] { --hp-subject: #dc2626; }
+html body.process-page .platform-v2-curriculum .syll-row[data-mon="02"] { --hp-subject: #1e40af; }
+html body.process-page .platform-v2-curriculum .syll-row[data-mon="03"] { --hp-subject: #78350f; }
+html body.process-page .platform-v2-curriculum .syll-row[data-mon="04"] { --hp-subject: #15803d; }
+html body.process-page .platform-v2-curriculum .syll-row[data-mon="05"] { --hp-subject: #c2410c; }
+html body.process-page .platform-v2-curriculum .syll-row[data-mon="06"] { --hp-subject: #2d3489; }
+html body.process-page .platform-v2-curriculum .syll-row .syll-num,
+html body.process-page .platform-v2-curriculum .syll-row .syll-meta,
+html body.process-page .platform-v2-curriculum .syll-row .syll-tag { color: var(--hp-subject, #1e40af) !important; }
+html body.process-page .platform-v2-curriculum .syll-row .syll-title { color: #0a1330 !important; }
+html body.process-page .platform-v2-curriculum .phan-title,
+html body.process-page .platform-v2-curriculum .chap-title { color: #0a1330 !important; }
+html body.process-page .platform-v2-curriculum .phan-desc,
+html body.process-page .platform-v2-curriculum .chap-desc { color: #334155 !important; }
+/* Nhãn "số chương" của từng Phần: learning.css khóa màu bằng selector id + !important → cần #main-content */
+html body.process-page #main-content .phan-title .phan-count-meta { color: #334155 !important; }
+html body.process-page #main-content .phan--I .phan-title .phan-count-meta { color: #dc2626 !important; }
+html body.process-page #main-content .phan--II .phan-title .phan-count-meta { color: #15803d !important; }
+html body.process-page #main-content .phan--III .phan-title .phan-count-meta { color: #c2410c !important; }
+html body.process-page .platform-v2-curriculum .sa-text { color: #0a1330 !important; }
+html body.process-page .platform-v2-curriculum .curr-head--chapters .eyebrow { color: #1e40af !important; font-size: 16px !important; letter-spacing: .08em !important; }
+html body.process-page .platform-v2-curriculum .curr-head--chapters .sec-title--new-color { color: #0a1330 !important; -webkit-text-fill-color: #0a1330 !important; }
+html body.process-page .platform-v2-curriculum .curr-head--chapters .sec-title--new-color em { color: #1e40af !important; -webkit-text-fill-color: #1e40af !important; font-family: inherit; font-weight: inherit; }
+html body.process-page .bb-shape-color { color: #1e40af; }
+html body .bb-name { font-size: 16px; }
+html body.process-page .bb-card .bb-name,
+html body.process-page .bb-card .bb-shape { color: #0a1330; }
+html body .bb-shape,
+html body .bb-shape-color { font-size: 14px; }
+
+/* ---- 3d. Bước 3: xét hoàn thành khóa học ---- */
+html body .process-section--completion .section-head p:not(.eyebrow) { font-size: 16px; color: #334155; }
+html body .check-card > span { font-size: 15px; }
+html body .check-card h4 { font-size: 18px; line-height: 1.3; }
+html body .process-section--completion .check-card p,
+html body .process-section--completion .process-card p { font-size: 16px; line-height: 1.5; }
+html body .process-section--completion .condition-card h4 { font-size: 18px; line-height: 1.5; }
+html body .process-section--completion .process-card h4 { font-size: 18px; }
+html body.process-page .completion-panel__head h3 { font-size: clamp(20px, 1.7vw, 24px); }
+html body .process-section--completion .completion-review-grid li { font-size: 16px; line-height: 1.5; }
+html body .process-section--completion .review-card__content .review-card__lead,
+html body .process-section--completion .review-card__content .review-card__result { font-size: 17px; }
+
+/* ---- 4. Bước 4: giấy tờ học viên trước, giấy tờ trung tâm sau ---- */
+.exam-docs {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 24px 26px 26px;
+  background: var(--white);
+}
+.exam-docs + .exam-docs { margin-top: 16px; }
+.exam-docs h3 {
+  margin: 0 0 16px;
+  color: var(--navy);
+  font-family: var(--ff-display);
+  font-size: clamp(20px, 1.7vw, 24px);
+  font-weight: 700;
+  line-height: 1.25;
+}
+.exam-docs--learner {
+  border-color: rgba(30, 64, 175, 0.28);
+  box-shadow: 0 14px 32px rgba(10, 19, 48, 0.07);
+}
+.exam-docs--center { background: var(--surface); }
+html body .exam-docs .exam-sublist { margin-top: 0; }
+html body .exam-sublist__number { font-size: 15px; min-width: 32px; min-height: 32px; }
+html body .exam-sublist p { font-size: 18px; line-height: 1.55; }
+html body .exam-paper-list li { font-size: 15.5px; }
+.exam-center-list {
+  margin: 0;
+  padding-left: 1.3em;
+  columns: 2;
+  column-gap: 44px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.exam-center-list li { break-inside: avoid; margin-bottom: 8px; padding-left: 4px; }
+html body .exam-board__label { font-size: 16px; }
+html body .exam-content { margin-top: 16px; }
+html body .exam-content h3 { font-size: 22px; }
+html body .exam-content li { font-size: 17px; }
+
+/* ---- 5. Bước 5 ---- */
+html body .license-banner__info p { font-size: 18px; line-height: 1.6; }
+
+/* ---- Tablet ---- */
+@media (max-width: 1100px) {
+  html body .process-hero__inner { grid-template-columns: minmax(0, 1fr); }
+  html body .process-hero h1 { max-width: none; }
+}
+@media (max-width: 900px) {
+  html body .exam-sublist { grid-template-columns: minmax(0, 1fr); }
+  .exam-center-list { columns: 1; }
+}
+
+/* ---- Điện thoại ---- */
+@media (max-width: 640px) {
+  html body .process-hero__inner { gap: 24px; padding: 32px 16px 36px; }
+  html body .process-hero h1 { font-size: 34px; }
+  html body .process-hero__lead { font-size: 17px; margin-top: 14px; }
+  .process-overview a { grid-template-columns: 38px minmax(0, 1fr); column-gap: 12px; padding: 10px 14px 10px 12px; }
+  .process-overview__num { width: 38px; height: 38px; font-size: 17px; }
+  .process-overview strong { font-size: 17.5px; }
+  .process-overview__text { font-size: 15.5px; }
+  html body .process-subnav__label { font-size: 15px; }
+  html body .training-table th,
+  html body .training-table td { font-size: 15px; }
+  .exam-docs { padding: 18px 16px 20px; }
+  /* số thứ tự nằm cạnh chữ, không chiếm 1 dòng riêng */
+  html body .exam-docs .exam-sublist > li { grid-template-columns: 32px minmax(0, 1fr); align-items: start; gap: 10px; }
+  .exam-docs h3 { font-size: 20px; }
+  html body .exam-sublist p { font-size: 16px; }
+  .exam-center-list { font-size: 15.5px; }
+  html body .exam-content li { font-size: 16px; }
+  html body .license-banner__info p { font-size: 16.5px; }
+}
+
+/* ==========================================================================
+   Soát thiết kế 03/11/2026 (mức 1–2): danh sách 6 môn giống trang chủ, chữ nhấn không gãy dòng,
+   mô tả đầu bước ≤ ~75 ký tự/dòng, chữ phụ ≥14–15px, cỡ tiêu đề cùng cấp đồng nhất.
+   Đặt CUỐI file → thắng các rule cùng độ ưu tiên phía trên.
+   ========================================================================== */
+
+/* ---- Mô tả đầu bước: giới hạn độ dài dòng (trước ~135 ký tự/dòng ở 1440px) ---- */
+html body.process-page .process-section .section-head p:not(.eyebrow) { max-width: 68ch; }
+
+/* ---- Chữ nhấn trong tiêu đề không bị tách 2 dòng (vd "hồ / sơ" trên điện thoại) ---- */
+html body.process-page .process-hero h1 em,
+html body.process-page .process-section .section-head h2 em,
+html body.process-page .license-banner h2 em { white-space: nowrap; }
+
+/* ---- Tiêu đề cấp 3: cùng thang DS (h3 20–24px, thẻ nhỏ 18px) ---- */
+html body.process-page .training-table-card__head h3 { font-size: clamp(21px, 1.8vw, 24px); }
+html body.process-page .step-card h3 { font-size: 18px; line-height: 1.35; }
+
+/* ---- Danh sách 6 môn: 1 lớp khung, tiêu đề dưới cấp bảng, màu DS chỉ ở số (như trang chủ) ---- */
+html body.process-page .platform-v2-curriculum.syll.syll--chapters { margin-top: 32px; padding: 0; border: 0; border-radius: 0; background: transparent !important; box-shadow: none; }
+html body.process-page .platform-v2-curriculum .curr-head--chapters { max-width: none; margin: 0 0 16px; }
+html body.process-page .platform-v2-curriculum .curr-head--chapters .eyebrow { display: none; }
+html body.process-page .platform-v2-curriculum .curr-head--chapters .sec-title--new-color { font-size: clamp(21px, 1.8vw, 24px) !important; letter-spacing: -.015em; }
+html body.process-page .platform-v2-curriculum .syll-list--chapters { border-color: #dbe3f0; box-shadow: none; }
+html body.process-page .platform-v2-curriculum .syll-list--chapters .syll-row { padding: 16px 20px !important; box-shadow: none !important; }
+html body.process-page .platform-v2-curriculum .syll-row .syll-num { color: var(--hp-subject, #1e40af) !important; font-size: 20px !important; font-weight: 800; }
+html body.process-page .platform-v2-curriculum .syll-list--chapters .syll-row .syll-title,
+html body.process-page .platform-v2-curriculum .syll-list--chapters .syll-row .syll-title-main { font-size: clamp(18px, 1.5vw, 21px) !important; font-weight: 700 !important; line-height: 1.35 !important; }
+html body.process-page .platform-v2-curriculum.syll--chapters-color-bg .syll-list--chapters .syll-row .syll-meta {
+  border: 0 !important; background: #eaf0fa !important; color: #334155 !important;
+  font-size: 14px !important; font-weight: 600 !important; letter-spacing: 0 !important; text-transform: none !important; padding: 3px 10px !important;
+}
+html body.process-page .platform-v2-curriculum .syll-list--chapters .syll-row .syll-down { width: 40px !important; height: 40px !important; border: 1px solid #b8c5db !important; background: #fff !important; color: #1e40af !important; }
+
+/* ---- Chữ phụ: ≥14px đậm (nhãn) / ≥15px (chú thích) ---- */
+html body.process-page .platform-v2-curriculum .chap-chip,
+html body.process-page .platform-v2-curriculum .chap-tag { font-size: 15px !important; }
+html body.process-page .platform-v2-curriculum .chap-num-wrap { font-size: 14px !important; font-weight: 700; }
+html body.process-page .platform-v2-curriculum .phan-chip,
+html body.process-page .platform-v2-curriculum .phan-count-meta { font-size: 14px !important; font-weight: 700; }
+html body.process-page .training-table-card .training-table thead tr th { font-size: 15px; }
+html body .bb-shape,
+html body .bb-shape-color { font-size: 15px; }
+html body.process-page .admission-cta__eyebrow,
+html body.process-page .registration-option__label { font-size: 15px; }
+
+@media (max-width: 640px) {
+  html body.process-page .platform-v2-curriculum .syll-list--chapters .syll-row { padding: 14px 12px !important; }
+}

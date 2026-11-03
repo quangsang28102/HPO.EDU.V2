@@ -76,6 +76,7 @@
   list.addEventListener('click', (event) => {
     const card = event.target.closest('[data-course]');
     if (!card) return;
+    if (event.target.closest('a')) return; // bấm nút Đăng ký / Gọi trong thẻ → không bật/tắt thẻ
     const viaKeyboard = event.detail === 0;
     if (viaKeyboard) ignoreHoverUntil = performance.now() + KEYBOARD_HOVER_GUARD_MS;
     if (!accordionMode.matches && lastPointerType === 'mouse' && !viaKeyboard) {

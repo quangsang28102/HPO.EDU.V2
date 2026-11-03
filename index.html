@@ -22,19 +22,6 @@
       href="assets/images/favicon.png"
     />
 
-    <link
-      rel="preconnect"
-      href="https://fonts.googleapis.com"
-    />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
 
     <link
       rel="stylesheet"
@@ -42,8 +29,23 @@
     />
     <link
       rel="stylesheet"
-      href="style.css?v=20261020-chapter-cta"
+      href="style.css?v=20261103-trang-con"
     />
+    <link rel="stylesheet" href="assets/css/homepage-header-robot.css" />
+    <link rel="stylesheet" href="assets/css/homepage-reference-hero.css" />
+    <link rel="stylesheet" href="assets/css/homepage-hero-title-gradient.css?v=20261031-title" />
+    <link rel="stylesheet" href="assets/css/homepage-hero-welcome-line.css?v=20261102-welcome-eyebrow" />
+    <link rel="stylesheet" href="assets/css/homepage-hpo-system-card-motion.css?v=20261031-hpo-card-v2" />
+    <link rel="stylesheet" href="assets/css/homepage-infrastructure-section.css?v=20261031-infra" />
+    <link rel="stylesheet" href="assets/css/homepage-brand-certificates.css?v=20261102-hpo-ring-brand5" />
+    <link rel="stylesheet" href="assets/css/homepage-award-slider-refresh.css?v=20261101-awards" />
+    <link rel="stylesheet" href="assets/css/homepage-headings-design-system.css?v=20261031-ds-headings" />
+    <link rel="stylesheet" href="assets/css/homepage-section-headings-compact.css?v=20261102-compact" />
+    <link rel="stylesheet" href="assets/css/homepage-platform-theory-practice-refresh.css?v=20261102-khung-anh-co-dinh" />
+    <link rel="stylesheet" href="assets/css/homepage-strip-highlights.css?v=20261102-press" />
+    <link rel="stylesheet" href="assets/css/homepage-company-banner-motto-on-top.css?v=20261102-motto" />
+    <link rel="stylesheet" href="assets/css/homepage-company-banner-split-5050.css?v=20261103-gioi-thieu-5050" />
+    <link rel="stylesheet" href="assets/css/homepage-company-banner-campus-photo.css?v=20261103-anh-co-so" />
   </head>
 
   <body>
@@ -52,7 +54,7 @@
       data-base=""
       data-page="home"
     ></div>
-    <script src="assets/js/site-header.js"></script>
+    <script src="assets/js/site-header.js?v=20261102-menu-cu"></script>
 
     <!-- ── HPO DIGITAL HERO — tiêu đề trên, video toàn chiều rộng bên dưới ── -->
     <div
@@ -70,33 +72,61 @@
         <section
           class="hpo-digital-hero"
           role="group"
-          aria-label="1 / 2: Digital Hero"
+          aria-label="1 / 2: Kỷ nguyên AI trong đào tạo lái xe"
         >
           <div class="hpo-digital-hero-inner">
             <div class="hpo-digital-left hpo-slide-stage">
+              <!-- Dòng chào trên tiêu đề (nằm ngoài h1: CSS hero tô màu theo span trong h1) -->
+              <p class="hpo-hero-welcome hpo-slide-item">Chào mừng các bạn đến với</p>
               <h1 class="hpo-digital-title hpo-slide-item hpo-slide-title">
-                <span>TIÊN PHONG ĐỘT PHÁ GIẢI PHÁP ỨNG DỤNG CÔNG NGHỆ</span>
-                <span
-                  >XÂY DỰNG HỆ SINH THÁI QUY TRÌNH ĐÀO TẠO LÁI XE CƠ GIỚI ĐƯỜNG
-                  BỘ</span
-                >
-                <span>TRÊN NỀN TẢNG SỐ TÍCH HỢP TRÍ TUỆ NHÂN TẠO AI</span>
+                <span>KỶ NGUYÊN AI</span>
+                <span>TRONG ĐÀO TẠO LÁI XE</span>
               </h1>
-            </div>
-            <div class="hpo-digital-visual">
-              <video
-                class="hpo-digital-video"
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="auto"
-              >
-                <source
-                  src="https://hpo.edu.vn/wp-content/uploads/2026/05/heroBanner.mp4"
-                  type="video/mp4"
-                />
-              </video>
+              <p class="hpo-digital-description">
+                Hệ sinh thái chuyển đổi số toàn diện cho đào tạo lái xe ô tô thông minh
+              </p>
+              <div class="hpo-sys-card" aria-labelledby="hpoSysTitle">
+                <div class="hpo-sys-ring">
+                  <img src="assets/images/hero/hpo-system-circle.webp?v=20261102-hpo-ring-brand5" alt="Sơ đồ hệ thống HPO: xe tập lái Hiệp Phát ở tâm, nối với xác thực khuôn mặt, cloud (server), DAT, cabin, mô phỏng, đa nền tảng" width="362" height="362" />
+                  <!-- Lớp chuyển động phủ lên ảnh: tia quét, sóng lan từ xe, gói dữ liệu (SVG do JS vẽ) -->
+                  <span class="hpo-sys-sweep" aria-hidden="true"></span>
+                  <span class="hpo-sys-ripple" aria-hidden="true"></span>
+                  <span class="hpo-sys-ripple hpo-sys-ripple--late" aria-hidden="true"></span>
+                  <svg class="hpo-sys-motion" viewBox="0 0 362 362" aria-hidden="true"></svg>
+                </div>
+                <div class="hpo-sys-info">
+                  <p class="hpo-sys-eyebrow">Hệ sinh thái số</p>
+                  <h2 class="hpo-sys-title" id="hpoSysTitle">Hệ thống HPO</h2>
+                  <p class="hpo-sys-lead">6 thành phần kết nối trên một nền tảng</p>
+                  <!-- data-hpo-node khớp NODES trong homepage-hpo-system-card-motion.js -->
+                  <ul class="hpo-sys-list">
+                    <li data-hpo-node="face" tabindex="0">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3m8 0h3a1 1 0 0 1 1 1v3m0 8v3a1 1 0 0 1-1 1h-3m-8 0H5a1 1 0 0 1-1-1v-3M9 10h.01M15 10h.01M9.5 15a3.5 3.5 0 0 0 5 0" /></svg>
+                      <span><b>Xác thực khuôn mặt</b><small>Nhận diện học viên khi học</small></span>
+                    </li>
+                    <li data-hpo-node="cloud" tabindex="0">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" /></svg>
+                      <span><b>Cloud (server)</b><small>Lưu trữ dữ liệu tập trung</small></span>
+                    </li>
+                    <li data-hpo-node="dat" tabindex="0">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14l4-4M3.34 19a10 10 0 1 1 17.32 0" /></svg>
+                      <span><b>DAT</b><small>Giám sát quãng đường thực hành</small></span>
+                    </li>
+                    <li data-hpo-node="cabin" tabindex="0">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="2" /><path d="M12 14v7M10 12H3M14 12h7" /></svg>
+                      <span><b>Cabin</b><small>Cabin học lái mô phỏng</small></span>
+                    </li>
+                    <li data-hpo-node="sim" tabindex="0">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4M10 7.5v5l4-2.5z" /></svg>
+                      <span><b>Mô phỏng</b><small>Luyện tình huống giao thông</small></span>
+                    </li>
+                    <li data-hpo-node="platform" tabindex="0">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="1.5" /><path d="M6 18h6M9 14v4" /><rect x="17" y="8" width="5" height="11" rx="1" /></svg>
+                      <span><b>Đa nền tảng</b><small>Học trên mọi thiết bị</small></span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -112,6 +142,9 @@
               <h2>GIỚI THIỆU CÔNG TY</h2>
             </header>
             <div class="company-banner-copy company-reveal">
+              <p class="company-banner-motto">
+                Đào tạo và sát hạch cùng một địa điểm
+              </p>
               <ul>
                 <li>Thành lập năm 2010.</li>
                 <li>Hoạt động đào tạo lái xe từ năm 2015.</li>
@@ -121,27 +154,17 @@
                   tạo thành công nhiều học viên.
                 </li>
               </ul>
-              <p class="company-banner-motto">
-                Tập lái và sát hạch cùng một địa điểm
-              </p>
             </div>
             <div
               class="company-banner-photos"
               aria-label="Cơ sở đào tạo Hiệp Phát"
             >
               <img
-                class="company-photo-building company-reveal"
-                src="assets/images/banner/h1.png"
-                alt="Tòa nhà trung tâm Hiệp Phát"
-                width="717"
-                height="343"
-              />
-              <img
-                class="company-photo-fleet company-reveal"
-                src="assets/images/banner/h2.png"
-                alt="Sân tập và đội xe đào tạo lái xe Hiệp Phát"
-                width="546"
-                height="367"
+                class="company-photo-campus company-reveal"
+                src="assets/images/banner/company-campus-ai-collage-white-trucks.webp"
+                alt="Cơ sở Hiệp Phát: tòa nhà, đội xe tập lái và xe sát hạch, sân tập, sân sát hạch"
+                width="1600"
+                height="900"
               />
             </div>
             <div class="company-banner-facilities company-reveal">
@@ -197,25 +220,55 @@
       </div>
     </div>
 
-    <!-- ── STRIP / TICKER ── -->
-    <div class="strip">
-      <div
-        class="strip-track"
-        id="stripTrack"
-      >
-        <span class="strip-item">Hạng B</span>
-        <span class="strip-item">Hạng C1</span>
-        <span class="strip-item">Ứng dụng AI</span>
-        <span class="strip-item">Sa hình</span>
-        <span class="strip-item">DAT</span>
-        <span class="strip-item">Top 5 ASEAN</span>
-        <!-- duplicate for seamless loop -->
-        <span class="strip-item">Hạng B</span>
-        <span class="strip-item">Hạng C1</span>
-        <span class="strip-item">Ứng dụng AI</span>
-        <span class="strip-item">Sa hình</span>
-        <span class="strip-item">DAT</span>
-        <span class="strip-item">Top 5 ASEAN</span>
+    <!-- ── STRIP: BÁO CHÍ ĐƯA TIN (họp báo 28/10/2026). Nhãn "Báo chí đưa tin" đứng yên bên trái; các thẻ chạy ngang
+         (nhóm 2 lặp lại nhóm 1, aria-hidden + tabindex=-1 để chạy vòng liền mạch). Bấm thẻ → mở bài báo ở tab mới.
+         Thêm/bớt bài: sửa thẻ <a> ở CẢ 2 nhóm (nhóm 2 giữ tabindex="-1"); thời lượng vòng chỉnh ở homepage-strip-highlights.css. ── -->
+    <div class="strip strip--highlights strip--press" role="region" aria-label="Báo chí đưa tin về Hiệp Phát">
+      <p class="strip-press__label">
+        <span class="strip-press__label-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span>
+        <span>Báo chí<br />đưa tin</span>
+      </p>
+      <div class="strip-press__viewport">
+        <div class="strip-track" id="stripTrack">
+        <div class="strip-group">
+        <a class="strip-chip strip-chip--press" href="https://tuoitre.vn/hoc-lai-xe-o-to-moi-luc-moi-noi-nho-nen-tang-so-tich-hop-ai-100261028160205011.htm" target="_blank" rel="noopener" title="Tuổi Trẻ: Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp AI" aria-label="Tuổi Trẻ: Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp AI (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>Tuổi Trẻ</b><span class="strip-chip__desc">Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp AI</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://thanhnien.vn/hoc-lai-o-to-chay-thu-sa-hinh-duong-truong-ao-truoc-khi-len-xe-that-185261028170253296.htm" target="_blank" rel="noopener" title="Thanh Niên: Học lái ô tô: Chạy thử sa hình, đường trường ảo trước khi lên xe thật" aria-label="Thanh Niên: Học lái ô tô: Chạy thử sa hình, đường trường ảo trước khi lên xe thật (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>Thanh Niên</b><span class="strip-chip__desc">Học lái ô tô: Chạy thử sa hình, đường trường ảo trước khi lên xe thật</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://www.sggp.org.vn/hoc-lai-o-to-tu-xa-qua-he-sinh-thai-chuyen-doi-so-tich-hop-ai-post878862.html" target="_blank" rel="noopener" title="Sài Gòn Giải Phóng: Học lái ô tô từ xa qua hệ sinh thái chuyển đổi số tích hợp AI" aria-label="Sài Gòn Giải Phóng: Học lái ô tô từ xa qua hệ sinh thái chuyển đổi số tích hợp AI (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>Sài Gòn Giải Phóng</b><span class="strip-chip__desc">Học lái ô tô từ xa qua hệ sinh thái chuyển đổi số tích hợp AI</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://htv.vn/mo-hinh-hoc-lai-xe-moi-hoc-lai-xe-o-to-moi-luc-moi-noi-nho-nen-tang-so-tich-hop-ai-22226102820330211.htm" target="_blank" rel="noopener" title="HTV: Lần đầu tiên, quy trình đào tạo lái xe được ứng dụng AI tại Việt Nam" aria-label="HTV: Lần đầu tiên, quy trình đào tạo lái xe được ứng dụng AI tại Việt Nam (video, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.2-2.5z"/></svg></span><b>HTV</b><span class="strip-chip__desc">Lần đầu tiên, quy trình đào tạo lái xe được ứng dụng AI tại Việt Nam</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://vov.vn/xa-hoi/tphcm-ung-dung-ai-giup-hoc-vien-lai-xe-hoan-thanh-khoa-hoc-dung-han-post1345317.vov" target="_blank" rel="noopener" title="VOV: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn" aria-label="VOV: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>VOV</b><span class="strip-chip__desc">TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://voh.com.vn/xa-hoi/mo-hinh-hoc-lai-xe-moi-hoc-lai-xe-o-to-moi-luc-moi-noi-nho-nen-tang-so-tich-hop-a-i-676291.html" target="_blank" rel="noopener" title="VOH: Mô hình học lái xe mới: Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp A.I." aria-label="VOH: Mô hình học lái xe mới: Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp A.I. (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>VOH</b><span class="strip-chip__desc">Mô hình học lái xe mới: Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp A.I.</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://congan.com.vn/giao-thong-24h/chuyen-doi-so-toan-dien-va-ung-dung-ai-trong-dao-tao-sat-hach-lai-xe_199292.html" target="_blank" rel="noopener" title="Công an TP.HCM: Chuyển đổi số toàn diện và ứng dụng AI trong đào tạo, sát hạch lái xe" aria-label="Công an TP.HCM: Chuyển đổi số toàn diện và ứng dụng AI trong đào tạo, sát hạch lái xe (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>Công an TP.HCM</b><span class="strip-chip__desc">Chuyển đổi số toàn diện và ứng dụng AI trong đào tạo, sát hạch lái xe</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://videophapluat.baophapluat.vn/tieu-diem/tphcm-ung-dung-ai-trong-dao-tao-lai-xe-o-to-tren-nen-tang-so-196279.html" target="_blank" rel="noopener" title="Pháp Luật Việt Nam: TP.HCM: Ứng dụng AI trong đào tạo lái xe ô tô trên nền tảng số" aria-label="Pháp Luật Việt Nam: TP.HCM: Ứng dụng AI trong đào tạo lái xe ô tô trên nền tảng số (video, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.2-2.5z"/></svg></span><b>Pháp Luật Việt Nam</b><span class="strip-chip__desc">TP.HCM: Ứng dụng AI trong đào tạo lái xe ô tô trên nền tảng số</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://baotintuc.vn/ung-dung-ai-ho-tro-dao-tao-va-quan-ly-hoc-vien-lai-xe-post1398019.html" target="_blank" rel="noopener" title="Báo Tin Tức: Ứng dụng AI hỗ trợ đào tạo và quản lý học viên lái xe" aria-label="Báo Tin Tức: Ứng dụng AI hỗ trợ đào tạo và quản lý học viên lái xe (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>Báo Tin Tức</b><span class="strip-chip__desc">Ứng dụng AI hỗ trợ đào tạo và quản lý học viên lái xe</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://danviet.vn/dao-tao-lai-xe-tren-nen-tang-so-hoc-vien-ngoi-nha-dang-ky-va-hoc-ly-thuyet-moi-luc-moi-noi-d1470631.html" target="_blank" rel="noopener" title="Dân Việt: Đào tạo lái xe trên nền tảng số: Học viên ngồi nhà đăng ký và học lý thuyết mọi lúc, mọi nơi" aria-label="Dân Việt: Đào tạo lái xe trên nền tảng số: Học viên ngồi nhà đăng ký và học lý thuyết mọi lúc, mọi nơi (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>Dân Việt</b><span class="strip-chip__desc">Đào tạo lái xe trên nền tảng số: Học viên ngồi nhà đăng ký và học lý thuyết mọi lúc, mọi nơi</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://vovgiaothong.vn/newsaudio/dao-tao-lai-xe-thoi-ai-xoa-khoang-cach-khong-gian-thoi-gian-d56394.html" target="_blank" rel="noopener" title="VOV Giao thông: Đào tạo lái xe thời AI, xóa khoảng cách không gian, thời gian" aria-label="VOV Giao thông: Đào tạo lái xe thời AI, xóa khoảng cách không gian, thời gian (bài phát thanh, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg></span><b>VOV Giao thông</b><span class="strip-chip__desc">Đào tạo lái xe thời AI, xóa khoảng cách không gian, thời gian</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://vov1.vov.vn/khoa-hoc-cong-nghe/tin-khoa-hoc-cong-nghe/tphcm-ung-dung-ai-giup-hoc-vien-lai-xe-hoan-thanh-khoa-hoc-dung-han-137899.vov" target="_blank" rel="noopener" title="VOV1: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn" aria-label="VOV1: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn (bài phát thanh, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg></span><b>VOV1</b><span class="strip-chip__desc">TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://giaothong.tapchixaydung.vn/tphcm-day-manh-chuyen-doi-so-ung-dung-ai-trong-dao-tao-lai-xe-o-to-183290000000002483.htm" target="_blank" rel="noopener" title="Tạp chí Xây dựng: TP.HCM đẩy mạnh chuyển đổi số, ứng dụng AI trong đào tạo lái xe ô tô" aria-label="Tạp chí Xây dựng: TP.HCM đẩy mạnh chuyển đổi số, ứng dụng AI trong đào tạo lái xe ô tô (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>Tạp chí Xây dựng</b><span class="strip-chip__desc">TP.HCM đẩy mạnh chuyển đổi số, ứng dụng AI trong đào tạo lái xe ô tô</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://vanhoavadoisong.vn/tphcm-ung-dung-ai-giup-hoc-vien-lai-xe-hoan-thanh-khoa-hoc-dung-han-a29691.html" target="_blank" rel="noopener" title="Văn hóa và Đời sống: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn" aria-label="Văn hóa và Đời sống: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>Văn hóa và Đời sống</b><span class="strip-chip__desc">TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://tintuconline.com.vn/ung-dung-ai-trong-dao-tao-lai-xe-hon-85-hoc-vien-hoan-thanh-khoa-hoc-dung-han-5136131.html" target="_blank" rel="noopener" title="Tin Tức Online: Ứng dụng AI trong đào tạo lái xe, hơn 85% học viên hoàn thành khóa học đúng hạn" aria-label="Tin Tức Online: Ứng dụng AI trong đào tạo lái xe, hơn 85% học viên hoàn thành khóa học đúng hạn (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>Tin Tức Online</b><span class="strip-chip__desc">Ứng dụng AI trong đào tạo lái xe, hơn 85% học viên hoàn thành khóa học đúng hạn</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://www.facebook.com/CafeTek.vn/posts/pfbid0vMM44LD8z3nu65poBtFinT73YbUmrB4HbH1kJR9fSYT4ggvsAd1J1uYeLiRhq3LZl" target="_blank" rel="noopener" title="CafeTek: Kỷ nguyên AI trong đào tạo lái xe: Học lái ô tô bây giờ có gì khác biệt?" aria-label="CafeTek: Kỷ nguyên AI trong đào tạo lái xe: Học lái ô tô bây giờ có gì khác biệt? (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>CafeTek</b><span class="strip-chip__desc">Kỷ nguyên AI trong đào tạo lái xe: Học lái ô tô bây giờ có gì khác biệt?</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://www.facebook.com/reel/1417602930487450" target="_blank" rel="noopener" title="Made By VietNam: Doanh nghiệp Việt ứng dụng AI giúp học lái xe trực quan, sinh động" aria-label="Made By VietNam: Doanh nghiệp Việt ứng dụng AI giúp học lái xe trực quan, sinh động (video, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.2-2.5z"/></svg></span><b>Made By VietNam</b><span class="strip-chip__desc">Doanh nghiệp Việt ứng dụng AI giúp học lái xe trực quan, sinh động</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        </div>
+        <div class="strip-group" aria-hidden="true">
+        <a class="strip-chip strip-chip--press" href="https://tuoitre.vn/hoc-lai-xe-o-to-moi-luc-moi-noi-nho-nen-tang-so-tich-hop-ai-100261028160205011.htm" target="_blank" rel="noopener" tabindex="-1" title="Tuổi Trẻ: Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp AI" aria-label="Tuổi Trẻ: Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp AI (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>Tuổi Trẻ</b><span class="strip-chip__desc">Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp AI</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://thanhnien.vn/hoc-lai-o-to-chay-thu-sa-hinh-duong-truong-ao-truoc-khi-len-xe-that-185261028170253296.htm" target="_blank" rel="noopener" tabindex="-1" title="Thanh Niên: Học lái ô tô: Chạy thử sa hình, đường trường ảo trước khi lên xe thật" aria-label="Thanh Niên: Học lái ô tô: Chạy thử sa hình, đường trường ảo trước khi lên xe thật (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>Thanh Niên</b><span class="strip-chip__desc">Học lái ô tô: Chạy thử sa hình, đường trường ảo trước khi lên xe thật</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://www.sggp.org.vn/hoc-lai-o-to-tu-xa-qua-he-sinh-thai-chuyen-doi-so-tich-hop-ai-post878862.html" target="_blank" rel="noopener" tabindex="-1" title="Sài Gòn Giải Phóng: Học lái ô tô từ xa qua hệ sinh thái chuyển đổi số tích hợp AI" aria-label="Sài Gòn Giải Phóng: Học lái ô tô từ xa qua hệ sinh thái chuyển đổi số tích hợp AI (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>Sài Gòn Giải Phóng</b><span class="strip-chip__desc">Học lái ô tô từ xa qua hệ sinh thái chuyển đổi số tích hợp AI</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://htv.vn/mo-hinh-hoc-lai-xe-moi-hoc-lai-xe-o-to-moi-luc-moi-noi-nho-nen-tang-so-tich-hop-ai-22226102820330211.htm" target="_blank" rel="noopener" tabindex="-1" title="HTV: Lần đầu tiên, quy trình đào tạo lái xe được ứng dụng AI tại Việt Nam" aria-label="HTV: Lần đầu tiên, quy trình đào tạo lái xe được ứng dụng AI tại Việt Nam (video, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.2-2.5z"/></svg></span><b>HTV</b><span class="strip-chip__desc">Lần đầu tiên, quy trình đào tạo lái xe được ứng dụng AI tại Việt Nam</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://vov.vn/xa-hoi/tphcm-ung-dung-ai-giup-hoc-vien-lai-xe-hoan-thanh-khoa-hoc-dung-han-post1345317.vov" target="_blank" rel="noopener" tabindex="-1" title="VOV: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn" aria-label="VOV: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>VOV</b><span class="strip-chip__desc">TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://voh.com.vn/xa-hoi/mo-hinh-hoc-lai-xe-moi-hoc-lai-xe-o-to-moi-luc-moi-noi-nho-nen-tang-so-tich-hop-a-i-676291.html" target="_blank" rel="noopener" tabindex="-1" title="VOH: Mô hình học lái xe mới: Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp A.I." aria-label="VOH: Mô hình học lái xe mới: Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp A.I. (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>VOH</b><span class="strip-chip__desc">Mô hình học lái xe mới: Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp A.I.</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://congan.com.vn/giao-thong-24h/chuyen-doi-so-toan-dien-va-ung-dung-ai-trong-dao-tao-sat-hach-lai-xe_199292.html" target="_blank" rel="noopener" tabindex="-1" title="Công an TP.HCM: Chuyển đổi số toàn diện và ứng dụng AI trong đào tạo, sát hạch lái xe" aria-label="Công an TP.HCM: Chuyển đổi số toàn diện và ứng dụng AI trong đào tạo, sát hạch lái xe (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>Công an TP.HCM</b><span class="strip-chip__desc">Chuyển đổi số toàn diện và ứng dụng AI trong đào tạo, sát hạch lái xe</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://videophapluat.baophapluat.vn/tieu-diem/tphcm-ung-dung-ai-trong-dao-tao-lai-xe-o-to-tren-nen-tang-so-196279.html" target="_blank" rel="noopener" tabindex="-1" title="Pháp Luật Việt Nam: TP.HCM: Ứng dụng AI trong đào tạo lái xe ô tô trên nền tảng số" aria-label="Pháp Luật Việt Nam: TP.HCM: Ứng dụng AI trong đào tạo lái xe ô tô trên nền tảng số (video, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.2-2.5z"/></svg></span><b>Pháp Luật Việt Nam</b><span class="strip-chip__desc">TP.HCM: Ứng dụng AI trong đào tạo lái xe ô tô trên nền tảng số</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://baotintuc.vn/ung-dung-ai-ho-tro-dao-tao-va-quan-ly-hoc-vien-lai-xe-post1398019.html" target="_blank" rel="noopener" tabindex="-1" title="Báo Tin Tức: Ứng dụng AI hỗ trợ đào tạo và quản lý học viên lái xe" aria-label="Báo Tin Tức: Ứng dụng AI hỗ trợ đào tạo và quản lý học viên lái xe (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>Báo Tin Tức</b><span class="strip-chip__desc">Ứng dụng AI hỗ trợ đào tạo và quản lý học viên lái xe</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://danviet.vn/dao-tao-lai-xe-tren-nen-tang-so-hoc-vien-ngoi-nha-dang-ky-va-hoc-ly-thuyet-moi-luc-moi-noi-d1470631.html" target="_blank" rel="noopener" tabindex="-1" title="Dân Việt: Đào tạo lái xe trên nền tảng số: Học viên ngồi nhà đăng ký và học lý thuyết mọi lúc, mọi nơi" aria-label="Dân Việt: Đào tạo lái xe trên nền tảng số: Học viên ngồi nhà đăng ký và học lý thuyết mọi lúc, mọi nơi (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>Dân Việt</b><span class="strip-chip__desc">Đào tạo lái xe trên nền tảng số: Học viên ngồi nhà đăng ký và học lý thuyết mọi lúc, mọi nơi</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://vovgiaothong.vn/newsaudio/dao-tao-lai-xe-thoi-ai-xoa-khoang-cach-khong-gian-thoi-gian-d56394.html" target="_blank" rel="noopener" tabindex="-1" title="VOV Giao thông: Đào tạo lái xe thời AI, xóa khoảng cách không gian, thời gian" aria-label="VOV Giao thông: Đào tạo lái xe thời AI, xóa khoảng cách không gian, thời gian (bài phát thanh, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg></span><b>VOV Giao thông</b><span class="strip-chip__desc">Đào tạo lái xe thời AI, xóa khoảng cách không gian, thời gian</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://vov1.vov.vn/khoa-hoc-cong-nghe/tin-khoa-hoc-cong-nghe/tphcm-ung-dung-ai-giup-hoc-vien-lai-xe-hoan-thanh-khoa-hoc-dung-han-137899.vov" target="_blank" rel="noopener" tabindex="-1" title="VOV1: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn" aria-label="VOV1: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn (bài phát thanh, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg></span><b>VOV1</b><span class="strip-chip__desc">TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://giaothong.tapchixaydung.vn/tphcm-day-manh-chuyen-doi-so-ung-dung-ai-trong-dao-tao-lai-xe-o-to-183290000000002483.htm" target="_blank" rel="noopener" tabindex="-1" title="Tạp chí Xây dựng: TP.HCM đẩy mạnh chuyển đổi số, ứng dụng AI trong đào tạo lái xe ô tô" aria-label="Tạp chí Xây dựng: TP.HCM đẩy mạnh chuyển đổi số, ứng dụng AI trong đào tạo lái xe ô tô (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>Tạp chí Xây dựng</b><span class="strip-chip__desc">TP.HCM đẩy mạnh chuyển đổi số, ứng dụng AI trong đào tạo lái xe ô tô</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://vanhoavadoisong.vn/tphcm-ung-dung-ai-giup-hoc-vien-lai-xe-hoan-thanh-khoa-hoc-dung-han-a29691.html" target="_blank" rel="noopener" tabindex="-1" title="Văn hóa và Đời sống: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn" aria-label="Văn hóa và Đời sống: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>Văn hóa và Đời sống</b><span class="strip-chip__desc">TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://tintuconline.com.vn/ung-dung-ai-trong-dao-tao-lai-xe-hon-85-hoc-vien-hoan-thanh-khoa-hoc-dung-han-5136131.html" target="_blank" rel="noopener" tabindex="-1" title="Tin Tức Online: Ứng dụng AI trong đào tạo lái xe, hơn 85% học viên hoàn thành khóa học đúng hạn" aria-label="Tin Tức Online: Ứng dụng AI trong đào tạo lái xe, hơn 85% học viên hoàn thành khóa học đúng hạn (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>Tin Tức Online</b><span class="strip-chip__desc">Ứng dụng AI trong đào tạo lái xe, hơn 85% học viên hoàn thành khóa học đúng hạn</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://www.facebook.com/CafeTek.vn/posts/pfbid0vMM44LD8z3nu65poBtFinT73YbUmrB4HbH1kJR9fSYT4ggvsAd1J1uYeLiRhq3LZl" target="_blank" rel="noopener" tabindex="-1" title="CafeTek: Kỷ nguyên AI trong đào tạo lái xe: Học lái ô tô bây giờ có gì khác biệt?" aria-label="CafeTek: Kỷ nguyên AI trong đào tạo lái xe: Học lái ô tô bây giờ có gì khác biệt? (bài báo, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span><b>CafeTek</b><span class="strip-chip__desc">Kỷ nguyên AI trong đào tạo lái xe: Học lái ô tô bây giờ có gì khác biệt?</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <a class="strip-chip strip-chip--press" href="https://www.facebook.com/reel/1417602930487450" target="_blank" rel="noopener" tabindex="-1" title="Made By VietNam: Doanh nghiệp Việt ứng dụng AI giúp học lái xe trực quan, sinh động" aria-label="Made By VietNam: Doanh nghiệp Việt ứng dụng AI giúp học lái xe trực quan, sinh động (video, mở trong tab mới)"><span class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.2-2.5z"/></svg></span><b>Made By VietNam</b><span class="strip-chip__desc">Doanh nghiệp Việt ứng dụng AI giúp học lái xe trực quan, sinh động</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        </div>
+        </div>
       </div>
     </div>
 
@@ -299,15 +352,6 @@
               <strong>Hàng Việt Tốt</strong>
               <small>Thương hiệu Việt 2025</small>
             </span>
-          </button>
-          <button
-            type="button"
-            class="award-slider__autoplay-toggle"
-            aria-label="Tạm dừng tự chuyển giải thưởng"
-            aria-pressed="false"
-          >
-            <span aria-hidden="true">Ⅱ</span>
-            <span>Tạm dừng tự chuyển</span>
           </button>
         </div>
 
@@ -420,214 +464,201 @@
           </p>
         </header>
 
-        <div class="brand-protection__list">
+        <!-- Lưới văn bằng: mỗi thẻ = ảnh văn bằng (bấm mở lightbox nhóm brand-protection) + tên + mô tả + thông tin chính -->
+        <div class="brand-cert-grid">
           <article
-            class="protection-item"
+            class="brand-cert"
             data-reveal
           >
-            <span class="protection-item__number">01</span>
             <div
-              class="protection-item__thumb"
+              class="brand-cert__media"
               data-img-group="brand-protection"
               data-img-idx="0"
               role="button"
               tabindex="0"
               aria-label="Xem Giấy chứng nhận đăng ký nhãn hiệu số 537625"
             >
+              <span class="brand-cert__tag">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /><path d="m9 12 2 2 4-4" /></svg>
+                Sở hữu trí tuệ
+              </span>
+              <span class="brand-cert__num" aria-hidden="true">01</span>
               <img
                 src="assets/images/so-huu-tri-tue/nhanHieu.png"
                 alt="Giấy chứng nhận đăng ký nhãn hiệu số 537625"
+                width="1190"
+                height="837"
                 loading="lazy"
-              /><span class="protection-item__zoom">Xem ảnh</span>
+              />
+              <span class="brand-cert__zoom" aria-hidden="true">Xem ảnh</span>
             </div>
-            <div class="protection-item__copy">
-              <span>Sở hữu trí tuệ</span>
+            <div class="brand-cert__body">
               <h3>Giấy chứng nhận đăng ký nhãn hiệu</h3>
-              <p class="protection-item__summary">
-                Văn bằng ghi nhận nhãn hiệu của Công ty TNHH Ô Tô Hiệp Phát được bảo
-                hộ cho dịch vụ thuộc Nhóm 41 – Giáo dục.
-              </p>
-              <p>
-                Chủ sở hữu:
-                <strong>Công ty TNHH Ô Tô Hiệp Phát</strong><br />
-                Số chứng nhận:
-                <strong>537625</strong><br />
-                Quyết định số:
-                <strong>46269/QĐ-SHTT</strong><br />
-                Ngày cấp:
-                <strong>11/04/2025</strong><br />
-                Danh mục dịch vụ:
-                <strong>Nhóm 41 – Giáo dục</strong>
-              </p>
+              <p>Văn bằng ghi nhận nhãn hiệu của Công ty TNHH Ô Tô Hiệp Phát được bảo hộ cho dịch vụ thuộc Nhóm 41 – Giáo dục.</p>
+              <dl class="brand-cert__facts">
+                <div><dt>Số chứng nhận</dt><dd>537625</dd></div>
+                <div><dt>Quyết định</dt><dd>46269/QĐ-SHTT</dd></div>
+                <div><dt>Ngày cấp</dt><dd>11/04/2025</dd></div>
+              </dl>
             </div>
           </article>
 
-          <a
-            class="protection-item protection-item--link"
-            href="http://online.gov.vn/Website/chi-tiet-135372"
-            target="_blank"
-            rel="noopener"
+          <article
+            class="brand-cert"
             data-reveal
-            data-delay="2"
+            data-delay="1"
           >
-            <span class="protection-item__number">02</span>
             <div
-              class="protection-item__thumb"
+              class="brand-cert__media"
               data-img-group="brand-protection"
               data-img-idx="3"
               role="button"
               tabindex="0"
               aria-label="Xem thông tin website hpo.edu.vn đã thông báo Bộ Công Thương"
             >
+              <span class="brand-cert__tag">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h18l-1.5-5h-15L3 9Zm0 0v11h18V9M9 20v-6h6v6" /></svg>
+                Website thương mại điện tử
+              </span>
+              <span class="brand-cert__num" aria-hidden="true">02</span>
               <img
                 src="assets/images/so-huu-tri-tue/boCngThuong.png"
                 alt="Thông tin website hpo.edu.vn đã thông báo Bộ Công Thương"
+                width="606"
+                height="948"
                 loading="lazy"
-              /><span class="protection-item__zoom">Xem ảnh</span>
+              />
+              <span class="brand-cert__zoom" aria-hidden="true">Xem ảnh</span>
             </div>
-            <div class="protection-item__copy">
-              <span>Website thương mại điện tử</span>
+            <div class="brand-cert__body">
               <h3>Website đã thông báo Bộ Công Thương</h3>
-              <p class="protection-item__summary">
-                Ảnh chụp trên Cổng online.gov.vn ghi nhận hpo.edu.vn là nền tảng đặt
-                hàng trực tuyến đã thông báo Bộ Công Thương.
-              </p>
-              <p>
-                Website:
-                <strong>hpo.edu.vn</strong><br />
-                Loại hình:
-                <strong>Nền tảng đặt hàng trực tuyến</strong><br />
-                Doanh nghiệp:
-                <strong>Công ty TNHH Ô Tô Hiệp Phát</strong><br />
-                Mã số thuế:
-                <strong>0309987279</strong><br />
-                Trạng thái:
-                <strong>Đã thông báo Bộ Công Thương</strong>
-              </p>
+              <p>Cổng online.gov.vn ghi nhận hpo.edu.vn là nền tảng đặt hàng trực tuyến đã thông báo Bộ Công Thương.</p>
+              <dl class="brand-cert__facts">
+                <div><dt>Website</dt><dd>hpo.edu.vn</dd></div>
+                <div><dt>Mã số thuế</dt><dd>0309987279</dd></div>
+                <div><dt>Trạng thái</dt><dd>Đã thông báo Bộ Công Thương</dd></div>
+              </dl>
+              <a
+                class="brand-cert__link"
+                href="http://online.gov.vn/Website/chi-tiet-135372"
+                target="_blank"
+                rel="noopener"
+                >Xem trên online.gov.vn <span aria-hidden="true">↗</span></a
+              >
             </div>
-            <span
-              class="protection-item__arrow"
-              aria-hidden="true"
-              >↗</span
-            >
-          </a>
+          </article>
 
           <article
-            class="protection-item protection-item--domain"
+            class="brand-cert"
             data-reveal
             data-delay="2"
           >
-            <span class="protection-item__number">03</span>
             <div
-              class="protection-item__thumb protection-item__thumb--domain"
+              class="brand-cert__media"
               data-img-group="brand-protection"
               data-img-idx="4"
               role="button"
               tabindex="0"
               aria-label="Xem Giấy chứng nhận đăng ký tên miền hpo.edu.vn"
             >
+              <span class="brand-cert__tag">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></svg>
+                Tài nguyên Internet
+              </span>
+              <span class="brand-cert__num" aria-hidden="true">03</span>
               <img
                 src="assets/images/so-huu-tri-tue/tenMien.png"
                 alt="Giấy chứng nhận đăng ký tên miền hpo.edu.vn"
+                width="652"
+                height="922"
                 loading="lazy"
-              /><span class="protection-item__zoom">Xem ảnh</span>
+              />
+              <span class="brand-cert__zoom" aria-hidden="true">Xem ảnh</span>
             </div>
-            <div class="protection-item__copy">
-              <span>Tài nguyên Internet</span>
+            <div class="brand-cert__body">
               <h3>Giấy chứng nhận đăng ký tên miền “hpo.edu.vn”</h3>
-              <p class="protection-item__summary">
-                Giấy chứng nhận của P.A Việt Nam ghi nhận tên miền hpo.edu.vn do Công
-                ty TNHH Ô Tô Hiệp Phát đăng ký.
-              </p>
-              <p>
-                Tên miền:
-                <strong>hpo.edu.vn</strong><br />
-                Chủ thể đăng ký:
-                <strong>Công ty TNHH Ô Tô Hiệp Phát</strong><br />
-                Ngày đăng ký:
-                <strong>23/02/2021</strong><br />
-                Ngày hết hạn:
-                <strong>23/02/2027</strong><br />
-                Nhà đăng ký:
-                <strong>Công ty TNHH P.A Việt Nam</strong>
-              </p>
+              <p>Giấy chứng nhận của P.A Việt Nam ghi nhận tên miền hpo.edu.vn do Công ty TNHH Ô Tô Hiệp Phát đăng ký.</p>
+              <dl class="brand-cert__facts">
+                <div><dt>Tên miền</dt><dd>hpo.edu.vn</dd></div>
+                <div><dt>Ngày đăng ký</dt><dd>23/02/2021</dd></div>
+                <div><dt>Nhà đăng ký</dt><dd>P.A Việt Nam</dd></div>
+              </dl>
             </div>
           </article>
 
           <article
-            class="protection-item"
+            class="brand-cert"
             data-reveal
             data-delay="3"
           >
-            <span class="protection-item__number">04</span>
             <div
-              class="protection-item__thumb"
+              class="brand-cert__media"
               data-img-group="brand-protection"
               data-img-idx="1"
               role="button"
               tabindex="0"
               aria-label="Xem Giấy chứng nhận quyền tác giả bài giảng video"
             >
+              <span class="brand-cert__tag">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4M10 7.5v5l4-2.5z" /></svg>
+                Quyền tác giả bài giảng
+              </span>
+              <span class="brand-cert__num" aria-hidden="true">04</span>
               <img
                 src="assets/images/so-huu-tri-tue/tacGiaBaiGiang.png"
                 alt="Giấy chứng nhận quyền tác giả bài giảng video"
+                width="673"
+                height="979"
                 loading="lazy"
-              /><span class="protection-item__zoom">Xem ảnh</span>
+              />
+              <span class="brand-cert__zoom" aria-hidden="true">Xem ảnh</span>
             </div>
-            <div class="protection-item__copy">
-              <span>Quyền tác giả bài giảng</span>
+            <div class="brand-cert__body">
               <h3>Học liệu điện tử</h3>
-              <p class="protection-item__summary">
-                Giấy chứng nhận đăng ký quyền tác giả cho bài giảng video đào tạo lái
-                xe ô tô hạng B và hạng C theo mô hình tập trung trên nền tảng số.
-              </p>
-              <p>
-                Loại hình: <strong>Bài giảng</strong><br />
-                Tác giả:
-                <strong>
-                  Nguyễn Đình Hùng, Phạm Trần Đăng Quang, Nguyễn Thanh Bình </strong
-                ><br />
-                Chủ sở hữu: <strong>Công ty TNHH Ô Tô Hiệp Phát</strong><br />
-                Số chứng nhận: <strong>0780/2025/QTG</strong><br />
-                Ngày cấp: <strong>22/01/2025</strong>
-              </p>
+              <p>Giấy chứng nhận đăng ký quyền tác giả cho bài giảng video đào tạo lái xe ô tô hạng B và hạng C theo mô hình tập trung trên nền tảng số.</p>
+              <dl class="brand-cert__facts">
+                <div><dt>Số chứng nhận</dt><dd>0780/2025/QTG</dd></div>
+                <div><dt>Ngày cấp</dt><dd>22/01/2025</dd></div>
+                <div><dt>Loại hình</dt><dd>Bài giảng</dd></div>
+              </dl>
             </div>
           </article>
 
           <article
-            class="protection-item"
+            class="brand-cert"
             data-reveal
             data-delay="4"
           >
-            <span class="protection-item__number">05</span>
             <div
-              class="protection-item__thumb"
+              class="brand-cert__media"
               data-img-group="brand-protection"
               data-img-idx="2"
               role="button"
               tabindex="0"
               aria-label="Xem Giấy chứng nhận quyền tác giả phần mềm đào tạo lái xe"
             >
+              <span class="brand-cert__tag">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14" /></svg>
+                Quyền tác giả phần mềm
+              </span>
+              <span class="brand-cert__num" aria-hidden="true">05</span>
               <img
                 src="assets/images/so-huu-tri-tue/tacGiaPhanMem.png"
                 alt="Giấy chứng nhận quyền tác giả phần mềm đào tạo lái xe"
+                width="717"
+                height="959"
                 loading="lazy"
-              /><span class="protection-item__zoom">Xem ảnh</span>
+              />
+              <span class="brand-cert__zoom" aria-hidden="true">Xem ảnh</span>
             </div>
-            <div class="protection-item__copy">
-              <span>Quyền tác giả phần mềm</span>
+            <div class="brand-cert__body">
               <h3>Hệ thống đào tạo lái xe ô tô</h3>
-              <p class="protection-item__summary">
-                Giấy chứng nhận đăng ký quyền tác giả cho phần mềm đào tạo lái xe ô
-                tô theo mô hình tập trung trên nền tảng số.
-              </p>
-              <p>
-                Loại hình: <strong>Chương trình máy tính</strong><br />
-                Tác giả: <strong>Đinh Thế Hiển</strong><br />
-                Chủ sở hữu: <strong>Công ty TNHH Ô Tô Hiệp Phát</strong><br />
-                Số chứng nhận: <strong>6392/2025/QTG</strong><br />
-                Ngày cấp: <strong>01/08/2025</strong>
-              </p>
+              <p>Giấy chứng nhận đăng ký quyền tác giả cho phần mềm đào tạo lái xe ô tô theo mô hình tập trung trên nền tảng số.</p>
+              <dl class="brand-cert__facts">
+                <div><dt>Số chứng nhận</dt><dd>6392/2025/QTG</dd></div>
+                <div><dt>Ngày cấp</dt><dd>01/08/2025</dd></div>
+                <div><dt>Loại hình</dt><dd>Chương trình máy tính</dd></div>
+              </dl>
             </div>
           </article>
         </div>
@@ -677,42 +708,81 @@
           data-reveal
         >
           <h2 id="digital-platform-title">
-            <!-- Phần mềm đào tạo lái xe -->
+            <!-- 2 dòng tô màu riêng theo Design System: Xanh Hiệp Phát + Đỏ Hiệp Phát (cặp giống tiêu đề hero) -->
             <em
-              >Hệ thống hạ tầng kỹ thuật <br />hiện đại, đồng bộ, thông suốt <br
-            /></em>
+              ><span class="infra-title__line infra-title__line--blue">Hệ thống hạ tầng kỹ thuật</span><br /><span class="infra-title__line infra-title__line--red">hiện đại, đồng bộ, thông suốt</span></em
+            >
           </h2>
         </header>
-        <div class="digital-learning-materials__layout">
-          <aside
-            class="digital-learning-materials__criteria"
-            id="digital-learning-driver"
+
+        <div class="infra-layout">
+          <!-- Ảnh Viettel IDC trên "sân khấu" động; bấm mở lightbox (nhóm riêng "infrastructure" — trước đây trùng số 2 với ảnh tác giả phần mềm nên mở nhầm ảnh) -->
+          <figure
+            class="infra-stage"
             data-reveal
             data-delay="1"
-          ></aside>
-
-          <article
-            class="protection-item"
-            id="building-software-card"
-            data-reveal
-            data-delay="2"
           >
+            <span class="infra-stage__orbit infra-stage__orbit--outer" aria-hidden="true"><i></i></span>
+            <span class="infra-stage__orbit infra-stage__orbit--inner" aria-hidden="true"><i></i></span>
             <div
-              class="protection-item__thumb"
-              id="building-software-item__thumb"
-              data-img-group="brand-protection"
-              data-img-idx="2"
+              class="infra-stage__media"
+              data-img-group="infrastructure"
+              data-img-idx="0"
               role="button"
               tabindex="0"
-              aria-label="Xem hình ảnh"
+              aria-label="Xem ảnh hạ tầng máy chủ Viettel IDC"
             >
               <img
                 src="assets/images/so-huu-tri-tue/HaTangKyThuat.jpg"
-                alt="Giấy chứng nhận quyền tác giả phần mềm đào tạo lái xe"
+                alt="Hạ tầng máy chủ đám mây Viettel IDC của hệ thống HPO"
+                width="829"
+                height="635"
                 loading="lazy"
               />
             </div>
-          </article>
+            <figcaption class="infra-stage__badge">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" /></svg>
+              Lưu trữ tại <b>Viettel IDC</b>
+            </figcaption>
+          </figure>
+
+          <!-- 3 trụ cột khớp với tiêu đề: hiện đại · đồng bộ · thông suốt -->
+          <ol
+            class="infra-pillars"
+            data-reveal
+            data-delay="2"
+          >
+            <li class="infra-pillar">
+              <span class="infra-pillar__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="2" /><rect x="3" y="14" width="18" height="7" rx="2" /><path d="M7 6.5h.01M7 17.5h.01M11 6.5h6M11 17.5h6" /></svg>
+              </span>
+              <div>
+                <span class="infra-pillar__num">01</span>
+                <h3>Hiện đại</h3>
+                <p>Máy chủ đặt tại trung tâm dữ liệu Viettel IDC.</p>
+              </div>
+            </li>
+            <li class="infra-pillar">
+              <span class="infra-pillar__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-15.5 6.2M3 12a9 9 0 0 1 15.5-6.2M21 4v5h-5M3 20v-5h5" /></svg>
+              </span>
+              <div>
+                <span class="infra-pillar__num">02</span>
+                <h3>Đồng bộ</h3>
+                <p>Xác thực khuôn mặt, DAT, cabin, mô phỏng chung một hệ thống HPO.</p>
+              </div>
+            </li>
+            <li class="infra-pillar">
+              <span class="infra-pillar__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
+              </span>
+              <div>
+                <span class="infra-pillar__num">03</span>
+                <h3>Thông suốt</h3>
+                <p>Truy cập mọi lúc trên máy tính, điện thoại, máy tính bảng.</p>
+              </div>
+            </li>
+          </ol>
         </div>
       </div>
     </section>
@@ -721,6 +791,8 @@
     <section
       class="inspection-record"
       aria-labelledby="inspection-record-title"
+      hidden
+      style="display: none"
     >
       <div class="container">
         <header
@@ -989,6 +1061,12 @@
                 class="promo__glow"
                 aria-hidden="true"
               ></span>
+              <!-- 5 ngôi sao lấp lánh quanh hộp quà (vị trí/nhịp trong courses-demo.css, mục 5) -->
+              <span class="promo__spark" aria-hidden="true"></span>
+              <span class="promo__spark" aria-hidden="true"></span>
+              <span class="promo__spark" aria-hidden="true"></span>
+              <span class="promo__spark" aria-hidden="true"></span>
+              <span class="promo__spark" aria-hidden="true"></span>
               <img
                 class="promo__box"
                 src="assets/images/courses-demo/gift-box.svg"
@@ -1356,7 +1434,7 @@
         <div class="platform-v2-body platform-v2-body--stacked">
           <article class="platform-v2-panel platform-v2-panel--theory">
             <header class="platform-v2-panel-head">
-              <span class="platform-v2-panel-eyebrow">01 · Lý thuyết</span>
+              <span class="platform-v2-panel-eyebrow"><span class="pv-num">01</span><span class="pv-label">Lý thuyết</span></span>
               <h3>Học lý thuyết trên nền tảng số</h3>
               <div class="platform-v2-panel-description">
                 <p>
@@ -1384,7 +1462,7 @@
               >
                 <div
                   class="pacc-item"
-                  data-img="https://hpo.edu.vn/wp-content/uploads/2026/01/xacthuc.png"
+                  data-img="assets/images/platform/xac-thuc-khuon-mat.webp"
                   data-title="Xác thực khuôn mặt"
                 >
                   <button
@@ -1412,7 +1490,7 @@
                 </div>
                 <div
                   class="pacc-item"
-                  data-img="https://hpo.edu.vn/wp-content/uploads/2026/01/danentang.png"
+                  data-img="assets/images/platform/ung-dung-da-nen-tang.webp"
                   data-title="Ứng dụng đa nền tảng"
                 >
                   <button
@@ -1443,26 +1521,15 @@
               <div class="platform-v2-visual platform-v2-panel-visual">
                 <div class="platform-circle platform-circle--v2">
                   <img
-                    src="https://hpo.edu.vn/wp-content/uploads/2026/01/xacthuc.png"
+                    src="assets/images/platform/xac-thuc-khuon-mat.webp"
                     alt="Xác thực khuôn mặt"
                     width="640"
-                    height="480"
+                    height="640"
                   />
                 </div>
               </div>
             </div>
 
-            <a
-              class="platform-v2-panel-link"
-              href="#chuong-trinh-mon-hoc"
-            >
-              <span>Chương trình các môn học</span>
-              <span
-                class="platform-v2-panel-link-icon"
-                aria-hidden="true"
-                >↓</span
-              >
-            </a>
             <section
               class="syll syll--chapters syll--chapters-color-bg syll--chapters-html platform-v2-curriculum"
               id="chuong-trinh-mon-hoc"
@@ -1476,7 +1543,7 @@
                       class="sec-title sec-title--new-color"
                       id="chuong-trinh-mon-hoc-title"
                     >
-                      Chương trình đào tạo lái xe ô tô <em>thông minh</em>
+                      Chương trình đào tạo lái xe ô tô <span class="pv-accent">thông minh</span>
                     </h4>
                   </div>
                 </div>
@@ -2442,8 +2509,8 @@
                     >
                     <div class="syll-title">
                       <span class="syll-title-main"
-                        >Đạo đức người lái xe, văn hóa GT và phòng chống tác hại của
-                        rượu, bia khi tham gia GT,<br />kỹ năng PCCC và CNCH</span
+                        >Đạo đức người lái xe, văn hóa giao thông, phòng chống tác hại của
+                        rượu bia; kỹ năng phòng cháy chữa cháy và cứu nạn cứu hộ</span
                       >
                       <span class="syll-meta">6 chương</span>
                       <small>Danh mục nội dung chính</small>
@@ -3063,6 +3130,7 @@
                     >
                     <div class="syll-title">
                       Phần mềm mô phỏng tình huống giao thông
+                      <span class="syll-meta">120 tình huống</span>
                       <small>Cục Đường bộ Việt Nam · 120 tình huống thực tế</small>
                     </div>
                     <span></span>
@@ -3224,7 +3292,7 @@
 
           <article class="platform-v2-panel platform-v2-panel--practice">
             <header class="platform-v2-panel-head">
-              <span class="platform-v2-panel-eyebrow">02 · Thực hành</span>
+              <span class="platform-v2-panel-eyebrow"><span class="pv-num">02</span><span class="pv-label">Thực hành</span></span>
               <h3>Rèn kỹ năng lái xe thực hành môi trường ảo</h3>
               <div class="platform-v2-panel-description">
                 <p>
@@ -3239,7 +3307,7 @@
                   <li>
                     Tham dự <strong>đủ quãng đường</strong> và
                     <strong>tối thiểu 50% thời gian</strong> học thực hành lái xe
-                    trên đường
+                    trên đường (DAT)
                   </li>
                 </ul>
               </div>
@@ -3348,7 +3416,7 @@
       id="siteFooter"
       data-base=""
     ></div>
-    <script src="assets/js/site-footer.js"></script>
+    <script src="assets/js/site-footer.js?v=20261103-robot-lap"></script>
 
     <!-- ── FLOATING ACTIONS ── -->
     <div class="floats">
@@ -3764,11 +3832,12 @@
     <script src="assets/js/engine-media.js"></script>
     <script src="assets/js/engine-voice.js"></script>
     <script src="assets/js/learning.js"></script>
-    <script src="assets/js/homepage.js?v=20261019-curriculum-ux"></script>
+    <script src="assets/js/homepage.js?v=20261102-slider-dots"></script>
+    <script src="assets/js/homepage-platform-accordion-autoopen.js?v=20261102-tu-mo-vien-sang"></script>
+    <script src="assets/js/homepage-hpo-system-card-motion.js?v=20261102-hpo-ring-brand5"></script>
     <script src="assets/js/media.js?v=20261019-curriculum-ux"></script>
     <script src="assets/js/awards.js"></script>
     <script src="assets/js/cover-hero.js"></script>
-    <script src="assets/js/scroll-story.js"></script>
     <script src="assets/js/courses-demo-vehicle-config.js"></script>
     <script src="assets/js/courses-demo-stage-renderer.js"></script>
     <script src="assets/js/courses-demo-interactions.js"></script>

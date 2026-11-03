@@ -1,0 +1,52 @@
+/* ==========================================================================
+   Trang Tra cứu QR — màu + chữ theo Hiệp Phát Design System (03/11/2026)
+   Báo cáo: plans/reports/ui-ux-audit-261103-4-trang-con (Q2–Q4). Gợi ý "Dữ liệu demo" (Q1) KHÔNG đổi ở gói này.
+   - Vàng lệch (#f1c554, #e9bd4e, #f0c654) → vàng DS #facc15 (chỉ trên nền navy).
+   - Chữ xám phụ 12px (#718098 4,0:1, #7b879a 3,6:1) → #475569 (7,6:1), 13–14px.
+   - Hộp lưu ý: chữ vàng nâu #bb7800 (3,4:1) → warn-ink DS #78350f; bỏ viền hộp (thẻ lồng thẻ), giữ nền nhạt.
+   ========================================================================== */
+
+/* Token trang → DS: navy #081536 → #0a1330, xanh #184477 → primary-strong #1e3a8a, vàng #e0b13e → #facc15, xanh lá → #15803d */
+html body.qr-lookup-page { --qr-navy: #0a1330; --qr-blue: #1e3a8a; --qr-gold: #facc15; --qr-green: #15803d; }
+
+/* ---- Vàng DS trên nền navy ---- */
+html body.qr-lookup-page .qr-eyebrow,
+html body.qr-lookup-page .qr-hero h1 em,
+html body.qr-lookup-page .qr-guide__eyebrow,
+html body.qr-lookup-page .qr-guide li > span,
+html body.qr-lookup-page .qr-guide__warning strong { color: #facc15; }
+html body.qr-lookup-page .qr-hero__mark svg { fill: #facc15; }
+html body.qr-lookup-page .qr-eyebrow { font-size: 14px; letter-spacing: .1em; }
+html body.qr-lookup-page .qr-guide__eyebrow { font-size: 13px; }
+
+/* ---- Thẻ tra cứu ---- */
+html body.qr-lookup-page .qr-card__heading p { color: #475569; font-size: 14px; }
+html body.qr-lookup-page .qr-note { border: 0; color: #78350f; }
+html body.qr-lookup-page .qr-note > span { color: #78350f; border-color: #b45309; font-size: 13px; }
+html body.qr-lookup-page .qr-note p { font-size: 15px; }
+html body.qr-lookup-page #qrLookupForm label { font-size: 15px; }
+html body.qr-lookup-page .qr-field-meta,
+html body.qr-lookup-page .qr-field-meta small { color: #475569; font-size: 14px; }
+html body.qr-lookup-page .qr-privacy { color: #475569; font-size: 14px; }
+html body.qr-lookup-page .qr-error { font-size: 15px; }
+html body.qr-lookup-page .qr-submit { font-size: 16px; }
+html body.qr-lookup-page #qrLookupForm input::placeholder { color: #64748b; }
+
+/* ---- Khung hướng dẫn (nền navy) ---- */
+html body.qr-lookup-page .qr-guide li strong { font-size: 16px; }
+html body.qr-lookup-page .qr-guide li p { color: rgba(255, 255, 255, .8); font-size: 14px; }
+html body.qr-lookup-page .qr-guide__warning p { color: rgba(255, 255, 255, .8); font-size: 14px; }
+
+/* ---- Kết quả tra cứu ---- */
+html body.qr-lookup-page .qr-result__bar { font-size: 14px; }
+html body.qr-lookup-page .qr-student > p { color: #475569; font-size: 14px; }
+html body.qr-lookup-page .qr-student dt { font-size: 13px; }
+html body.qr-lookup-page .qr-student dd { font-size: 16px; }
+html body.qr-lookup-page .qr-result__notice p,
+html body.qr-lookup-page .qr-code-panel > p { font-size: 15px; }
+
+/* ---- Chia dòng: tiêu đề cân đối, đoạn văn không lẻ 1 chữ ở dòng cuối ---- */
+html body.qr-lookup-page h1,
+html body.qr-lookup-page h2,
+html body.qr-lookup-page h3 { text-wrap: balance; }
+html body.qr-lookup-page main p { text-wrap: pretty; }

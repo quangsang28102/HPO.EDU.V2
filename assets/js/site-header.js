@@ -6,6 +6,9 @@
   const page = mount.dataset.page || "";
   const href = (path) => base + path;
   const current = (...names) => (names.includes(page) ? ' aria-current="page"' : "");
+  // Chữ mục menu desktop: giữ sẵn chỗ bằng bản chữ đậm (::after ẩn, site-header-stable-across-pages.css)
+  // → mục đang chọn đậm hơn nhưng không làm menu rộng ra/xê dịch khi chuyển trang.
+  const label = (text) => `<span class="nav-label" data-label="${text}">${text}</span>`;
   const activeClass = (...names) => (names.includes(page) ? " is-active" : "");
 
   mount.outerHTML = `
@@ -29,6 +32,12 @@
             </span>
           </div>
           <div class="topbar-right">
+            <a href="tel:02836362362" class="topbar-item topbar-hotline">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" />
+              </svg>
+              Tổng đài: 028.36.362.362
+            </a>
             <a href="mailto:tuyensinh@hpo.edu.vn" class="topbar-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
@@ -69,7 +78,7 @@
 
           <ul class="nav-links">
             <li class="nav-item">
-              <a href="${href("index.html")}" class="nav-home-link" aria-label="Trang chủ" title="Trang chủ"${current("home")}>
+              <a href="${href("index.html")}" class="nav-home-link" aria-label="Cổng thông tin điện tử – Trang chủ" title="Trang chủ"${current("home")}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                   <path d="m3 10 9-7 9 7" />
                   <path d="M5.5 9v11h13V9M9.5 20v-6h5v6" />
@@ -78,23 +87,22 @@
               </a>
             </li>
             <li class="nav-item has-dropdown">
-              <a href="${href("gioi-thieu/trung-tam-giao-duc-nghe-nghiep/")}"${current("training-center", "exam-center")}>Giới thiệu</a>
+              <a href="${href("gioi-thieu/trung-tam-giao-duc-nghe-nghiep/")}"${current("training-center", "exam-center")}>${label("Giới thiệu")}</a>
               <div class="nav-dropdown">
                 <a href="${href("gioi-thieu/trung-tam-giao-duc-nghe-nghiep/")}"${current("training-center")}><span class="dd-dot"></span> Trung tâm giáo dục nghề nghiệp</a>
                 <a href="${href("gioi-thieu/trung-tam-sat-hach/")}"${current("exam-center")}><span class="dd-dot"></span> Trung tâm sát hạch lái xe ô tô</a>
               </div>
             </li>
-            <li class="nav-item"><a href="${href("hoc-phi/")}"${current("tuition")}>Học phí</a></li>
-            <li class="nav-item"><a href="${href("quy-dinh-chuong-trinh-hoc-lai-xe/")}"${current("process")}>Quy trình đào tạo</a></li>
+            <li class="nav-item"><a href="${href("hoc-phi/")}"${current("tuition")}>${label("Học phí")}</a></li>
+            <li class="nav-item"><a href="${href("quy-dinh-chuong-trinh-hoc-lai-xe/")}"${current("process")}>${label("Quy trình đào tạo")}</a></li>
             <li class="nav-item has-dropdown">
-              <a href="${href("danh-sach-benh-vien/")}"${current("hospital-lookup", "payment-qr")}>Tra cứu</a>
+              <a href="${href("danh-sach-benh-vien/")}"${current("hospital-lookup", "payment-qr")}>${label("Tra cứu")}</a>
               <div class="nav-dropdown">
                 <a href="${href("danh-sach-benh-vien/")}"${current("hospital-lookup")}><span class="dd-dot"></span> Danh sách bệnh viện</a>
                 <a href="${href("tra-cuu-qr/")}"${current("payment-qr")}><span class="dd-dot"></span> Mã QR thanh toán sát hạch</a>
               </div>
             </li>
-            
-            <li class="nav-item"><a href="${href("on-tap/")}"${current("quiz")}>Ôn tập</a></li>
+            <li class="nav-item"><a href="${href("on-tap/")}"${current("quiz")}>${label("Ôn tập")}</a></li>
           </ul>
 
           <div class="nav-actions">
@@ -167,4 +175,22 @@
       </div>
     </div>
   `;
+
+  // Menu ☰ dùng chung cho mọi trang. Trước đây mỗi trang tự viết (trang chủ, Ôn tập, 2 trang
+  // Giới thiệu) và 4 trang không có (Học phí, Quy trình, Tra cứu QR, Danh sách bệnh viện) → bấm ☰
+  // không mở. Các xử lý cũ chỉ thêm/bớt cùng class nên chạy song song vẫn an toàn.
+  // Bấm link trong menu (kể cả "Liên hệ" = neo #lien-he ở footer trang đang xem) → đóng menu.
+  const setMobileMenu = (open) => {
+    document.getElementById("mobileMenu")?.classList.toggle("is-open", open);
+    document.body.style.overflow = open ? "hidden" : "";
+    document.getElementById("burger")?.setAttribute("aria-expanded", String(open));
+  };
+  document.addEventListener("click", (event) => {
+    const menu = document.getElementById("mobileMenu");
+    if (event.target.closest("#burger")) setMobileMenu(true);
+    else if (event.target.closest("#mobileClose") || event.target === menu || event.target.closest("#mobileMenu a")) setMobileMenu(false);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && document.getElementById("mobileMenu")?.classList.contains("is-open")) setMobileMenu(false);
+  });
 })();

@@ -1,0 +1,44 @@
+/* ==========================================================================
+   Logo lớn đồng bộ mọi trang (giống trang chủ "Cổng thông tin điện tử")
+   Trước đây chỉ trang chủ có logo lớn (homepage-header-robot.css); trang con dùng
+   cỡ mặc định 64px / 48px. Các quy tắc dưới đây chuyển từ file trang chủ sang để
+   áp chung. Điện thoại ≤600px: xem site-header-mobile-compact.css (logo 56px).
+   ========================================================================== */
+
+@media (min-width: 601px) {
+  #navbar .nav-inner > .logo .logo-mark { height: 108px; }
+  #navbar .nav-inner > .logo .logo-mark img {
+    width: auto;
+    height: 100%;
+    max-width: none;
+    object-fit: contain;
+  }
+}
+@media (min-width: 1281px) {
+  #navbar .nav-inner { gap: 12px; }
+  #navbar .nav-actions { gap: 8px; }
+  #navbar .nav-actions .btn { padding-inline: 16px; }
+  #navbar .nav-phone { padding-right: 8px; }
+}
+/* Logo lớn chiếm chỗ của menu ngang → thu menu vào nút ☰ sớm hơn (1350 thay vì 1280) */
+@media (max-width: 1350px) {
+  #navbar .nav-links { display: none; }
+  #navbar .nav-burger { display: flex; }
+  #navbar .nav-actions { margin-left: auto; }
+}
+@media (min-width: 721px) and (max-width: 1280px) {
+  #navbar .nav-inner > .logo .logo-mark { height: 106px; }
+  #navbar .nav-inner { gap: 14px; }
+}
+@media (min-width: 601px) and (max-width: 720px) {
+  #navbar .nav-inner > .logo .logo-mark { height: 70px; }
+}
+
+/* Điểm neo chừa đúng chiều cao header dính (73 / 99 / 135 / 137px) để không bị che:
+   2 section ở trang Giới thiệu (trước đặt cố định 90px theo header cũ ~93px), mục
+   "Chương trình môn học" ở trang chủ (trước 108px) và đích của link "bỏ qua tới nội dung"
+   (#main-content) và footer #lien-he (mục "Liên hệ" trên menu). `html #chuong-trinh-mon-hoc` để thắng quy tắc 108px trong style.css. */
+#main-content, #lien-he { scroll-margin-top: 73px; }
+@media (min-width: 601px) { #main-content, #lien-he, #cac-khoa-hoc, #co-so-sat-hach { scroll-margin-top: 99px; } }
+@media (min-width: 721px) { #main-content, #lien-he, #cac-khoa-hoc, #co-so-sat-hach, html #chuong-trinh-mon-hoc { scroll-margin-top: 135px; } }
+@media (min-width: 1281px) { #main-content, #lien-he, #cac-khoa-hoc, #co-so-sat-hach, html #chuong-trinh-mon-hoc { scroll-margin-top: 137px; } }

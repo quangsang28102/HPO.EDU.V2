@@ -1,0 +1,28 @@
+/* Chữ gradient cho tiêu đề hero trang chủ "KỶ NGUYÊN AI / TRONG ĐÀO TẠO LÁI XE".
+   Nạp SAU homepage-reference-hero.css (file đó đang ép màu phẳng #1556ae / #e51f2b).
+   - width: fit-content: span đang display:block rộng hết khung → gradient trải 1480px nên nhìn như một màu;
+     co span về đúng bề rộng chữ để thấy rõ chuyển màu.
+   - padding trên/dưới + margin âm: background-clip:text chỉ tô trong hộp của span, nên dấu (Ỷ, Ê…)
+     và dấu nặng (Ạ) thò ra ngoài hộp sẽ bị mất; nới hộp nhưng giữ nguyên bố cục. */
+@supports ((background-clip: text) or (-webkit-background-clip: text)) {
+  .hpo-digital-title span:nth-child(1),
+  .hpo-digital-title span:nth-child(2) {
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
+    padding: .16em .04em .1em;
+    margin-bottom: -.1em;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+  .hpo-digital-title span:nth-child(1) {
+    margin-top: -.16em;
+    background-image: linear-gradient(90deg, #1f6bff 0%, #2b26fb 52%, #4b1fd8 100%);
+  }
+  .hpo-digital-title span:nth-child(2) {
+    margin-top: calc(8px - .16em);
+    background-image: linear-gradient(90deg, #ff3b30 0%, #ea1e24 50%, #c3122f 100%);
+  }
+}

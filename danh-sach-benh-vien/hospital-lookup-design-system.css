@@ -1,0 +1,47 @@
+/* ==========================================================================
+   Trang Danh sách bệnh viện — màu + chữ theo Hiệp Phát Design System (03/11/2026)
+   Báo cáo: plans/reports/ui-ux-audit-261103-4-trang-con (B1, B3, B4). Tên bệnh viện trùng (B2) là dữ liệu, chưa đổi.
+   - Vàng lệch #f2c858/#f4cc62 → vàng DS #facc15 (nền navy); nhãn "Danh sách cơ sở y tế" (nền trắng) → xanh DS.
+   - Chữ trong thẻ 12–14px → 13–15px; ghi chú cuối trang ≤ ~75 ký tự/dòng.
+   ========================================================================== */
+
+/* Token trang → DS: navy #081536 → ink #0a1330, xanh #173f9f → primary #1e40af, vàng #d5a52d → #facc15 */
+html body.hospital-page { --lookup-navy: #0a1330; --lookup-blue: #1e40af; --lookup-gold: #facc15; }
+html body.hospital-page .hospital-badge { color: #15803d; }
+html body.hospital-page .hospital-badge--foreign { color: #78350f; }
+html body.hospital-page .hospital-card__note { color: #78350f; }
+
+/* ---- Đầu trang ---- */
+html body.hospital-page .lookup-eyebrow,
+html body.hospital-page .lookup-hero__stats strong { color: #facc15; }
+html body.hospital-page .lookup-eyebrow,
+html body.hospital-page .lookup-kicker { font-size: 14px; letter-spacing: .1em; }
+html body.hospital-page .lookup-kicker { color: #1e40af; }
+html body.hospital-page .lookup-hero__stats span { font-size: 14px; }
+
+/* ---- Bộ lọc ---- */
+html body.hospital-page .lookup-field > span { font-size: 15px; }
+html body.hospital-page .lookup-reset,
+html body.hospital-page .lookup-empty button { font-size: 15px; }
+html body.hospital-page .lookup-results-head span { font-size: 15px; }
+html body.hospital-page input::placeholder { color: #64748b; }
+
+/* ---- Thẻ bệnh viện ---- */
+html body.hospital-page .hospital-card__number { font-size: 14px; }
+html body.hospital-page .hospital-card__district { font-size: 14px; }
+html body.hospital-page .hospital-card__address::before { font-size: 13px; }
+html body.hospital-page .hospital-badge { font-size: 13px; }
+html body.hospital-page .hospital-card__note { font-size: 15px; }
+html body.hospital-page .hospital-card__contact p { font-size: 15px; }
+html body.hospital-page .hospital-card__actions a { font-size: 15px; }
+html body.hospital-page .lookup-pagination button { font-size: 15px; }
+
+/* ---- Lưu ý cuối trang: giới hạn độ dài dòng (trước ~147 ký tự ở 1440px) ---- */
+html body.hospital-page .lookup-advice p { max-width: 520px; } /* ~75 ký tự (đơn vị ch đo theo số 0, rộng hơn chữ Việt) */
+
+/* ---- Chia dòng: tiêu đề cân đối, đoạn văn/địa chỉ không lẻ 1 chữ ở dòng cuối ---- */
+html body.hospital-page h1,
+html body.hospital-page h2,
+html body.hospital-page h3 { text-wrap: balance; }
+html body.hospital-page main p { text-wrap: pretty; }
+html body.hospital-page .lookup-hero p { max-width: 68ch; }

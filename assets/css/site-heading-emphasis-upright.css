@@ -1,0 +1,25 @@
+/* ==========================================================================
+   Quy tắc chữ nhấn trong tiêu đề — toàn web (2026-11-02, theo Hiệp Phát Design System)
+   Chỉ nhấn bằng MÀU, chữ ĐỨNG, cùng độ đậm (trước: vừa đổi màu vừa in nghiêng = nhấn chồng nhấn;
+   dấu tiếng Việt nghiêng ở cỡ lớn bị xô lệch, khó đọc với người lớn tuổi; trang chủ đã làm đúng, trang con chưa).
+   Màu chữ nhấn theo nền:
+   - nền sáng: Đỏ Hiệp Phát (gradient #b91c1c → #ea1e24 có sẵn ở từng trang)
+   - nền tối/navy/ảnh tối: vàng DS #facc15 (cam #ff6b35/#ff8356 chỉ để trang trí, không làm chữ)
+   - tiêu đề cấp nhỏ trong thẻ: xanh primary #1e40af (không tranh màu đỏ với tiêu đề bước)
+   Chỉ áp cho <em> trong h1–h4; chữ nghiêng trong đoạn văn (vd "(theo Thông tư …)") giữ nguyên.
+   @import trong style.css (nạp ở cả 8 trang); selector có `html body` để thắng CSS riêng từng trang.
+   ========================================================================== */
+
+html body h1 em,
+html body h2 em,
+html body h3 em,
+html body h4 em { font-style: normal !important; } /* !important: nhiều CSS cũ đặt nghiêng bằng selector có class (vd .sec-title em) */
+
+/* Quy trình: "thông minh" (tiêu đề danh sách 6 môn) → xanh primary, sửa trong process-readable-redesign.css của trang */
+
+/* 2 trang Giới thiệu: chữ nhấn trên ảnh tối, cam #ff8356 → vàng DS */
+html body .about-hero h1 em { color: #facc15; }
+
+/* Tra cứu QR + Danh sách bệnh viện: vàng DS trên nền navy; bệnh viện bỏ font nghiêng riêng (--ff-serif) như trang QR */
+html body .qr-hero h1 em { color: #facc15; }
+html body .lookup-hero h1 em { color: #facc15; font-family: var(--ff-display), sans-serif; font-weight: 700; }

@@ -1,0 +1,18 @@
+/* ==========================================================================
+   Trang Học phí (link SAU style.css + 2 file tiêu đề trang chủ trong hoc-phi/index.html)
+   Mục "Khóa học của chúng tôi" giống hệt trang chủ (2026-11-02, góp ý họp) → không còn rule riêng ở đây.
+   Chỉ giữ: chữ khối "Khóa học linh động" bên dưới ≥ 15px cho dễ đọc.
+   ========================================================================== */
+
+html body .course-info-section .course-info-panel__badge { font-size: 14px; }
+html body .course-info-section .course-info-panel__list li { font-size: 17px; }
+html body .course-info-section .course-info-panel__contact { font-size: 16px; }
+html body .course-info-section .course-info-panel__link { font-size: 17px; }
+
+@media (max-width: 767px) {
+  html body .course-info-section .course-info-panel__badge { font-size: 13px; }
+  html body .course-info-section .course-info-panel__list li { font-size: 15.5px; }
+  html body .course-info-section .course-info-panel__list strong { font-size: inherit; }
+  html body .course-info-section .course-info-panel__contact { font-size: 15.5px; }
+  html body .course-info-section .course-info-panel__link { font-size: 16px; }
+}

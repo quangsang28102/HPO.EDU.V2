@@ -24,25 +24,16 @@
       href="/assets/images/favicon.png"
     />
     <link
-      rel="preconnect"
-      href="https://fonts.googleapis.com"
-    />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,700&display=swap"
       rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="../style.css"
+      href="../style.css?v=20261103-trang-con"
     />
     <link
       rel="stylesheet"
       href="style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="styles/process-readable-redesign.css?v=20261103-soat-thiet-ke"
     />
   </head>
 
@@ -58,7 +49,7 @@
       data-base="../"
       data-page="process"
     ></div>
-    <script src="../assets/js/site-header.js"></script>
+    <script src="../assets/js/site-header.js?v=20261102-menu-cu"></script>
 
     <main id="main-content">
       <section
@@ -66,8 +57,50 @@
         aria-labelledby="page-title"
       >
         <div class="container process-hero__inner">
-          <p class="eyebrow">Quy trình đào tạo</p>
-          <h1 id="page-title">Từ <em>tuyển sinh</em> đến cấp giấy phép lái xe</h1>
+          <div class="process-hero__intro">
+            <p class="eyebrow">Quy trình đào tạo</p>
+            <h1 id="page-title">Từ tuyển sinh đến cấp <em>giấy phép lái xe</em></h1>
+            <p class="process-hero__lead">
+              5 bước, từ lúc nộp hồ sơ đến khi nhận bằng. Bấm vào từng bước để xem chi tiết.
+            </p>
+          </div>
+          <ol class="process-overview" aria-label="Tóm tắt 5 bước">
+            <li>
+              <a href="#tuyen-sinh">
+                <span class="process-overview__num">1</span>
+                <strong>Tuyển sinh</strong>
+                <span class="process-overview__text">Chuẩn bị giấy tờ, đăng ký và đóng học phí</span>
+              </a>
+            </li>
+            <li>
+              <a href="#dao-tao">
+                <span class="process-overview__num">2</span>
+                <strong>Chương trình đào tạo</strong>
+                <span class="process-overview__text">Tổng 196 đến 237 giờ, tùy hạng bằng</span>
+              </a>
+            </li>
+            <li>
+              <a href="#hoan-thanh">
+                <span class="process-overview__num">3</span>
+                <strong>Kiểm tra hoàn thành</strong>
+                <span class="process-overview__text">Học đủ giờ, đạt các bài kiểm tra cuối khóa</span>
+              </a>
+            </li>
+            <li>
+              <a href="#sat-hach">
+                <span class="process-overview__num">4</span>
+                <strong>Sát hạch</strong>
+                <span class="process-overview__text">Lý thuyết, thực hành trên hình, thực hành trên đường</span>
+              </a>
+            </li>
+            <li>
+              <a href="#gplx">
+                <span class="process-overview__num">5</span>
+                <strong>Nhận giấy phép lái xe</strong>
+                <span class="process-overview__text">GPLX điện tử trong 02 giờ sau khi thi đạt</span>
+              </a>
+            </li>
+          </ol>
         </div>
       </section>
 
@@ -95,9 +128,7 @@
             href="#hoan-thanh"
           >
             <span class="process-subnav__step">3</span>
-            <span class="process-subnav__label"
-              >Xét, kiểm tra hoàn thành khóa đào tạo</span
-            >
+            <span class="process-subnav__label">Kiểm tra hoàn thành</span>
           </a>
           <a
             class="process-subnav__link"
@@ -111,7 +142,7 @@
             href="#gplx"
           >
             <span class="process-subnav__step">5</span>
-            <span class="process-subnav__label">Cấp GPLX</span>
+            <span class="process-subnav__label">Nhận GPLX</span>
           </a>
         </div>
       </nav>
@@ -388,7 +419,7 @@
               <div class="info-card__body">
                 <span class="info-card__index">06</span>
                 <h3>Ảnh 3x4</h3>
-                <p>Ảnh đúng quy cách, nền trắng dương đậm theo yêu cầu hồ sơ.</p>
+                <p>Ảnh đúng quy cách, nền trắng theo yêu cầu hồ sơ.</p>
               </div>
             </article>
 
@@ -489,7 +520,7 @@
                     <li>
                       <strong>Cơ sở Vĩnh Lộc:</strong> 271 Đường số 1, P. Bình Tân
                     </li>
-                    <li><strong>VP Tuyển Sinh:</strong> 276 Minh Phụng, TP. HCM</li>
+                    <li><strong>VP Tuyển Sinh:</strong> 276 Minh Phụng, Phường Minh Phụng, TP. HCM</li>
                   </ul>
                 </div>
               </article>
@@ -504,11 +535,9 @@
         aria-labelledby="training-title"
       >
         <div class="container">
-          <div class="section-head section-head--split">
-            <div>
-              <p class="eyebrow">Bước 02</p>
-              <h2 id="training-title">Chương trình <em>đào tạo</em></h2>
-            </div>
+          <div class="section-head">
+            <p class="eyebrow">Bước 02</p>
+            <h2 id="training-title">Chương trình <em>đào tạo</em></h2>
             <p>
               Khung chương trình đào tạo tổng hợp các nội dung lý thuyết, thực hành,
               thời lượng học và quãng đường yêu cầu cho từng hạng giấy phép lái xe.
@@ -1186,7 +1215,7 @@
                                       <div class="bb-name">1. Biển báo cấm</div>
                                       <div class="bb-icon">
                                         <img
-                                          src="assets/images/bienbao/bbcam.png"
+                                          src="../assets/images/bienbao/bbcam.png"
                                           alt="Biển báo cấm"
                                         />
                                       </div>
@@ -1210,7 +1239,7 @@
                                       <div class="bb-name">2. Biển nguy hiểm</div>
                                       <div class="bb-icon">
                                         <img
-                                          src="assets/images/bienbao/bbNguyHiem.png"
+                                          src="../assets/images/bienbao/bbNguyHiem.png"
                                           alt="Biển nguy hiểm"
                                         />
                                       </div>
@@ -1234,7 +1263,7 @@
                                       <div class="bb-name">3. Biển hiệu lệnh</div>
                                       <div class="bb-icon">
                                         <img
-                                          src="assets/images/bienbao/bbHieuLenh.png"
+                                          src="../assets/images/bienbao/bbHieuLenh.png"
                                           alt="Biển hiệu lệnh"
                                         />
                                       </div>
@@ -1258,7 +1287,7 @@
                                       <div class="bb-name">4. Biển chỉ dẫn</div>
                                       <div class="bb-icon">
                                         <img
-                                          src="assets/images/bienbao/bbChiDan.png"
+                                          src="../assets/images/bienbao/bbChiDan.png"
                                           alt="Biển chỉ dẫn"
                                         />
                                       </div>
@@ -1282,7 +1311,7 @@
                                       <div class="bb-name">5. Biển phụ</div>
                                       <div class="bb-icon">
                                         <img
-                                          src="assets/images/bienbao/bbPhu.png"
+                                          src="../assets/images/bienbao/bbPhu.png"
                                           alt="Biển phụ"
                                         />
                                       </div>
@@ -1872,8 +1901,7 @@
                   >
                   <div class="syll-title">
                     <span class="syll-title-main"
-                      >Đạo đức người lái xe, văn hóa GT và phòng chống tác hại của
-                      rượu, bia khi tham gia GT,<br />kỹ năng PCCC và CNCH</span
+                      >Đạo đức người lái xe, văn hóa giao thông, phòng chống tác hại của rượu bia; kỹ năng phòng cháy chữa cháy và cứu nạn cứu hộ</span
                     >
                     <span class="syll-meta">6 chương</span>
                     <small>Danh mục nội dung chính</small>
@@ -2493,6 +2521,7 @@
                   >
                   <div class="syll-title">
                     Phần mềm mô phỏng tình huống giao thông
+                    <span class="syll-meta">120 tình huống</span>
                     <small>Cục Đường bộ Việt Nam · 120 tình huống thực tế</small>
                   </div>
                   <span></span>
@@ -3009,11 +3038,9 @@
         aria-labelledby="exam-title"
       >
         <div class="container">
-          <div class="section-head section-head--split">
-            <div>
-              <p class="eyebrow">Bước 04</p>
-              <h2 id="exam-title">Sát hạch <em>lái xe</em></h2>
-            </div>
+          <div class="section-head">
+            <p class="eyebrow">Bước 04</p>
+            <h2 id="exam-title">Sát hạch <em>lái xe</em></h2>
             <p>
               Trước kỳ sát hạch, cơ sở đào tạo hoàn thiện hồ sơ đề nghị tổ chức sát
               hạch và học viên tham gia các nội dung thi theo quy định.
@@ -3132,7 +3159,7 @@
           >
             <div class="license-banner__content">
               <p class="eyebrow eyebrow--light">Bước 05</p>
-              <h2 id="license-title">Cấp giấy phép <em>lái xe</em></h2>
+              <h2 id="license-title">Nhận giấy phép <em>lái xe</em></h2>
 
               <div class="license-banner__info">
                 <p>
@@ -4810,7 +4837,7 @@
       id="siteFooter"
       data-base="../"
     ></div>
-    <script src="../assets/js/site-footer.js"></script>
+    <script src="../assets/js/site-footer.js?v=20261103-robot-lap"></script>
 
     <script src="script.js"></script>
   </body>

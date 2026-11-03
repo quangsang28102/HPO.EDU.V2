@@ -1,0 +1,35 @@
+/* ==========================================================================
+   Header đứng yên khi chuyển trang (hết "giật nhẹ" giữa Học phí ↔ Quy trình đào tạo…)
+   1. Thanh tối trên cùng không có line-height riêng → kế thừa từ body của từng trang
+      (trang chung 1.55 → cao 39.4px; Quy trình đặt body 1.65 trong styles/process.css → 40.6px)
+      → cả header lệch dọc 1.2px. Cố định line-height cho thanh này.
+   2. Mục đang chọn đậm 600 (mục khác 500) → rộng thêm ~1px, các mục bên cạnh xê dịch.
+      site-header.js bọc chữ trong .nav-label[data-label]; ::after là bản chữ đậm ẩn, cao 0,
+      giữ sẵn bề rộng chữ đậm cho MỌI mục → đổi trang không đổi bề rộng menu.
+   ========================================================================== */
+html body .topbar { line-height: 1.55; }
+
+html body #navbar.nav .nav-links .nav-label {
+  display: inline-grid;
+  justify-items: center;
+}
+html body #navbar.nav .nav-links .nav-label::after {
+  content: attr(data-label);
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  font-weight: 600;
+  pointer-events: none;
+  user-select: none;
+  speak: never;
+}
+
+/* 3. Trang Quy trình (styles/process.css) đặt .container padding 18px ở ≤640px cho cả trang,
+      kể cả header → logo và nút ☰ lệch 2px so với các trang khác (20px). Giữ header 20px ở mọi trang. */
+@media (max-width: 720px) {
+  html body .topbar > .container,
+  html body #navbar > .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

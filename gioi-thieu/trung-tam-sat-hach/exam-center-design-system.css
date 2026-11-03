@@ -1,0 +1,17 @@
+/* ==========================================================================
+   Trang Trung tâm sát hạch — đưa về Hiệp Phát Design System (03/11/2026)
+   Trang dùng chung style.css với TT giáo dục nghề nghiệp (body.about-page), nên nạp CHUNG file
+   ../trung-tam-giao-duc-nghe-nghiep/training-center-design-system.css (token --about-* về DS, nút đỏ,
+   bỏ quầng cam nhấp nháy, h2 32–48px, chữ phụ ≥13–15px). File này chỉ thêm phần riêng của trang sát hạch.
+   Báo cáo: plans/reports/ui-ux-audit-261103-4-trang-con (S1, S2, S5, S7).
+   ========================================================================== */
+
+/* Nhãn "LOẠI 1 ĐẠT QUY CHUẨN QUỐC GIA" trên ảnh (nền xanh): chữ nhấn cam → vàng DS */
+html body.exam-page .exam-intro__visual > span strong { color: #facc15; }
+
+/* Số thứ tự 01/02 trên ảnh cơ sở vật chất (nền tối): cam → vàng DS; chú thích ảnh 14 → 15px */
+html body.exam-page .exam-gallery__label > span { color: #facc15; }
+html body.exam-page .exam-gallery__label p { font-size: 15px; }
+
+/* Nút mũi tên băng chuyền: vùng bấm 44px (trước 34–38px) */
+html body.exam-page .exam-gallery .carousel-btn { width: 44px; height: 44px; }

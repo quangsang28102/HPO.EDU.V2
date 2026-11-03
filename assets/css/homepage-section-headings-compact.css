@@ -1,0 +1,92 @@
+/* ==========================================================================
+   Tiêu đề section trang chủ — kiểu A "gọn, giữ Design System"
+   Giữ nguyên: in hoa, căn giữa, chữ gradient Xanh/Đỏ Hiệp Phát, thanh dẫn trên tiêu đề
+   (homepage-headings-design-system.css). Chỉ thu cỡ chữ + khoảng trắng để khi cuộn tới
+   section là thấy nội dung ngay (trước: khối tiêu đề chiếm 35–46% màn hình).
+   - Tiêu đề: 40px trên máy tính → 26px điện thoại, line-height 1.2, chia dòng cân đối (text-wrap: balance).
+   - Section: padding trên 80px → 56px (điện thoại 48px → 36px); khoảng tiêu đề → nội dung 28px.
+   - Khóa học: bỏ ép cao đúng 1 màn hình + căn giữa dọc (min-height 100vh) — nguồn khoảng trống lớn;
+     bỏ hàng gạch vàng thứ 2 (đã có thanh dẫn), phụ đề nhỏ + bớt giãn chữ.
+   Link SAU homepage-headings-design-system.css; tiền tố `html body` để thắng các rule cũ chồng lớp.
+   ========================================================================== */
+
+:root { --hp-section-title-size: clamp(26px, calc(2.2vw + 10px), 40px); }
+
+/* ---- Khoảng trên của section ---- */
+html body .brand-protection,
+html body .digital-learning-materials[aria-labelledby="digital-platform-title"],
+html body .intro-video,
+html body .platform-v2,
+html body .award-slider { padding-top: 56px; }
+html body .courses-section {
+  padding-top: 48px;
+  min-height: auto;
+  align-items: flex-start;
+}
+
+/* ---- Khối tiêu đề: chừa đúng chỗ cho thanh dẫn 6px ở trên ---- */
+html body .brand-protection__head,
+html body .brand-protection .brand-protection__head,
+html body .digital-learning-materials[aria-labelledby="digital-platform-title"] .digital-learning-materials__head,
+html body .intro-video__head {
+  padding-top: 20px;
+  margin-bottom: 28px;
+}
+html body .platform-v2-head.hpo-unified-title-wrap,
+html body .platform-v2-head { margin-bottom: 24px; }
+html body .courses-section .section-head { margin-bottom: 28px; }
+
+/* ---- Cỡ chữ tiêu đề ---- */
+html body .brand-protection__head h2,
+html body .brand-protection .brand-protection__head h2,
+html body #digital-platform-title,
+html body .intro-video__head h2,
+html body .platform-v2-head .platform-v2-title,
+html body .courses-section .section-head__title {
+  font-size: var(--hp-section-title-size);
+  line-height: 1.2;
+  padding-top: .12em; /* chữ gradient (background-clip: text): chừa chỗ cho dấu tiếng Việt dòng trên */
+  padding-bottom: .04em;
+  margin-bottom: 0;
+  text-wrap: balance;
+}
+html body #digital-platform-title .infra-title__line { padding: .12em .02em .03em; text-wrap: balance; }
+
+/* ---- Phụ đề ---- */
+html body .brand-protection__head p,
+html body .brand-protection .brand-protection__head p {
+  margin-top: 10px;
+  font-size: clamp(15px, calc(.5vw + 10px), 17px);
+}
+html body .courses-section .section-head__subtitle {
+  margin-top: 8px;
+  font-size: clamp(12px, calc(.3vw + 10px), 14px);
+  letter-spacing: .06em;
+}
+html body .courses-section .section-head__lane { display: none; }
+
+/* ---- Khoảng tiêu đề → nội dung chỉ tính 1 lần (trước: margin khối tiêu đề + margin-top nội dung) ---- */
+html body .digital-learning-materials[aria-labelledby="digital-platform-title"] .infra-layout,
+html body .brand-protection .brand-cert-grid,
+html body .intro-video .intro-video__frame { margin-top: 0; }
+
+/* ---- Dấu ấn hành trình: giữ cỡ chữ, thu khoảng tiêu đề → phụ đề → slider ---- */
+html body .award-slider__heading > .hpo-unified-title-wrap { padding-top: 20px; padding-bottom: 0; }
+html body .award-slider__heading .hpo-unified-title { font-size: var(--hp-section-title-size); line-height: 1.2; text-wrap: balance; }
+html body .award-slider__heading-sub { margin-top: 10px; margin-bottom: 0; }
+html body .award-slider__body { margin-top: 24px; }
+
+@media (max-width: 600px) {
+  html body .brand-protection,
+  html body .digital-learning-materials[aria-labelledby="digital-platform-title"],
+  html body .intro-video,
+  html body .platform-v2,
+  html body .award-slider { padding-top: 36px; }
+  html body .courses-section { padding-top: 36px; }
+  html body .brand-protection__head,
+  html body .brand-protection .brand-protection__head,
+  html body .digital-learning-materials[aria-labelledby="digital-platform-title"] .digital-learning-materials__head,
+  html body .intro-video__head { padding-top: 16px; margin-bottom: 20px; }
+  html body .courses-section .section-head,
+  html body .platform-v2-head { margin-bottom: 20px; }
+}

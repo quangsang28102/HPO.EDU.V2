@@ -1,0 +1,86 @@
+/* ==========================================================================
+   Cụm hỗ trợ nhanh (.floats) — không che nội dung
+   - Máy tính: cột nút bên phải (xem "Góc chỉ còn đầu robot" bên dưới); nút "Lên đầu trang"
+     chỉ hiện sau khi cuộn qua ~2 màn hình (class .is-scrolled do site-footer.js gắn).
+   - Điện thoại (≤600px): thành thanh dưới đáy có nhãn chữ; body chừa đúng chiều
+     cao thanh nên không dòng nào bị che vĩnh viễn. Nút robot (#hpo-robot-restore)
+     nằm đầu thanh.
+   - Nút "Đăng ký học" đổi từ cam #ff6b35 (2.8:1 với chữ trắng) sang đỏ Hiệp Phát
+     đậm #d61a20 (5.2:1), theo Design System.
+   ========================================================================== */
+
+.floats .float-label { display: none; }
+.floats .float-register { background: #d61a20; }
+.floats .float-top { display: none; }
+.floats.is-scrolled .float-top { display: flex; }
+/* Đầu robot (nút mở trợ lý) lớn hơn nút thường một chút để dễ nhận ra */
+.floats { align-items: center; }
+.floats > #hpo-robot-restore { width: 64px; height: 64px; }
+
+/* ---- Góc chỉ còn đầu robot (2026-11-02) ----
+   Header dính đã có "Tổng đài" + "Đăng ký học" → bỏ nút trùng ở góc:
+   ≥1281px: chỉ đầu robot (+ nút lên đầu trang nhỏ); 601–1280px: header ẩn số tổng đài → giữ nút gọi.
+   Bỏ vòng nhấp nháy liên tục của nút (floatRing); hiệu ứng của đầu robot nằm ở robot/style.css. */
+@media (min-width: 601px) {
+  .floats .float-btn::before { display: none; }
+  .floats > #hpo-robot-restore { order: 10; } /* robot luôn ở dưới cùng, không nhảy khi nút khác hiện/ẩn */
+  .floats .float-register { display: none; }
+  .floats .float-btn.float-top {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #dbe3f3;
+    background: #fff;
+    color: #1e3a8a;
+    box-shadow: 0 4px 14px rgba(10, 19, 48, 0.12);
+  }
+  .floats .float-btn.float-top svg { width: 18px; height: 18px; }
+}
+@media (min-width: 1281px) {
+  .floats .float-phone { display: none; }
+}
+
+/* Laptop: nội dung chỉ chừa ~40–110px bên phải → cột nút gọn và sát mép hơn */
+@media (min-width: 601px) and (max-width: 1439px) {
+  .floats { right: 12px; bottom: 16px; gap: 10px; }
+  .floats .float-btn { width: 46px; height: 46px; }
+  .floats > #hpo-robot-restore { width: 58px; height: 58px; }
+  .floats .float-btn svg { width: 20px; height: 20px; }
+}
+
+@media (max-width: 600px) {
+  body { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
+  .floats {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px));
+    background: #fff;
+    border-top: 1px solid #e2e8f0;
+    box-shadow: 0 -8px 24px rgba(10, 19, 48, 0.08);
+  }
+  .floats .float-btn {
+    flex: 1 1 0;
+    width: auto;
+    height: 48px;
+    gap: 8px;
+    border-radius: 12px;
+    box-shadow: none;
+    font: 700 15px/1 var(--ff-display, system-ui), sans-serif;
+    text-decoration: none;
+  }
+  .floats .float-btn::before { display: none; }
+  .floats .float-btn:hover { transform: none; }
+  .floats .float-btn svg { flex: none; width: 20px; height: 20px; }
+  .floats .float-label { display: inline; white-space: nowrap; }
+  .floats .float-phone { background: #eef2ff; color: #1e3a8a; }
+  .floats .float-top,
+  .floats.is-scrolled .float-top { display: none; }
+  .floats > #hpo-robot-restore {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+  }
+}

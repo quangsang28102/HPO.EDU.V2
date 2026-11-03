@@ -3,19 +3,50 @@
   const base = new URL('../../robot/', document.currentScript.src);
   const css = document.createElement('link');
   css.rel = 'stylesheet';
-  css.href = new URL('dist/companion.css', base).href;
+  css.href = new URL('dist/companion.css?v=20261103-robot-lap', base).href;
   document.head.append(css);
   const script = document.createElement('script');
-  script.src = new URL('dist/companion.js', base).href;
+  script.src = new URL('dist/companion.js?v=20261103-robot-lap', base).href;
   script.defer = true;
   document.head.append(script);
 })();
 
 (function () {
+  // Nhan chu cho nut (an tren may tinh, hien khi cum nut thanh thanh duoi day
+  // tren dien thoai) va chi hien nut "Len dau trang" sau khi da cuon qua 2 man hinh.
+  const enhanceFloatingActions = () => {
+    const floats = document.querySelector(".floats");
+    if (!floats || floats.dataset.enhanced) return;
+    floats.dataset.enhanced = "true";
+    const labels = { ".float-phone": "Gọi tư vấn", ".float-register": "Đăng ký học" };
+    Object.entries(labels).forEach(([selector, text]) => {
+      const button = floats.querySelector(selector);
+      if (button && !button.querySelector(".float-label")) {
+        button.insertAdjacentHTML("beforeend", `<span class="float-label">${text}</span>`);
+      }
+    });
+    let ticking = false;
+    const syncScrolled = () => {
+      ticking = false;
+      floats.classList.toggle("is-scrolled", window.scrollY > window.innerHeight * 2);
+    };
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(syncScrolled);
+        }
+      },
+      { passive: true },
+    );
+    syncScrolled();
+  };
+
   const mountFloatingActions = () => {
     // Trang chu da co san cum nut nay trong HTML. Cac trang con dung chung
     // footer se duoc bo sung tai day de luon chi co mot cum nut ho tro.
-    if (document.querySelector(".floats")) return;
+    if (document.querySelector(".floats")) return enhanceFloatingActions();
 
     document.querySelectorAll(".back-to-top").forEach((button) => button.remove());
 
@@ -53,6 +84,7 @@
     document.querySelector(".float-top").addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
+    enhanceFloatingActions();
   };
 
   if (document.readyState === "loading") {
@@ -69,13 +101,13 @@
 
   mount.outerHTML = `
     <!-- ── FOOTER ── -->
-    <footer class="footer">
+    <footer class="footer" id="lien-he">
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
             <a href="${href("index.html")}" class="logo" aria-label="Hiệp Phát">
               <div class="logo-mark">
-                <img src="${href("assets/images/logo.png")}" alt="Hiệp Phát" />
+                <img src="${href("assets/images/logo-white.png")}" alt="Hiệp Phát" />
               </div>
             </a>
             <p class="footer-desc">
@@ -143,7 +175,7 @@
             </div>
             <div class="footer-loc">
               <strong>3. VP Tuyển Sinh</strong>
-              <p>276 Minh Phụng, TP. HCM</p>
+              <p>276 Minh Phụng, Phường Minh Phụng, TP. HCM</p>
               <a href="tel:0912799129">0912.799.129</a>
             </div>
           </div>
@@ -151,7 +183,7 @@
           <div class="footer-col">
             <h4>Tải ứng dụng</h4>
             <p class="footer-app-desc">
-              Học online miễn phí. Trải nghiệm ngay trên Hiệp Phát Edu.
+              Trải nghiệm ngay trên Hiệp Phát Edu.
             </p>
             <div class="footer-app">
               <a href="https://play.google.com/store/apps/details?id=com.hpo.edugo" target="_blank" rel="noopener" aria-label="Tải Hiệp Phát Edu trên Google Play">

@@ -1,0 +1,65 @@
+/* Homepage-only adjustments for the stationary hero companion.
+   Header/logo lớn đã chuyển sang assets/css/site-header-large-logo.css (áp mọi trang). */
+
+body.hpo-home-robot #hpo-robot {
+  position: fixed;
+  top: 266px;
+  left: 22px;
+  z-index: 180;
+  width: 145px;
+  height: 198px;
+  transform: none;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+body.hpo-home-robot #hpo-robot #hpo-robot-greeting {
+  top: auto;
+  bottom: calc(100% + 8px);
+  left: 0;
+  width: min(250px, calc(100vw - 28px));
+  transform: none;
+  transform-origin: 72px bottom;
+}
+body.hpo-home-robot #hpo-robot-greeting::after {
+  top: calc(100% - 5px);
+  left: 72px;
+  border: 0;
+  border-right: 1px solid #c7dff0;
+  border-bottom: 1px solid #c7dff0;
+  transform: translateX(-50%) rotate(45deg);
+}
+body #hpo-robot-viewer .hpo-wander-option,
+body #hpo-robot-viewer .hpo-speed-control { display: none; }
+@media (max-width: 1100px) {
+  body.hpo-home-robot #hpo-robot {
+    top: auto;
+    bottom: auto;
+    left: 16px;
+    width: 125px;
+    height: 171px;
+  }
+  body.hpo-home-robot #hpo-robot #hpo-robot-greeting {
+    top: auto;
+    bottom: calc(100% + 8px);
+    left: 0;
+    transform-origin: 62px bottom;
+  }
+  body.hpo-home-robot #hpo-robot-greeting::after {
+    left: 62px;
+  }
+}
+@media (max-width: 600px) {
+  body.hpo-home-robot #hpo-robot {
+    bottom: auto;
+    left: 12px;
+    width: 96px;
+    height: 135px;
+  }
+  body.hpo-home-robot #hpo-robot #hpo-robot-greeting {
+    width: min(232px, calc(100vw - 24px));
+    padding: 10px 12px;
+    font-size: 12px;
+    transform-origin: 48px bottom;
+  }
+  body.hpo-home-robot #hpo-robot-greeting::after { left: 48px; }
+}

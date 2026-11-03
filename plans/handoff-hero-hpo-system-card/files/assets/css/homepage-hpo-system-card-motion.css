@@ -1,0 +1,87 @@
+/* Card "Hệ thống HPO + Trợ lý ảo AI" trong hero trang chủ (thay cho .hpo-system-card vẽ SVG cũ).
+   Mọi class mang tiền tố hpo-sys-; nạp SAU homepage-reference-hero.css.
+   Chuyển động của vòng HPO do assets/js/homepage-hpo-system-card-motion.js vẽ. */
+
+.hpo-sys-card {
+  display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 20px;
+  width: min(618px, 100%); margin: clamp(34px, 5.5vh, 62px) auto 0; padding: 0 30px 0 22px;
+  background: #fff; border-radius: 26px;
+  box-shadow: 0 24px 60px -24px rgba(30, 64, 175, .28), 0 2px 10px rgba(15, 23, 42, .05);
+}
+.hpo-sys-item { display: flex; flex-direction: column; align-items: center; margin: 0; }
+.hpo-sys-item figcaption {
+  padding: 4px 0 9px; font-family: var(--ff-display, inherit); font-size: 19px; font-weight: 800;
+  color: #2240c4; letter-spacing: -.01em; white-space: nowrap;
+}
+
+/* ---- vòng HPO ---- */
+.hpo-sys-ring {
+  --tilt-x: 0deg; --tilt-y: 0deg;
+  position: relative; width: 362px; max-width: 100%;
+  transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transition: transform .4s ease-out;
+}
+.hpo-sys-ring img { display: block; width: 100%; height: auto; border-radius: 50%; }
+.hpo-sys-ring::after { /* quầng sáng nhịp thở quanh vòng */
+  content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
+  animation: hpo-sys-pulse 3.2s ease-out infinite;
+}
+.hpo-sys-sweep, .hpo-sys-ripple, .hpo-sys-motion { position: absolute; pointer-events: none; mix-blend-mode: screen; }
+.hpo-sys-sweep { /* tia quét kiểu radar — 6s/vòng, khớp SWEEP_SECONDS trong JS */
+  inset: 3px; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0 290deg, rgba(90, 200, 255, .05) 310deg, rgba(150, 228, 255, .3) 359deg, transparent 360deg);
+  animation: hpo-sys-spin 6s linear infinite;
+}
+.hpo-sys-ripple { /* sóng lan từ chiếc xe ở tâm */
+  left: 50%; top: 50.5%; width: 96px; height: 96px; margin: -48px 0 0 -48px; border-radius: 50%;
+  border: 2px solid rgba(160, 232, 255, .7);
+  animation: hpo-sys-ripple 3s ease-out infinite;
+}
+.hpo-sys-ripple--late { animation-delay: 1.5s; }
+.hpo-sys-motion { inset: 0; width: 100%; height: 100%; overflow: visible; }
+.hpo-sys-motion .hpo-sys-spoke {
+  fill: none; stroke: #9be6ff; stroke-width: 1.4; stroke-linecap: round; stroke-opacity: .55;
+  stroke-dasharray: 3 9; animation: hpo-sys-flow 1.2s linear infinite;
+}
+.hpo-sys-motion .hpo-sys-packet { fill: #f2fdff; filter: drop-shadow(0 0 4px #6fdcff) drop-shadow(0 0 8px #3fb8ff); }
+.hpo-sys-motion .hpo-sys-orbit { transform-origin: 181px 181px; animation: hpo-sys-spin 40s linear infinite; }
+
+/* ---- trợ lý ảo AI ----
+   Trục thân robot nằm ở 39% chiều rộng ảnh (tay vẫy làm ảnh lệch phải) →
+   đặt trục thân đúng giữa cột để chữ "TRỢ LÝ ẢO AI" cân giữa robot */
+.hpo-sys-ai-stage { --robot-w: 159px; position: relative; width: 175px; padding-top: 64px; }
+.hpo-sys-ai-robot {
+  display: block; width: var(--robot-w); height: auto; margin-left: calc(50% - var(--robot-w) * .39);
+  animation: hpo-sys-hover 4s ease-in-out infinite;
+}
+.hpo-sys-chat-bubble {
+  position: absolute; top: 2px; right: -14px; width: 68px; height: 44px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  background: linear-gradient(180deg, #5ab4f0, #1f7fd0); border: 2px solid #d9eefc;
+  box-shadow: 0 6px 14px -4px rgba(31, 127, 208, .6), inset 0 1px 0 rgba(255, 255, 255, .5);
+  animation: hpo-sys-hover 4s ease-in-out infinite reverse;
+}
+.hpo-sys-chat-bubble::after { /* đuôi bong bóng */
+  content: ""; position: absolute; bottom: -12px; left: 18px; width: 14px; height: 14px;
+  background: #1f7fd0; border: solid #d9eefc; border-width: 0 2px 2px 0; transform: skewY(40deg) rotate(10deg);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+.hpo-sys-chat-bubble i { width: 9px; height: 9px; border-radius: 50%; background: #fff; animation: hpo-sys-typing 1.2s infinite; }
+.hpo-sys-chat-bubble i:nth-child(2) { animation-delay: .15s; }
+.hpo-sys-chat-bubble i:nth-child(3) { animation-delay: .3s; }
+
+@keyframes hpo-sys-spin { to { transform: rotate(1turn); } }
+@keyframes hpo-sys-flow { to { stroke-dashoffset: -24; } }
+@keyframes hpo-sys-ripple { from { transform: scale(.7); opacity: .9; } to { transform: scale(2.3); opacity: 0; } }
+@keyframes hpo-sys-pulse { 0% { box-shadow: 0 0 0 0 rgba(43, 109, 240, .25); } 80%, 100% { box-shadow: 0 0 0 12px rgba(43, 109, 240, 0); } }
+@keyframes hpo-sys-hover { 50% { transform: translateY(-6px); } }
+@keyframes hpo-sys-typing { 0%, 60%, 100% { transform: translateY(0); opacity: .9; } 30% { transform: translateY(-4px); opacity: 1; } }
+
+@media (max-width: 640px) {
+  .hpo-sys-card { grid-template-columns: 1fr; justify-items: center; padding: 18px 16px 8px; margin-top: 26px; }
+  .hpo-sys-ring { width: min(300px, 100%); }
+  .hpo-sys-ai-stage { --robot-w: 130px; width: 150px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hpo-sys-card *, .hpo-sys-card *::before, .hpo-sys-card *::after { animation: none !important; transition: none !important; }
+}

@@ -45,15 +45,39 @@
   let active = 0;
   let visible = true;
   let pending = false;
-  const AUTO_SLIDE_MS = 3000;
+  // 6 giây: đủ cho người lớn tuổi đọc hết slide trước khi tự chuyển.
+  const AUTO_SLIDE_MS = 6000;
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let autoTimer = null;
   let hovered = false;
   let touching = false;
+  // Chấm chỉ vị trí (dưới slider) + mũi tên dạng icon. Chấm đang chọn kéo dài thành thanh
+  // chạy hết trong AUTO_SLIDE_MS để báo "sắp tự chuyển"; dừng khi tự chuyển tạm ngưng.
+  const controls = root.querySelector('.company-slider-controls');
+  const chevron = d => `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}"/></svg>`;
+  root.querySelector('[data-company-step="-1"]').innerHTML = chevron('M15 5l-7 7 7 7');
+  root.querySelector('[data-company-step="1"]').innerHTML = chevron('M9 5l7 7-7 7');
+  const dots = document.createElement('div');
+  dots.className = 'company-slider-dots';
+  root.style.setProperty('--company-slide-ms', `${AUTO_SLIDE_MS}ms`);
+  const dotButtons = slides.map((slide, index) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.setAttribute('aria-controls', 'companySliderTrack');
+    const name = (slide.getAttribute('aria-label') || '').split(':').slice(1).join(':').trim();
+    dot.setAttribute('aria-label', `Slide ${index + 1}${name ? `: ${name}` : ''}`);
+    dot.addEventListener('click', () => go(index));
+    dots.append(dot);
+    return dot;
+  });
+  controls.querySelector('[data-company-step="1"]').before(dots);
   function scheduleAutoSlide() {
     clearTimeout(autoTimer);
+    root.classList.remove('is-autoplaying');
     if (!visible || document.hidden || hovered || touching ||
         root.contains(document.activeElement) || reducedMotion.matches) return;
+    void root.offsetWidth; // khởi động lại thanh tiến độ của chấm đang chọn
+    root.classList.add('is-autoplaying');
     autoTimer = setTimeout(() => {
       go(active + 1);
       scheduleAutoSlide();
@@ -70,6 +94,8 @@
     slides.forEach((slide, index) => {
       slide.inert = index !== active;
       slide.classList.toggle('is-active', index === active);
+      if (index === active) dotButtons[index].setAttribute('aria-current', 'true');
+      else dotButtons[index].removeAttribute('aria-current');
     });
     media();
     fitBanner();

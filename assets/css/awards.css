@@ -864,7 +864,7 @@
 .award-slide__global-copy small {
   display: none;
   color: #f2c456;
-  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-family: var(--ff-body), Arial, sans-serif;
   font-size: clamp(10px, 0.95vw, 14px);
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -4546,7 +4546,7 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-family: var(--ff-body), Arial, sans-serif;
   font-size: clamp(18px, 2.35vw, 34px);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -4572,7 +4572,7 @@
   margin: clamp(8px, 1.2vw, 16px) auto 0;
   border-top: 1px solid rgba(242, 198, 69, 0.72);
   color: #f5ca56;
-  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-family: var(--ff-body), Arial, sans-serif;
 }
 .award-slide__asean-rank strong {
   color: #f7ce58;
@@ -4605,7 +4605,7 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-family: var(--ff-body), Arial, sans-serif;
   font-size: clamp(26px, 4.2vw, 60px);
   font-weight: 700;
   line-height: 1.08;
@@ -4621,7 +4621,7 @@
   padding-top: clamp(5px, 0.7vw, 9px);
   border-top: 1px solid rgba(242, 198, 69, 0.72);
   color: #efd05f;
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: var(--ff-serif), Georgia, serif;
   font-size: clamp(11px, 1.5vw, 21px);
   font-weight: 600;
   line-height: 1.2;

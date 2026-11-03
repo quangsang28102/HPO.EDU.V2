@@ -1,0 +1,37 @@
+/* ==========================================================================
+   Slide "Giới thiệu công ty" — 1 ảnh ghép cơ sở (bố cục 1: chữ 40 / ảnh 60) (03/11/2026)
+   Giám đốc: bỏ 2 ảnh xếp chồng lệch, thay bằng 1 ảnh ghép (tòa nhà, đội xe tập lái + xe sát hạch, sân tập, sân sát hạch).
+   - Ảnh 16:9 (company-campus-ai-collage-white-trucks.webp): khung theo đúng tỉ lệ ảnh → không cắt mất xe 2 bên.
+   - Máy tính: cột chữ 40%, cột ảnh 60% (trước 50:50 với khung cao cố định).
+   - Điện thoại: giữ thứ tự cũ — ảnh trên, chữ dưới.
+   Nạp SAU homepage-company-banner-split-5050.css (ghi đè khung ảnh cao cố định + 2 ảnh absolute của file đó).
+   ========================================================================== */
+
+html body .company-banner .company-banner-sheet { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+
+html body .company-banner .company-banner-photos {
+  height: auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 24px 46px -28px rgba(10, 19, 48, .55);
+}
+html body .company-banner .company-banner-photos .company-photo-campus {
+  position: static;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  object-fit: cover;
+}
+/* hiện ảnh sau khối chữ, giống nhịp cũ của ảnh tòa nhà */
+html body .company-banner.is-active .company-photo-campus { animation-delay: .3s; }
+
+@media (max-width: 600px) {
+  html body .company-banner .company-banner-sheet { grid-template-columns: minmax(0, 1fr); }
+  html body .company-banner .company-banner-photos { height: auto; border-radius: 20px; }
+}
