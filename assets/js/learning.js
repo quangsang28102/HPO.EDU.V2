@@ -7,7 +7,7 @@
   const triggers = document.querySelectorAll('.bb-card[data-bb-view]');
   if (!modal || !scroller || !closeBtn || !triggers.length) return;
 
-  const DATA_URL = 'assets/data/bien-bao-view.html';
+  const DATA_URL = 'assets/data/bien-bao-view.html?v=20261104-signup-gateway';
   const TITLES = {
     'bien-cam': 'Biển báo cấm',
     'nguy-hiem': 'Biển nguy hiểm',
@@ -149,7 +149,7 @@
   const triggers = document.querySelectorAll('.sa-card[data-sh-view]');
   if (!modal || !scroller || !closeBtn || !triggers.length) return;
 
-  const DATA_URL = 'assets/data/sa-hinh-view.html';
+  const DATA_URL = 'assets/data/sa-hinh-view.html?v=20261104-signup-gateway';
   const TITLES = {
     'nguyen-tac-1': 'Xe có đường riêng',
     'nguyen-tac-2': 'Quyền bình đẳng xe vào nơi đường giao nhau',

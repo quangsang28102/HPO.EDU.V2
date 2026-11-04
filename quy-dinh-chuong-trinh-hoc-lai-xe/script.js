@@ -417,7 +417,7 @@
       bbDetailModal.setAttribute("aria-hidden", "false");
 
       try {
-        bbHtmlPromise ||= fetch("../assets/data/bien-bao-view.html").then((response) => {
+        bbHtmlPromise ||= fetch("../assets/data/bien-bao-view.html?v=20261104-signup-gateway").then((response) => {
           if (!response.ok) throw new Error("Không tải được nội dung biển báo");
           return response.text();
         });
@@ -511,7 +511,7 @@
 
     if (!modal || !frame || !scroller || !closeBtn || !triggers.length) return;
 
-    const DATA_URL = '../assets/data/ky-thuat-lai-xe-view.html';
+    const DATA_URL = '../assets/data/ky-thuat-lai-xe-view.html?v=20261104-signup-gateway';
     const TITLES = {
       'chap-7-content-1': 'Xuất phát',
       'chap-7-content-2': 'Dừng xe nhường đường cho người đi bộ',

@@ -4008,7 +4008,7 @@ void main() {
           <p>B\u1EA1n c\xF3 th\u1EC3 kh\xE1m ph\xE1 m\xF4 h\xECnh 3D b\xEAn c\u1EA1nh. T\xEDnh n\u0103ng tr\xF2 chuy\u1EC7n s\u1EBD c\xF3 m\u1EB7t t\u1EA1i \u0111\xE2y trong th\u1EDDi gian t\u1EDBi.</p>
         </div>
         <div class="hpo-contact-actions">
-          <a class="hpo-enroll-cta" href="https://hpo.edu.vn/dang-ky-hoc/">
+          <a class="hpo-enroll-cta" href="https://gateway.hpo.edu.vn/signup">
             <span>\u0110\u0103ng k\xFD h\u1ECDc</span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>

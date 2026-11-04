@@ -117,7 +117,7 @@
                 <strong>028.36.362.362</strong>
               </span>
             </a>
-            <a href="https://hpo.edu.vn/dang-ky-hoc/" class="btn btn-primary">
+            <a href="https://gateway.hpo.edu.vn/signup" class="btn btn-primary">
               Đăng ký học
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14M13 5l7 7-7 7" />
@@ -165,7 +165,7 @@
             </svg>
             028.36.362.362
           </a>
-          <a href="https://hpo.edu.vn/dang-ky-hoc/" class="btn btn-primary" style="justify-content: center">
+          <a href="https://gateway.hpo.edu.vn/signup" class="btn btn-primary" style="justify-content: center">
             Đăng ký học
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14M13 5l7 7-7 7" />
