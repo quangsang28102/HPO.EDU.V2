@@ -22,6 +22,15 @@
       href="../quy-dinh-chuong-trinh-hoc-lai-xe/styles/process-readable-redesign.css?v=20261103-soat-thiet-ke"
     />
     <link rel="stylesheet" href="style.css?v=20261104-uu-dai-theo-xa" />
+    <link rel="stylesheet" href="../assets/fonts/courses-demo/fonts.css" />
+    <link
+      rel="stylesheet"
+      href="../assets/css/homepage-headings-design-system.css?v=20261031-ds-headings"
+    />
+    <link
+      rel="stylesheet"
+      href="../assets/css/homepage-section-headings-compact.css?v=20261102-compact"
+    />
   </head>
   <body class="process-page uu-dai-page">
     <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
@@ -329,13 +338,13 @@
         </div>
       </section>
 
-      <!-- <section
+      <section
         id="dia-diem"
         class="process-section tn-places"
         aria-labelledby="tn-places-title"
       >
         <div class="container">
-          <div class="section-head">
+          <!-- <div class="section-head">
             <p class="eyebrow">Hướng dẫn đăng ký tại địa điểm đăng ký</p>
             <h2 id="tn-places-title">
               Nơi nhận hồ sơ tại <em data-ten-xa>địa phương</em>
@@ -355,7 +364,7 @@
               ><span class="tn-call__hint">Bấm để gọi tổng đài</span
               ><span class="tn-call__num">028.36.362.362</span></a
             >
-          </div>
+          </div> -->
 
           <div data-noi-dung hidden>
             <table class="tn-table">
@@ -371,21 +380,20 @@
               </thead>
               <tbody data-bang-dia-diem></tbody>
             </table>
+          </div>
 
-            <div class="tn-offer" role="note" aria-label="Ưu đãi học phí">
-              <p class="tn-offer__label">
-                Ưu đãi cho người dân <span data-ten-xa></span>
-              </p>
-              <p class="tn-offer__price">
-                Đăng ký tại các địa điểm trên: học phí chỉ
-                <strong data-hoc-phi></strong>
-              </p>
-              <p class="tn-offer__date">
-                <span data-hang-xe hidden></span>
-                Áp dụng đến hết ngày <strong data-ngay-ket-thuc></strong>. Chỉ
-                dành cho người dân <span data-ten-xa></span>.
-              </p>
-            </div>
+          <div class="tn-offer" role="note" aria-label="Ưu đãi học phí">
+            <p class="tn-offer__label">
+              Ưu đãi cho người dân <span data-ten-xa></span>
+            </p>
+            <p class="tn-offer__price">
+              Đăng ký tại để nhận ưu đãi
+              <!-- <strong data-hoc-phi></strong> -->
+            </p>
+            <p class="tn-offer__date">
+              <span data-hang-xe hidden></span>
+              Áp dụng đến hết ngày <strong data-ngay-ket-thuc></strong>.
+            </p>
           </div>
 
           <noscript>
@@ -394,17 +402,229 @@
                 Không hiển thị được danh sách địa điểm
               </p>
               <p class="tn-message__text">
-                Trình duyệt đang tắt JavaScript. Vui lòng gọi tổng đài
-                028.36.362.362 để được hướng dẫn.
+                Vui lòng gọi tổng đài 028.36.362.362 để được hướng dẫn.
               </p>
             </div>
           </noscript>
         </div>
-      </section> -->
+      </section>
+
+      <section
+        class="courses-section"
+        id="khoa-hoc"
+        aria-labelledby="courses-title"
+        data-courses-section
+      >
+        <!-- Nền nhiều lớp: bầu trời → mây → thành phố + mặt đường -->
+        <div
+          class="courses-bg"
+          aria-hidden="true"
+        >
+          <div class="courses-bg__sky"></div>
+          <div class="courses-bg__cloud courses-bg__cloud--1"></div>
+          <div class="courses-bg__cloud courses-bg__cloud--2"></div>
+          <div class="courses-bg__cloud courses-bg__cloud--3"></div>
+          <div class="courses-bg__city"></div>
+          <div class="courses-bg__fade"></div>
+        </div>
+
+        <div class="course-demo-container">
+          <header class="section-head">
+            <h2
+              class="section-head__title"
+              id="courses-title"
+            >
+              KHÓA HỌC CỦA CHÚNG TÔI
+            </h2>
+            <p class="section-head__subtitle">
+              <span class="nowrap">ĐÀO TẠO LÁI XE Ô TÔ THÔNG MINH</span
+              ><span class="sep"> - </span><span class="nowrap">CHI PHÍ THẤP</span
+              ><span class="sep"> - </span
+              ><span class="nowrap">CHẤT LƯỢNG HÀNG ĐẦU</span>
+            </p>
+            <span
+              class="section-head__lane"
+              aria-hidden="true"
+            ></span>
+          </header>
+
+          <div class="courses-layout">
+            <!-- Hộp quà khuyến mãi (Floating) -->
+            <aside
+              class="promo"
+              aria-label="Ưu đãi học phí"
+            >
+              <div class="promo__gift">
+                <span
+                  class="promo__glow"
+                  aria-hidden="true"
+                ></span>
+                <!-- 5 ngôi sao lấp lánh quanh hộp quà (vị trí/nhịp trong courses-demo.css, mục 5) -->
+                <span class="promo__spark" aria-hidden="true"></span>
+                <span class="promo__spark" aria-hidden="true"></span>
+                <span class="promo__spark" aria-hidden="true"></span>
+                <span class="promo__spark" aria-hidden="true"></span>
+                <span class="promo__spark" aria-hidden="true"></span>
+                <img
+                  class="promo__box"
+                  src="../assets/images/courses-demo/gift-box.svg"
+                  alt="Hộp quà ưu đãi học phí"
+                  width="240"
+                  height="228"
+                />
+                <span
+                  class="promo__shadow"
+                  aria-hidden="true"
+                ></span>
+              </div>
+              <p class="promo__ribbon"><span>HỌC PHÍ TRỌN GÓI</span></p>
+              <p class="promo__note">Minh bạch · Hiệu quả<br />Chất lượng cao</p>
+            </aside>
+
+            <!-- Ba thẻ khóa học; cấu hình ảnh xe nằm trong assets/js/courses-demo-vehicle-config.js. -->
+            <div
+              class="course-demo-list"
+              data-courses
+            >
+              <article
+                class="course-card"
+                data-course="hang-b-so-tu-dong"
+              >
+                <h3 class="course-card__title">
+                  <button
+                    class="course-card__toggle"
+                    type="button"
+                    data-toggle
+                  >
+                    <span
+                      class="course-card__badge"
+                      aria-hidden="true"
+                      >B</span
+                    >
+                    <span class="course-card__name">
+                      <span class="course-card__class">Hạng B</span
+                      ><span class="visually-hidden"> - </span>
+                      <span class="course-card__type">Số tự động</span>
+                    </span>
+                    <span
+                      class="course-card__chevron"
+                      aria-hidden="true"
+                    ></span>
+                  </button>
+                </h3>
+                <div
+                  class="stage"
+                  data-stage
+                  data-photo="hang-b-vios"
+                  aria-hidden="true"
+                ></div>
+                <dl
+                  class="price-list"
+                  id="gia-hang-b-tu-dong"
+                >
+                  <div class="price price--deal">
+                    <dt class="price__label">Học phí</dt>
+                    <dd class="price__value">16.000.000đ</dd>
+                  </div>
+                </dl>
+              </article>
+
+              <article
+                class="course-card"
+                data-course="hang-b-so-co-khi"
+              >
+                <h3 class="course-card__title">
+                  <button
+                    class="course-card__toggle"
+                    type="button"
+                    data-toggle
+                  >
+                    <span
+                      class="course-card__badge"
+                      aria-hidden="true"
+                      >B</span
+                    >
+                    <span class="course-card__name">
+                      <span class="course-card__class">Hạng B</span
+                      ><span class="visually-hidden"> - </span>
+                      <span class="course-card__type">Số cơ khí</span>
+                    </span>
+                    <span
+                      class="course-card__chevron"
+                      aria-hidden="true"
+                    ></span>
+                  </button>
+                </h3>
+                <div
+                  class="stage"
+                  data-stage
+                  data-photo="hang-b-vios"
+                  aria-hidden="true"
+                ></div>
+                <dl
+                  class="price-list"
+                  id="gia-hang-b-co-khi"
+                >
+                  <div class="price price--deal">
+                    <dt class="price__label">Học phí</dt>
+                    <dd class="price__value">16.000.000đ</dd>
+                  </div>
+                </dl>
+              </article>
+
+              <article
+                class="course-card"
+                data-course="hang-c1"
+              >
+                <h3 class="course-card__title">
+                  <button
+                    class="course-card__toggle"
+                    type="button"
+                    data-toggle
+                  >
+                    <span
+                      class="course-card__badge course-card__badge--c1"
+                      aria-hidden="true"
+                      >C1</span
+                    >
+                    <span class="course-card__name">
+                      <span class="course-card__class">Hạng C1</span
+                      ><span class="visually-hidden"> - </span>
+                      <span class="course-card__type">Xe tải</span>
+                    </span>
+                    <span
+                      class="course-card__chevron"
+                      aria-hidden="true"
+                    ></span>
+                  </button>
+                </h3>
+                <div
+                  class="stage"
+                  data-stage
+                  data-photo="hang-c1-kia-k200"
+                  aria-hidden="true"
+                ></div>
+                <dl
+                  class="price-list"
+                  id="gia-hang-c1"
+                >
+                  <div class="price price--deal">
+                    <dt class="price__label">Học phí</dt>
+                    <dd class="price__value">18.000.000đ</dd>
+                  </div>
+                </dl>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <div id="siteFooter" data-base="../"></div>
     <script src="../assets/js/site-footer.js?v=20261104-signup-gateway"></script>
     <script src="ho-so-uu-dai-theo-xa.js?v=20261104-uu-dai-theo-xa"></script>
+    <script src="../assets/js/courses-demo-vehicle-config.js"></script>
+    <script src="../assets/js/courses-demo-stage-renderer.js"></script>
+    <script src="../assets/js/courses-demo-interactions.js?v=20261104-uu-dai-theo-xa-khoa-hoc"></script>
   </body>
 </html>
