@@ -13,7 +13,8 @@ html body.uu-dai-page .process-illustration * { animation: none !important; }
 /* Trang đích QR: ẩn điều hướng và robot theo yêu cầu riêng của trang. */
 html body.uu-dai-page #navbar .nav-links,
 html body.uu-dai-page #navbar .nav-burger,
-html body.uu-dai-page #navbar .nav-actions > .btn-primary {
+html body.uu-dai-page #navbar .nav-actions > .btn-primary,
+html body.uu-dai-page #navbar .nav-actions > .btn-login {
   display: none;
 }
 html body.uu-dai-page .topbar-hotline,
