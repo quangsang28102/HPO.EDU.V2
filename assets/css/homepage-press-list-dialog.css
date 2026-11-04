@@ -1,0 +1,285 @@
+/* ==========================================================================
+   Trang chủ — "Báo chí đưa tin": nhãn bên trái thành NÚT, bấm → bảng liệt kê đủ các bài.
+   Nút: huy hiệu số bài trên biểu tượng + dòng "Xem tất cả ›"; rê chuột → nền xanh nhạt, biểu tượng nhích lên.
+   Bảng: <dialog> giữa màn hình (máy tính, 2 cột) / tấm trượt từ dưới lên (điện thoại, 1 cột).
+   Tiêu đề bài hiện ĐỦ, không cắt "…"; chữ nội dung ≥16px cho người lớn tuổi.
+   JS: assets/js/homepage-press-list-dialog.js
+   ========================================================================== */
+
+/* ---- Nút nhãn (thay <p> cũ, giữ nguyên bố cục) ---- */
+html body .strip--press .strip-press__open {
+  align-self: stretch;
+  border-top: 0;
+  border-bottom: 0;
+  border-left: 0;
+  background: transparent;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color .2s;
+}
+html body .strip--press .strip-press__open:hover { background: #eef2ff; }
+html body .strip--press .strip-press__open:focus-visible {
+  outline: 3px solid #1e40af;
+  outline-offset: -3px;
+}
+html body .strip--press .strip-press__label-icon {
+  position: relative;
+  transition: transform .2s, box-shadow .2s;
+}
+html body .strip--press .strip-press__open:hover .strip-press__label-icon {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(30, 64, 175, .3);
+}
+/* Huy hiệu số bài: vàng trên nền navy (đúng quy tắc màu vàng chỉ dùng trên navy) */
+html body .strip--press .strip-press__count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: #0a1330;
+  color: #facc15;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 18px;
+  letter-spacing: 0;
+  text-align: center;
+}
+html body .strip--press .strip-press__text { display: flex; flex-direction: column; gap: 3px; }
+html body .strip--press .strip-press__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: #1e40af;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+html body .strip--press .strip-press__more svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .2s;
+}
+html body .strip--press .strip-press__open:hover .strip-press__more { text-decoration: underline; text-underline-offset: 3px; }
+html body .strip--press .strip-press__open:hover .strip-press__more svg { transform: translateX(3px); }
+
+/* Bảng đang mở → dải đứng yên, trang không cuộn phía sau */
+html body .strip--press.is-paused .strip-track { animation-play-state: paused; }
+html.press-dialog-open { overflow: hidden; }
+
+/* ---- Bảng danh sách ---- */
+html body .press-dialog {
+  width: min(980px, calc(100vw - 32px));
+  max-width: none;
+  max-height: min(86vh, 860px);
+  margin: auto; /* site reset đặt margin: 0 cho mọi thẻ → phải trả lại auto để <dialog> nằm giữa */
+  padding: 0;
+  border: 0;
+  border-radius: 20px;
+  background: #fff;
+  color: #0a1330;
+  box-shadow: 0 30px 80px rgba(10, 19, 48, .35);
+  overflow: hidden;
+}
+html body .press-dialog[open] {
+  display: flex;
+  flex-direction: column;
+  animation: pressDialogIn .26s cubic-bezier(.2, .8, .2, 1) both;
+}
+html body .press-dialog::backdrop {
+  background: rgba(10, 19, 48, .55);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  animation: pressBackdropIn .26s ease both;
+}
+html body .press-dialog.is-closing { animation: pressDialogOut .18s ease both; }
+html body .press-dialog.is-closing::backdrop { animation: pressBackdropOut .18s ease both; }
+
+html body .press-dialog__head {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 20px 18px 24px;
+  border-bottom: 1px solid #e5eaf5;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f7fe 100%);
+}
+html body .press-dialog__head-icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #1e40af;
+  color: #fff;
+}
+html body .press-dialog__head-icon svg,
+html body .press-dialog__close svg,
+html body .press-item__icon svg,
+html body .press-item__go {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+html body .press-dialog__head-icon svg { width: 24px; height: 24px; }
+html body .press-dialog__heading { flex: 1; min-width: 0; }
+html body .press-dialog__title {
+  margin: 0;
+  color: #0a1330;
+  font-size: clamp(20px, 2vw, 24px);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-transform: none;
+}
+html body .press-dialog__sub {
+  margin: 4px 0 0;
+  color: #475569;
+  font-size: 16px;
+  line-height: 1.4;
+}
+html body .press-dialog__sub b { color: #1e40af; }
+html body .press-dialog__close {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #dbe3f3;
+  border-radius: 50%;
+  background: #fff;
+  color: #0a1330;
+  cursor: pointer;
+  transition: background-color .2s, border-color .2s, transform .2s;
+}
+html body .press-dialog__close svg { width: 22px; height: 22px; stroke-width: 2.2; }
+html body .press-dialog__close:hover { border-color: #1e40af; background: #eef2ff; transform: rotate(90deg); }
+html body .press-dialog__close:focus-visible { outline: 3px solid #1e40af; outline-offset: 2px; }
+
+html body .press-dialog__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 20px 24px 24px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  list-style: none;
+}
+html body .press-dialog__item { margin: 0; animation: pressItemIn .3s ease both; animation-delay: calc(var(--i, 0) * 25ms + 60ms); }
+
+html body .press-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  height: 100%;
+  padding: 14px 14px 14px 12px;
+  border: 1px solid #dbe3f3;
+  border-radius: 14px;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color .2s, box-shadow .2s, transform .2s, background-color .2s;
+}
+html body .press-item:hover,
+html body .press-item:focus-visible {
+  border-color: #1e40af;
+  background: #f8faff;
+  box-shadow: 0 8px 22px rgba(30, 64, 175, .14);
+  transform: translateY(-2px);
+  outline: none;
+}
+html body .press-item:focus-visible { box-shadow: 0 0 0 3px rgba(30, 64, 175, .35); }
+html body .press-item__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #eef2ff;
+  color: #1e40af;
+}
+html body .press-item__icon svg { width: 21px; height: 21px; }
+html body .press-item__body { display: flex; flex: 1; flex-direction: column; gap: 4px; min-width: 0; }
+html body .press-item__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+html body .press-item__outlet { color: #1e3a8a; font-size: 16px; font-weight: 800; line-height: 1.3; }
+html body .press-item__type {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+html body .press-item__type--video { background: #fef2f2; color: #b91c1c; }
+html body .press-item__type--audio { background: #f0fdf4; color: #15803d; }
+html body .press-item__title { color: #1e293b; font-size: 16px; line-height: 1.45; }
+html body .press-item:hover .press-item__title,
+html body .press-item:focus-visible .press-item__title { color: #0a1330; }
+html body .press-item__go {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 10px;
+  color: #94a3b8;
+  transition: color .2s, transform .2s;
+}
+html body .press-item:hover .press-item__go,
+html body .press-item:focus-visible .press-item__go { color: #1e40af; transform: translate(2px, -2px); }
+
+@keyframes pressDialogIn { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: none; } }
+@keyframes pressDialogOut { to { opacity: 0; transform: translateY(10px) scale(.98); } }
+@keyframes pressBackdropIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pressBackdropOut { to { opacity: 0; } }
+@keyframes pressItemIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* Máy tính bảng dọc → 1 cột */
+@media (max-width: 760px) {
+  html body .press-dialog__list { grid-template-columns: 1fr; }
+}
+
+/* Điện thoại: tấm trượt từ dưới lên, sát 2 mép */
+@media (max-width: 600px) {
+  /* chữ nhãn đã ẩn (vẫn đọc được) bởi rule ≤600px trong homepage-strip-highlights.css → chỉ còn biểu tượng + số bài */
+  html body .strip--press .strip-press__open { padding-right: 14px; }
+  html body .press-dialog {
+    width: 100vw;
+    max-height: 88vh;
+    margin: auto 0 0;
+    border-radius: 20px 20px 0 0;
+  }
+  html body .press-dialog[open] { animation-name: pressSheetIn; }
+  html body .press-dialog.is-closing { animation-name: pressSheetOut; }
+  html body .press-dialog__head { padding: 16px 12px 14px 16px; gap: 12px; }
+  html body .press-dialog__head-icon { width: 40px; height: 40px; }
+  html body .press-dialog__title { font-size: 20px; }
+  html body .press-dialog__sub { font-size: 15px; }
+  html body .press-dialog__close { width: 44px; height: 44px; }
+  html body .press-dialog__list { gap: 10px; padding: 14px 12px calc(18px + env(safe-area-inset-bottom)); }
+}
+@keyframes pressSheetIn { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes pressSheetOut { to { transform: translateY(100%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  html body .press-dialog[open],
+  html body .press-dialog::backdrop,
+  html body .press-dialog__item { animation: none; }
+  html body .press-item,
+  html body .press-dialog__close,
+  html body .strip--press .strip-press__label-icon { transition: none; }
+}

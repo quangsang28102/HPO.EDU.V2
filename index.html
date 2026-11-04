@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="assets/css/homepage-platform-theory-practice-refresh.css?v=20261102-khung-anh-co-dinh" />
     <link rel="stylesheet" href="assets/css/homepage-hero-practice-updates-261103.css?v=20261104-cau-gon" />
     <link rel="stylesheet" href="assets/css/homepage-strip-highlights.css?v=20261102-press" />
+    <link rel="stylesheet" href="assets/css/homepage-press-list-dialog.css?v=20261104-bao-chi-xem-tat-ca" />
     <link rel="stylesheet" href="assets/css/homepage-company-banner-motto-on-top.css?v=20261102-motto" />
     <link rel="stylesheet" href="assets/css/homepage-company-banner-split-5050.css?v=20261103-gioi-thieu-5050" />
     <link rel="stylesheet" href="assets/css/homepage-company-banner-campus-photo.css?v=20261103-anh-co-so" />
@@ -227,12 +228,13 @@
 
     <!-- ── STRIP: BÁO CHÍ ĐƯA TIN (họp báo 28/10/2026). Nhãn "Báo chí đưa tin" đứng yên bên trái; các thẻ chạy ngang
          (nhóm 2 lặp lại nhóm 1, aria-hidden + tabindex=-1 để chạy vòng liền mạch). Bấm thẻ → mở bài báo ở tab mới.
-         Thêm/bớt bài: sửa thẻ <a> ở CẢ 2 nhóm (nhóm 2 giữ tabindex="-1"); thời lượng vòng chỉnh ở homepage-strip-highlights.css. ── -->
+         Thêm/bớt bài: sửa thẻ <a> ở CẢ 2 nhóm (nhóm 2 giữ tabindex="-1"); thời lượng vòng chỉnh ở homepage-strip-highlights.css.
+         Bấm nhãn → bảng #pressListDialog liệt kê đủ bài (JS tự dựng từ nhóm 1, số bài tự đếm). ── -->
     <div class="strip strip--highlights strip--press" role="region" aria-label="Báo chí đưa tin về Hiệp Phát">
-      <p class="strip-press__label">
-        <span class="strip-press__label-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span>
-        <span>Báo chí<br />đưa tin</span>
-      </p>
+      <button type="button" class="strip-press__label strip-press__open" data-press-open aria-haspopup="dialog" aria-controls="pressListDialog" aria-expanded="false">
+        <span class="strip-press__label-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg><span class="strip-press__count" data-press-count>17</span></span>
+        <span class="strip-press__text"><span>Báo chí<br />đưa tin</span><span class="strip-press__more">Xem tất cả<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></span>
+      </button>
       <div class="strip-press__viewport">
         <div class="strip-track" id="stripTrack">
         <div class="strip-group">
@@ -3823,6 +3825,19 @@
     </div>
 
     <!-- ── SCRIPTS ── -->
+    <!-- Bảng "Báo chí đưa tin": danh sách đủ các bài, do homepage-press-list-dialog.js dựng từ dải chạy phía trên -->
+    <dialog class="press-dialog" id="pressListDialog" aria-labelledby="pressListTitle">
+      <div class="press-dialog__head">
+        <span class="press-dialog__head-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2"/><path d="M7.5 9h6M7.5 12.5h6M7.5 16h4"/></svg></span>
+        <div class="press-dialog__heading">
+          <h2 class="press-dialog__title" id="pressListTitle">Báo chí đưa tin về Hiệp Phát</h2>
+          <p class="press-dialog__sub"><b data-press-count>17</b> bài báo, video, phát thanh sau họp báo ngày 28/10/2026</p>
+        </div>
+        <button type="button" class="press-dialog__close" data-press-close aria-label="Đóng danh sách" autofocus><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <ol class="press-dialog__list" data-press-list></ol>
+    </dialog>
+
     <script src="assets/js/core.js"></script>
     <script src="assets/js/engine-media.js"></script>
     <script src="assets/js/engine-voice.js"></script>
@@ -3836,5 +3851,6 @@
     <script src="assets/js/courses-demo-vehicle-config.js"></script>
     <script src="assets/js/courses-demo-stage-renderer.js"></script>
     <script src="assets/js/courses-demo-interactions.js"></script>
+    <script src="assets/js/homepage-press-list-dialog.js?v=20261104-bao-chi-xem-tat-ca"></script>
   </body>
 </html>
