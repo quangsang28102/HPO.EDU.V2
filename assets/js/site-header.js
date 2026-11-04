@@ -123,6 +123,12 @@
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>
             </a>
+            <a href="https://gateway.hpo.edu.vn/signin" class="btn btn-primary">
+              Đăng nhập
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </a>
             <button class="nav-burger" id="burger" aria-label="Mở menu">
               <span></span><span></span><span></span>
             </button>
@@ -167,6 +173,12 @@
           </a>
           <a href="https://gateway.hpo.edu.vn/signup" class="btn btn-primary" style="justify-content: center">
             Đăng ký học
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="https://gateway.hpo.edu.vn/signin" class="btn btn-primary" style="justify-content: center">
+            Đăng nhập
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14M13 5l7 7-7 7" />
             </svg>
