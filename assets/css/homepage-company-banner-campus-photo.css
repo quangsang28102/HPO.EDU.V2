@@ -1,7 +1,7 @@
 /* ==========================================================================
    Slide "Giới thiệu công ty" — 1 ảnh ghép cơ sở (bố cục 1: chữ 40 / ảnh 60) (03/11/2026)
    Giám đốc: bỏ 2 ảnh xếp chồng lệch, thay bằng 1 ảnh ghép (tòa nhà, đội xe tập lái + xe sát hạch, sân tập, sân sát hạch).
-   - Ảnh 16:9 (company-campus-ai-collage-white-trucks.webp): khung theo đúng tỉ lệ ảnh → không cắt mất xe 2 bên.
+   - Ảnh ghép 16:9: khung theo đúng tỉ lệ ảnh → không cắt mất xe 2 bên.
    - Máy tính: cột chữ 40%, cột ảnh 60% (trước 50:50 với khung cao cố định).
    - Điện thoại: giữ thứ tự cũ — ảnh trên, chữ dưới.
    Nạp SAU homepage-company-banner-split-5050.css (ghi đè khung ảnh cao cố định + 2 ảnh absolute của file đó).

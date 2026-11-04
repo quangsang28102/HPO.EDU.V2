@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-import { Robot } from './robot';
+import { Robot } from './mascot-robot';
 import type { RobotTheme } from './robot-themes';
 
 export const fallback = `<svg class="hpo-robot-fallback" viewBox="0 0 140 200" aria-hidden="true"><g fill="none" stroke-linecap="round"><path d="M50 152v30m40-30v30M34 110l-12 34m96-34 12 34" stroke="#d5dbe5" stroke-width="19"/><path d="M50 152v30m40-30v30M34 110l-12 34m96-34 12 34" stroke="#f3f4f6" stroke-width="15"/></g><g fill="#1b2a5c"><rect x="40" y="172" width="20" height="7" rx="3.5"/><rect x="80" y="172" width="20" height="7" rx="3.5"/></g><g fill="#f3f4f6" stroke="#d5dbe5" stroke-width="2"><rect x="37" y="98" width="66" height="52" rx="22"/><rect x="18" y="20" width="104" height="80" rx="36"/></g><rect x="26" y="29" width="88" height="62" rx="25" fill="#d9a440"/><rect x="28" y="31" width="84" height="58" rx="23" fill="#03050b"/><g fill="#eef7ff"><circle cx="55" cy="58" r="8"/><circle cx="85" cy="58" r="8"/></g><g fill="#1b2a5c"><rect x="10" y="44" width="10" height="28" rx="5"/><rect x="120" y="44" width="10" height="28" rx="5"/><circle cx="34" cy="106" r="9"/><circle cx="106" cy="106" r="9"/><circle cx="70" cy="120" r="13"/></g><circle cx="70" cy="120" r="8" fill="#d6b25a"/><rect x="40" y="138" width="60" height="7" rx="3.5" fill="#d6b25a"/></svg>`;
@@ -26,9 +26,12 @@ export class RobotStage {
     // Neutral tone mapping keeps the brand blue from drifting to lavender.
     this.renderer.toneMapping = THREE.NeutralToneMapping;
     this.renderer.toneMappingExposure = .95;
-    this.camera.position.set(0, 2.25, 10);
-    this.camera.lookAt(0, 1.95, 0);
-    this.robot = new Robot(theme);
+    // Robot linh vật cao ~4.7 (kể cả biển TẬP LÁI): khung vừa khít hơn robot cũ (lookAt giữa thân, gần hơn)
+    this.camera.position.set(0, 2.55, 8.9);
+    this.camera.lookAt(0, 2.3, 0);
+    // Robot linh vật Hiệp Phát (biển TẬP LÁI, logo ngực, màn hình mặt LED). theme cũ không còn dùng cho robot này.
+    void theme;
+    this.robot = new Robot('brand');
     // Soft ground contact shadow stays on the floor while the body bobs and turns.
     const shadowMaterial = new THREE.ShaderMaterial({
       transparent: true, depthWrite: false,

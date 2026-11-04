@@ -506,3 +506,9 @@ body.hpo-page-robot #hpo-robot-greeting::after {
 @media (prefers-reduced-motion: reduce) {
   #hpo-robot-restore .hpo-robot-full { animation: none; }
 }
+
+/* Trang chủ: robot dời chỗ mượt khi băng chuyền đổi slide (slide 2 đứng cạnh tiêu đề "Giới thiệu công ty") */
+body.hpo-home-robot #hpo-robot { transition: top .45s cubic-bezier(.22, 1, .36, 1); }
+@media (prefers-reduced-motion: reduce) { body.hpo-home-robot #hpo-robot { transition: none; } }
+/* slide "Giới thiệu công ty" không đủ chỗ phía trên robot → tạm ẩn bong bóng chào (robot vẫn vẫy tay) */
+#hpo-robot.is-bubble-off #hpo-robot-greeting { visibility: hidden !important; opacity: 0 !important; }

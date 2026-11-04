@@ -1,0 +1,50 @@
+/* ==========================================================================
+   Trang chủ — cập nhật 03/11/2026
+   1. Hero: dòng chào "Chào mừng các bạn đến với Hiệp Phát" to rõ hơn (Giám đốc yêu cầu) và đoạn giới thiệu
+      "Tại Hiệp Phát, chúng tôi đào tạo…" thu về 2 dòng cân đối dưới dòng mô tả.
+      Thứ bậc: tiêu đề (gradient) > dòng chào = dòng mô tả > đoạn giới thiệu.
+   5. Thực hành: thay video bằng ảnh mô phỏng 16:9 (sa hình / DAT), đổi ảnh theo mục đang mở (homepage.js, data-img).
+   Nạp SAU homepage-platform-theory-practice-refresh.css.
+   ========================================================================== */
+
+/* ---- 1. Hero ---- */
+html body .hpo-hero-welcome {
+  font-size: clamp(19px, 1.9vw, 28px);
+  letter-spacing: .07em;
+}
+html body .hpo-hero-welcome::before,
+html body .hpo-hero-welcome::after { width: 44px; height: 3px; }
+/* 04/11: bị chê chữ nhỏ → 23px (1440px), đậm vừa, chữ sẫm hơn; vẫn nhỏ hơn dòng mô tả 27px một bậc */
+html body .hpo-digital-detail {
+  max-width: 1000px;
+  margin: 14px auto 0;
+  color: #1e293b;
+  font-size: clamp(19px, 1.6vw, 23px);
+  font-weight: 500;
+  line-height: 1.55;
+  text-wrap: balance;
+}
+/* "Hạng B", "Hạng C1": nhấn bằng độ đậm + navy (DS: không nghiêng) */
+html body .hpo-digital-detail strong { font-weight: 700; color: #0a1330; }
+/* máy tính: xuống dòng sau dấu phẩy (không ngắt giữa "trí tuệ / nhân tạo"); điện thoại để chữ tự chảy */
+@media (max-width: 700px) { html body .hpo-digital-detail .hpo-detail-br { display: none; } }
+@media (max-width: 700px) {
+  html body .hpo-hero-welcome { font-size: clamp(14px, 4.1vw, 17px); letter-spacing: .02em; }
+  html body .hpo-hero-welcome::before,
+  html body .hpo-hero-welcome::after { width: 18px; }
+  html body .hpo-digital-detail { margin-top: 12px; font-size: 17px; }
+}
+
+/* ---- 5. Thực hành: ảnh mô phỏng thay video ---- */
+html body .platform-v2-practice-image.platform-circle {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(11, 18, 32, .14);
+}
+html body .platform-v2-practice-image.platform-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

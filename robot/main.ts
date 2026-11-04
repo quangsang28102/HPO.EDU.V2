@@ -54,7 +54,7 @@ function mount() {
   // Nút robot = đầu robot 3D (ảnh render sẵn) + bong bóng chào. Bong bóng nằm trong nút
   // nên bấm vào bong bóng cũng mở hộp thoại.
   // Máy tính/máy tính bảng: đầu robot. Điện thoại: robot đủ thân đứng trên thanh nút đáy (CSS chọn ảnh).
-  restoreButton.innerHTML = `<img class="hpo-robot-head" src="${ROBOT_HEAD_AVATAR}" alt="" width="64" height="64" decoding="async"><img class="hpo-robot-full" src="${ROBOT_FULL_BODY_AVATAR}" alt="" width="116" height="240" decoding="async">`;
+  restoreButton.innerHTML = `<img class="hpo-robot-head" src="${ROBOT_HEAD_AVATAR}" alt="" width="64" height="64" decoding="async"><img class="hpo-robot-full" src="${ROBOT_FULL_BODY_AVATAR}" alt="" width="125" height="240" decoding="async">`;
   const dockGreeting = document.createElement("span");
   dockGreeting.id = "hpo-robot-dock-greeting";
   dockGreeting.className = "is-hidden";
@@ -266,6 +266,29 @@ function mount() {
     else companion.removeAttribute("aria-describedby");
   }
 
+  // Slide "Giới thiệu công ty": vị trí robot bên trái tiêu đề, chân cao hơn câu nhấn "Đào tạo và sát hạch…",
+  // bong bóng chào không đè header. null = không phải slide này; NaN = không đủ chỗ (máy tính bảng) → thu về góc.
+  let lastRobotH = 198, lastBubbleH = 90;
+  function companySlideTop(): number | null {
+    if (!homeHero || homeHero.classList.contains("is-active")) { companion.classList.remove("is-bubble-off"); return null; }
+    const banner = document.querySelector<HTMLElement>(".company-banner.is-active");
+    const heading = banner?.querySelector<HTMLElement>(".company-banner-heading h2");
+    const motto = banner?.querySelector<HTMLElement>(".company-banner-motto");
+    if (!heading || !motto) { companion.classList.remove("is-bubble-off"); return null; }
+    // đáy header đang hiện trên màn hình (thanh trên cùng có thể đã cuộn khuất)
+    const headerBottom = document.getElementById("navbar")?.getBoundingClientRect().bottom || 0;
+    const h = heading.getBoundingClientRect(), m = motto.getBoundingClientRect();
+    // robot đang thu về góc thì không đo được kích thước → dùng số đo lần gần nhất
+    if (companion.offsetHeight) lastRobotH = companion.offsetHeight;
+    if (greeting.offsetHeight) lastBubbleH = greeting.offsetHeight;
+    const robotH = lastRobotH, bubbleH = lastBubbleH + 8;
+    // đứng thấp nhất có thể: chân robot ngay trên câu nhấn (chừa tối đa chỗ cho bong bóng phía trên, không đè header)
+    void h;
+    const top = m.top - robotH - 12;
+    // đủ chỗ cho robot nhưng không đủ cho bong bóng (laptop 1440×900…) → robot vẫn đứng + vẫy tay, ẩn bong bóng
+    companion.classList.toggle("is-bubble-off", top - bubbleH < headerBottom - 2);
+    return top < headerBottom + 4 ? NaN : top;
+  }
   function place() {
     if (stationary) {
       companion.style.removeProperty("transform");
@@ -288,7 +311,12 @@ function mount() {
       const bottomBar = matchMedia("(max-width: 600px)").matches
         ? document.querySelector<HTMLElement>(".floats")?.offsetHeight || 0
         : 0;
-      companion.style.top = `${Math.min(naturalTop, visibleHeight - bottomBar - companion.offsetHeight - (homeHero ? 12 : gap + 8))}px`;
+      let top = Math.min(naturalTop, visibleHeight - bottomBar - companion.offsetHeight - (homeHero ? 12 : gap + 8));
+      // Trang chủ, băng chuyền đang ở slide "Giới thiệu công ty": cột trái là câu nhấn "Đào tạo và sát hạch…"
+      // → đưa robot lên khoảng trống bên trái tiêu đề "GIỚI THIỆU CÔNG TY", chân robot luôn cao hơn câu nhấn.
+      const slide2 = homeHero ? companySlideTop() : null;
+      if (slide2 !== null) top = slide2;
+      companion.style.top = `${top}px`;
       companion.style.bottom = "auto";
       greeting.style.removeProperty("left");
       greeting.style.removeProperty("--greeting-tail");
@@ -342,14 +370,16 @@ function mount() {
   new ResizeObserver(() => resize()).observe(companion);
   new ResizeObserver(() => resize()).observe(greeting);
   {
-    if (homeHero) new ResizeObserver(() => resize()).observe(homeHero);
+    if (homeHero) {
+      new ResizeObserver(() => resize()).observe(homeHero);
+    }
     // Robot chỉ thu về góc khi lướt xuống (> 25% màn hình); băng chuyền đổi slide trên trang
     // chủ không còn làm robot thu lại. Lướt lên lại → robot đứng ra, chào lại sau 0.5 giây.
     const syncHeroDock = () => {
       const now = performance.now();
       const away = scrollY > innerHeight * 0.25;
       // Điện thoại: robot luôn đứng cố định trên thanh nút đáy (không bật ra trang khi lướt lên đầu).
-      const nextDocked = away || phoneLayout.matches;
+      const nextDocked = away || phoneLayout.matches || Number.isNaN(companySlideTop());
       if (nextDocked === docked) return;
       docked = nextDocked;
       if (!docked) {
@@ -367,6 +397,17 @@ function mount() {
     };
     window.addEventListener("scroll", syncHeroDock, { passive: true });
     phoneLayout.addEventListener("change", syncHeroDock);
+    if (homeHero)
+    {
+      // Băng chuyền đổi slide → đặt lại chỗ robot. Băng chuyền trượt ngang (scroll của .company-slider-track),
+      // nên đo lại theo từng khung hình khi track cuộn và khi đổi class is-active.
+      let raf = 0;
+      const replace = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => { syncHeroDock(); place(); }); };
+      new MutationObserver(replace).observe(homeHero, { attributes: true, attributeFilter: ["class"] });
+      document.querySelector(".company-slider-track")?.addEventListener("scroll", replace, { passive: true });
+      // tiêu đề / câu nhấn của slide 2 có hiệu ứng trượt vào (company-reveal) → đo lại khi hiệu ứng xong
+      document.querySelector(".company-banner")?.addEventListener("animationend", replace);
+    }
     syncHeroDock();
   }
   window.addEventListener("resize", () => resize());

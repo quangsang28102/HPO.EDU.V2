@@ -1,0 +1,15 @@
+/* ==========================================================================
+   TT giáo dục nghề nghiệp — khối "Khóa học" dùng nguyên thiết kế trang chủ (03/11/2026)
+   Khối HTML chép từ index.html (#khoa-hoc); CSS chính là courses-demo.css (nạp qua ../../style.css).
+   File này chỉ gỡ các kiểu của trang (body.about-page …) có thể đè lên khối trang chủ.
+   ========================================================================== */
+
+/* .section-head của trang là flex 2 cột (tiêu đề trái – mô tả phải); khối trang chủ cần xếp dọc, căn giữa */
+html body.about-page #khoa-hoc .section-head { display: block; gap: normal; margin-bottom: 28px; }
+/* mô tả: trang đặt cố định rộng 390px, cao dòng 1.75 → trả về như trang chủ (rộng hết, căn giữa) */
+html body.about-page #khoa-hoc .section-head > p { width: auto; line-height: 1.55; }
+html body.about-page #khoa-hoc .section-head__title,
+html body.about-page #khoa-hoc .section-head__subtitle { min-height: 0; }
+/* lề ngang 80px của trang làm khung khối hẹp hơn trang chủ → bỏ lề trên/dưới, GIỮ căn giữa (margin-inline: auto như trang chủ).
+   (04/11: trước ghi margin: 0 nên trên màn hình rộng hơn 1440px khối dạt sang trái) */
+html body.about-page #khoa-hoc .course-demo-container { margin: 0 auto; }

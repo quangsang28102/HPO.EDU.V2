@@ -4,3 +4,9 @@
 
 # Gói bàn giao, báo cáo nội bộ (Claude ↔ Codex): chỉ để trên máy, không đưa lên GitHub / web
 plans/
+
+# Nhãn "tải về" do Windows tự gắn (file:Zone.Identifier) — web không dùng
+*:Zone.Identifier
+
+# Cài đặt riêng trên máy của Claude Code
+.claude/settings.local.json
