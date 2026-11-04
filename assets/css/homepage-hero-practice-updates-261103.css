@@ -48,3 +48,16 @@ html body .platform-v2-practice-image.platform-circle img {
   height: 100%;
   object-fit: contain;
 }
+
+/* Hạng xe trong câu giới thiệu hero thành ô nhãn (2026-11-04). Giữ nguyên câu của giám đốc, không làm nhạt
+   phần trong ngoặc — ô nhãn giúp mắt bắt ngay "Hạng B … Hạng C1" giữa câu có nhiều ngoặc. */
+html body .hpo-digital-detail .hpo-class-pill {
+  display: inline-block;
+  padding: 0 .45em;
+  border: 1px solid #c7d2fe;
+  border-radius: 8px;
+  background: #eef2ff;
+  color: #1e3a8a;
+  line-height: 1.45;
+  white-space: nowrap;
+}

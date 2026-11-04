@@ -17,6 +17,7 @@
 @import url("./assets/css/site-footer-navy-white-logo.css?v=20261103-trang-con");
 @import url("./assets/css/site-scrollbar-brand-blue.css");
 @import url("./assets/css/site-heading-emphasis-upright.css?v=20261102-chu-nhan-dung");
+@import url("./assets/css/site-header-register-login-buttons.css?v=20261104-nut-dang-nhap");
 
 /* Hiển thị hai lộ trình theo chiều dọc để phần Lý thuyết có chỗ cho chương trình môn học. */
 .platform-v2-body--stacked {
