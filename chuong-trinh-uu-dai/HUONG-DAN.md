@@ -3,7 +3,7 @@
 Trang `/chuong-trinh-uu-dai/` dùng chung cho mọi xã. **Mỗi xã có 1 file dữ liệu riêng** trong thư mục `data/`. Trang biết đang mở cho xã nào nhờ phần `?location=` trên đường dẫn (link in thành mã QR trên tờ rơi của xã đó).
 
 ```
-https://hpo.edu.vn/chuong-trinh-uu-dai/?location=TanNhut
+https://hpo.edu.vn/chuong-trinh-uu-dai/?location=TanNhut1793756520
                                         └──────┬───────┘
                                     mã xã → đọc data/tannhut.json
 ```
@@ -20,12 +20,12 @@ https://hpo.edu.vn/chuong-trinh-uu-dai/?location=TanNhut
 - **Mã xã:**
   - Viết liền, không dấu, ví dụ `TanNhut`, `BinhHung`, `LeMinhXuan`.
   - Không phân biệt hoa thường; gạch ngang bị bỏ qua.
-  - Vì vậy `TanNhut`, `tannhut`, `tan-nhut` đều dẫn tới cùng một xã.
-- **Tên file:** chính là mã xã viết **chữ thường, không dấu, không gạch**, đuôi `.json`.
+  - `TanNhut1793756520`, `tannhut1793756520`, `tan-nhut1793756520` đều hợp lệ nếu khớp `maXa` trong JSON.
+- **Tên file:** mã xã viết **chữ thường, không dấu, không gạch**, bỏ hậu tố số ở cuối, đuôi `.json`. Ví dụ `TanNhut1793756520` đọc `data/tannhut.json`.
 
   | Mã xã trên link | Tên file |
   |---|---|
-  | `TanNhut` | `data/tannhut.json` |
+  | `TanNhut1793756520` | `data/tannhut.json` |
   | `BinhHung` | `data/binhhung.json` |
   | `LeMinhXuan` | `data/leminhxuan.json` |
 
@@ -34,7 +34,7 @@ https://hpo.edu.vn/chuong-trinh-uu-dai/?location=TanNhut
 ## Nội dung file dữ liệu (ví dụ `data/tannhut.json`)
 ```json
 {
-  "maXa": "TanNhut",
+  "maXa": "TanNhut1793756520",
   "tenXa": "xã Tân Nhựt",
   "trangThai": "dang-mo",
   "hocPhiUuDai": 15000000,
@@ -50,7 +50,7 @@ https://hpo.edu.vn/chuong-trinh-uu-dai/?location=TanNhut
 
 | Trường | Ý nghĩa | Ghi chú |
 |---|---|---|
-| `maXa` | Mã xã, để người sửa file dễ nhận ra | Trang không dùng, chỉ để ghi nhớ |
+| `maXa` | Mã xã hiện hành trên link | Phải khớp `location` sau khi chuẩn hóa; mã cũ hoặc sai sẽ bị từ chối |
 | `tenXa` | Tên hiển thị, viết thường chữ "xã" | Hiện ở tiêu đề "Nơi nhận hồ sơ tại **xã Tân Nhựt**" và hộp ưu đãi |
 | `trangThai` | `"dang-mo"` = đang chạy; giá trị khác (ví dụ `"tam-dung"`) = tạm dừng | Tạm dừng thì trang chỉ hiện lời nhắn + nút gọi tổng đài |
 | `hocPhiUuDai` | Học phí ưu đãi, **số nguyên, không dấu chấm** | `15000000` hiện thành "15.000.000 VNĐ" |
@@ -83,7 +83,7 @@ Sửa trong file `data/<mã xã>.json`, lưu, đưa lên web. Không cần sửa
 - **Dừng ngay:** đổi `trangThai` thành `"tam-dung"`.
 
 ### Tạo mã QR
-- Dùng link đầy đủ, ví dụ `https://hpo.edu.vn/chuong-trinh-uu-dai/?location=TanNhut`.
+- Dùng link đầy đủ, ví dụ `https://hpo.edu.vn/chuong-trinh-uu-dai/?location=TanNhut1793756520`.
 - Tạo QR bằng công cụ bất kỳ.
 - Quét thử bằng điện thoại trước khi in.
 
@@ -107,7 +107,7 @@ Phần 7 giấy tờ luôn hiển thị trong mọi trường hợp.
   - Link chỉ phát qua mã QR trên tờ rơi của từng xã.
 - **Không đưa vào JSON** thông tin không muốn công khai: số cá nhân không được phép đăng, ghi chú nội bộ, giá vốn…
 - Nếu sau này cần ẩn hẳn giữa các xã, có hai cách:
-  - Dùng mã khó đoán, ví dụ `TanNhut7K2P` → file `tannhut7k2p.json`.
+  - Dùng mã khó đoán, ví dụ `TanNhut7K2P` → file `tannhut7k2p.json` (đồng thời cập nhật `maXa`).
   - Chuyển sang có máy chủ kiểm tra mã.
 
 ## Các file

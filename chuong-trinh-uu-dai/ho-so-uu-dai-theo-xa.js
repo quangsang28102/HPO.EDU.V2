@@ -1,7 +1,9 @@
 /* Chương trình ưu đãi theo xã — đọc ?location=<mã xã> rồi điền bảng "Nơi nhận hồ sơ" và hộp ưu đãi
    từ data/<mã xã>.json. Hướng dẫn thêm xã / sửa dữ liệu: HUONG-DAN.md cùng thư mục.
 
-   Mã xã không phân biệt hoa thường và bỏ qua dấu gạch: TanNhut = tannhut = tan-nhut → data/tannhut.json
+   Mã xã không phân biệt hoa thường và bỏ qua dấu gạch, gạch dưới, khoảng trắng.
+   Hậu tố số không thuộc tên file: TanNhut1793756520 → data/tannhut.json.
+   Mã trên link phải khớp maXa trong JSON trước khi hiển thị dữ liệu.
    (tên file luôn chữ thường, không dấu, không gạch, vì máy chủ web thường phân biệt hoa thường).
    Chỉ nhận chữ a–z và số 0–9 nên không thể dùng tham số để đọc file khác ngoài thư mục data/.
    Dữ liệu JSON chỉ được gán bằng textContent (không innerHTML) để chữ trong file không chạy được thành mã. */
@@ -106,8 +108,10 @@
     content.hidden = false;
   }
 
+  function normalizeCode(value) { return String(value || "").toLowerCase().replace(/[-_\s]/g, ""); }
+
   var raw = new URLSearchParams(window.location.search).get("location") || "";
-  var code = raw.toLowerCase().replace(/[-_\s]/g, "");
+  var code = normalizeCode(raw);
   if (!code) {
     return showMessage("Chưa chọn địa phương", "Vui lòng quét lại mã QR trên tờ rơi của xã bạn, hoặc gọi tổng đài để được hướng dẫn.");
   }
@@ -115,12 +119,20 @@
     return showMessage("Không tìm thấy chương trình", "Đường dẫn chưa đúng. Vui lòng quét lại mã QR trên tờ rơi hoặc gọi tổng đài.");
   }
 
-  fetch("data/" + code + ".json", { cache: "no-cache" })
+  var fileCode = code.replace(/\d+$/, "");
+  if (!fileCode) {
+    return showMessage("Không tìm thấy chương trình", "Đường dẫn chưa đúng. Vui lòng quét lại mã QR trên tờ rơi hoặc gọi tổng đài.");
+  }
+
+  fetch("data/" + fileCode + ".json", { cache: "no-cache" })
     .then(function (res) {
       if (!res.ok) throw new Error("HTTP " + res.status);
       return res.json();
     })
-    .then(render)
+    .then(function (data) {
+      if (normalizeCode(data.maXa) !== code) throw new Error("Mã xã không khớp");
+      render(data);
+    })
     .catch(function (err) {
       console.warn("Không tải được dữ liệu ưu đãi cho", code, err);
       showMessage("Không tìm thấy chương trình", "Chưa có chương trình ưu đãi cho địa phương này. Vui lòng quét lại mã QR trên tờ rơi hoặc gọi tổng đài.");
