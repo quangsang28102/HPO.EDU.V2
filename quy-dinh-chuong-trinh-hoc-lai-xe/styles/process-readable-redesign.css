@@ -435,6 +435,7 @@ html body .training-table-note p {
   text-wrap: pretty;
 }
 html body .training-table-note strong { color: var(--hp-primary, #1e40af); }
+html body .training-table-note strong.training-table-note__emphasis { color: #dc2626; }
 html body .training-table-note__icon {
   flex: none;
   display: grid;
