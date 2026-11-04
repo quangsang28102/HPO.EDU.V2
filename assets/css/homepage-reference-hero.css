@@ -55,6 +55,17 @@
   text-align: center;
   text-wrap: balance;
 }
+.hpo-digital-detail {
+  max-width: 1040px;
+  margin: 18px auto 0;
+  color: #415173;
+  font-family: var(--ff-body);
+  font-size: clamp(16px, 1.5vw, 21px);
+  font-weight: 400;
+  line-height: 1.55;
+  text-align: center;
+  text-wrap: balance;
+}
 @media (max-width: 1100px) {
   .hpo-digital-hero { min-height: clamp(680px, calc(100svh - 92px), 840px); }
   .hpo-digital-left { padding-top: clamp(90px, 10vh, 126px); }
@@ -67,6 +78,7 @@
   .hpo-digital-title span { white-space: normal; }
   .hpo-digital-title span:nth-child(2) { margin-top: 5px; font-size: .78em; }
   .hpo-digital-description { margin-top: 12px; font-size: clamp(16px, 4.2vw, 19px); }
+  .hpo-digital-detail { margin-top: 14px; font-size: clamp(15px, 4vw, 16px); line-height: 1.5; }
 }
 @media (max-width: 390px) {
   .hpo-digital-left { padding-inline: 12px; }

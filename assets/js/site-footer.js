@@ -3,10 +3,10 @@
   const base = new URL('../../robot/', document.currentScript.src);
   const css = document.createElement('link');
   css.rel = 'stylesheet';
-  css.href = new URL('dist/companion.css?v=20261103-robot-thanh-day', base).href;
+  css.href = new URL('dist/companion.css?v=20261104-robot-slide-2', base).href;
   document.head.append(css);
   const script = document.createElement('script');
-  script.src = new URL('dist/companion.js?v=20261103-robot-thanh-day', base).href;
+  script.src = new URL('dist/companion.js?v=20261104-robot-slide-2', base).href;
   script.defer = true;
   document.head.append(script);
 })();
@@ -111,8 +111,9 @@
               </div>
             </a>
             <p class="footer-desc">
-              Công ty TNHH Ô Tô Hiệp Phát — GCNKD số 0309987279, do Sở KH&amp;ĐT
-              TP.HCM cấp lần đầu ngày 11/05/2010.
+              Công ty TNHH Ô Tô Hiệp Phát<br />
+              GCNKD số 0309987279, do Sở KH&amp;ĐT TP.HCM<br />
+              cấp lần đầu ngày 11/05/2010.
             </p>
             <div class="footer-contact">
               <div class="footer-contact-item">
@@ -170,7 +171,7 @@
             </div>
             <div class="footer-loc">
               <strong>2. Cơ sở Vĩnh Lộc</strong>
-              <p>271 Đường số 1, P. Bình Tân</p>
+              <p>271 Đường số 1, Phường Bình Tân</p>
               <a href="tel:02836201199">028.36.201.199</a>
             </div>
             <div class="footer-loc">

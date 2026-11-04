@@ -411,3 +411,44 @@ html body.process-page .registration-option__label { font-size: 15px; }
 @media (max-width: 640px) {
   html body.process-page .platform-v2-curriculum .syll-list--chapters .syll-row { padding: 14px 12px !important; }
 }
+
+/* ---- 03/11: nhãn bước 3 dài ("Kiểm tra hoàn thành khóa học đào tạo") → cho xuống 2 dòng, chia dòng cân đối,
+        thay vì giữ 1 dòng (nowrap) làm chữ đè sang "Sát hạch" ---- */
+html body .process-subnav__label { white-space: normal; text-wrap: balance; }
+
+/* ---- 04/11: ghi chú dưới bảng "Phân bổ thời gian đào tạo" (giải nghĩa mục II.1, không sửa bảng) ---- */
+html body .training-table-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0;
+  padding: 18px 24px 20px;
+  border-top: 1px solid #dbe4f5;
+  border-left: 4px solid var(--hp-primary, #1e40af);
+  background: var(--hp-primary-soft, #eff6ff);
+}
+html body .training-table-note p {
+  margin: 0;
+  color: var(--hp-ink, #0a1330);
+  font-size: 17px;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+html body .training-table-note strong { color: var(--hp-primary, #1e40af); }
+html body .training-table-note__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: var(--hp-primary, #1e40af);
+  color: #fff;
+  font: 800 15px/1 var(--ff-display, system-ui), serif;
+  font-style: italic;
+}
+@media (max-width: 640px) {
+  html body .training-table-note { padding: 14px 16px 16px; gap: 10px; }
+  html body .training-table-note p { font-size: 16px; }
+}
