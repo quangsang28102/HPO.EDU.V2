@@ -10,3 +10,4 @@ plans/
 
 # Cài đặt riêng trên máy của Claude Code
 .claude/settings.local.json
+/wp-content/
