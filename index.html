@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="assets/css/homepage-hero-practice-updates-261103.css?v=20261104-nut-dang-nhap" />
   <link rel="stylesheet" href="assets/css/homepage-strip-highlights.css?v=20261102-press" />
   <link rel="stylesheet" href="assets/css/homepage-press-list-dialog.css?v=20261105-bao-chi-json" />
+  <link rel="stylesheet" href="assets/css/homepage-news-rotator.css?v=20261105-tin-tuc-xoay" />
   <link rel="stylesheet" href="assets/css/homepage-company-banner-motto-on-top.css?v=20261102-motto" />
   <link rel="stylesheet" href="assets/css/homepage-company-banner-split-5050.css?v=20261103-gioi-thieu-5050" />
   <link rel="stylesheet" href="assets/css/homepage-company-banner-campus-photo.css?v=20261103-anh-co-so" />
@@ -309,6 +310,45 @@
       <span></span>
     </div>
   </section>
+  <!-- ── BÁO CHÍ NÓI VỀ HIỆP PHÁT: giới thiệu | 1 bài lớn | 3 bài nhỏ, tự đổi lượt ──
+       homepage-news-rotator.js đổ thẻ từ assets/data/bao-chi.json (chỉ bài có "anh", mới nhất trước).
+       "Xem tất cả" mở bảng #pressListDialog của dải "Báo chí đưa tin". -->
+  <section class="news-rot" data-news-rotator aria-labelledby="news-rot-title" aria-roledescription="carousel">
+    <div class="news-rot__inner">
+      <header class="news-rot__intro">
+        <span class="news-rot__eyebrow">Hiệp Phát</span>
+        <h2 class="news-rot__title" id="news-rot-title"><span>Báo chí</span> <span>nói về</span> <span>Hiệp Phát</span></h2>
+        <span class="news-rot__line" aria-hidden="true"></span>
+        <p class="news-rot__sub">Bài viết, phóng sự trên báo điện tử, truyền hình và phát thanh về mô hình học lái xe
+          tích hợp AI của Hiệp Phát.</p>
+      </header>
+
+      <div class="news-rot__feature" data-news-feature></div>
+
+      <div class="news-rot__side">
+        <div class="news-rot__list" data-news-list></div>
+        <div class="news-rot__bar">
+          <button type="button" class="news-rot__all" data-news-all aria-haspopup="dialog"
+            aria-controls="pressListDialog"><span>Xem tất cả <span data-news-all-count></span> bài</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5v11l7-5.5zM12.5 6.5v11l7-5.5z" /></svg></button>
+          <button type="button" class="news-rot__btn" data-news-prev aria-label="Bài trước">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+          </button>
+          <button type="button" class="news-rot__btn" data-news-next aria-label="Bài tiếp theo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+          </button>
+          <button type="button" class="news-rot__btn" data-news-pause aria-label="Tạm dừng tự chuyển bài"
+            aria-pressed="false">
+            <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12" /></svg>
+            <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10-6.5z" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <span class="news-rot__track" data-news-track aria-hidden="true"><i data-news-progress></i></span>
+    <p class="news-rot__sr" data-news-live aria-live="off"></p>
+  </section>
+
   <!-- ── BẢO HỘ THƯƠNG HIỆU — phiên bản mới ── -->
   <section class="brand-protection" id="so-huu-tri-tue">
     <div class="container brand-protection__inner">
@@ -2577,6 +2617,7 @@
   <script src="assets/js/courses-demo-stage-renderer.js"></script>
   <script src="assets/js/courses-demo-interactions.js"></script>
   <script src="assets/js/homepage-press-list-dialog.js?v=20261105-bao-chi-json"></script>
+  <script src="assets/js/homepage-news-rotator.js?v=20261105-tin-tuc-xoay"></script>
 </body>
 
 </html>
