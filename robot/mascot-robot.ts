@@ -12,8 +12,11 @@ export type { Expression } from './mascot-expression-controller';
  *                LED-ring eyes, glowing blue smile, yellow dash cheeks, navy belt, yellow trim; hero pose (hand on hip, thumbs up).
  * 'option-c-refined' — option C polished: low rounded fins blended into the helmet, flush oval ear panels with a blue
  *                light ring (no logo on the ears), fuller chest, sturdier legs and feet.
+ * 'option-c-headset' — bản CHỐT 05/11/2026 (robot trên web): option-c-refined đeo tai nghe có mic — băng đầu navy
+ *                có sọc xanh, cup tai vòm bo tròn (vòng vàng = đèn xi-nhan), mic trái có đầu LED sáng khi nói;
+ *                đỉnh đầu trơn (không tấm LED, không vây).
  */
-export type RobotStyle = 'reference' | 'brand' | 'option-c' | 'option-c-refined';
+export type RobotStyle = 'reference' | 'brand' | 'option-c' | 'option-c-refined' | 'option-c-headset';
 
 /**
  * Head-to-body balance. headScale shrinks the helmet (and face); legExtra / armExtra add length to the thigh+shin and
@@ -35,6 +38,7 @@ export const ROBOT_PROPORTIONS: Record<RobotStyle, RobotProportions> = {
   // Head ≈ 39% of the height, like the option C artwork (was ≈ 45%).
   'option-c': { ...BASE_PROPORTIONS, headScale: .86, legExtra: .24, armExtra: .08 },
   'option-c-refined': { headScale: .86, legExtra: .2, armExtra: .08, torsoFullness: 1.1, limbScale: 1.18, footScale: 1.1 },
+  'option-c-headset': { headScale: .86, legExtra: .2, armExtra: .08, torsoFullness: 1.1, limbScale: 1.18, footScale: 1.1 },
 };
 
 // Proportions measured from the mascot reference sheet (1 unit ≈ 250 px of the 1254 px front view, ground at y = 0).
@@ -59,6 +63,8 @@ const FACE: Record<RobotStyle, Partial<FaceLayout>> = {
   brand: { led: '#a9d4ff', glowColor: '#2f5cff', iris: ['#5aa8ff', '#2448f5', '#0b1478'] },
   'option-c': { ledStyle: true, led: '#7fd2ff', glowColor: '#1f6bff', iris: ['#4aa0ff', '#1a4fe0', '#08166a'],
     eyeR: .265, cheekX: .7, cheekY: -.3, mouthScale: 1.05 },
+  'option-c-headset': { ledStyle: true, led: '#7fd2ff', glowColor: '#1f6bff', iris: ['#4aa0ff', '#1a4fe0', '#08166a'],
+    eyeR: .265, cheekX: .7, cheekY: -.3, mouthScale: 1.05 },
   'option-c-refined': { ledStyle: true, led: '#7fd2ff', glowColor: '#1f6bff', iris: ['#4aa0ff', '#1a4fe0', '#08166a'],
     eyeR: .265, cheekX: .7, cheekY: -.3, mouthScale: 1.05 },
 };
@@ -81,6 +87,8 @@ export class Robot extends MascotCharacter {
   private fingers: THREE.Object3D[][] = [[], []];
   private thumbs: THREE.Object3D[] = [];
   private turnSignals: THREE.MeshBasicMaterial[] = [];
+  /** Boom-mic tip LED (headset style); brightens with the mouth while talking. */
+  private micLight?: THREE.MeshBasicMaterial;
   private wasWaving = false;
 
   readonly proportions: RobotProportions;
@@ -92,7 +100,7 @@ export class Robot extends MascotCharacter {
     /** Shin profile y (originally -.45 … -.88) stretched by half the extra leg length, below the lengthened thigh. */
     const shinY = (y: number) => -.45 - legHalf + (y + .45) * (.43 + legHalf) / .43;
     const k = this.kit, m = brandMaterials();
-    const brand = style !== 'reference', optionC = style.startsWith('option-c'), refined = style === 'option-c-refined';
+    const brand = style !== 'reference', optionC = style.startsWith('option-c'), headset = style === 'option-c-headset', refined = style === 'option-c-refined' || headset;
     const F = P.torsoFullness, L = P.limbScale, armL = 1 + (L - 1) * .45, torsoDepth = TORSO_DEPTH * (1 + (F - 1) * .6);
     this.heroPose = optionC;
     const shell = m.shell;
@@ -116,11 +124,13 @@ export class Robot extends MascotCharacter {
 
     const topY = .8, topZ = headZ(0, topY);
     if (optionC) {
-      // Navy LED panel on the crown, tipped back to follow the helmet.
-      const panel = k.place(this.head, new THREE.Group(), [0, .86, .4], [-.62, 0, 0]);
-      k.box(panel, [.64, .14, .36], .065, m.navy);
-      k.box(panel, [.46, .05, .22], .025, m.ledCyan, [0, .065, .03]);
-      if (refined) {
+      // Navy LED panel on the crown, tipped back to follow the helmet (the headset version keeps a clean crown).
+      if (!headset) {
+        const panel = k.place(this.head, new THREE.Group(), [0, .86, .4], [-.62, 0, 0]);
+        k.box(panel, [.64, .14, .36], .065, m.navy);
+        k.box(panel, [.46, .05, .22], .025, m.ledCyan, [0, .065, .03]);
+      }
+      if (refined && !headset) {
         // Low rounded fins grown out of the helmet: a soft white lens half-sunk into the shell, with a slim yellow crest.
         for (const side of [-1, 1]) {
           const fin = k.place(this.head, new THREE.Group(), [side * .84, .56, -.2], [-.2, 0, side * -.9]);
@@ -128,7 +138,7 @@ export class Robot extends MascotCharacter {
           // Yellow crest on the outer face of the ridge (local +x faces out and up after the tilt).
           k.sphere(fin, 1, m.yellow, [.035, .08, .02], [.085, .13, .3]);
         }
-      } else for (const side of [-1, 1]) {
+      } else if (!headset) for (const side of [-1, 1]) {
         // Swept-back fins: tapered blades leaning out, yellow face towards the viewer, white back.
         const fin = k.place(this.head, new THREE.Group(), [side * .72, .74, -.12], [-.35, side * .35, side * -.7]);
         k.mesh(fin, new THREE.CylinderGeometry(.06, .2, .58, 32), shell, [0, .26, 0], undefined, [1, 1, .32]);
@@ -150,7 +160,42 @@ export class Robot extends MascotCharacter {
       k.capsule(this.head, .05, .32, led, [0, topY, topZ - .012], [0, 0, Math.PI / 2]);
     }
 
-    if (refined) {
+    if (headset) {
+      // ---- Headset: band over the crown, rounded padded cups over the ears, boom mic on the robot's left ----
+      // The headset replaces the fins: its band is the crown accent.
+      const D = .1, bandZ = .08;
+      /** Point on the helmet outline in the plane z = bandZ, pushed out by `out`; t runs side → crown → side. */
+      const outline = (t: number, out: number) => {
+        const c = Math.cos(t), sn = Math.sin(t), e = 2 / HEAD.p;
+        return new THREE.Vector3((HEAD.a + out) * Math.sign(c) * Math.abs(c) ** e, (HEAD.b + out) * Math.sign(sn) * Math.abs(sn) ** e, bandZ);
+      };
+      const arc = (from: number, to: number, out: number) =>
+        new THREE.CatmullRomCurve3(Array.from({ length: 33 }, (_, i) => outline(from + (to - from) * i / 32, out)));
+      k.mesh(this.head, new THREE.TubeGeometry(arc(-.15, Math.PI + .15, D), 96, .072, 16), m.navy);
+      k.mesh(this.head, new THREE.TubeGeometry(arc(.55, Math.PI - .55, D + .065), 64, .024, 10), m.blue);
+      for (const side of [-1, 1]) {
+        // Local +z points outwards. Rounded cup: soft cushion ring, a near-ellipsoid dome shell, blue belt round its rim,
+        // yellow turn-signal ring and a blue button sitting on the curve of the dome.
+        const cup = k.place(this.head, new THREE.Group(), [side * 1.0, -.17, -.05], [0, side * Math.PI / 2, 0]);
+        k.torus(cup, .28, .085, m.rubber, [0, 0, .19]);
+        const dome = { a: .36, b: .41, c: .21, p: 2.2, z: .24 };
+        k.mesh(cup, superellipsoid(dome.a, dome.b, dome.c, dome.p), m.navy, [0, 0, dome.z]);
+        k.torus(cup, .345, .032, m.blue, [0, 0, dome.z + .02]);
+        const domeZ = superellipsoidZ(dome.a, dome.b, dome.c, dome.p);
+        const signal = m.ledYellow.clone();
+        this.turnSignals.push(signal);
+        k.torus(cup, .19, .022, signal, [0, 0, dome.z + domeZ(.19, 0) - .006]);
+        k.sphere(cup, .1, m.blue, [0, 0, dome.z + dome.c - .02], [1, 1.1, .45]);
+      }
+      // Boom mic from the left cup round to the corner of the mouth; the tip carries a small LED ring.
+      const boom = new THREE.CatmullRomCurve3([[1.22, -.32, .16], [1.14, -.6, .46], [.86, -.76, .74], [.52, -.74, .86]].map(v => new THREE.Vector3(...v)));
+      k.mesh(this.head, new THREE.TubeGeometry(boom, 48, .028, 10), m.navy);
+      const tip = k.place(this.head, new THREE.Group(), boom.getPoint(1).toArray());
+      tip.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), boom.getTangent(1));
+      k.capsule(tip, .055, .1, m.rubber, [0, .05, 0]);
+      this.micLight = m.ledBlue.clone();
+      k.torus(tip, .058, .013, this.micLight, [0, .01, 0], [Math.PI / 2, 0, 0]);
+    } else if (refined) {
       // Direction B — integrated ears: a soft oval lens grown out of the helmet side (reads as a gentle bulge from the
       // front), with flush layers on its surface: navy rim, thin blue light ring, pearl panel, small yellow turn-signal pill.
       const lens = { width: .34, height: .41, depth: .16, p: 2.4 };
@@ -288,6 +333,7 @@ export class Robot extends MascotCharacter {
 
     // Turn signals: the ear on the side it glances to blinks amber (brand) / brightens (reference).
     const gazeX = this.controller.gaze.x;
+    this.micLight?.color.set(BRAND.ledBlue).multiplyScalar(p.expression === 'talking' && !p.reduced ? .6 + p.talk * 1.1 : .7);
     this.turnSignals.forEach((material, i) => {
       const toward = (i === 0 ? -gazeX : gazeX) > .55;
       const on = toward && !p.reduced ? (Math.sin(time * Math.PI * 3) > 0 ? 1.35 : .25) : 1;
