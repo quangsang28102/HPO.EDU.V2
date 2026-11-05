@@ -1,0 +1,73 @@
+/* ==========================================================================
+   Cụm "Thời gian áp dụng" dưới 3 thẻ khóa học (trang chủ, Học phí, Trung tâm GDNN, Chương trình ưu đãi).
+   Markup: <p class="course-deadline" role="note"> … </p> đặt ngay sau .course-demo-list, trong .courses-layout.
+   Đổi hạn: sửa ngày trong <strong> ở cả 4 trang (tìm "course-deadline").
+   ========================================================================== */
+
+.courses-section .course-deadline {
+  grid-column: 2;               /* nằm dưới 3 thẻ, thẳng cột với thẻ (cột 1 là hộp quà) */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin: -14px 0 0;            /* khít hơn với hàng thẻ (khoảng cách lưới ~36px) */
+  padding: 12px 20px 12px 12px;
+  border: 1px solid #fecaca;
+  border-radius: 18px;
+  background: linear-gradient(90deg, #fff5f5 0%, #ffffff 60%);
+  box-shadow: 0 10px 26px rgba(185, 28, 28, 0.08);
+  color: #0a1330;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.courses-section .course-deadline__icon {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #dc2626;
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(220, 38, 38, 0.3);
+}
+.courses-section .course-deadline__icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.courses-section .course-deadline__label {
+  flex: none;
+  color: #b91c1c;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.courses-section .course-deadline__text { flex: 1 1 320px; min-width: 0; }
+.courses-section .course-deadline__text strong {
+  color: #dc2626;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* Khi khối khóa học xếp 1 cột (hộp quà lên trên) → cụm chiếm cả hàng */
+@media (max-width: 1023px) {
+  .courses-section .course-deadline { grid-column: 1 / -1; margin-top: 0; }
+}
+@media (max-width: 767px) {
+  .courses-section .course-deadline {
+    align-items: flex-start;
+    gap: 6px 12px;
+    padding: 12px 14px 12px 12px;
+    font-size: 16px;
+  }
+  .courses-section .course-deadline__icon { width: 40px; height: 40px; }
+  .courses-section .course-deadline__label { line-height: 40px; }
+  .courses-section .course-deadline__text { flex-basis: 100%; }
+}
