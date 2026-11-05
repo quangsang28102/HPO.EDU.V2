@@ -229,8 +229,6 @@ html body .press-item__type {
   line-height: 1.4;
   letter-spacing: 0;
 }
-html body .press-item__type--video { background: #fef2f2; color: #b91c1c; }
-html body .press-item__type--audio { background: #f0fdf4; color: #15803d; }
 html body .press-item__title { color: #1e293b; font-size: 16px; line-height: 1.45; }
 html body .press-item:hover .press-item__title,
 html body .press-item:focus-visible .press-item__title { color: #0a1330; }
@@ -288,25 +286,67 @@ html body .press-item:focus-visible .press-item__go { color: #1e40af; transform:
 }
 
 /* ==========================================================================
-   Lọc + sắp xếp (2026-11-05): thanh công cụ (JS dựng) nằm cố định trên danh sách, danh sách cuộn bên dưới.
-   Nút cao 44px cho người lớn tuổi; nút đang chọn = nền xanh đậm chữ trắng.
+   Bộ lọc (2026-11-05, dữ liệu từ assets/data/bao-chi.json): thanh công cụ do JS dựng ngay trên danh sách.
+   Hàng 1: ô tìm kiếm + ô chọn "Tên báo" + ô chọn "Sắp xếp" (dùng <select> gốc → điện thoại mở bảng chọn to).
+   Hàng 2: nút kênh (Tất cả / Báo điện tử / Truyền hình / Phát thanh / Mạng xã hội, kèm số bài).
+   Hàng 3: "N / tổng bài" + thẻ bộ lọc đang bật (bấm × để bỏ) + "Xóa lọc".
+   Nút / ô cao 44px, chữ 16px cho người lớn tuổi.
    ========================================================================== */
 html body .press-dialog__tools {
   display: flex;
   flex: none;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px 16px;
-  padding: 14px 24px;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 24px 12px;
   border-bottom: 1px solid #e5eaf5;
   background: #fff;
 }
-html body .press-filter,
-html body .press-sort { display: flex; flex-wrap: wrap; gap: 8px; }
-html body .press-sort { padding: 4px; border-radius: 999px; background: #f1f5f9; gap: 2px; }
-html body .press-filter__btn,
-html body .press-sort__btn {
+html body .press-tools__row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 12px; }
+html body .press-sr {
+  position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* Ô tìm kiếm */
+html body .press-search { position: relative; flex: 1 1 260px; min-width: 0; }
+html body .press-search__icon {
+  position: absolute; top: 50%; left: 14px; width: 20px; height: 20px; transform: translateY(-50%);
+  fill: none; stroke: #64748b; stroke-width: 2; stroke-linecap: round; pointer-events: none;
+}
+html body .press-search__input,
+html body .press-select__input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 46px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  background: #fff;
+  color: #0a1330;
+  font-family: inherit;
+  font-size: 16px;
+  transition: border-color .2s, box-shadow .2s;
+}
+html body .press-search__input { padding: 0 14px 0 44px; }
+html body .press-search__input::placeholder { color: #64748b; }
+html body .press-search__input:focus,
+html body .press-select__input:focus { border-color: #1e40af; box-shadow: 0 0 0 3px rgba(30, 64, 175, .18); outline: none; }
+
+/* Ô chọn có nhãn nhỏ phía trên */
+html body .press-select { display: flex; flex: 0 1 220px; flex-direction: column; gap: 4px; min-width: 0; }
+html body .press-select__label { color: #475569; font-size: 14px; font-weight: 700; line-height: 1.2; }
+html body .press-select__input {
+  padding: 0 40px 0 14px;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231e40af' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  cursor: pointer;
+}
+
+/* Nút kênh */
+html body .press-filter { display: flex; flex-wrap: wrap; gap: 8px; }
+html body .press-filter__btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -322,7 +362,6 @@ html body .press-sort__btn {
   cursor: pointer;
   transition: background-color .2s, border-color .2s, color .2s;
 }
-html body .press-sort__btn { min-height: 40px; border-color: transparent; background: transparent; color: #334155; }
 html body .press-filter__count {
   min-width: 26px;
   padding: 1px 7px;
@@ -334,19 +373,47 @@ html body .press-filter__count {
   text-align: center;
 }
 html body .press-filter__btn:hover { border-color: #1e40af; background: #f8faff; }
-html body .press-sort__btn:hover { color: #1e40af; }
 html body .press-filter__btn[aria-pressed="true"] { border-color: #1e40af; background: #1e40af; color: #fff; }
 html body .press-filter__btn[aria-pressed="true"] .press-filter__count { background: rgba(255, 255, 255, .2); color: #fff; }
-html body .press-sort__btn[aria-pressed="true"] { background: #fff; color: #1e40af; box-shadow: 0 1px 4px rgba(10, 19, 48, .12); }
-html body .press-filter__btn:focus-visible,
-html body .press-sort__btn:focus-visible { outline: 3px solid #1e40af; outline-offset: 2px; }
+html body .press-filter__btn:focus-visible { outline: 3px solid #1e40af; outline-offset: 2px; }
 
-/* Trạng thái cho trình đọc màn hình (ẩn khỏi mắt) */
-html body .press-dialog__status {
-  position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+/* Đang lọc gì */
+html body .press-active { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; min-height: 32px; }
+html body .press-active__count { color: #475569; font-size: 15px; font-weight: 700; }
+html body .press-active__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 32px;
+  padding: 0 8px 0 12px;
+  border: 1px solid #c7d2fe;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #1e3a8a;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
 }
+html body .press-active__tag svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; }
+html body .press-active__tag:hover { border-color: #1e40af; }
+html body .press-active__clear {
+  min-height: 32px;
+  padding: 0 6px;
+  border: 0;
+  background: none;
+  color: #1e40af;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+html body .press-active__tag:focus-visible,
+html body .press-active__clear:focus-visible { outline: 3px solid #1e40af; outline-offset: 2px; }
 
-/* Tiêu đề nhóm ngày: trải hết 2 cột */
+/* Tiêu đề nhóm (ngày hoặc chữ cái): trải hết 2 cột */
 html body .press-dialog__day { grid-column: 1 / -1; margin: 6px 0 -2px; list-style: none; }
 html body .press-dialog__day:first-child { margin-top: 0; }
 html body .press-dialog__day-title {
@@ -363,7 +430,21 @@ html body .press-dialog__day-title {
 }
 html body .press-dialog__day-title::after { content: ""; flex: 1; height: 1px; background: #e5eaf5; }
 
-/* Ngày giờ đăng trên từng thẻ + nhãn "Mới" */
+/* Không có bài khớp */
+html body .press-dialog__empty { grid-column: 1 / -1; padding: 32px 16px; text-align: center; list-style: none; }
+html body .press-dialog__empty-title { margin: 0 0 6px; color: #0a1330; font-size: 18px; font-weight: 800; }
+html body .press-dialog__empty-text { margin: 0 0 14px; color: #475569; font-size: 16px; }
+html body .press-active__clear--big {
+  min-height: 44px; padding: 0 20px; border: 1.5px solid #1e40af; border-radius: 999px; text-decoration: none;
+}
+
+/* Nhãn kênh trên thẻ bài (thay Bài báo / Video / Phát thanh) */
+html body .press-item__type--bao-dien-tu { background: #f1f5f9; color: #334155; }
+html body .press-item__type--truyen-hinh { background: #fef2f2; color: #b91c1c; }
+html body .press-item__type--phat-thanh { background: #f0fdf4; color: #15803d; }
+html body .press-item__type--mang-xa-hoi { background: #eef2ff; color: #1e40af; }
+
+/* Ngày giờ đăng + nhãn "Mới" */
 html body .press-item__date {
   display: inline-flex;
   align-items: center;
@@ -388,12 +469,15 @@ html body .press-item__new {
   letter-spacing: .02em;
 }
 
+/* Điện thoại: cả bảng cuộn chung (thanh lọc cuộn đi để nhường chỗ đọc), đầu bảng có nút X luôn dính trên cùng */
 @media (max-width: 600px) {
-  html body .press-dialog__tools { padding: 10px 12px; gap: 8px; }
-  /* Điện thoại: 4 nút lọc trên 1 hàng cuộn ngang, sắp xếp ở hàng dưới chiếm đủ bề ngang */
-  html body .press-filter { flex-wrap: nowrap; width: 100%; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+  html body .press-dialog[open] { display: block; overflow-y: auto; overscroll-behavior: contain; }
+  html body .press-dialog__head { position: sticky; top: 0; z-index: 2; }
+  html body .press-dialog__list { overflow: visible; }
+  html body .press-dialog__tools { gap: 10px; padding: 12px; }
+  html body .press-search { flex-basis: 100%; }
+  html body .press-select { flex: 1 1 0; }
+  html body .press-filter { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
   html body .press-filter::-webkit-scrollbar { display: none; }
   html body .press-filter__btn { flex: none; padding: 0 14px; font-size: 15px; }
-  html body .press-sort { width: 100%; }
-  html body .press-sort__btn { flex: 1; justify-content: center; }
 }
