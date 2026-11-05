@@ -117,14 +117,12 @@
                 <strong>028.36.362.362</strong>
               </span>
             </a>
+            <a href="https://gateway.hpo.edu.vn/signin" class="btn btn-login">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" /><path d="m10 17 5-5-5-5" /><path d="M15 12H3" /></svg>
+              Đăng nhập
+            </a>
             <a href="https://gateway.hpo.edu.vn/signup" class="btn btn-primary">
               Đăng ký học
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14M13 5l7 7-7 7" />
-              </svg>
-            </a>
-            <a href="https://gateway.hpo.edu.vn/signin" class="btn btn-primary">
-              Đăng nhập
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>
@@ -177,11 +175,9 @@
               <path d="M5 12h14M13 5l7 7-7 7" />
             </svg>
           </a>
-          <a href="https://gateway.hpo.edu.vn/signin" class="btn btn-primary" style="justify-content: center">
+          <a href="https://gateway.hpo.edu.vn/signin" class="btn btn-login" style="justify-content: center">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" /><path d="m10 17 5-5-5-5" /><path d="M15 12H3" /></svg>
             Đăng nhập
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14M13 5l7 7-7 7" />
-            </svg>
           </a>
         </div>
       </div>

@@ -1,0 +1,61 @@
+/* ==========================================================================
+   Header: phân thứ bậc 2 nút (2026-11-04)
+   - "Đăng ký học" = nút CHÍNH (gradient xanh + mũi tên tròn, như cũ) — đứng ngoài cùng bên phải.
+   - "Đăng nhập"  = nút PHỤ: nền trắng, viền xanh nhạt, biểu tượng "vào cửa" thay cho mũi tên.
+   Trước đây 2 nút giống hệt nhau (cùng gradient + mũi tên) → khách không biết nút nào cho mình,
+   và ở 1366px nút thứ 2 tràn mép phải. Nút phụ hẹp hơn ~30px nên hàng header vừa lại.
+   Markup: assets/js/site-header.js (.btn-login ở header + menu ☰). Nạp cuối style.css.
+   ========================================================================== */
+
+#navbar.nav .nav-actions .btn-login,
+html body .mobile-menu-foot .btn-login {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 18px 0 14px;
+  border: 1.5px solid #c7d2fe;
+  border-radius: 999px;
+  background: #fff;
+  color: #1b2fa8;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0;
+  box-shadow: none;
+  transition: border-color .2s, background-color .2s, color .2s;
+}
+#navbar.nav .nav-actions .btn-login svg,
+html body .mobile-menu-foot .btn-login svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+#navbar.nav .nav-actions .btn-login:hover,
+html body .mobile-menu-foot .btn-login:hover {
+  border-color: #2643e9;
+  background: #eef2ff;
+  color: #2643e9;
+  transform: none;
+}
+#navbar.nav .nav-actions .btn-login:focus-visible,
+html body .mobile-menu-foot .btn-login:focus-visible {
+  outline: 3px solid #2643e9;
+  outline-offset: 2px;
+}
+
+/* Màn vừa: cùng nhịp co với nút "Đăng ký học" (site-header-nav-refresh.css ≤1660px) */
+@media (max-width: 1660px) {
+  #navbar.nav .nav-actions .btn-login { height: 44px; padding: 0 14px 0 12px; font-size: 14px; }
+}
+
+/* ≤760px: hàng header không đủ chỗ cho cả 2 nút (601–640px và 721–745px từng tràn ngang) → ẩn "Đăng nhập"
+   ở header, vẫn có trong menu ☰. ≤600px nút "Đăng ký học" cũng ẩn (site-header-mobile-compact.css). */
+@media (max-width: 760px) {
+  #navbar.nav .nav-actions .btn-login { display: none; }
+}
+
+/* 1351–1400px: menu ngang vừa hiện lại, hàng header chật nhất → nới bớt lề trong 2 nút (thiếu ~3px) */
+@media (min-width: 1351px) and (max-width: 1400px) {
+  #navbar.nav .nav-actions .btn-login { gap: 6px; padding: 0 12px 0 10px; }
+  #navbar.nav .nav-actions .btn-primary { gap: 8px; padding-left: 14px; }
+}

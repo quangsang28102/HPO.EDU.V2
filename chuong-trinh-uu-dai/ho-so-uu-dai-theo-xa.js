@@ -18,14 +18,20 @@
   var loading = $("[data-dang-tai]");
   var content = $("[data-noi-dung]");
   var message = $("[data-thong-bao]");
+  var offer = $(".tn-offer");
+
+  // Phần tử có thể bị bỏ khỏi HTML khi chỉnh giao diện → gán an toàn, không văng lỗi làm ẩn cả bảng
+  function setText(sel, text) { var el = $(sel); if (el) el.textContent = text; }
+  function setHidden(el, hidden) { if (el) el.hidden = hidden; }
 
   function showMessage(title, text, hotline) {
-    if (loading) loading.hidden = true;
-    content.hidden = true;
-    $("[data-thong-bao-tieu-de]").textContent = title;
-    $("[data-thong-bao-noi-dung]").textContent = text;
+    setHidden(loading, true);
+    setHidden(content, true);
+    setHidden(offer, true); // lỗi / tạm dừng / hết hạn → không hiện hộp ưu đãi
+    setText("[data-thong-bao-tieu-de]", title);
+    setText("[data-thong-bao-noi-dung]", text);
     if (hotline) setHotline(hotline);
-    message.hidden = false;
+    setHidden(message, false);
   }
 
   function telHref(phone) { return "tel:" + String(phone).replace(/[^\d+]/g, ""); }
@@ -98,14 +104,15 @@
       tbody.append(tr);
     });
 
-    $("[data-hoc-phi]").textContent = formatMoney(data.hocPhiUuDai);
-    $("[data-ngay-ket-thuc]").textContent = formatDate(data.ngayKetThuc);
+    setText("[data-hoc-phi]", formatMoney(data.hocPhiUuDai));
+    setText("[data-ngay-ket-thuc]", formatDate(data.ngayKetThuc));
     var hang = $("[data-hang-xe]");
-    if (data.hangXeApDung) { hang.textContent = "Áp dụng cho " + data.hangXeApDung + "."; hang.hidden = false; }
+    if (hang && data.hangXeApDung) { hang.textContent = "Áp dụng cho " + data.hangXeApDung + "."; hang.hidden = false; }
 
-    if (loading) loading.hidden = true;
-    message.hidden = true;
-    content.hidden = false;
+    setHidden(loading, true);
+    setHidden(message, true);
+    setHidden(content, false);
+    setHidden(offer, false);
   }
 
   function normalizeCode(value) { return String(value || "").toLowerCase().replace(/[-_\s]/g, ""); }

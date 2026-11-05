@@ -26,12 +26,14 @@ export class RobotStage {
     // Neutral tone mapping keeps the brand blue from drifting to lavender.
     this.renderer.toneMapping = THREE.NeutralToneMapping;
     this.renderer.toneMappingExposure = .95;
-    // Robot linh vật cao ~4.7 (kể cả biển TẬP LÁI): khung vừa khít hơn robot cũ (lookAt giữa thân, gần hơn)
+    // Robot linh vật cao ~4.5 (kể cả băng tai nghe): khung vừa khít (lookAt giữa thân, gần hơn robot cũ)
     this.camera.position.set(0, 2.55, 8.9);
     this.camera.lookAt(0, 2.3, 0);
-    // Robot linh vật Hiệp Phát (biển TẬP LÁI, logo ngực, màn hình mặt LED). theme cũ không còn dùng cho robot này.
+    // Robot linh vật Hiệp Phát bản chốt 05/11/2026: đeo tai nghe có mic, mặt LED, logo ngực. theme cũ không còn dùng.
     void theme;
-    this.robot = new Robot('brand');
+    this.robot = new Robot('option-c-headset');
+    // Trên web robot đứng thả tay (vẫy tay khi chào). Dáng chống hông + giơ ngón cái: đặt heroPose = true.
+    this.robot.heroPose = false;
     // Soft ground contact shadow stays on the floor while the body bobs and turns.
     const shadowMaterial = new THREE.ShaderMaterial({
       transparent: true, depthWrite: false,
