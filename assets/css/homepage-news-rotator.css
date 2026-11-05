@@ -1,6 +1,6 @@
 /* ==========================================================================
    Trang chủ — "Báo chí nói về Hiệp Phát" (dưới 3 thành tựu), bố cục theo mẫu
-   "Sự kiện đáng nhớ": cột trái giới thiệu · cột giữa 1 bài lớn · cột phải 3 bài nhỏ.
+   "Sự kiện đáng nhớ": tiêu đề căn giữa ở trên · bên dưới 1 bài lớn (trái) | 3 bài nhỏ (phải).
    Tự đổi lượt: bài nhỏ đầu danh sách phóng lên khung lớn. Bấm bài nhỏ = đưa lên khung lớn.
    Dữ liệu: assets/data/bao-chi.json (bài có trường "anh"). JS: homepage-news-rotator.js
    ========================================================================== */
@@ -21,46 +21,23 @@
 .news-rot[hidden] { display: none; }
 .news-rot__inner {
   display: grid;
-  grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.55fr) minmax(0, 1.3fr);
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
   gap: clamp(24px, 2.6vw, 40px);
   align-items: start;
-  max-width: 1600px;
+  max-width: 1320px;
   margin: 0 auto;
 }
 
-/* ---- Cột trái: giới thiệu ---- */
-.news-rot__eyebrow {
-  display: inline-block;
-  padding: 8px 18px;
-  border-radius: 999px;
-  background: #dbeafe;
-  color: var(--news-blue);
-  font-size: 16px;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+/* ---- Tiêu đề căn giữa (dùng chung .hpo-unified-title của trang) ---- */
+.news-rot .news-rot__head { margin-bottom: 18px; }
+.news-rot__sub {
+  max-width: 760px;
+  margin: 0 auto clamp(28px, 3vw, 44px);
+  color: #334155;
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
 }
-.news-rot__title {
-  margin: 22px 0 0;
-  color: var(--news-navy);
-  font-family: var(--ff-display, "Be Vietnam Pro", system-ui, sans-serif);
-  font-size: clamp(34px, 3vw, 48px);
-  font-weight: 800;
-  line-height: 1.12;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-}
-.news-rot__title span:last-child { white-space: nowrap; }
-@media (min-width: 1100px) { .news-rot__title span { display: block; } }
-.news-rot__line {
-  display: block;
-  width: 64px;
-  height: 4px;
-  margin: 22px 0 24px;
-  border-radius: 999px;
-  background: #2563eb;
-}
-.news-rot__sub { margin: 0; color: #334155; font-size: 18px; line-height: 1.65; }
 
 /* ---- Thẻ (chung cho khung lớn và danh sách) ---- */
 .hpo-news-card { position: relative; min-width: 0; color: var(--news-navy); }
@@ -163,7 +140,7 @@
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 .hpo-news-card[data-slot="s"]:hover { border-color: #93b4f0; box-shadow: 0 14px 32px rgba(15, 35, 80, 0.12); transform: translateY(-2px); }
-.hpo-news-card[data-slot="s"] .hpo-news-card__media { flex: none; width: 42%; max-width: 200px; aspect-ratio: 3 / 2; border-radius: 14px; }
+.hpo-news-card[data-slot="s"] .hpo-news-card__media { flex: none; width: 42%; max-width: 230px; aspect-ratio: 3 / 2; border-radius: 14px; }
 .hpo-news-card[data-slot="s"] .hpo-news-card__body { gap: 6px; }
 .hpo-news-card[data-slot="s"] .hpo-news-card__title {
   display: -webkit-box;
@@ -239,12 +216,9 @@ html.news-vt::view-transition-new(*) { height: 100%; object-fit: cover; overflow
 .news-rot.no-vt .hpo-news-card.is-enter { animation: news-fade-in 0.5s ease both; }
 @keyframes news-fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
-/* ---- Máy tính bảng: giới thiệu lên trên, 2 cột bên dưới ---- */
+/* ---- Máy tính bảng ---- */
 @media (max-width: 1099px) {
   .news-rot__inner { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
-  .news-rot__intro { grid-column: 1 / -1; max-width: 760px; }
-  .news-rot__title { margin-top: 16px; }
-  .news-rot__line { margin: 16px 0 18px; }
   .hpo-news-card[data-slot="s"] .hpo-news-card__media { width: 40%; }
 }
 
