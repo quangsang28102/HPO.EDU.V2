@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="assets/css/homepage-platform-theory-practice-refresh.css?v=20261102-khung-anh-co-dinh" />
   <link rel="stylesheet" href="assets/css/homepage-hero-practice-updates-261103.css?v=20261104-nut-dang-nhap" />
   <link rel="stylesheet" href="assets/css/homepage-strip-highlights.css?v=20261102-press" />
-  <link rel="stylesheet" href="assets/css/homepage-press-list-dialog.css?v=20261104-bao-chi-font" />
+  <link rel="stylesheet" href="assets/css/homepage-press-list-dialog.css?v=20261105-bao-chi-loc" />
   <link rel="stylesheet" href="assets/css/homepage-company-banner-motto-on-top.css?v=20261102-motto" />
   <link rel="stylesheet" href="assets/css/homepage-company-banner-split-5050.css?v=20261103-gioi-thieu-5050" />
   <link rel="stylesheet" href="assets/css/homepage-company-banner-campus-photo.css?v=20261103-anh-co-so" />
@@ -191,7 +191,9 @@
   <!-- ── STRIP: BÁO CHÍ ĐƯA TIN (họp báo 28/10/2026). Nhãn "Báo chí đưa tin" đứng yên bên trái; các thẻ chạy ngang
          (nhóm 2 lặp lại nhóm 1, aria-hidden + tabindex=-1 để chạy vòng liền mạch). Bấm thẻ → mở bài báo ở tab mới.
          Thêm/bớt bài: sửa thẻ <a> ở CẢ 2 nhóm (nhóm 2 giữ tabindex="-1"); thời lượng vòng chỉnh ở homepage-strip-highlights.css.
-         Bấm nhãn → bảng #pressListDialog liệt kê đủ bài (JS tự dựng từ nhóm 1, số bài tự đếm). ── -->
+         Bấm nhãn → bảng #pressListDialog liệt kê đủ bài (JS tự dựng từ nhóm 1, số bài tự đếm).
+         Mỗi thẻ có data-date="NĂM-THÁNG-NGÀYTGIỜ:PHÚT" (giờ VN, ngày bài lên báo) → bảng lọc/sắp xếp mới nhất.
+         Thêm bài mới: nhớ ghi data-date; thiếu thì bài xếp cuối nhóm "Chưa rõ ngày đăng". ── -->
   <div class="strip strip--highlights strip--press" role="region" aria-label="Báo chí đưa tin về Hiệp Phát">
     <button type="button" class="strip-press__label strip-press__open" data-press-open aria-haspopup="dialog"
       aria-controls="pressListDialog" aria-expanded="false">
@@ -208,7 +210,7 @@
       <div class="strip-track" id="stripTrack">
         <div class="strip-group">
           <a class="strip-chip strip-chip--press"
-            href="https://tuoitre.vn/hoc-lai-xe-o-to-moi-luc-moi-noi-nho-nen-tang-so-tich-hop-ai-100261028160205011.htm"
+            href="https://tuoitre.vn/hoc-lai-xe-o-to-moi-luc-moi-noi-nho-nen-tang-so-tich-hop-ai-100261028160205011.htm" data-date="2026-10-28T16:34"
             target="_blank" rel="noopener"
             title="Tuổi Trẻ: Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp AI"
             aria-label="Tuổi Trẻ: Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp AI (bài báo, mở trong tab mới)"><span
@@ -221,7 +223,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://thanhnien.vn/hoc-lai-o-to-chay-thu-sa-hinh-duong-truong-ao-truoc-khi-len-xe-that-185261028170253296.htm"
+            href="https://thanhnien.vn/hoc-lai-o-to-chay-thu-sa-hinh-duong-truong-ao-truoc-khi-len-xe-that-185261028170253296.htm" data-date="2026-10-28T18:34"
             target="_blank" rel="noopener"
             title="Thanh Niên: Học lái ô tô: Chạy thử sa hình, đường trường ảo trước khi lên xe thật"
             aria-label="Thanh Niên: Học lái ô tô: Chạy thử sa hình, đường trường ảo trước khi lên xe thật (bài báo, mở trong tab mới)"><span
@@ -234,7 +236,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://www.sggp.org.vn/hoc-lai-o-to-tu-xa-qua-he-sinh-thai-chuyen-doi-so-tich-hop-ai-post878862.html"
+            href="https://www.sggp.org.vn/hoc-lai-o-to-tu-xa-qua-he-sinh-thai-chuyen-doi-so-tich-hop-ai-post878862.html" data-date="2026-10-28T15:19"
             target="_blank" rel="noopener"
             title="Sài Gòn Giải Phóng: Học lái ô tô từ xa qua hệ sinh thái chuyển đổi số tích hợp AI"
             aria-label="Sài Gòn Giải Phóng: Học lái ô tô từ xa qua hệ sinh thái chuyển đổi số tích hợp AI (bài báo, mở trong tab mới)"><span
@@ -247,7 +249,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://htv.vn/mo-hinh-hoc-lai-xe-moi-hoc-lai-xe-o-to-moi-luc-moi-noi-nho-nen-tang-so-tich-hop-ai-22226102820330211.htm"
+            href="https://htv.vn/mo-hinh-hoc-lai-xe-moi-hoc-lai-xe-o-to-moi-luc-moi-noi-nho-nen-tang-so-tich-hop-ai-22226102820330211.htm" data-date="2026-10-28T20:51"
             target="_blank" rel="noopener"
             title="HTV: Lần đầu tiên, quy trình đào tạo lái xe được ứng dụng AI tại Việt Nam"
             aria-label="HTV: Lần đầu tiên, quy trình đào tạo lái xe được ứng dụng AI tại Việt Nam (video, mở trong tab mới)"><span
@@ -260,7 +262,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://vov.vn/xa-hoi/tphcm-ung-dung-ai-giup-hoc-vien-lai-xe-hoan-thanh-khoa-hoc-dung-han-post1345317.vov"
+            href="https://vov.vn/xa-hoi/tphcm-ung-dung-ai-giup-hoc-vien-lai-xe-hoan-thanh-khoa-hoc-dung-han-post1345317.vov" data-date="2026-10-28T23:44"
             target="_blank" rel="noopener"
             title="VOV: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn"
             aria-label="VOV: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn (bài báo, mở trong tab mới)"><span
@@ -273,7 +275,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://voh.com.vn/xa-hoi/mo-hinh-hoc-lai-xe-moi-hoc-lai-xe-o-to-moi-luc-moi-noi-nho-nen-tang-so-tich-hop-a-i-676291.html"
+            href="https://voh.com.vn/xa-hoi/mo-hinh-hoc-lai-xe-moi-hoc-lai-xe-o-to-moi-luc-moi-noi-nho-nen-tang-so-tich-hop-a-i-676291.html" data-date="2026-10-28T22:30"
             target="_blank" rel="noopener"
             title="VOH: Mô hình học lái xe mới: Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp A.I."
             aria-label="VOH: Mô hình học lái xe mới: Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp A.I. (bài báo, mở trong tab mới)"><span
@@ -286,7 +288,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://congan.com.vn/giao-thong-24h/chuyen-doi-so-toan-dien-va-ung-dung-ai-trong-dao-tao-sat-hach-lai-xe_199292.html"
+            href="https://congan.com.vn/giao-thong-24h/chuyen-doi-so-toan-dien-va-ung-dung-ai-trong-dao-tao-sat-hach-lai-xe_199292.html" data-date="2026-10-28T15:04"
             target="_blank" rel="noopener"
             title="Công an TP.HCM: Chuyển đổi số toàn diện và ứng dụng AI trong đào tạo, sát hạch lái xe"
             aria-label="Công an TP.HCM: Chuyển đổi số toàn diện và ứng dụng AI trong đào tạo, sát hạch lái xe (bài báo, mở trong tab mới)"><span
@@ -299,7 +301,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://videophapluat.baophapluat.vn/tieu-diem/tphcm-ung-dung-ai-trong-dao-tao-lai-xe-o-to-tren-nen-tang-so-196279.html"
+            href="https://videophapluat.baophapluat.vn/tieu-diem/tphcm-ung-dung-ai-trong-dao-tao-lai-xe-o-to-tren-nen-tang-so-196279.html" data-date="2026-10-28T13:52"
             target="_blank" rel="noopener"
             title="Pháp Luật Việt Nam: TP.HCM: Ứng dụng AI trong đào tạo lái xe ô tô trên nền tảng số"
             aria-label="Pháp Luật Việt Nam: TP.HCM: Ứng dụng AI trong đào tạo lái xe ô tô trên nền tảng số (video, mở trong tab mới)"><span
@@ -312,7 +314,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://baotintuc.vn/ung-dung-ai-ho-tro-dao-tao-va-quan-ly-hoc-vien-lai-xe-post1398019.html"
+            href="https://baotintuc.vn/ung-dung-ai-ho-tro-dao-tao-va-quan-ly-hoc-vien-lai-xe-post1398019.html" data-date="2026-10-28T15:34"
             target="_blank" rel="noopener" title="Báo Tin Tức: Ứng dụng AI hỗ trợ đào tạo và quản lý học viên lái xe"
             aria-label="Báo Tin Tức: Ứng dụng AI hỗ trợ đào tạo và quản lý học viên lái xe (bài báo, mở trong tab mới)"><span
               class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24">
@@ -323,7 +325,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://danviet.vn/dao-tao-lai-xe-tren-nen-tang-so-hoc-vien-ngoi-nha-dang-ky-va-hoc-ly-thuyet-moi-luc-moi-noi-d1470631.html"
+            href="https://danviet.vn/dao-tao-lai-xe-tren-nen-tang-so-hoc-vien-ngoi-nha-dang-ky-va-hoc-ly-thuyet-moi-luc-moi-noi-d1470631.html" data-date="2026-10-28T14:21"
             target="_blank" rel="noopener"
             title="Dân Việt: Đào tạo lái xe trên nền tảng số: Học viên ngồi nhà đăng ký và học lý thuyết mọi lúc, mọi nơi"
             aria-label="Dân Việt: Đào tạo lái xe trên nền tảng số: Học viên ngồi nhà đăng ký và học lý thuyết mọi lúc, mọi nơi (bài báo, mở trong tab mới)"><span
@@ -336,7 +338,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://vovgiaothong.vn/newsaudio/dao-tao-lai-xe-thoi-ai-xoa-khoang-cach-khong-gian-thoi-gian-d56394.html"
+            href="https://vovgiaothong.vn/newsaudio/dao-tao-lai-xe-thoi-ai-xoa-khoang-cach-khong-gian-thoi-gian-d56394.html" data-date="2026-10-29T12:50"
             target="_blank" rel="noopener"
             title="VOV Giao thông: Đào tạo lái xe thời AI, xóa khoảng cách không gian, thời gian"
             aria-label="VOV Giao thông: Đào tạo lái xe thời AI, xóa khoảng cách không gian, thời gian (bài phát thanh, mở trong tab mới)"><span
@@ -349,7 +351,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://vov1.vov.vn/khoa-hoc-cong-nghe/tin-khoa-hoc-cong-nghe/tphcm-ung-dung-ai-giup-hoc-vien-lai-xe-hoan-thanh-khoa-hoc-dung-han-137899.vov"
+            href="https://vov1.vov.vn/khoa-hoc-cong-nghe/tin-khoa-hoc-cong-nghe/tphcm-ung-dung-ai-giup-hoc-vien-lai-xe-hoan-thanh-khoa-hoc-dung-han-137899.vov" data-date="2026-10-28T18:32"
             target="_blank" rel="noopener"
             title="VOV1: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn"
             aria-label="VOV1: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn (bài phát thanh, mở trong tab mới)"><span
@@ -362,7 +364,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://giaothong.tapchixaydung.vn/tphcm-day-manh-chuyen-doi-so-ung-dung-ai-trong-dao-tao-lai-xe-o-to-183290000000002483.htm"
+            href="https://giaothong.tapchixaydung.vn/tphcm-day-manh-chuyen-doi-so-ung-dung-ai-trong-dao-tao-lai-xe-o-to-183290000000002483.htm" data-date="2026-10-28T15:19"
             target="_blank" rel="noopener"
             title="Tạp chí Xây dựng: TP.HCM đẩy mạnh chuyển đổi số, ứng dụng AI trong đào tạo lái xe ô tô"
             aria-label="Tạp chí Xây dựng: TP.HCM đẩy mạnh chuyển đổi số, ứng dụng AI trong đào tạo lái xe ô tô (bài báo, mở trong tab mới)"><span
@@ -375,7 +377,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://vanhoavadoisong.vn/tphcm-ung-dung-ai-giup-hoc-vien-lai-xe-hoan-thanh-khoa-hoc-dung-han-a29691.html"
+            href="https://vanhoavadoisong.vn/tphcm-ung-dung-ai-giup-hoc-vien-lai-xe-hoan-thanh-khoa-hoc-dung-han-a29691.html" data-date="2026-10-28T15:28"
             target="_blank" rel="noopener"
             title="Văn hóa và Đời sống: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn"
             aria-label="Văn hóa và Đời sống: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn (bài báo, mở trong tab mới)"><span
@@ -388,7 +390,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://tintuconline.com.vn/ung-dung-ai-trong-dao-tao-lai-xe-hon-85-hoc-vien-hoan-thanh-khoa-hoc-dung-han-5136131.html"
+            href="https://tintuconline.com.vn/ung-dung-ai-trong-dao-tao-lai-xe-hon-85-hoc-vien-hoan-thanh-khoa-hoc-dung-han-5136131.html" data-date="2026-10-28T16:30"
             target="_blank" rel="noopener"
             title="Tin Tức Online: Ứng dụng AI trong đào tạo lái xe, hơn 85% học viên hoàn thành khóa học đúng hạn"
             aria-label="Tin Tức Online: Ứng dụng AI trong đào tạo lái xe, hơn 85% học viên hoàn thành khóa học đúng hạn (bài báo, mở trong tab mới)"><span
@@ -401,7 +403,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://www.facebook.com/share/p/19zUrcefZ6/"
+            href="https://www.facebook.com/share/p/19zUrcefZ6/" data-date="2026-10-28T10:40"
             target="_blank" rel="noopener"
             title="HTV Facebook: Mô hình học lái xe mới, học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp AI"
             aria-label="HTV Facebook: Mô hình học lái xe mới, học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp AI (bài báo, mở trong tab mới)"><span
@@ -413,7 +415,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://www.facebook.com/CafeTek.vn/posts/pfbid0vMM44LD8z3nu65poBtFinT73YbUmrB4HbH1kJR9fSYT4ggvsAd1J1uYeLiRhq3LZl"
+            href="https://www.facebook.com/CafeTek.vn/posts/pfbid0vMM44LD8z3nu65poBtFinT73YbUmrB4HbH1kJR9fSYT4ggvsAd1J1uYeLiRhq3LZl" data-date="2026-10-28T10:40"
             target="_blank" rel="noopener"
             title="CafeTek: Kỷ nguyên AI trong đào tạo lái xe: Học lái ô tô bây giờ có gì khác biệt?"
             aria-label="CafeTek: Kỷ nguyên AI trong đào tạo lái xe: Học lái ô tô bây giờ có gì khác biệt? (bài báo, mở trong tab mới)"><span
@@ -425,7 +427,7 @@
               khác biệt?</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
-          <a class="strip-chip strip-chip--press" href="https://www.facebook.com/reel/1417602930487450" target="_blank"
+          <a class="strip-chip strip-chip--press" href="https://www.facebook.com/reel/1417602930487450" data-date="2026-10-28T18:55" target="_blank"
             rel="noopener" title="Made By VietNam: Doanh nghiệp Việt ứng dụng AI giúp học lái xe trực quan, sinh động"
             aria-label="Made By VietNam: Doanh nghiệp Việt ứng dụng AI giúp học lái xe trực quan, sinh động (video, mở trong tab mới)"><span
               class="strip-chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24">
@@ -437,7 +439,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://www.tiktok.com/@madebyvietnam/video/7701687439437483265"
+            href="https://www.tiktok.com/@madebyvietnam/video/7701687439437483265" data-date="2026-10-28T19:00"
             target="_blank" rel="noopener"
             title="Made By VietNam trên TikTok: Doanh nghiệp Việt ứng dụng AI giúp học lái xe trực quan, sinh động"
             aria-label="Made By VietNam trên TikTok: Doanh nghiệp Việt ứng dụng AI giúp học lái xe trực quan, sinh động (video, mở trong tab mới)"><span
@@ -449,7 +451,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://www.tiktok.com/@cafetek/video/7702370894269713672"
+            href="https://www.tiktok.com/@cafetek/video/7702370894269713672" data-date="2026-10-30T15:12"
             target="_blank" rel="noopener"
             title="CafeTek trên TikTok: Kỷ nguyên AI trong đào tạo lái xe"
             aria-label="CafeTek trên TikTok: Kỷ nguyên AI trong đào tạo lái xe (video, mở trong tab mới)"><span
@@ -461,7 +463,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://youtu.be/vLiie4Ubbb0?si=tlHEtbTZL5mf0JYt"
+            href="https://youtu.be/vLiie4Ubbb0?si=tlHEtbTZL5mf0JYt" data-date="2026-10-30T18:38"
             target="_blank" rel="noopener"
             title="HTV - Chương trình Made By VietNam: Mô hình học lái xe mới"
             aria-label="HTV - Chương trình Made By VietNam: Mô hình học lái xe mới (video, mở trong tab mới)"><span
@@ -473,7 +475,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://youtu.be/hOKTWu45sAA?si=AVCufs7c7sxlI-CR"
+            href="https://youtu.be/hOKTWu45sAA?si=AVCufs7c7sxlI-CR" data-date="2026-11-01T19:00"
             target="_blank" rel="noopener"
             title="HTV - Chương trình CafeTek: Mô hình học lái xe mới"
             aria-label="HTV - Chương trình CafeTek: Mô hình học lái xe mới (video, mở trong tab mới)"><span
@@ -487,7 +489,7 @@
         </div>
         <div class="strip-group" aria-hidden="true">
           <a class="strip-chip strip-chip--press"
-            href="https://tuoitre.vn/hoc-lai-xe-o-to-moi-luc-moi-noi-nho-nen-tang-so-tich-hop-ai-100261028160205011.htm"
+            href="https://tuoitre.vn/hoc-lai-xe-o-to-moi-luc-moi-noi-nho-nen-tang-so-tich-hop-ai-100261028160205011.htm" data-date="2026-10-28T16:34"
             target="_blank" rel="noopener" tabindex="-1"
             title="Tuổi Trẻ: Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp AI"
             aria-label="Tuổi Trẻ: Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp AI (bài báo, mở trong tab mới)"><span
@@ -500,7 +502,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://thanhnien.vn/hoc-lai-o-to-chay-thu-sa-hinh-duong-truong-ao-truoc-khi-len-xe-that-185261028170253296.htm"
+            href="https://thanhnien.vn/hoc-lai-o-to-chay-thu-sa-hinh-duong-truong-ao-truoc-khi-len-xe-that-185261028170253296.htm" data-date="2026-10-28T18:34"
             target="_blank" rel="noopener" tabindex="-1"
             title="Thanh Niên: Học lái ô tô: Chạy thử sa hình, đường trường ảo trước khi lên xe thật"
             aria-label="Thanh Niên: Học lái ô tô: Chạy thử sa hình, đường trường ảo trước khi lên xe thật (bài báo, mở trong tab mới)"><span
@@ -513,7 +515,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://www.sggp.org.vn/hoc-lai-o-to-tu-xa-qua-he-sinh-thai-chuyen-doi-so-tich-hop-ai-post878862.html"
+            href="https://www.sggp.org.vn/hoc-lai-o-to-tu-xa-qua-he-sinh-thai-chuyen-doi-so-tich-hop-ai-post878862.html" data-date="2026-10-28T15:19"
             target="_blank" rel="noopener" tabindex="-1"
             title="Sài Gòn Giải Phóng: Học lái ô tô từ xa qua hệ sinh thái chuyển đổi số tích hợp AI"
             aria-label="Sài Gòn Giải Phóng: Học lái ô tô từ xa qua hệ sinh thái chuyển đổi số tích hợp AI (bài báo, mở trong tab mới)"><span
@@ -526,7 +528,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://htv.vn/mo-hinh-hoc-lai-xe-moi-hoc-lai-xe-o-to-moi-luc-moi-noi-nho-nen-tang-so-tich-hop-ai-22226102820330211.htm"
+            href="https://htv.vn/mo-hinh-hoc-lai-xe-moi-hoc-lai-xe-o-to-moi-luc-moi-noi-nho-nen-tang-so-tich-hop-ai-22226102820330211.htm" data-date="2026-10-28T20:51"
             target="_blank" rel="noopener" tabindex="-1"
             title="HTV: Lần đầu tiên, quy trình đào tạo lái xe được ứng dụng AI tại Việt Nam"
             aria-label="HTV: Lần đầu tiên, quy trình đào tạo lái xe được ứng dụng AI tại Việt Nam (video, mở trong tab mới)"><span
@@ -539,7 +541,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://vov.vn/xa-hoi/tphcm-ung-dung-ai-giup-hoc-vien-lai-xe-hoan-thanh-khoa-hoc-dung-han-post1345317.vov"
+            href="https://vov.vn/xa-hoi/tphcm-ung-dung-ai-giup-hoc-vien-lai-xe-hoan-thanh-khoa-hoc-dung-han-post1345317.vov" data-date="2026-10-28T23:44"
             target="_blank" rel="noopener" tabindex="-1"
             title="VOV: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn"
             aria-label="VOV: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn (bài báo, mở trong tab mới)"><span
@@ -552,7 +554,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://voh.com.vn/xa-hoi/mo-hinh-hoc-lai-xe-moi-hoc-lai-xe-o-to-moi-luc-moi-noi-nho-nen-tang-so-tich-hop-a-i-676291.html"
+            href="https://voh.com.vn/xa-hoi/mo-hinh-hoc-lai-xe-moi-hoc-lai-xe-o-to-moi-luc-moi-noi-nho-nen-tang-so-tich-hop-a-i-676291.html" data-date="2026-10-28T22:30"
             target="_blank" rel="noopener" tabindex="-1"
             title="VOH: Mô hình học lái xe mới: Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp A.I."
             aria-label="VOH: Mô hình học lái xe mới: Học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp A.I. (bài báo, mở trong tab mới)"><span
@@ -565,7 +567,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://congan.com.vn/giao-thong-24h/chuyen-doi-so-toan-dien-va-ung-dung-ai-trong-dao-tao-sat-hach-lai-xe_199292.html"
+            href="https://congan.com.vn/giao-thong-24h/chuyen-doi-so-toan-dien-va-ung-dung-ai-trong-dao-tao-sat-hach-lai-xe_199292.html" data-date="2026-10-28T15:04"
             target="_blank" rel="noopener" tabindex="-1"
             title="Công an TP.HCM: Chuyển đổi số toàn diện và ứng dụng AI trong đào tạo, sát hạch lái xe"
             aria-label="Công an TP.HCM: Chuyển đổi số toàn diện và ứng dụng AI trong đào tạo, sát hạch lái xe (bài báo, mở trong tab mới)"><span
@@ -578,7 +580,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://videophapluat.baophapluat.vn/tieu-diem/tphcm-ung-dung-ai-trong-dao-tao-lai-xe-o-to-tren-nen-tang-so-196279.html"
+            href="https://videophapluat.baophapluat.vn/tieu-diem/tphcm-ung-dung-ai-trong-dao-tao-lai-xe-o-to-tren-nen-tang-so-196279.html" data-date="2026-10-28T13:52"
             target="_blank" rel="noopener" tabindex="-1"
             title="Pháp Luật Việt Nam: TP.HCM: Ứng dụng AI trong đào tạo lái xe ô tô trên nền tảng số"
             aria-label="Pháp Luật Việt Nam: TP.HCM: Ứng dụng AI trong đào tạo lái xe ô tô trên nền tảng số (video, mở trong tab mới)"><span
@@ -591,7 +593,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://baotintuc.vn/ung-dung-ai-ho-tro-dao-tao-va-quan-ly-hoc-vien-lai-xe-post1398019.html"
+            href="https://baotintuc.vn/ung-dung-ai-ho-tro-dao-tao-va-quan-ly-hoc-vien-lai-xe-post1398019.html" data-date="2026-10-28T15:34"
             target="_blank" rel="noopener" tabindex="-1"
             title="Báo Tin Tức: Ứng dụng AI hỗ trợ đào tạo và quản lý học viên lái xe"
             aria-label="Báo Tin Tức: Ứng dụng AI hỗ trợ đào tạo và quản lý học viên lái xe (bài báo, mở trong tab mới)"><span
@@ -603,7 +605,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://danviet.vn/dao-tao-lai-xe-tren-nen-tang-so-hoc-vien-ngoi-nha-dang-ky-va-hoc-ly-thuyet-moi-luc-moi-noi-d1470631.html"
+            href="https://danviet.vn/dao-tao-lai-xe-tren-nen-tang-so-hoc-vien-ngoi-nha-dang-ky-va-hoc-ly-thuyet-moi-luc-moi-noi-d1470631.html" data-date="2026-10-28T14:21"
             target="_blank" rel="noopener" tabindex="-1"
             title="Dân Việt: Đào tạo lái xe trên nền tảng số: Học viên ngồi nhà đăng ký và học lý thuyết mọi lúc, mọi nơi"
             aria-label="Dân Việt: Đào tạo lái xe trên nền tảng số: Học viên ngồi nhà đăng ký và học lý thuyết mọi lúc, mọi nơi (bài báo, mở trong tab mới)"><span
@@ -616,7 +618,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://vovgiaothong.vn/newsaudio/dao-tao-lai-xe-thoi-ai-xoa-khoang-cach-khong-gian-thoi-gian-d56394.html"
+            href="https://vovgiaothong.vn/newsaudio/dao-tao-lai-xe-thoi-ai-xoa-khoang-cach-khong-gian-thoi-gian-d56394.html" data-date="2026-10-29T12:50"
             target="_blank" rel="noopener" tabindex="-1"
             title="VOV Giao thông: Đào tạo lái xe thời AI, xóa khoảng cách không gian, thời gian"
             aria-label="VOV Giao thông: Đào tạo lái xe thời AI, xóa khoảng cách không gian, thời gian (bài phát thanh, mở trong tab mới)"><span
@@ -629,7 +631,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://vov1.vov.vn/khoa-hoc-cong-nghe/tin-khoa-hoc-cong-nghe/tphcm-ung-dung-ai-giup-hoc-vien-lai-xe-hoan-thanh-khoa-hoc-dung-han-137899.vov"
+            href="https://vov1.vov.vn/khoa-hoc-cong-nghe/tin-khoa-hoc-cong-nghe/tphcm-ung-dung-ai-giup-hoc-vien-lai-xe-hoan-thanh-khoa-hoc-dung-han-137899.vov" data-date="2026-10-28T18:32"
             target="_blank" rel="noopener" tabindex="-1"
             title="VOV1: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn"
             aria-label="VOV1: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn (bài phát thanh, mở trong tab mới)"><span
@@ -642,7 +644,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://giaothong.tapchixaydung.vn/tphcm-day-manh-chuyen-doi-so-ung-dung-ai-trong-dao-tao-lai-xe-o-to-183290000000002483.htm"
+            href="https://giaothong.tapchixaydung.vn/tphcm-day-manh-chuyen-doi-so-ung-dung-ai-trong-dao-tao-lai-xe-o-to-183290000000002483.htm" data-date="2026-10-28T15:19"
             target="_blank" rel="noopener" tabindex="-1"
             title="Tạp chí Xây dựng: TP.HCM đẩy mạnh chuyển đổi số, ứng dụng AI trong đào tạo lái xe ô tô"
             aria-label="Tạp chí Xây dựng: TP.HCM đẩy mạnh chuyển đổi số, ứng dụng AI trong đào tạo lái xe ô tô (bài báo, mở trong tab mới)"><span
@@ -655,7 +657,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://vanhoavadoisong.vn/tphcm-ung-dung-ai-giup-hoc-vien-lai-xe-hoan-thanh-khoa-hoc-dung-han-a29691.html"
+            href="https://vanhoavadoisong.vn/tphcm-ung-dung-ai-giup-hoc-vien-lai-xe-hoan-thanh-khoa-hoc-dung-han-a29691.html" data-date="2026-10-28T15:28"
             target="_blank" rel="noopener" tabindex="-1"
             title="Văn hóa và Đời sống: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn"
             aria-label="Văn hóa và Đời sống: TP.HCM ứng dụng AI giúp học viên lái xe hoàn thành khóa học đúng hạn (bài báo, mở trong tab mới)"><span
@@ -668,7 +670,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://tintuconline.com.vn/ung-dung-ai-trong-dao-tao-lai-xe-hon-85-hoc-vien-hoan-thanh-khoa-hoc-dung-han-5136131.html"
+            href="https://tintuconline.com.vn/ung-dung-ai-trong-dao-tao-lai-xe-hon-85-hoc-vien-hoan-thanh-khoa-hoc-dung-han-5136131.html" data-date="2026-10-28T16:30"
             target="_blank" rel="noopener" tabindex="-1"
             title="Tin Tức Online: Ứng dụng AI trong đào tạo lái xe, hơn 85% học viên hoàn thành khóa học đúng hạn"
             aria-label="Tin Tức Online: Ứng dụng AI trong đào tạo lái xe, hơn 85% học viên hoàn thành khóa học đúng hạn (bài báo, mở trong tab mới)"><span
@@ -681,7 +683,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://www.facebook.com/share/p/19zUrcefZ6/"
+            href="https://www.facebook.com/share/p/19zUrcefZ6/" data-date="2026-10-28T10:40"
             target="_blank" rel="noopener" tabindex="-1"
             title="HTV Facebook: Mô hình học lái xe mới, học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp AI"
             aria-label="HTV Facebook: Mô hình học lái xe mới, học lái xe ô tô mọi lúc, mọi nơi nhờ nền tảng số tích hợp AI (bài báo, mở trong tab mới)"><span
@@ -693,7 +695,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://www.facebook.com/CafeTek.vn/posts/pfbid0vMM44LD8z3nu65poBtFinT73YbUmrB4HbH1kJR9fSYT4ggvsAd1J1uYeLiRhq3LZl"
+            href="https://www.facebook.com/CafeTek.vn/posts/pfbid0vMM44LD8z3nu65poBtFinT73YbUmrB4HbH1kJR9fSYT4ggvsAd1J1uYeLiRhq3LZl" data-date="2026-10-28T10:40"
             target="_blank" rel="noopener" tabindex="-1"
             title="CafeTek: Kỷ nguyên AI trong đào tạo lái xe: Học lái ô tô bây giờ có gì khác biệt?"
             aria-label="CafeTek: Kỷ nguyên AI trong đào tạo lái xe: Học lái ô tô bây giờ có gì khác biệt? (bài báo, mở trong tab mới)"><span
@@ -705,7 +707,7 @@
               khác biệt?</span><svg class="strip-chip__go" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
-          <a class="strip-chip strip-chip--press" href="https://www.facebook.com/reel/1417602930487450" target="_blank"
+          <a class="strip-chip strip-chip--press" href="https://www.facebook.com/reel/1417602930487450" data-date="2026-10-28T18:55" target="_blank"
             rel="noopener" tabindex="-1"
             title="Made By VietNam: Doanh nghiệp Việt ứng dụng AI giúp học lái xe trực quan, sinh động"
             aria-label="Made By VietNam: Doanh nghiệp Việt ứng dụng AI giúp học lái xe trực quan, sinh động (video, mở trong tab mới)"><span
@@ -718,7 +720,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://www.tiktok.com/@madebyvietnam/video/7701687439437483265"
+            href="https://www.tiktok.com/@madebyvietnam/video/7701687439437483265" data-date="2026-10-28T19:00"
             target="_blank" rel="noopener" tabindex="-1"
             title="Made By VietNam trên TikTok: Doanh nghiệp Việt ứng dụng AI giúp học lái xe trực quan, sinh động"
             aria-label="Made By VietNam trên TikTok: Doanh nghiệp Việt ứng dụng AI giúp học lái xe trực quan, sinh động (video, mở trong tab mới)"><span
@@ -730,7 +732,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://www.tiktok.com/@cafetek/video/7702370894269713672"
+            href="https://www.tiktok.com/@cafetek/video/7702370894269713672" data-date="2026-10-30T15:12"
             target="_blank" rel="noopener" tabindex="-1"
             title="CafeTek trên TikTok: Kỷ nguyên AI trong đào tạo lái xe"
             aria-label="CafeTek trên TikTok: Kỷ nguyên AI trong đào tạo lái xe (video, mở trong tab mới)"><span
@@ -742,7 +744,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://youtu.be/vLiie4Ubbb0?si=tlHEtbTZL5mf0JYt"
+            href="https://youtu.be/vLiie4Ubbb0?si=tlHEtbTZL5mf0JYt" data-date="2026-10-30T18:38"
             target="_blank" rel="noopener" tabindex="-1"
             title="HTV - Chương trình Made By VietNam: Mô hình học lái xe mới"
             aria-label="HTV - Chương trình Made By VietNam: Mô hình học lái xe mới (video, mở trong tab mới)"><span
@@ -754,7 +756,7 @@
               <path d="M7 17 17 7M9 7h8v8" />
             </svg></a>
           <a class="strip-chip strip-chip--press"
-            href="https://youtu.be/hOKTWu45sAA?si=AVCufs7c7sxlI-CR"
+            href="https://youtu.be/hOKTWu45sAA?si=AVCufs7c7sxlI-CR" data-date="2026-11-01T19:00"
             target="_blank" rel="noopener" tabindex="-1"
             title="HTV - Chương trình CafeTek: Mô hình học lái xe mới"
             aria-label="HTV - Chương trình CafeTek: Mô hình học lái xe mới (video, mở trong tab mới)"><span
@@ -3133,7 +3135,7 @@
   <script src="assets/js/courses-demo-vehicle-config.js"></script>
   <script src="assets/js/courses-demo-stage-renderer.js"></script>
   <script src="assets/js/courses-demo-interactions.js"></script>
-  <script src="assets/js/homepage-press-list-dialog.js?v=20261104-bao-chi-xem-tat-ca"></script>
+  <script src="assets/js/homepage-press-list-dialog.js?v=20261105-bao-chi-loc"></script>
 </body>
 
 </html>
