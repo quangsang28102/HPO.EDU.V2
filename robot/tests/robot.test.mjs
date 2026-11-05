@@ -48,3 +48,15 @@ test('resetPose returns to rest; reduced motion keeps the body still',()=>{
  assert.equal(robot.isWaving,false);assert.equal(robot.elbows[1].rotation.z,0);assert.equal(robot.group.position.y,0);
  step(robot,0,60,true);assert.equal(robot.group.position.y,0);
 });
+
+test('khi vẫy tay chào, mắt chuyển sang cong "^ ^" + cười khép; vẫy xong trở lại mắt tròn',()=>{
+ const robot=new Robot('brand');const c=robot.controller;
+ assert.equal(c.faceState.arcL,0,'mắt tròn lúc đầu');
+ robot.wave();step(robot,0,60);
+ assert.equal(c.expressionName,'greeting');
+ assert(c.faceState.arcL>.9&&c.faceState.arcR>.9,'mắt cong khi đang vẫy');
+ assert(c.faceState.mouthOpen<.4,'miệng cười khép (không lè lưỡi)');
+ step(robot,60,60*5);
+ assert.equal(c.expressionName,'idle','hết lượt chào → về mặc định');
+ assert(c.faceState.arcL<.05,'mắt tròn lại');
+});

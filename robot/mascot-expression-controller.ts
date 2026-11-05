@@ -12,7 +12,8 @@ const FACES: Record<MoodExpression, Partial<FaceState>> = {
   happy: { arcL: 1, arcR: 1, mouthOpen: 1, mouthWidth: 1.35, mouthCurve: 1, cheek: 1, browL: .05, browR: .05, glow: 1.08 },
   talking: { mouthOpen: .5, mouthWidth: .95, cheek: .55 },
   thinking: { mouthOpen: .06, mouthWidth: .55, mouthCurve: -.25, mouthShift: .08, cheek: .3, browL: .08, browR: -.01 },
-  greeting: { mouthOpen: 1, mouthWidth: 1.2, mouthCurve: .9, cheek: .9, browL: .05, browR: .05, glow: 1.12 },
+  // Chào (vẫy tay): mắt cong "^ ^" + miệng cười khép, má hồng — như mẫu robot vẫy tay sếp gửi (05/11/2026).
+  greeting: { arcL: 1, arcR: 1, mouthOpen: .3, mouthWidth: 1.5, mouthCurve: 1, cheek: 1, browL: .05, browR: .05, glow: 1.12 },
   winking: { arcR: 1, mouthOpen: .85, mouthWidth: 1.15, mouthCurve: 1, cheek: .95, browR: .06 },
 };
 /** Where the eyes look per expression (gaze units, ±1 ≈ full side glance). */
@@ -81,7 +82,13 @@ export class MascotExpressionController {
     if (next === 'happy') this.hop();
     if (next === 'winking') this.tilt();
   }
-  wave() { if (this.isWaving) return false; this.waveTime = 0; return true; }
+  /** Vẫy tay; mặt chuyển sang biểu cảm chào suốt lúc vẫy (+0,5 s cho mắt kịp mở lại sau khi hạ tay). */
+  wave() {
+    if (this.isWaving) return false;
+    this.waveTime = 0;
+    if (this.expression !== 'greeting') { this.expression = 'greeting'; this.expressionLeft = WAVE_SECONDS + .5; }
+    return true;
+  }
   hop() { this.hopTime = 0; }
   tilt() { this.tiltTime = 0; }
   blink() { this.blinkTime = 0; }
