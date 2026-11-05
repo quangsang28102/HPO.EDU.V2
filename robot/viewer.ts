@@ -42,7 +42,7 @@ export function createViewer(
         </div>
       </section>
       <section class="hpo-chat-panel" aria-labelledby="hpo-chat-title">
-        <div class="hpo-chat-heading"><h3 id="hpo-chat-title">Trò chuyện cùng robot</h3><span class="hpo-soon">Sắp có</span></div>
+        <div class="hpo-chat-heading"><h3 id="hpo-chat-title">Trò chuyện cùng robot</h3><span class="hpo-soon">Sắp ra mắt</span></div>
         <div class="hpo-chat-messages" role="log" aria-label="Tin nhắn">
           <p class="hpo-chat-welcome">Xin chào! Tôi là robot Hiệp Phát.</p>
           <p>Bạn có thể khám phá mô hình 3D bên cạnh. Tính năng trò chuyện sẽ có mặt tại đây trong thời gian tới.</p>
