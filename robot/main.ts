@@ -375,12 +375,23 @@ function mount() {
     }
     // Robot chỉ thu về góc khi lướt xuống (> 25% màn hình); băng chuyền đổi slide trên trang
     // chủ không còn làm robot thu lại. Lướt lên lại → robot đứng ra, chào lại sau 0.5 giây.
+    // Robot đứng kiểu position: fixed nhưng bám theo câu nhấn của slide "Giới thiệu công ty" và đáy header
+    // → khi đang đứng ngoài trang phải đo lại mỗi lần cuộn (trước chỉ đo lúc đổi trạng thái thu/đứng,
+    // nên lướt lên tới đầu trang robot giữ chỗ cũ và đè lên logo).
+    let placeRaf = 0;
+    const placeSoon = () => {
+      cancelAnimationFrame(placeRaf);
+      placeRaf = requestAnimationFrame(() => { if (!docked) place(); });
+    };
     const syncHeroDock = () => {
       const now = performance.now();
       const away = scrollY > innerHeight * 0.25;
       // Điện thoại: robot luôn đứng cố định trên thanh nút đáy (không bật ra trang khi lướt lên đầu).
       const nextDocked = away || phoneLayout.matches || Number.isNaN(companySlideTop());
-      if (nextDocked === docked) return;
+      if (nextDocked === docked) {
+        if (!docked && homeHero) placeSoon();
+        return;
+      }
       docked = nextDocked;
       if (!docked) {
         greeted = false;
@@ -407,6 +418,8 @@ function mount() {
       document.querySelector(".company-slider-track")?.addEventListener("scroll", replace, { passive: true });
       // tiêu đề / câu nhấn của slide 2 có hiệu ứng trượt vào (company-reveal) → đo lại khi hiệu ứng xong
       document.querySelector(".company-banner")?.addEventListener("animationend", replace);
+      // header co/giãn khi cuộn (thanh trên cùng ẩn/hiện) có hiệu ứng → đo lại khi hiệu ứng xong
+      document.getElementById("navbar")?.closest("header")?.addEventListener("transitionend", replace);
     }
     syncHeroDock();
   }
