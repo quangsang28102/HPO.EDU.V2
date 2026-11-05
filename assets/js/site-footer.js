@@ -219,6 +219,7 @@
 
         <div class="footer-bottom">
           <p>© 2025 Công Ty TNHH Ô Tô Hiệp Phát. Tất cả quyền được bảo lưu.</p>
+          <p class="footer-bottom-links"><a href="${href("chinh-sach-bao-mat/")}">Chính sách bảo mật</a></p>
           <p class="footer-bottom-legal">
             GCNKD: 0309987279 — Cấp ngày 11/05/2010<br />
             Sở KH&amp;ĐT TP. Hồ Chí Minh
