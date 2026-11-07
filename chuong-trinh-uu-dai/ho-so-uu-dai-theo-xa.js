@@ -27,7 +27,7 @@
   function showMessage(title, text, hotline) {
     setHidden(loading, true);
     setHidden(content, true);
-    setHidden(offer, true); // lỗi / tạm dừng / hết hạn → không hiện hộp ưu đãi
+    setHidden(offer, false); // Luôn giữ hộp ưu đãi, kể cả khi location không hợp lệ.
     setText("[data-thong-bao-tieu-de]", title);
     setText("[data-thong-bao-noi-dung]", text);
     if (hotline) setHotline(hotline);
