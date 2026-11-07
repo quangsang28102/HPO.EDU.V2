@@ -430,6 +430,7 @@ html body .training-table-note {
 html body .training-table-note p {
   margin: 0;
   color: var(--hp-ink, #0a1330);
+  font-family: "Be Vietnam Pro", system-ui, sans-serif; /* SVN-Gilroy làm "í" dính dấu thành "l" ở màn 1x */
   font-size: 17px;
   line-height: 1.6;
   text-wrap: pretty;
