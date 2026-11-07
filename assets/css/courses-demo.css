@@ -639,6 +639,10 @@
 .courses-section .price--group{ background: linear-gradient(90deg, #fff8dd, #fff2c2); border-color: #f6e19c; }
 .courses-section .price--group .price__label{ color: #8a6a10; }
 .courses-section .price--group .price__value{ color: #5c4300; }
+/* Thời gian học từng hạng: nền xanh nhạt, chữ navy — phụ cho giá, không cạnh tranh màu đỏ */
+.courses-section .price--duration{ flex-direction: row; align-items: baseline; justify-content: space-between; gap: 10px; background: var(--blue-50); border-color: #dbe5fb; }
+.courses-section .price--duration .price__label{ font-size: 14px; color: var(--navy-800); }
+.courses-section .price--duration .price__value{ font-size: 17px; color: var(--navy-800); }
 /* Nhãn số tiền tiết kiệm: chỉ hiện khi thẻ đủ rộng (đang mở rộng) */
 .courses-section .price__tag{
   position: absolute; right: 12px; top: 50%; margin: 0; padding: 4px 10px; border-radius: 999px;
