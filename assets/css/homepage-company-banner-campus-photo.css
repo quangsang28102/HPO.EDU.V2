@@ -31,6 +31,15 @@ html body .company-banner .company-banner-photos .company-photo-campus {
 /* hiện ảnh sau khối chữ, giống nhịp cũ của ảnh tòa nhà */
 html body .company-banner.is-active .company-photo-campus { animation-delay: .3s; }
 
+/* Bấm ảnh → mở lightbox ảnh lớn (media.js, nhóm "campus") */
+html body .company-banner .company-banner-photos[data-img-group] { position: relative; cursor: zoom-in; }
+html body .company-banner .company-banner-photos .company-photo-campus { transition: transform .45s ease; }
+html body .company-banner .company-banner-photos[data-img-group]:hover .company-photo-campus { transform: scale(1.03); }
+html body .company-banner .company-banner-photos[data-img-group]:focus-visible { outline: 3px solid #2b26fb; outline-offset: 4px; }
+@media (hover: none) {
+  html body .company-banner .company-banner-photos[data-img-group]:hover .company-photo-campus { transform: none; }
+}
+
 @media (max-width: 600px) {
   html body .company-banner .company-banner-sheet { grid-template-columns: minmax(0, 1fr); }
   html body .company-banner .company-banner-photos { height: auto; border-radius: 20px; }
