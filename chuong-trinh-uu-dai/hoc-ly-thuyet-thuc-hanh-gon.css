@@ -1,0 +1,67 @@
+/* ==========================================================================
+   Trang Chương trình ưu đãi — khối "Học lý thuyết" + "Học thực hành" (07/11/2026)
+   1) 3 thẻ xanh: hình minh họa ở trên, tiêu đề + mô tả ở dưới (thay icon SVG).
+   2) Gọn lại: giảm khoảng trắng giữa 2 cụm, giữa tiêu đề và thẻ, chiều cao thẻ.
+   Nạp SAU khối <style> nội tuyến của trang (cùng độ ưu tiên selector → file này thắng).
+   ========================================================================== */
+
+/* --- Gọn khoảng cách chung --- */
+html body.uu-dai-page .uu-learning { padding: clamp(40px, 4.5vw, 64px) 20px; }
+html body.uu-dai-page .uu-learning__group + .uu-learning__group { margin-top: clamp(40px, 4vw, 56px); }
+html body.uu-dai-page .uu-learning__heading { gap: 4px; margin-bottom: 20px; }
+html body.uu-dai-page .uu-learning__benefits,
+html body.uu-dai-page .uu-learning__media,
+html body.uu-dai-page .uu-learning__practice { gap: 16px; }
+html body.uu-dai-page .uu-learning__benefits { margin-bottom: 16px; }
+
+/* --- 3 thẻ xanh: hình trên, chữ dưới, canh giữa --- */
+html body.uu-dai-page .uu-learning__benefit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 0;
+  padding: 18px 20px 22px;
+  text-align: center;
+}
+html body.uu-dai-page .uu-learning__art {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: clamp(120px, 12vw, 150px);
+  margin: 0 auto 12px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 14px rgba(5, 12, 60, .35));
+}
+html body.uu-dai-page .uu-learning__benefit h3 { margin-bottom: 4px; }
+
+/* --- Ảnh mô phỏng: chú thích gọn hơn --- */
+html body.uu-dai-page .uu-learning__visual figcaption { gap: 2px; padding: 14px 20px 16px; }
+
+/* --- Thẻ thực hành: bớt đệm --- */
+html body.uu-dai-page .uu-learning__practice-card { padding: clamp(20px, 2.4vw, 26px); }
+html body.uu-dai-page .uu-learning__practice-title { margin-bottom: 14px; }
+html body.uu-dai-page .uu-learning__practice-card ol,
+html body.uu-dai-page .uu-learning__practice-card ul { margin-bottom: 14px; }
+html body.uu-dai-page .uu-learning__practice-card li + li { margin-top: 4px; }
+
+/* Máy tính bảng: 3 thẻ xanh vẫn 3 cột (thấp hơn nhiều so với xếp chồng) */
+@media (min-width: 601px) and (max-width: 860px) {
+  html body.uu-dai-page .uu-learning__benefits { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  html body.uu-dai-page .uu-learning__benefit { padding: 14px 12px 18px; }
+  html body.uu-dai-page .uu-learning__benefit h3 { font-size: 19px; }
+  html body.uu-dai-page .uu-learning__art { height: 104px; }
+}
+/* Điện thoại: vẫn hình trên chữ dưới, hình thấp hơn */
+@media (max-width: 600px) {
+  html body.uu-dai-page .uu-learning__benefit { padding: 14px 16px 18px; }
+  html body.uu-dai-page .uu-learning__art { height: 112px; margin-bottom: 8px; }
+}
+
+/* Thẻ DAT: 3 mức thời gian xếp 3 ô ngang (thay 3 hàng dọc) → thẻ thấp hơn, 2 thẻ thực hành bớt chênh */
+@media (min-width: 601px) {
+  html body.uu-dai-page .uu-learning__practice-card .uu-learning__figures { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  html body.uu-dai-page .uu-learning__figures div { display: grid; gap: 2px; align-content: start; padding: 10px 12px; }
+  html body.uu-dai-page .uu-learning__figures dt { font-size: 15px; line-height: 1.35; }
+}

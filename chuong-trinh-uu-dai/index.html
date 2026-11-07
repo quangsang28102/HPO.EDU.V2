@@ -56,6 +56,259 @@
       rel="stylesheet"
       href="../assets/css/homepage-hero-practice-updates-261103.css?v=20261104-nut-dang-nhap"
     />
+    <style>
+      html body.uu-dai-page .uu-learning {
+        padding: clamp(56px, 6vw, 88px) 20px;
+        background: linear-gradient(180deg, #f4f7ff 0%, #fff 54%, #f8faff 100%);
+        color: #0a1330;
+      }
+      html body.uu-dai-page .uu-learning__inner {
+        width: min(100%, 1200px);
+        margin-inline: auto;
+      }
+      html body.uu-dai-page .uu-learning__group + .uu-learning__group {
+        margin-top: clamp(56px, 6vw, 80px);
+      }
+      html body.uu-dai-page .uu-learning__heading {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 26px;
+        padding-left: 22px;
+        border-left: 6px solid #ea1e24;
+      }
+      html body.uu-dai-page .uu-learning__heading h2 {
+        margin: 0;
+        color: #2d3489;
+        font-family: "Be Vietnam Pro", system-ui, sans-serif;
+        font-size: clamp(29px, 3.2vw, 42px);
+        font-weight: 800;
+        line-height: 1.16;
+      }
+      html body.uu-dai-page .uu-learning__heading p {
+        margin: 0;
+        color: #29375b;
+        font-size: clamp(18px, 1.8vw, 22px);
+        font-weight: 600;
+        line-height: 1.45;
+      }
+      html body.uu-dai-page .uu-learning__benefits,
+      html body.uu-dai-page .uu-learning__media,
+      html body.uu-dai-page .uu-learning__practice {
+        display: grid;
+        gap: 20px;
+        padding: 0;
+        list-style: none;
+      }
+      html body.uu-dai-page .uu-learning__benefits {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin: 0 0 20px;
+      }
+      html body.uu-dai-page .uu-learning__benefit {
+        position: relative;
+        min-width: 0;
+        min-height: 218px;
+        padding: 28px;
+        overflow: hidden;
+        border-radius: 22px;
+        background: linear-gradient(145deg, #2b26fb, #163b9f);
+        box-shadow: 0 16px 34px -24px #142b85;
+        color: #fff;
+      }
+      html body.uu-dai-page .uu-learning__benefit::after {
+        content: "";
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        right: -88px;
+        top: -96px;
+        border: 1px solid rgba(255, 255, 255, .28);
+        border-radius: 50%;
+        box-shadow: 0 0 0 28px rgba(255, 255, 255, .045);
+        pointer-events: none;
+      }
+      html body.uu-dai-page .uu-learning__icon {
+        display: grid;
+        place-items: center;
+        width: 52px;
+        height: 52px;
+        margin-bottom: 24px;
+        border: 1px solid rgba(255, 255, 255, .35);
+        border-radius: 15px;
+        background: rgba(255, 255, 255, .16);
+      }
+      html body.uu-dai-page .uu-learning__icon svg {
+        width: 29px;
+        height: 29px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.9;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      html body.uu-dai-page .uu-learning__benefit h3 {
+        position: relative;
+        margin: 0 0 7px;
+        color: #fff;
+        font-family: "Be Vietnam Pro", system-ui, sans-serif;
+        font-size: clamp(21px, 2vw, 25px);
+        line-height: 1.28;
+      }
+      html body.uu-dai-page .uu-learning__benefit p {
+        position: relative;
+        margin: 0;
+        color: #eef2ff;
+        font-size: 17px;
+        line-height: 1.5;
+      }
+      html body.uu-dai-page .uu-learning__benefit a {
+        color: #fff;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      html body.uu-dai-page .uu-learning__media,
+      html body.uu-dai-page .uu-learning__practice {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      html body.uu-dai-page .uu-learning__visual {
+        min-width: 0;
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid #dce5ff;
+        border-radius: 22px;
+        background: #fff;
+        box-shadow: 0 16px 38px -30px #233a82;
+      }
+      html body.uu-dai-page .uu-learning__visual img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1428 / 803;
+        object-fit: contain;
+      }
+      html body.uu-dai-page .uu-learning__visual figcaption {
+        display: grid;
+        gap: 4px;
+        padding: 20px 24px 23px;
+        border-top: 1px solid #e8edfa;
+      }
+      html body.uu-dai-page .uu-learning__visual strong {
+        color: #2d3489;
+        font-family: "Be Vietnam Pro", system-ui, sans-serif;
+        font-size: 21px;
+        line-height: 1.3;
+      }
+      html body.uu-dai-page .uu-learning__visual span {
+        color: #344466;
+        font-size: 17px;
+        line-height: 1.5;
+      }
+      html body.uu-dai-page .uu-learning__practice-card {
+        min-width: 0;
+        padding: clamp(24px, 3vw, 34px);
+        border: 1px solid #f4d9dc;
+        border-top: 5px solid #ea1e24;
+        border-radius: 22px;
+        background: #fff;
+        box-shadow: 0 18px 40px -34px #8d1222;
+      }
+      html body.uu-dai-page .uu-learning__practice-title {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 22px;
+      }
+      html body.uu-dai-page .uu-learning__practice-title span {
+        display: grid;
+        place-items: center;
+        flex: none;
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        background: #ea1e24;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 800;
+      }
+      html body.uu-dai-page .uu-learning__practice-title h3 {
+        margin: 0;
+        color: #b41923;
+        font-family: "Be Vietnam Pro", system-ui, sans-serif;
+        font-size: 26px;
+      }
+      html body.uu-dai-page .uu-learning__practice-card p,
+      html body.uu-dai-page .uu-learning__practice-card li,
+      html body.uu-dai-page .uu-learning__practice-card dt,
+      html body.uu-dai-page .uu-learning__practice-card dd {
+        color: #172343;
+        font-size: 17px;
+        line-height: 1.55;
+      }
+      html body.uu-dai-page .uu-learning__practice-card p {
+        margin: 0 0 10px;
+        font-weight: 700;
+      }
+      html body.uu-dai-page .uu-learning__practice-card ol,
+      html body.uu-dai-page .uu-learning__practice-card ul {
+        margin: 0 0 20px;
+        padding-left: 24px;
+      }
+      html body.uu-dai-page .uu-learning__practice-card ol { list-style: decimal; }
+      html body.uu-dai-page .uu-learning__practice-card ul { list-style: disc; }
+      html body.uu-dai-page .uu-learning__practice-card li { padding-left: 4px; }
+      html body.uu-dai-page .uu-learning__practice-card li + li {
+        margin-top: 8px;
+      }
+      html body.uu-dai-page .uu-learning__practice-card li::marker {
+        color: #ea1e24;
+        font-weight: 800;
+      }
+      html body.uu-dai-page .uu-learning__practice-card .uu-learning__figures {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+      }
+      html body.uu-dai-page .uu-learning__figures div {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        background: #fff4f4;
+      }
+      html body.uu-dai-page .uu-learning__figures dt,
+      html body.uu-dai-page .uu-learning__figures dd {
+        margin: 0;
+      }
+      html body.uu-dai-page .uu-learning__figures dd {
+        color: #b41923;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+      @media (max-width: 860px) {
+        html body.uu-dai-page .uu-learning__benefits,
+        html body.uu-dai-page .uu-learning__media,
+        html body.uu-dai-page .uu-learning__practice {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        html body.uu-dai-page .uu-learning__benefit {
+          min-height: 0;
+        }
+      }
+      @media (max-width: 480px) {
+        html body.uu-dai-page .uu-learning { padding: 48px 16px 64px; }
+        html body.uu-dai-page .uu-learning__heading { padding-left: 16px; }
+        html body.uu-dai-page .uu-learning__benefits,
+        html body.uu-dai-page .uu-learning__media,
+        html body.uu-dai-page .uu-learning__practice { gap: 14px; }
+        html body.uu-dai-page .uu-learning__benefit { padding: 24px; }
+        html body.uu-dai-page .uu-learning__visual figcaption { padding: 18px; }
+        html body.uu-dai-page .uu-learning__figures div {
+          display: grid;
+          gap: 2px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="hoc-ly-thuyet-thuc-hanh-gon.css?v=20261107-gon" />
   </head>
   <body class="process-page uu-dai-page">
     <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
@@ -644,6 +897,96 @@
                 <strong>31/01/2026</strong>.</span
               >
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="uu-learning" aria-labelledby="uu-learning-theory-title uu-learning-practice-title">
+        <div class="uu-learning__inner">
+          <div class="uu-learning__group">
+            <header class="uu-learning__heading">
+              <h2 id="uu-learning-theory-title">Học lý thuyết</h2>
+              <p>Luôn sẵn sàng mọi lúc, mọi nơi</p>
+            </header>
+
+            <div class="uu-learning__benefits">
+              <article class="uu-learning__benefit">
+                <img class="uu-learning__art" src="../assets/images/platform/hoc-ly-thuyet-5-mon.webp"
+                  alt="Minh họa 5 môn lý thuyết: đèn giao thông, giáo viên, sách luật và xe tải" width="560" height="430" loading="lazy" />
+                <h3>5 môn lý thuyết</h3>
+                <p>Chi tiết tại <a href="https://hpo.edu.vn/">hpo.edu.vn</a></p>
+              </article>
+              <article class="uu-learning__benefit">
+                <img class="uu-learning__art" src="../assets/images/platform/hoc-ly-thuyet-mo-hinh-3d.webp"
+                  alt="Minh họa mô hình xe ô tô 3D trên màn hình" width="560" height="396" loading="lazy" />
+                <h3>Mô hình minh họa 3D</h3>
+                <p>Trực quan, sinh động</p>
+              </article>
+              <article class="uu-learning__benefit">
+                <img class="uu-learning__art" src="../assets/images/platform/hoc-ly-thuyet-bai-giang-360.webp"
+                  alt="Minh họa bài giảng 360 độ trên điện thoại" width="560" height="514" loading="lazy" />
+                <h3>Bài giảng 360 độ</h3>
+                <p>Dễ hiểu, dễ nhớ, dễ tiếp thu</p>
+              </article>
+            </div>
+
+            <div class="uu-learning__media">
+              <figure class="uu-learning__visual">
+                <img src="../assets/images/platform/thuc-hanh-mo-phong-sa-hinh.webp"
+                  alt="Giao diện mô phỏng sa hình với sân sát hạch, biển báo và xe tập lái"
+                  width="1428" height="803" loading="lazy" />
+                <figcaption>
+                  <strong>Mô phỏng sa hình</strong>
+                  <span>Hiện thực sân sát hạch đúng kích thước sân thật</span>
+                </figcaption>
+              </figure>
+              <figure class="uu-learning__visual">
+                <img src="../assets/images/platform/thuc-hanh-mo-phong-dat.webp"
+                  alt="Giao diện mô phỏng DAT với các tuyến đường và tình huống giao thông"
+                  width="1428" height="803" loading="lazy" />
+                <figcaption>
+                  <strong>Mô phỏng DAT</strong>
+                  <span>Hiện thực tuyến đường và tình huống lái xe thực tế</span>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="uu-learning__group">
+            <header class="uu-learning__heading">
+              <h2 id="uu-learning-practice-title">Học thực hành</h2>
+              <p>An toàn hiệu quả với giáo viên hướng dẫn 1 - 1</p>
+            </header>
+            <div class="uu-learning__practice">
+              <article class="uu-learning__practice-card" aria-labelledby="uu-learning-yard-title">
+                <div class="uu-learning__practice-title">
+                  <span aria-hidden="true">01</span>
+                  <h3 id="uu-learning-yard-title">Sa hình</h3>
+                </div>
+                <p>Tích hợp ôn luyện lý thuyết trên HPO:</p>
+                <ol>
+                  <li>Các nguyên tắc xử lý trên sa hình</li>
+                  <li>Hướng dẫn thao tác các bài thực hành (hạng B: 11 bài thi; hạng C1: 10 bài thi)</li>
+                </ol>
+              </article>
+              <article class="uu-learning__practice-card" aria-labelledby="uu-learning-road-title">
+                <div class="uu-learning__practice-title">
+                  <span aria-hidden="true">02</span>
+                  <h3 id="uu-learning-road-title">DAT</h3>
+                </div>
+                <p>Tích hợp môn học lý thuyết kỹ thuật lái xe:</p>
+                <ul>
+                  <li>Các video kỹ thuật lái xe</li>
+                  <li>Kỹ năng xử lý tình huống giao thông phức tạp</li>
+                </ul>
+                <p>Thời gian:</p>
+                <dl class="uu-learning__figures">
+                  <div><dt>Hạng B số tự động</dt><dd>710 km · 17 giờ</dd></div>
+                  <div><dt>Hạng B số cơ khí</dt><dd>810 km · 20 giờ</dd></div>
+                  <div><dt>Hạng C1</dt><dd>825 km · 24 giờ</dd></div>
+                </dl>
+              </article>
+            </div>
           </div>
         </div>
       </section>
