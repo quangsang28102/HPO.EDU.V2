@@ -27,7 +27,7 @@
   function showMessage(title, text, hotline) {
     setHidden(loading, true);
     setHidden(content, true);
-    setHidden(offer, true); // lỗi / tạm dừng / hết hạn → không hiện hộp ưu đãi
+    setHidden(offer, false); // Luôn giữ hộp ưu đãi, kể cả khi location không hợp lệ.
     setText("[data-thong-bao-tieu-de]", title);
     setText("[data-thong-bao-noi-dung]", text);
     if (hotline) setHotline(hotline);
@@ -72,7 +72,7 @@
 
   function render(data) {
     var places = Array.isArray(data.diemNhanHoSo) ? data.diemNhanHoSo : [];
-    if (!data.tenXa || !places.length) throw new Error("Thiếu tenXa hoặc diemNhanHoSo");
+    if (!data.tenXa) throw new Error("Thiếu tenXa");
 
     $$("[data-ten-xa]").forEach(function (el) { el.textContent = data.tenXa; });
     document.title = "Chương trình ưu đãi học lái xe – " + data.tenXa + " | Hiệp Phát";
@@ -111,7 +111,7 @@
 
     setHidden(loading, true);
     setHidden(message, true);
-    setHidden(content, false);
+    setHidden(content, true);
     setHidden(offer, false);
   }
 
@@ -120,7 +120,12 @@
   var raw = new URLSearchParams(window.location.search).get("location") || "";
   var code = normalizeCode(raw);
   if (!code) {
-    return showMessage("Chưa chọn địa phương", "Vui lòng quét lại mã QR trên tờ rơi của xã bạn, hoặc gọi tổng đài để được hướng dẫn.");
+    // URL không chọn xã: giữ hộp ưu đãi mặc định trong HTML, không hiện bảng.
+    setHidden(loading, true);
+    setHidden(content, true);
+    setHidden(message, true);
+    setHidden(offer, false);
+    return;
   }
   if (!/^[a-z0-9]{2,40}$/.test(code)) {
     return showMessage("Không tìm thấy chương trình", "Đường dẫn chưa đúng. Vui lòng quét lại mã QR trên tờ rơi hoặc gọi tổng đài.");

@@ -2,36 +2,28 @@
 <html lang="vi">
   <head>
     <!-- Google tag (GTM-5N79VCJB) -->
-    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5N79VCJB"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtm.js?id=GTM-5N79VCJB"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
     </script>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
       content="Những giấy tờ cần nộp khi đăng ký học lái xe ô tô và các địa điểm nhận hồ sơ của chương trình ưu đãi tại địa phương."
     />
     <!-- Giá ưu đãi riêng từng xã: không cho máy tìm kiếm lập chỉ mục -->
-    <meta
-      name="robots"
-      content="noindex, nofollow"
-    />
+    <meta name="robots" content="noindex, nofollow" />
     <title>Chương trình ưu đãi học lái xe | Hiệp Phát</title>
-    <link
-      rel="icon"
-      type="image/png"
-      href="../assets/images/favicon.png"
-    />
-    <link
-      rel="stylesheet"
-      href="../style.css?v=20261105-thoi-gian-ap-dung"
-    />
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
+    <link rel="stylesheet" href="../style.css?v=20261105-thoi-gian-ap-dung" />
     <!-- Cụm Bước 1 dùng chung CSS với trang Quy trình đào tạo để hiển thị y hệt -->
     <link
       rel="stylesheet"
@@ -41,14 +33,8 @@
       rel="stylesheet"
       href="../quy-dinh-chuong-trinh-hoc-lai-xe/styles/process-readable-redesign.css?v=20261103-soat-thiet-ke"
     />
-    <link
-      rel="stylesheet"
-      href="style.css?v=20261104-sua-loi-uu-dai"
-    />
-    <link
-      rel="stylesheet"
-      href="../assets/fonts/courses-demo/fonts.css"
-    />
+    <link rel="stylesheet" href="style.css?v=20261107-nut-dang-ky" />
+    <link rel="stylesheet" href="../assets/fonts/courses-demo/fonts.css" />
     <link
       rel="stylesheet"
       href="../assets/css/homepage-headings-design-system.css?v=20261031-ds-headings"
@@ -57,25 +43,56 @@
       rel="stylesheet"
       href="../assets/css/homepage-section-headings-compact.css?v=20261102-compact"
     />
+    <link rel="stylesheet" href="../assets/css/homepage-reference-hero.css" />
+    <link
+      rel="stylesheet"
+      href="../assets/css/homepage-hero-title-gradient.css?v=20261031-title"
+    />
+    <link
+      rel="stylesheet"
+      href="../assets/css/homepage-hero-welcome-line.css?v=20261102-welcome-eyebrow"
+    />
+    <link
+      rel="stylesheet"
+      href="../assets/css/homepage-hero-practice-updates-261103.css?v=20261104-nut-dang-nhap"
+    />
   </head>
   <body class="process-page uu-dai-page">
-    <a
-      class="skip-link"
-      href="#main-content"
-      >Bỏ qua điều hướng</a
-    >
+    <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
 
-    <div
-      id="siteHeader"
-      data-base="../"
-      data-page="admission"
-    ></div>
+    <div id="siteHeader" data-base="../" data-page="admission"></div>
     <script src="../assets/js/site-header.js?v=20261104-nut-dang-nhap"></script>
 
     <!-- Trang đích khi quét mã QR trên tờ rơi từng xã: /chuong-trinh-uu-dai/?location=TanNhut1793756520
          Người đọc 40–50 tuổi trở lên. Phần 1 = nguyên cụm Bước 1 trang Quy trình đào tạo (cố định);
          phần 2 = địa điểm nhận hồ sơ + ưu đãi, lấy từ data/<mã xã>.json (xem HUONG-DAN.md). -->
     <main id="main-content">
+      <section
+        class="hpo-digital-hero"
+        aria-label="Kỷ nguyên AI trong đào tạo lái xe"
+      >
+        <div class="hpo-digital-hero-inner">
+          <div class="hpo-digital-left">
+            <p class="hpo-hero-welcome">Chào mừng các bạn đến với Hiệp Phát</p>
+            <h1 class="hpo-digital-title">
+              <span>KỶ NGUYÊN AI</span>
+              <span>TRONG ĐÀO TẠO LÁI XE</span>
+            </h1>
+            <p class="hpo-digital-description">
+              Hệ sinh thái chuyển đổi số toàn diện cho đào tạo lái xe ô tô thông
+              minh
+            </p>
+            <p class="hpo-digital-detail">
+              Tại Hiệp Phát, chúng tôi đào tạo lái xe ô tô trên nền tảng tích
+              hợp trí tuệ nhân tạo,<br class="hpo-detail-br" />
+              với <strong class="hpo-class-pill">Hạng B</strong> (Bao gồm số cơ
+              khí (số sàn) và số tự động (xe ô tô điện,...)) và
+              <strong class="hpo-class-pill">Hạng C1</strong>.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section
         id="tuyen-sinh"
         class="process-section process-section--admission"
@@ -86,26 +103,24 @@
             <p class="eyebrow">Hướng dẫn những hồ sơ cần nộp</p>
             <h2 id="admission-title">Tuyển sinh và chuẩn bị <em>hồ sơ</em></h2>
             <p>
-              Học viên chuẩn bị thông tin cá nhân, giấy tờ theo yêu cầu và hoàn tất
-              học phí để được xác nhận nhập học trước khi bắt đầu chương trình đào
-              tạo.
+              Học viên chuẩn bị thông tin cá nhân, giấy tờ theo yêu cầu và hoàn
+              tất học phí để được xác nhận nhập học trước khi bắt đầu chương
+              trình đào tạo.
             </p>
 
-            <ol
-              class="tn-doc-checklist"
-              aria-label="7 giấy tờ cần nộp"
-            >
+            <ol class="tn-doc-checklist" aria-label="7 giấy tờ cần nộp">
               <li>CCCD</li>
               <li>VNeID</li>
               <li>GPLX nếu có (A, A1, B1,...)</li>
               <li>
-                Đơn đề nghị học lái xe theo mẫu quy định tại Phụ lục X ban hành kèm
-                TT 14/2025/TT-BXD
+                Đơn đề nghị học lái xe theo mẫu quy định tại Phụ lục X ban hành
+                kèm TT 14/2025/TT-BXD
               </li>
               <li>Số điện thoại liên hệ</li>
               <li>Ảnh 3x4</li>
               <li>
-                Giấy khám sức khỏe của người lái xe, người điều khiển xe chuyên dụng.
+                Giấy khám sức khỏe của người lái xe, người điều khiển xe chuyên
+                dụng.
               </li>
             </ol>
           </div>
@@ -144,7 +159,9 @@
               <div class="info-card__body">
                 <span class="info-card__index">01</span>
                 <h3>Căn cước công dân</h3>
-                <p>Bản photo rõ thông tin cá nhân để đối chiếu hồ sơ đăng ký.</p>
+                <p>
+                  Bản photo rõ thông tin cá nhân để đối chiếu hồ sơ đăng ký.
+                </p>
               </div>
             </article>
 
@@ -207,10 +224,7 @@
             </article>
 
             <article class="info-card admission-card">
-              <figure
-                class="process-illustration"
-                aria-hidden="true"
-              >
+              <figure class="process-illustration" aria-hidden="true">
                 <img
                   src="../quy-dinh-chuong-trinh-hoc-lai-xe/assets/images/admission/dondenghi.png"
                   alt=""
@@ -220,8 +234,8 @@
               <div class="info-card__body">
                 <span class="info-card__index">04</span>
                 <h3>
-                  Đơn đề nghị học lái xe theo mẫu quy định tại Phụ lục X ban hành kèm
-                  TT 14/2025/TT-BXD
+                  Đơn đề nghị học lái xe theo mẫu quy định tại Phụ lục X ban
+                  hành kèm TT 14/2025/TT-BXD
                 </h3>
               </div>
             </article>
@@ -277,7 +291,9 @@
               <div class="info-card__body">
                 <span class="info-card__index">05</span>
                 <h3>Số điện thoại</h3>
-                <p>Số liên hệ chính để nhận lịch học, lịch kiểm tra và thông báo.</p>
+                <p>
+                  Số liên hệ chính để nhận lịch học, lịch kiểm tra và thông báo.
+                </p>
               </div>
             </article>
 
@@ -353,10 +369,7 @@
             </article>
 
             <article class="info-card admission-card">
-              <figure
-                class="process-illustration"
-                aria-hidden="true"
-              >
+              <figure class="process-illustration" aria-hidden="true">
                 <img
                   src="../quy-dinh-chuong-trinh-hoc-lai-xe/assets/images/admission/gksk.png"
                   alt=""
@@ -367,8 +380,8 @@
                 <span class="info-card__index">07</span>
                 <h3>Giấy khám sức khỏe</h3>
                 <p>
-                  Giấy khám sức khỏe của người lái xe, người điều khiển xe chuyên
-                  dụng.
+                  Giấy khám sức khỏe của người lái xe, người điều khiển xe
+                  chuyên dụng.
                 </p>
               </div>
             </article>
@@ -393,7 +406,7 @@
             </p>
           </div> -->
 
-          <p class="tn-loading" data-dang-tai>Đang tải danh sách địa điểm…</p>
+          <!-- <p class="tn-loading" data-dang-tai>Đang tải danh sách địa điểm…</p>
 
           <div class="tn-message" data-thong-bao role="status" hidden>
             <p class="tn-message__title" data-thong-bao-tieu-de></p>
@@ -402,12 +415,9 @@
               ><span class="tn-call__hint">Bấm để gọi tổng đài</span
               ><span class="tn-call__num">028.36.362.362</span></a
             >
-          </div>
+          </div> -->
 
-          <div
-            data-noi-dung
-            hidden
-          >
+          <div data-noi-dung hidden>
             <table class="tn-table">
               <caption class="tn-visually-hidden">
                 Địa điểm nhận hồ sơ, người liên hệ và số điện thoại
@@ -423,11 +433,7 @@
             </table>
           </div>
 
-          <div
-            class="tn-offer"
-            role="note"
-            aria-label="Ưu đãi học phí"
-          >
+          <div class="tn-offer" role="note" aria-label="Ưu đãi học phí">
             <p class="tn-offer__label">
               Ưu đãi cho người dân <span data-ten-xa></span>
             </p>
@@ -435,11 +441,14 @@
               Đăng ký để nhận ưu đãi
               <!-- <strong data-hoc-phi></strong> -->
             </p>
+            <a class="btn btn-primary tn-offer__register" href="https://gateway.hpo.edu.vn/signup">
+              Đăng ký ngay
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </a>
             <p class="tn-offer__date">
-              <span
-                data-hang-xe
-                hidden
-              ></span>
+              <span data-hang-xe hidden></span>
               Áp dụng đến hết ngày
               <strong data-ngay-ket-thuc>31/12/2026</strong>.
             </p>
@@ -447,7 +456,9 @@
 
           <noscript>
             <div class="tn-message">
-              <p class="tn-message__title">Không hiển thị được danh sách địa điểm</p>
+              <p class="tn-message__title">
+                Không hiển thị được danh sách địa điểm
+              </p>
               <p class="tn-message__text">
                 Vui lòng gọi tổng đài 028.36.362.362 để được hướng dẫn.
               </p>
@@ -463,10 +474,7 @@
         data-courses-section
       >
         <!-- Nền nhiều lớp: bầu trời → mây → thành phố + mặt đường -->
-        <div
-          class="courses-bg"
-          aria-hidden="true"
-        >
+        <div class="courses-bg" aria-hidden="true">
           <div class="courses-bg__sky"></div>
           <div class="courses-bg__cloud courses-bg__cloud--1"></div>
           <div class="courses-bg__cloud courses-bg__cloud--2"></div>
@@ -477,56 +485,30 @@
 
         <div class="course-demo-container">
           <header class="section-head">
-            <h2
-              class="section-head__title"
-              id="courses-title"
-            >
+            <h2 class="section-head__title" id="courses-title">
               KHÓA HỌC CỦA CHÚNG TÔI
             </h2>
             <p class="section-head__subtitle">
               <span class="nowrap">ĐÀO TẠO LÁI XE Ô TÔ THÔNG MINH</span
-              ><span class="sep"> - </span><span class="nowrap">CHI PHÍ THẤP</span
+              ><span class="sep"> - </span
+              ><span class="nowrap">CHI PHÍ THẤP</span
               ><span class="sep"> - </span
               ><span class="nowrap">CHẤT LƯỢNG HÀNG ĐẦU</span>
             </p>
-            <span
-              class="section-head__lane"
-              aria-hidden="true"
-            ></span>
+            <span class="section-head__lane" aria-hidden="true"></span>
           </header>
 
           <div class="courses-layout">
             <!-- Hộp quà khuyến mãi (Floating) -->
-            <aside
-              class="promo"
-              aria-label="Ưu đãi học phí"
-            >
+            <aside class="promo" aria-label="Ưu đãi học phí">
               <div class="promo__gift">
-                <span
-                  class="promo__glow"
-                  aria-hidden="true"
-                ></span>
+                <span class="promo__glow" aria-hidden="true"></span>
                 <!-- 5 ngôi sao lấp lánh quanh hộp quà (vị trí/nhịp trong courses-demo.css, mục 5) -->
-                <span
-                  class="promo__spark"
-                  aria-hidden="true"
-                ></span>
-                <span
-                  class="promo__spark"
-                  aria-hidden="true"
-                ></span>
-                <span
-                  class="promo__spark"
-                  aria-hidden="true"
-                ></span>
-                <span
-                  class="promo__spark"
-                  aria-hidden="true"
-                ></span>
-                <span
-                  class="promo__spark"
-                  aria-hidden="true"
-                ></span>
+                <span class="promo__spark" aria-hidden="true"></span>
+                <span class="promo__spark" aria-hidden="true"></span>
+                <span class="promo__spark" aria-hidden="true"></span>
+                <span class="promo__spark" aria-hidden="true"></span>
+                <span class="promo__spark" aria-hidden="true"></span>
                 <img
                   class="promo__box"
                   src="../assets/images/courses-demo/gift-box.svg"
@@ -534,35 +516,20 @@
                   width="240"
                   height="228"
                 />
-                <span
-                  class="promo__shadow"
-                  aria-hidden="true"
-                ></span>
+                <span class="promo__shadow" aria-hidden="true"></span>
               </div>
               <p class="promo__ribbon"><span>HỌC PHÍ TRỌN GÓI</span></p>
-              <p class="promo__note">Minh bạch · Hiệu quả<br />Chất lượng cao</p>
+              <p class="promo__note">
+                Minh bạch · Hiệu quả<br />Chất lượng cao
+              </p>
             </aside>
 
             <!-- Ba thẻ khóa học; cấu hình ảnh xe nằm trong assets/js/courses-demo-vehicle-config.js. -->
-            <div
-              class="course-demo-list"
-              data-courses
-            >
-              <article
-                class="course-card"
-                data-course="hang-b-so-tu-dong"
-              >
+            <div class="course-demo-list" data-courses>
+              <article class="course-card" data-course="hang-b-so-tu-dong">
                 <h3 class="course-card__title">
-                  <button
-                    class="course-card__toggle"
-                    type="button"
-                    data-toggle
-                  >
-                    <span
-                      class="course-card__badge"
-                      aria-hidden="true"
-                      >B</span
-                    >
+                  <button class="course-card__toggle" type="button" data-toggle>
+                    <span class="course-card__badge" aria-hidden="true">B</span>
                     <span class="course-card__name">
                       <span class="course-card__class">Hạng B</span
                       ><span class="visually-hidden"> - </span>
@@ -580,10 +547,7 @@
                   data-photo="hang-b-vios"
                   aria-hidden="true"
                 ></div>
-                <dl
-                  class="price-list"
-                  id="gia-hang-b-tu-dong"
-                >
+                <dl class="price-list" id="gia-hang-b-tu-dong">
                   <div class="price price--deal">
                     <dt class="price__label">Học phí</dt>
                     <dd class="price__value">15.000.000đ</dd>
@@ -591,21 +555,10 @@
                 </dl>
               </article>
 
-              <article
-                class="course-card"
-                data-course="hang-b-so-co-khi"
-              >
+              <article class="course-card" data-course="hang-b-so-co-khi">
                 <h3 class="course-card__title">
-                  <button
-                    class="course-card__toggle"
-                    type="button"
-                    data-toggle
-                  >
-                    <span
-                      class="course-card__badge"
-                      aria-hidden="true"
-                      >B</span
-                    >
+                  <button class="course-card__toggle" type="button" data-toggle>
+                    <span class="course-card__badge" aria-hidden="true">B</span>
                     <span class="course-card__name">
                       <span class="course-card__class">Hạng B</span
                       ><span class="visually-hidden"> - </span>
@@ -623,10 +576,7 @@
                   data-photo="hang-b-vios"
                   aria-hidden="true"
                 ></div>
-                <dl
-                  class="price-list"
-                  id="gia-hang-b-co-khi"
-                >
+                <dl class="price-list" id="gia-hang-b-co-khi">
                   <div class="price price--deal">
                     <dt class="price__label">Học phí</dt>
                     <dd class="price__value">15.000.000đ</dd>
@@ -634,16 +584,9 @@
                 </dl>
               </article>
 
-              <article
-                class="course-card"
-                data-course="hang-c1"
-              >
+              <article class="course-card" data-course="hang-c1">
                 <h3 class="course-card__title">
-                  <button
-                    class="course-card__toggle"
-                    type="button"
-                    data-toggle
-                  >
+                  <button class="course-card__toggle" type="button" data-toggle>
                     <span
                       class="course-card__badge course-card__badge--c1"
                       aria-hidden="true"
@@ -666,10 +609,7 @@
                   data-photo="hang-c1-kia-k200"
                   aria-hidden="true"
                 ></div>
-                <dl
-                  class="price-list"
-                  id="gia-hang-c1"
-                >
+                <dl class="price-list" id="gia-hang-c1">
                   <div class="price price--deal">
                     <dt class="price__label">Học phí</dt>
                     <dd class="price__value">17.000.000đ</dd>
@@ -679,24 +619,27 @@
             </div>
             <!-- Thời gian áp dụng ưu đãi học phí (CSS: assets/css/course-tuition-promo-deadline-banner.css) -->
             <p class="course-deadline" role="note">
-              <span class="course-deadline__icon" aria-hidden="true"><svg viewBox="0 0 24 24">
+              <span class="course-deadline__icon" aria-hidden="true"
+                ><svg viewBox="0 0 24 24">
                   <rect x="3.5" y="5" width="17" height="15.5" rx="3" />
-                  <path d="M3.5 10h17M8 3v4M16 3v4M8.5 14.5l2.3 2.3 4.7-4.6" />
-                </svg></span>
+                  <path
+                    d="M3.5 10h17M8 3v4M16 3v4M8.5 14.5l2.3 2.3 4.7-4.6"
+                  /></svg
+              ></span>
               <span class="course-deadline__label">Thời gian áp dụng:</span>
-              <span class="course-deadline__text">Chương trình ưu đãi học phí đăng ký đến hết ngày <strong>31/12/2026</strong>.</span>
+              <span class="course-deadline__text"
+                >Chương trình ưu đãi học phí đăng ký đến hết ngày
+                <strong>31/12/2026</strong>.</span
+              >
             </p>
           </div>
         </div>
       </section>
     </main>
 
-    <div
-      id="siteFooter"
-      data-base="../"
-    ></div>
+    <div id="siteFooter" data-base="../"></div>
     <script src="../assets/js/site-footer.js?v=20261105-chinh-sach-bao-mat"></script>
-    <script src="ho-so-uu-dai-theo-xa.js?v=20261104-sua-loi-uu-dai"></script>
+    <script src="ho-so-uu-dai-theo-xa.js?v=20261107-luon-hien-hop-uu-dai"></script>
     <script src="../assets/js/courses-demo-vehicle-config.js"></script>
     <script src="../assets/js/courses-demo-stage-renderer.js"></script>
     <script src="../assets/js/courses-demo-interactions.js?v=20261104-uu-dai-theo-xa-khoa-hoc"></script>

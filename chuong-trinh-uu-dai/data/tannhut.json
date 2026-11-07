@@ -6,27 +6,5 @@
   "hangXeApDung": "",
   "ngayBatDau": "2026-11-03",
   "ngayKetThuc": "2026-12-31",
-  "tongDai": "028.36.362.362",
-  "diemNhanHoSo": [
-    {
-      "diaDiem": "Điểm tiếp nhận Ấp 2, xã Tân Nhựt",
-      "nguoiLienHe": "Anh Trần Văn Hùng",
-      "soDienThoai": "0901 234 502"
-    },
-    {
-      "diaDiem": "Điểm tiếp nhận Ấp 3, xã Tân Nhựt",
-      "nguoiLienHe": "Chị Lê Thị Mai",
-      "soDienThoai": "0901 234 503"
-    },
-    {
-      "diaDiem": "Điểm tiếp nhận Ấp 4, xã Tân Nhựt",
-      "nguoiLienHe": "Anh Phạm Văn Tâm",
-      "soDienThoai": "0901 234 504"
-    },
-    {
-      "diaDiem": "Điểm tiếp nhận Ấp 5, xã Tân Nhựt",
-      "nguoiLienHe": "Chị Võ Thị Hồng",
-      "soDienThoai": "0901 234 505"
-    }
-  ]
+  "tongDai": "028.36.362.362"
 }
