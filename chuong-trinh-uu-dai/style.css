@@ -10,17 +10,7 @@
 html body.uu-dai-page .process-illustration,
 html body.uu-dai-page .process-illustration * { animation: none !important; }
 
-/* Trang đích QR: ẩn điều hướng và robot theo yêu cầu riêng của trang. */
-html body.uu-dai-page #navbar .nav-links,
-html body.uu-dai-page #navbar .nav-burger,
-html body.uu-dai-page #navbar .nav-actions > .btn-primary,
-html body.uu-dai-page #navbar .nav-actions > .btn-login {
-  display: none;
-}
-html body.uu-dai-page .topbar-hotline,
-html body.uu-dai-page #navbar .nav-phone {
-  display: none;
-}
+/* Trang đích QR: ẩn robot theo yêu cầu riêng của trang. */
 html body.uu-dai-page #hpo-robot,
 html body.uu-dai-page #hpo-robot-restore,
 html body.uu-dai-page #hpo-robot-viewer {
@@ -192,3 +182,11 @@ html body.uu-dai-page #dia-diem { padding-top: 56px; }
 .tn-message__text { margin-top: 8px !important; font-size: 19px; line-height: 1.6; }
 .tn-message .tn-call { margin-top: 16px; }
 [data-hang-xe]:not([hidden]) { font-weight: 700; }
+
+/* Cụm tiêu đề dùng style trang chủ, hiển thị tĩnh và cao theo nội dung. */
+html body.uu-dai-page .hpo-digital-hero,
+html body.uu-dai-page .hpo-digital-hero-inner { min-height: 0; }
+html body.uu-dai-page .hpo-digital-title span {
+  opacity: 1;
+  transform: none;
+}
