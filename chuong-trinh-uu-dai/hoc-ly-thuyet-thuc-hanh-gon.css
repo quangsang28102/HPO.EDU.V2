@@ -29,12 +29,16 @@ html body.uu-dai-page .uu-learning__art {
   display: block;
   width: auto;
   max-width: 100%;
-  height: clamp(120px, 12vw, 150px);
+  height: clamp(104px, 10vw, 126px);
   margin: 0 auto 12px;
   object-fit: contain;
   filter: drop-shadow(0 10px 14px rgba(5, 12, 60, .35));
 }
-html body.uu-dai-page .uu-learning__benefit h3 { margin-bottom: 4px; }
+html body.uu-dai-page .uu-learning__benefit h3 {
+  margin-bottom: 4px;
+  font-size: clamp(22px, 2.2vw, 27px);
+}
+html body.uu-dai-page .uu-learning__benefit p { font-size: 19px; }
 
 /* --- Ảnh mô phỏng: chú thích gọn hơn --- */
 html body.uu-dai-page .uu-learning__visual figcaption { gap: 2px; padding: 14px 20px 16px; }
@@ -50,13 +54,13 @@ html body.uu-dai-page .uu-learning__practice-card li + li { margin-top: 4px; }
 @media (min-width: 601px) and (max-width: 860px) {
   html body.uu-dai-page .uu-learning__benefits { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   html body.uu-dai-page .uu-learning__benefit { padding: 14px 12px 18px; }
-  html body.uu-dai-page .uu-learning__benefit h3 { font-size: 19px; }
-  html body.uu-dai-page .uu-learning__art { height: 104px; }
+  html body.uu-dai-page .uu-learning__benefit h3 { font-size: 20px; }
+  html body.uu-dai-page .uu-learning__art { height: 88px; }
 }
 /* Điện thoại: vẫn hình trên chữ dưới, hình thấp hơn */
 @media (max-width: 600px) {
   html body.uu-dai-page .uu-learning__benefit { padding: 14px 16px 18px; }
-  html body.uu-dai-page .uu-learning__art { height: 112px; margin-bottom: 8px; }
+  html body.uu-dai-page .uu-learning__art { height: 96px; margin-bottom: 8px; }
 }
 
 /* Thẻ DAT: 3 mức thời gian xếp 3 ô ngang (thay 3 hàng dọc) → thẻ thấp hơn, 2 thẻ thực hành bớt chênh */
