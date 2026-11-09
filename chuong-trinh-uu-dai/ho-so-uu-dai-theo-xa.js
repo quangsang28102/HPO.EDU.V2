@@ -10,6 +10,63 @@
 (function () {
   "use strict";
 
+  var rawLocation = new URLSearchParams(window.location.search).get("location") || "";
+  if (rawLocation === "TanNhut1793756520") {
+    var main = document.getElementById("main-content");
+    var tuition = document.getElementById("khoa-hoc");
+    var curriculum = document.querySelector("#main-content > .uu-learning");
+    var registration = document.getElementById("dia-diem");
+    var admission = document.getElementById("tuyen-sinh");
+
+    if (main && tuition && curriculum && registration && admission) {
+      main.append(tuition, curriculum, registration, admission);
+    }
+
+    Array.prototype.slice.call(document.querySelectorAll(".uu-learning__group")).forEach(function (group) {
+      var heading = Array.prototype.slice.call(group.children).find(function (child) {
+        return child.classList.contains("uu-learning__heading");
+      });
+      if (!heading) return;
+
+      var details = document.createElement("details");
+      details.className = group.className;
+      var summary = document.createElement("summary");
+      summary.className = heading.className;
+      while (heading.firstChild) summary.appendChild(heading.firstChild);
+      group.replaceChild(summary, heading);
+      Array.prototype.slice.call(group.children).forEach(function (child) {
+        details.appendChild(child);
+      });
+      group.replaceWith(details);
+    });
+
+    var pricesByCourse = {
+      "hang-b-so-tu-dong": { base: "16.000.000đ", current: "15.000.000đ" },
+      "hang-b-so-co-khi": { base: "16.000.000đ", current: "15.000.000đ" },
+      "hang-c1": { base: "18.000.000đ", current: "17.000.000đ" }
+    };
+    document.querySelectorAll(".courses-section .course-card").forEach(function (card) {
+      var deal = card.querySelector(".price-list .price--deal");
+      var currentPrice = deal && deal.querySelector(".price__value");
+      var prices = pricesByCourse[card.getAttribute("data-course")];
+      if (!deal || !currentPrice || !prices) return;
+
+      var base = document.createElement("div");
+      base.className = "price price--base";
+      var baseLabel = document.createElement("dt");
+      baseLabel.className = "price__label";
+      baseLabel.textContent = "Giá gốc";
+      var baseValue = document.createElement("dd");
+      baseValue.className = "price__value";
+      var oldPrice = document.createElement("del");
+      oldPrice.textContent = prices.base;
+      baseValue.appendChild(oldPrice);
+      base.append(baseLabel, baseValue);
+      deal.parentNode.insertBefore(base, deal);
+      currentPrice.textContent = prices.current;
+    });
+  }
+
   var root = document.getElementById("dia-diem");
   if (!root) return;
 

@@ -13,6 +13,14 @@
       }
       gtag("js", new Date());
     </script>
+    <script>
+      if (
+        window.location.pathname.replace(/\/+$/, "") === "/chuong-trinh-uu-dai" &&
+        new URLSearchParams(window.location.search).get("location") === "TanNhut1793756520"
+      ) {
+        document.documentElement.classList.add("tn-location-tannhut");
+      }
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
@@ -90,6 +98,82 @@
         font-size: clamp(18px, 1.8vw, 22px);
         font-weight: 600;
         line-height: 1.45;
+      }
+      html.tn-location-tannhut #main-content {
+        display: flex;
+        flex-direction: column;
+      }
+      html.tn-location-tannhut #main-content > #khoa-hoc { order: 1; }
+      html.tn-location-tannhut #main-content > .uu-learning { order: 2; }
+      html.tn-location-tannhut #main-content > #dia-diem { order: 3; }
+      html.tn-location-tannhut #main-content > #tuyen-sinh { order: 4; }
+      html.tn-location-tannhut summary.uu-learning__heading {
+        position: relative;
+        min-height: 54px;
+        margin-bottom: 0;
+        padding-right: 64px;
+        align-content: center;
+        cursor: pointer;
+        list-style: none;
+      }
+      html.tn-location-tannhut summary.uu-learning__heading::-webkit-details-marker {
+        display: none;
+      }
+      html.tn-location-tannhut summary.uu-learning__heading::after {
+        content: "+";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border: 2px solid #2b26fb;
+        border-radius: 50%;
+        color: #2b26fb;
+        font-size: 28px;
+        line-height: 1;
+        transform: translateY(-50%);
+      }
+      html.tn-location-tannhut details[open] > summary.uu-learning__heading {
+        margin-bottom: 26px;
+      }
+      html.tn-location-tannhut details[open] > summary.uu-learning__heading::after {
+        content: "−";
+        background: #2b26fb;
+        color: #fff;
+      }
+      html.tn-location-tannhut summary.uu-learning__heading:focus-visible {
+        outline: 3px solid #2b26fb;
+        outline-offset: 5px;
+      }
+      html.tn-location-tannhut body.uu-dai-page .courses-section .course-card .price--base,
+      html.tn-location-tannhut body.uu-dai-page .courses-section .course-card .price--deal {
+        opacity: 1;
+        transform: none;
+        visibility: visible;
+      }
+      html.tn-location-tannhut body.uu-dai-page .courses-section .course-card .price--base {
+        max-height: 90px;
+        margin-top: 8px;
+        padding: 8px 12px 9px;
+        border-width: 1px;
+      }
+      html.tn-location-tannhut body.uu-dai-page .courses-section .course-card .price--base .price__value {
+        color: #53617b;
+        font-size: clamp(17px, 1.5vw, 21px);
+      }
+      html.tn-location-tannhut body.uu-dai-page .courses-section .course-card .price--base del {
+        text-decoration-color: #ea1e24;
+        text-decoration-thickness: 2px;
+      }
+      @media (min-width: 1024px) and (max-width: 1100px) {
+        html.tn-location-tannhut body.uu-dai-page .courses-section .course-card .price--duration {
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
+          gap: 2px;
+        }
       }
       html body.uu-dai-page .uu-learning__benefits,
       html body.uu-dai-page .uu-learning__media,
@@ -1054,7 +1138,7 @@
     <div id="siteFooter" data-base="../"></div>
     <script src="../assets/js/site-footer.js?v=20261105-chinh-sach-bao-mat"></script>
     <script src="dang-ky-uu-dai-form.js?v=20261109-form-trang-chu"></script>
-    <script src="ho-so-uu-dai-theo-xa.js?v=20261107-luon-hien-hop-uu-dai"></script>
+    <script src="ho-so-uu-dai-theo-xa.js?v=20261109-tannhut-tuition-1500-1700"></script>
     <script src="../assets/js/courses-demo-vehicle-config.js"></script>
     <script src="../assets/js/courses-demo-stage-renderer.js"></script>
     <script src="../assets/js/courses-demo-interactions.js?v=20261104-uu-dai-theo-xa-khoa-hoc"></script>
