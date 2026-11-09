@@ -37,9 +37,11 @@
   <link rel="stylesheet" href="assets/css/homepage-company-banner-motto-on-top.css?v=20261102-motto" />
   <link rel="stylesheet" href="assets/css/homepage-company-banner-split-5050.css?v=20261103-gioi-thieu-5050" />
   <link rel="stylesheet" href="assets/css/homepage-company-banner-campus-photo.css?v=20261107-anh-bam-phong-to" />
+  <link rel="stylesheet" href="chuong-trinh-uu-dai/dang-ky-uu-dai-form.css?v=20261109-form-trang-chu" />
+  <link rel="stylesheet" href="assets/css/homepage-dang-ky-tu-van-form.css?v=20261109-form-trang-chu" />
 </head>
 
-<body>
+<body class="has-uu-reg">
   <div id="siteHeader" data-base="" data-page="home"></div>
   <script src="assets/js/site-header.js?v=20261104-nut-dang-nhap"></script>
 
@@ -956,6 +958,69 @@
       <a class="course-info-panel__link" href="quy-dinh-chuong-trinh-hoc-lai-xe/">
         Xem chi tiết quy trình đào tạo
       </a>
+
+      <!-- Form Đăng ký tư vấn (09/11) — dùng chung CSS/JS với trang Ưu đãi:
+           chuong-trinh-uu-dai/dang-ky-uu-dai-form.css + .js; gửi cùng Google Sheet (data-endpoint).
+           Cột "Xã" lấy từ ?location= (ví dụ /?location=TanNhut1793756520 → Tân Nhựt), không có thì để trống. -->
+      <div class="uu-reg uu-reg--home" id="dang-ky-tu-van" aria-labelledby="uu-reg-title">
+        <header class="uu-reg__head">
+          <div>
+            <p class="uu-reg__eyebrow">Ưu đãi cho người dân <span data-ten-xa></span></p>
+            <h2 class="uu-reg__title" id="uu-reg-title">Đăng ký học lái xe tại Hiệp Phát</h2>
+            <p class="uu-reg__lead">Để lại thông tin, nhân viên tuyển sinh sẽ gọi tư vấn miễn phí</p>
+          </div>
+          <p class="uu-reg__date">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
+            <span>
+                            Áp dụng đến hết ngày <strong data-ngay-ket-thuc>31/01/2027</strong>
+            </span>
+          </p>
+        </header>
+        <div class="uu-reg__grid">
+          <form class="uu-reg__panel uu-reg__form" id="uu-reg-form" novalidate data-xa-base="chuong-trinh-uu-dai/data/" data-endpoint="https://script.google.com/macros/s/AKfycbxIQJHCUKc_XqND3BgMYyrNQJiUs6iqGSvALTr_jOhLjk4tjHMi5SNdsdGDvhMs8b8jCA/exec" aria-labelledby="uu-reg-form-title">
+            <div class="uu-reg__panel-head">
+              <span class="uu-reg__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="13.5" width="4" height="6" rx="1.6"/><rect x="17" y="13.5" width="4" height="6" rx="1.6"/><path d="M20 19.5c0 1.4-1.6 2-4 2h-2"/></svg></span>
+              <div>
+                <h3 id="uu-reg-form-title">Đăng ký tư vấn</h3>
+                <p>Chưa quyết định học, cần được hỗ trợ</p>
+              </div>
+              <span class="uu-reg__chip">Miễn phí tư vấn</span>
+            </div>
+            <div class="uu-reg__field">
+              <label for="uu-reg-name">Họ và tên <span class="uu-reg__req" aria-hidden="true">*</span></label>
+              <input id="uu-reg-name" name="hoTen" type="text" autocomplete="name" placeholder="Nhập họ và tên" required maxlength="80" aria-describedby="uu-reg-name-err" />
+              <p class="uu-reg__err" id="uu-reg-name-err" hidden>Vui lòng nhập họ và tên.</p>
+            </div>
+            <div class="uu-reg__field">
+              <label for="uu-reg-phone">Số điện thoại <span class="uu-reg__req" aria-hidden="true">*</span></label>
+              <input id="uu-reg-phone" name="soDienThoai" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ví dụ: 0911 739 119" required maxlength="16" aria-describedby="uu-reg-phone-err" />
+              <p class="uu-reg__err" id="uu-reg-phone-err" hidden>Số điện thoại chưa đúng (10–11 số, bắt đầu bằng 0).</p>
+            </div>
+            <fieldset class="uu-reg__field uu-reg__classes" aria-describedby="uu-reg-class-err">
+              <legend>Hạng đào tạo quan tâm <span class="uu-reg__req" aria-hidden="true">*</span></legend>
+              <div class="uu-reg__options">
+                <label class="uu-reg__option"><input type="radio" name="hangDaoTao" value="Hạng B - Số tự động" required /><span><b>Hạng B</b> Số tự động</span></label>
+                <label class="uu-reg__option"><input type="radio" name="hangDaoTao" value="Hạng B - Số cơ khí" /><span><b>Hạng B</b> Số cơ khí</span></label>
+                <label class="uu-reg__option"><input type="radio" name="hangDaoTao" value="Hạng C1 - Xe tải" /><span><b>Hạng C1</b> Xe tải</span></label>
+                <label class="uu-reg__option"><input type="radio" name="hangDaoTao" value="Chưa xác định" /><span><b>Chưa xác định</b> Cần tư vấn thêm</span></label>
+              </div>
+              <p class="uu-reg__err" id="uu-reg-class-err" hidden>Vui lòng chọn hạng đào tạo.</p>
+            </fieldset>
+            <!-- Bẫy chống spam: người thật không thấy ô này -->
+            <div class="uu-reg__trap" aria-hidden="true">
+              <label for="uu-reg-web">Website</label>
+              <input id="uu-reg-web" name="website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+            <p class="uu-reg__note">Nhân viên tuyển sinh sẽ liên hệ để tư vấn chương trình học và học phí. Không cần thanh toán.</p>
+            <button class="uu-reg__submit" type="submit">
+              <span data-submit-text>Nhận tư vấn miễn phí</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+            <p class="uu-reg__consent">Khi gửi, bạn đồng ý để Hiệp Phát liên hệ theo <a href="chinh-sach-bao-mat/">Chính sách bảo mật</a>.</p>
+            <p class="uu-reg__status" role="status" aria-live="polite" hidden></p>
+          </form>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2647,6 +2712,7 @@
   <script src="assets/js/courses-demo-interactions.js"></script>
   <script src="assets/js/homepage-press-list-dialog.js?v=20261105-bao-chi-json"></script>
   <script src="assets/js/homepage-news-rotator.js?v=20261105-tin-tuc-xoay"></script>
+  <script src="chuong-trinh-uu-dai/dang-ky-uu-dai-form.js?v=20261109-form-trang-chu"></script>
 </body>
 
 </html>

@@ -1,10 +1,10 @@
-/* Form "Đăng ký tư vấn" — trang Chương trình ưu đãi (09/11/2026).
+/* Form "Đăng ký tư vấn" — dùng chung: trang Chương trình ưu đãi + trang chủ (dưới khối KHÓA HỌC LINH ĐỘNG) (09/11/2026).
    - Kiểm tra Họ tên / Số điện thoại / Hạng đào tạo ngay trên trình duyệt, báo lỗi bằng chữ dưới từng ô.
    - Gửi về Google Sheet qua Web App Google Apps Script: link đặt ở thuộc tính data-endpoint của <form id="uu-reg-form">.
      Hướng dẫn tạo Sheet + Apps Script: plans/handoff-form-dang-ky-uu-dai/HUONG-DAN-GOOGLE-SHEET.md
    - Chưa có link (data-endpoint="") → không gửi đi đâu, hiện số tổng đài để người xem gọi.
    - Gửi kiểu "no-cors" (Apps Script không trả CORS): trình duyệt không đọc được phản hồi,
-     nên không có lỗi mạng = coi như đã gửi. Kèm tên xã (từ ?location=) và đường dẫn trang để biết nguồn. */
+     nên không có lỗi mạng = coi như đã gửi. Kèm tên xã (từ ?location=, xem loadArea) và đường dẫn trang để biết nguồn. */
 (function () {
   "use strict";
 
@@ -76,10 +76,33 @@
     submitText.textContent = busy ? "Đang gửi…" : "Nhận tư vấn miễn phí";
   }
 
-  function pageArea() {
-    var el = document.querySelector("#dia-diem [data-ten-xa]");
-    return el ? el.textContent.trim() : "";
-  }
+  // Tên xã cho cột "Xã (ưu đãi)" — đọc ?location= ở BẤT KỲ trang nào có form (trang Ưu đãi, trang chủ…).
+  //   ?location=TanNhut1793756520 → mã "tannhut" → <data-xa-base>tannhut.json → tenXa "xã Tân Nhựt" → gửi "Tân Nhựt".
+  //   Có location nhưng chưa có file dữ liệu → gửi tạm mã bỏ số ("TanNhut") để vẫn biết nguồn.
+  //   Không có location → để trống.
+  // data-xa-base trên <form>: thư mục chứa file xã, tính từ trang hiện tại (trang Ưu đãi "data/", trang chủ "chuong-trinh-uu-dai/data/").
+  var areaName = "";
+  (function loadArea() {
+    var raw = (new URLSearchParams(window.location.search).get("location") || "").trim();
+    var code = raw.toLowerCase().replace(/[-_\s]/g, "");
+    if (!/^[a-z0-9]{2,40}$/.test(code)) return;
+    var fileCode = code.replace(/\d+$/, "");
+    if (!fileCode) return;
+    areaName = raw.replace(/[-_\s]/g, "").replace(/\d+$/, "").slice(0, 80);
+    var base = form.getAttribute("data-xa-base") || "data/";
+    fetch(base + fileCode + ".json", { cache: "no-cache" })
+      .then(function (res) { return res.ok ? res.json() : null; })
+      .then(function (data) {
+        if (!data || !data.tenXa || String(data.maXa || "").toLowerCase().replace(/[-_\s]/g, "") !== code) return;
+        areaName = String(data.tenXa).replace(/^\s*(xã|phường|thị trấn)\s+/i, "").trim();
+        // Dòng "Ưu đãi cho người dân …" trên đầu form: điền tên xã nếu trang chưa tự điền (trang chủ)
+        var box = form.closest(".uu-reg");
+        if (box) box.querySelectorAll("[data-ten-xa]").forEach(function (el) {
+          if (!el.textContent.trim()) el.textContent = data.tenXa;
+        });
+      })
+      .catch(function () { /* giữ mã tạm */ });
+  })();
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -99,7 +122,7 @@
     data.append("hoTen", nameInput.value.trim().slice(0, 80));
     data.append("soDienThoai", normalizePhone(phoneInput.value));
     data.append("hangDaoTao", checkedClass());
-    data.append("xa", pageArea());
+    data.append("xa", areaName);
     data.append("trang", window.location.href.slice(0, 300));
 
     var name = nameInput.value.trim();

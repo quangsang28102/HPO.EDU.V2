@@ -1,0 +1,13 @@
+/* ==========================================================================
+   Trang chủ — form "Đăng ký tư vấn" dưới khối KHÓA HỌC LINH ĐỘNG (09/11/2026)
+   Giao diện chính nằm ở chuong-trinh-uu-dai/dang-ky-uu-dai-form.css (dùng chung với trang Ưu đãi).
+   File này chỉ chỉnh chỗ đặt trên trang chủ: khoảng cách với link "Xem chi tiết quy trình đào tạo",
+   căn cùng bề rộng với thẻ thông tin khóa học.
+   ========================================================================== */
+
+html body.has-uu-reg .course-info-section .uu-reg--home {
+  margin: 36px 0 0;
+  text-align: left;
+  /* Header cố định: khi nhảy tới #dang-ky-tu-van không bị che đầu khối */
+  scroll-margin-top: 120px;
+}

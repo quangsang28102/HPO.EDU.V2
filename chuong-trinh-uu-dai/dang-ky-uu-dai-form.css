@@ -4,10 +4,10 @@
    09/11: bỏ cột "Đăng ký nhập học" theo yêu cầu chủ dự án.
    Màu Design System Hiệp Phát: xanh #2b26fb · đỏ #ea1e24 · navy #2d3489 · chữ #0a1330.
    Chữ nội dung ≥ 17px, phụ ≥ 14px, ô nhập / nút ≥ 52px.
-   Selector có "html body.uu-dai-page .uu-reg" để thắng .tn-offer cũ trong style.css.
+   Selector có "html body:is(.uu-dai-page, .has-uu-reg) .uu-reg" để thắng .tn-offer cũ trong style.css.
    ========================================================================== */
 
-html body.uu-dai-page .uu-reg {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg {
   --reg-blue: #2b26fb;
   --reg-blue-dark: #1b1fb8;
   --reg-red: #ea1e24;
@@ -25,164 +25,164 @@ html body.uu-dai-page .uu-reg {
   box-shadow: 0 24px 50px -38px rgba(20, 33, 110, .55);
   color: var(--reg-ink);
 }
-html body.uu-dai-page .uu-reg p { margin: 0; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg p { margin: 0; }
 
 /* ---------- Đầu khối ---------- */
-html body.uu-dai-page .uu-reg__head {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__head {
   display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
   gap: 14px 24px; margin-bottom: 22px;
 }
-html body.uu-dai-page .uu-reg__eyebrow { color: var(--reg-red-dark); font-size: 17px; font-weight: 800; }
-html body.uu-dai-page .uu-reg__title {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__eyebrow { color: var(--reg-red-dark); font-size: 17px; font-weight: 800; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__title {
   margin: 4px 0 6px; color: var(--reg-navy);
   font-family: "Be Vietnam Pro", system-ui, sans-serif;
   font-size: clamp(25px, 3vw, 34px); font-weight: 800; line-height: 1.25;
 }
-html body.uu-dai-page .uu-reg__lead { color: var(--reg-muted); font-size: 18px; line-height: 1.45; }
-html body.uu-dai-page .uu-reg__date {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__lead { color: var(--reg-muted); font-size: 18px; line-height: 1.45; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__date {
   display: inline-flex; align-items: center; gap: 10px;
   padding: 10px 16px; border: 1px solid #ffd2d4; border-radius: 14px;
   background: #fff4f4; color: var(--reg-ink); font-size: 17px; line-height: 1.4;
 }
-html body.uu-dai-page .uu-reg__date svg {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__date svg {
   flex: none; width: 26px; height: 26px; fill: none; stroke: var(--reg-red);
   stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
 }
-html body.uu-dai-page .uu-reg__date strong { color: var(--reg-red-dark); white-space: nowrap; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__date strong { color: var(--reg-red-dark); white-space: nowrap; }
 
 /* ---------- 2 cột ---------- */
-html body.uu-dai-page .uu-reg__grid { display: block; }
-html body.uu-dai-page .uu-reg__panel {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__grid { display: block; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__panel {
   min-width: 0; padding: clamp(18px, 2.4vw, 28px);
   border: 1px solid var(--reg-line); border-radius: 20px; background: #fff;
 }
-html body.uu-dai-page .uu-reg__form { border: 2px solid var(--reg-blue); box-shadow: 0 16px 34px -28px rgba(43, 38, 251, .7); }
-html body.uu-dai-page .uu-reg__panel-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
-html body.uu-dai-page .uu-reg__panel-head > div { flex: 1; min-width: 0; }
-html body.uu-dai-page .uu-reg__panel-head h3 {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__form { border: 2px solid var(--reg-blue); box-shadow: 0 16px 34px -28px rgba(43, 38, 251, .7); }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__panel-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__panel-head > div { flex: 1; min-width: 0; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__panel-head h3 {
   margin: 0; color: var(--reg-ink);
   font-family: "Be Vietnam Pro", system-ui, sans-serif; font-size: 22px; font-weight: 800; line-height: 1.3;
 }
-html body.uu-dai-page .uu-reg__panel-head p { color: var(--reg-muted); font-size: 16px; line-height: 1.4; }
-html body.uu-dai-page .uu-reg__icon {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__panel-head p { color: var(--reg-muted); font-size: 16px; line-height: 1.4; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__icon {
   display: grid; place-items: center; flex: none; width: 50px; height: 50px;
   border-radius: 14px; background: #ecebff; color: var(--reg-blue);
 }
-html body.uu-dai-page .uu-reg__icon--red { background: #ffecec; color: var(--reg-red); }
-html body.uu-dai-page .uu-reg__icon svg {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__icon--red { background: #ffecec; color: var(--reg-red); }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__icon svg {
   width: 27px; height: 27px; fill: none; stroke: currentColor;
   stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round;
 }
-html body.uu-dai-page .uu-reg__chip {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__chip {
   flex: none; padding: 6px 12px; border-radius: 999px;
   background: #e7f7ee; color: #146c3c; font-size: 14px; font-weight: 800; white-space: nowrap;
 }
 
 /* ---------- Ô nhập ---------- */
 /* Khi báo lỗi và đưa con trỏ vào ô, chừa chỗ cho header cố định */
-html body.uu-dai-page .uu-reg__field input { scroll-margin-top: 140px; }
-html body.uu-dai-page .uu-reg__field { margin: 0 0 16px; padding: 0; border: 0; min-width: 0; }
-html body.uu-dai-page .uu-reg__field > label,
-html body.uu-dai-page .uu-reg__field > legend {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__field input { scroll-margin-top: 140px; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__field { margin: 0 0 16px; padding: 0; border: 0; min-width: 0; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__field > label,
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__field > legend {
   display: block; margin-bottom: 8px; padding: 0;
   color: var(--reg-ink); font-size: 17px; font-weight: 700;
 }
-html body.uu-dai-page .uu-reg__req { color: var(--reg-red); }
-html body.uu-dai-page .uu-reg__field input[type="text"],
-html body.uu-dai-page .uu-reg__field input[type="tel"] {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__req { color: var(--reg-red); }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__field input[type="text"],
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__field input[type="tel"] {
   display: block; width: 100%; min-height: 54px; padding: 0 18px;
   border: 2px solid #cdd6ee; border-radius: 14px; background: #fff;
   color: var(--reg-ink); font: inherit; font-size: 18px;
   transition: border-color .2s, box-shadow .2s;
 }
-html body.uu-dai-page .uu-reg__field input::placeholder { color: #8a93ad; }
-html body.uu-dai-page .uu-reg__field input:focus {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__field input::placeholder { color: #8a93ad; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__field input:focus {
   outline: none; border-color: var(--reg-blue); box-shadow: 0 0 0 4px rgba(43, 38, 251, .16);
 }
-html body.uu-dai-page .uu-reg__field input[aria-invalid="true"] { border-color: var(--reg-red); }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__field input[aria-invalid="true"] { border-color: var(--reg-red); }
 
 /* Hạng đào tạo: 4 ô chọn luôn hiện (không phải mở danh sách) */
-html body.uu-dai-page .uu-reg__options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-html body.uu-dai-page .uu-reg__option { position: relative; display: block; cursor: pointer; }
-html body.uu-dai-page .uu-reg__option input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-html body.uu-dai-page .uu-reg__option span {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__option { position: relative; display: block; cursor: pointer; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__option input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__option span {
   display: flex; flex-direction: column; justify-content: center; gap: 1px;
   min-height: 62px; padding: 9px 14px 9px 46px;
   border: 2px solid #cdd6ee; border-radius: 14px; background: #fff;
   color: var(--reg-muted); font-size: 16px; line-height: 1.3;
   transition: border-color .2s, background-color .2s, box-shadow .2s;
 }
-html body.uu-dai-page .uu-reg__option span b { color: var(--reg-ink); font-size: 17px; font-weight: 800; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__option span b { color: var(--reg-ink); font-size: 17px; font-weight: 800; }
 /* Vòng tròn chọn */
-html body.uu-dai-page .uu-reg__option span::before {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__option span::before {
   content: ""; position: absolute; left: 15px; top: 50%; width: 20px; height: 20px;
   margin-top: -10px; border: 2px solid #9aa6c6; border-radius: 50%; background: #fff;
   transition: border-color .2s, box-shadow .2s;
 }
-html body.uu-dai-page .uu-reg__option:hover span { border-color: #9a97ff; }
-html body.uu-dai-page .uu-reg__option input:checked + span {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__option:hover span { border-color: #9a97ff; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__option input:checked + span {
   border-color: var(--reg-blue); background: #f2f1ff; box-shadow: 0 0 0 3px rgba(43, 38, 251, .12);
 }
-html body.uu-dai-page .uu-reg__option input:checked + span::before {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__option input:checked + span::before {
   border-color: var(--reg-blue); box-shadow: inset 0 0 0 4px #fff; background: var(--reg-blue);
 }
-html body.uu-dai-page .uu-reg__option input:focus-visible + span { outline: 3px solid var(--reg-blue); outline-offset: 2px; }
-html body.uu-dai-page .uu-reg__classes[aria-invalid="true"] .uu-reg__option span { border-color: var(--reg-red); }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__option input:focus-visible + span { outline: 3px solid var(--reg-blue); outline-offset: 2px; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__classes[aria-invalid="true"] .uu-reg__option span { border-color: var(--reg-red); }
 
-html body.uu-dai-page .uu-reg__err { margin-top: 6px !important; color: var(--reg-red-dark); font-size: 15px; font-weight: 700; }
-html body.uu-dai-page .uu-reg__trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__err { margin-top: 6px !important; color: var(--reg-red-dark); font-size: 15px; font-weight: 700; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
-html body.uu-dai-page .uu-reg__note { margin: 4px 0 16px !important; color: var(--reg-muted); font-size: 16px; line-height: 1.5; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__note { margin: 4px 0 16px !important; color: var(--reg-muted); font-size: 16px; line-height: 1.5; }
 
 /* ---------- Nút ---------- */
-html body.uu-dai-page .uu-reg__submit {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__submit {
   display: flex; align-items: center; justify-content: center; gap: 10px;
   width: 100%; min-height: 56px; padding: 0 22px; border: 0; border-radius: 999px;
   font: inherit; font-size: 18px; font-weight: 800; text-decoration: none; cursor: pointer;
   transition: transform .2s, box-shadow .2s, background-color .2s;
 }
-html body.uu-dai-page .uu-reg__submit {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__submit {
   background: linear-gradient(135deg, #3355ff 0%, #2643e9 45%, #1b2fa8 100%); color: #fff;
   box-shadow: 0 12px 24px -12px rgba(38, 67, 233, .8), inset 0 1px 0 rgba(255, 255, 255, .2);
 }
-html body.uu-dai-page .uu-reg__submit svg {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__submit svg {
   flex: none; width: 22px; height: 22px; fill: none; stroke: currentColor;
   stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s;
 }
-html body.uu-dai-page .uu-reg__submit:hover { transform: translateY(-1px); box-shadow: 0 16px 30px -12px rgba(38, 67, 233, .9); }
-html body.uu-dai-page .uu-reg__submit:hover svg { transform: translateX(3px); }
-html body.uu-dai-page .uu-reg__submit:focus-visible { outline: 3px solid var(--reg-navy); outline-offset: 3px; }
-html body.uu-dai-page .uu-reg__submit[disabled] { opacity: .7; cursor: progress; transform: none; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__submit:hover { transform: translateY(-1px); box-shadow: 0 16px 30px -12px rgba(38, 67, 233, .9); }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__submit:hover svg { transform: translateX(3px); }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__submit:focus-visible { outline: 3px solid var(--reg-navy); outline-offset: 3px; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__submit[disabled] { opacity: .7; cursor: progress; transform: none; }
 
-html body.uu-dai-page .uu-reg__consent { margin-top: 12px !important; color: var(--reg-muted); font-size: 14px; line-height: 1.5; text-align: center; }
-html body.uu-dai-page .uu-reg__consent a { color: var(--reg-blue); font-weight: 700; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__consent { margin-top: 12px !important; color: var(--reg-muted); font-size: 14px; line-height: 1.5; text-align: center; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__consent a { color: var(--reg-blue); font-weight: 700; }
 
 /* Kết quả gửi */
-html body.uu-dai-page .uu-reg__status {
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__status {
   margin-top: 14px !important; padding: 14px 16px; border-radius: 14px;
   font-size: 17px; font-weight: 700; line-height: 1.5;
 }
-html body.uu-dai-page .uu-reg__status.is-ok { background: #e7f7ee; color: #0f5b32; }
-html body.uu-dai-page .uu-reg__status.is-error { background: #fff1f1; color: var(--reg-red-dark); }
-html body.uu-dai-page .uu-reg__status a { color: inherit; font-weight: 800; white-space: nowrap; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__status.is-ok { background: #e7f7ee; color: #0f5b32; }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__status.is-error { background: #fff1f1; color: var(--reg-red-dark); }
+html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__status a { color: inherit; font-weight: 800; white-space: nowrap; }
 
 /* ---------- Máy tính (≥ 901px): Họ tên + SĐT cùng 1 hàng, 4 ô hạng 1 hàng, nút giữa ---------- */
 @media (min-width: 901px) {
-  html body.uu-dai-page .uu-reg__form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; }
-  html body.uu-dai-page .uu-reg__form > * { grid-column: 1 / -1; }
-  html body.uu-dai-page .uu-reg__form > .uu-reg__field:not(.uu-reg__classes) { grid-column: auto; }
-  html body.uu-dai-page .uu-reg__options { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  html body.uu-dai-page .uu-reg__note { text-align: center; }
-  html body.uu-dai-page .uu-reg__submit { justify-self: center; width: min(100%, 440px); }
+  html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; }
+  html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__form > * { grid-column: 1 / -1; }
+  html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__form > .uu-reg__field:not(.uu-reg__classes) { grid-column: auto; }
+  html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__options { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__note { text-align: center; }
+  html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__submit { justify-self: center; width: min(100%, 440px); }
 }
 
 /* ---------- Máy tính bảng / điện thoại ---------- */
 @media (max-width: 480px) {
-  html body.uu-dai-page .uu-reg { padding: 18px 14px; border-radius: 20px; }
-  html body.uu-dai-page .uu-reg__panel { padding: 16px 14px; }
-  html body.uu-dai-page .uu-reg__panel-head { flex-wrap: wrap; }
-  html body.uu-dai-page .uu-reg__panel-head > div { flex-basis: calc(100% - 64px); }
-  html body.uu-dai-page .uu-reg__chip { margin-left: 64px; }
-  html body.uu-dai-page .uu-reg__options { grid-template-columns: minmax(0, 1fr); }
-  html body.uu-dai-page .uu-reg__date { width: 100%; }
+  html body:is(.uu-dai-page, .has-uu-reg) .uu-reg { padding: 18px 14px; border-radius: 20px; }
+  html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__panel { padding: 16px 14px; }
+  html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__panel-head { flex-wrap: wrap; }
+  html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__panel-head > div { flex-basis: calc(100% - 64px); }
+  html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__chip { margin-left: 64px; }
+  html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__options { grid-template-columns: minmax(0, 1fr); }
+  html body:is(.uu-dai-page, .has-uu-reg) .uu-reg__date { width: 100%; }
 }
