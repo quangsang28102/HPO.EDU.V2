@@ -167,6 +167,36 @@
         text-decoration-color: #ea1e24;
         text-decoration-thickness: 2px;
       }
+      /* Thẻ bị thu hẹp khi rê chuột vào thẻ khác: "2 tháng" xuống dòng thay vì bị cắt thành "2 thán" */
+      html.tn-location-tannhut body.uu-dai-page .courses-section .course-card .price--duration {
+        flex-wrap: wrap;
+        column-gap: 12px;
+        row-gap: 2px;
+      }
+      html.tn-location-tannhut body.uu-dai-page .courses-section .course-card .price--duration .price__value {
+        white-space: nowrap;
+      }
+      /* Dòng "Học phí ưu đãi dành cho xã …" dưới tiêu đề khối Khóa học (JS chèn, chỉ link Tân Nhựt) */
+      html.tn-location-tannhut .courses-section .tn-courses-note {
+        display: flex;
+        justify-content: center;
+        margin: 14px 0 0;
+      }
+      html.tn-location-tannhut .courses-section .tn-courses-note span {
+        display: inline-block;
+        padding: 8px 22px;
+        border: 1px solid #f6b9bb;
+        border-radius: 999px;
+        background: #fff1f1;
+        color: #ea1e24;
+        font-family: "Be Vietnam Pro", sans-serif;
+        font-size: clamp(17px, 1.6vw, 22px);
+        font-weight: 800;
+        line-height: 1.35;
+        letter-spacing: 0.02em;
+        text-align: center;
+        text-transform: uppercase;
+      }
       @media (min-width: 1024px) and (max-width: 1100px) {
         html.tn-location-tannhut body.uu-dai-page .courses-section .course-card .price--duration {
           flex-direction: column;
@@ -1044,7 +1074,7 @@
           <div class="uu-learning__group">
             <header class="uu-learning__heading">
               <h3 id="uu-learning-theory-title">Học lý thuyết</h3>
-              <p>Luôn sẵn sàng mọi lúc, mọi nơi</p>
+              <p>Học mọi lúc, mọi nơi</p>
             </header>
 
             <div class="uu-learning__benefits">
@@ -1138,7 +1168,7 @@
     <div id="siteFooter" data-base="../"></div>
     <script src="../assets/js/site-footer.js?v=20261105-chinh-sach-bao-mat"></script>
     <script src="dang-ky-uu-dai-form.js?v=20261109-form-trang-chu"></script>
-    <script src="ho-so-uu-dai-theo-xa.js?v=20261109-tannhut-tuition-1500-1700"></script>
+    <script src="ho-so-uu-dai-theo-xa.js?v=20261110-tannhut-dong-hoc-phi"></script>
     <script src="../assets/js/courses-demo-vehicle-config.js"></script>
     <script src="../assets/js/courses-demo-stage-renderer.js"></script>
     <script src="../assets/js/courses-demo-interactions.js?v=20261104-uu-dai-theo-xa-khoa-hoc"></script>

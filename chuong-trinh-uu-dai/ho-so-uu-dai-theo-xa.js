@@ -45,6 +45,17 @@
       "hang-b-so-co-khi": { base: "16.000.000đ", current: "15.000.000đ" },
       "hang-c1": { base: "18.000.000đ", current: "17.000.000đ" }
     };
+    // Dòng nhấn dưới tiêu đề "KHÓA HỌC CỦA CHÚNG TÔI" — giá ở 3 thẻ là giá riêng của xã
+    var coursesHead = document.querySelector("#khoa-hoc .section-head");
+    if (coursesHead && !coursesHead.querySelector(".tn-courses-note")) {
+      var note = document.createElement("p");
+      note.className = "tn-courses-note";
+      var noteText = document.createElement("span");
+      noteText.textContent = "Học phí ưu đãi dành cho xã Tân Nhựt";
+      note.appendChild(noteText);
+      coursesHead.appendChild(note);
+    }
+
     document.querySelectorAll(".courses-section .course-card").forEach(function (card) {
       var deal = card.querySelector(".price-list .price--deal");
       var currentPrice = deal && deal.querySelector(".price__value");
@@ -64,6 +75,8 @@
       base.append(baseLabel, baseValue);
       deal.parentNode.insertBefore(base, deal);
       currentPrice.textContent = prices.current;
+      var dealLabel = deal.querySelector(".price__label");
+      if (dealLabel) dealLabel.textContent = "Học phí ưu đãi";
     });
   }
 
