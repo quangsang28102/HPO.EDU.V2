@@ -1,7 +1,7 @@
 /* Đồng bộ tiêu đề section trang chủ theo Hiệp Phát Design System (tokens.css).
    Quy tắc:
-   - Tiêu đề 1 dòng  → gradient "Xanh Hiệp Phát"  primary-strong #1e3a8a → logo-blue #2b26fb.
-   - Tiêu đề 2 vế     → vế 1 Xanh Hiệp Phát, vế 2 "Đỏ Hiệp Phát" red-strong #b91c1c → logo-red #ea1e24
+   - Tiêu đề 1 dòng  → gradient "Xanh Hiệp Phát"  primary-strong #2d3489 → logo-blue #2b26fb.
+   - Tiêu đề 2 vế     → vế 1 Xanh Hiệp Phát, vế 2 "Đỏ Hiệp Phát" red-strong #ea1e24 → logo-red #ea1e24
                          (cùng cặp với tiêu đề hero "Kỷ nguyên AI" và section hạ tầng).
    - "Thanh dẫn"      → 96×6px, logo-blue #2b26fb → logo-yellow #faec1a, đặt TRÊN tiêu đề.
    - Quầng sáng sau tiêu đề → xanh logo nhạt (thay xanh ngọc).
@@ -10,9 +10,9 @@
    Tiêu đề section hạ tầng (#digital-platform-title) do homepage-infrastructure-section.css xử lý. */
 
 :root {
-  --hp-ds-title-blue: linear-gradient(100deg, #1e3a8a 0%, #2b26fb 45%, #2b26fb 55%, #1e3a8a 100%);
-  --hp-ds-title-red: linear-gradient(100deg, #b91c1c 0%, #ea1e24 45%, #ea1e24 55%, #b91c1c 100%);
-  --hp-ds-lead-bar: linear-gradient(90deg, #2b26fb, #faec1a);
+  --hp-ds-title-blue: linear-gradient(100deg, #2d3489 0%, #2b26fb 45%, #2b26fb 55%, #2d3489 100%);
+  --hp-ds-title-red: linear-gradient(100deg, #ea1e24 0%, #ea1e24 45%, #ea1e24 55%, #ea1e24 100%);
+  --hp-ds-lead-bar: linear-gradient(90deg, #2b26fb, #2d3489);
   --hp-ds-glow: radial-gradient(ellipse, rgba(43, 38, 251, .09) 0%, rgba(43, 38, 251, .03) 44%, transparent 72%);
 }
 
@@ -31,7 +31,7 @@ html body .intro-video__head h2 > em {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #1e3a8a;
+  color: #2d3489;
   text-shadow: none;
   filter: drop-shadow(0 8px 18px rgba(43, 38, 251, .14));
   animation: hp-ds-title-sheen 7s ease-in-out infinite alternate;
@@ -39,11 +39,11 @@ html body .intro-video__head h2 > em {
 /* Vế 2 của tiêu đề 2 vế: Đỏ Hiệp Phát */
 html body .intro-video__head h2 > em {
   background-image: var(--hp-ds-title-red);
-  color: #b91c1c;
+  color: #ea1e24;
   font-style: normal;
   filter: drop-shadow(0 8px 18px rgba(234, 30, 36, .12));
 }
-html body .intro-video__head h2 { background: none; -webkit-text-fill-color: currentColor; color: #1e3a8a; }
+html body .intro-video__head h2 { background: none; -webkit-text-fill-color: currentColor; color: #2d3489; }
 html body .intro-video__head h2 > em .intro-video__nowrap { -webkit-text-fill-color: transparent; }
 @keyframes hp-ds-title-sheen { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
 
@@ -77,7 +77,7 @@ html body .hpo-unified-title-wrap::before,
 html body .digital-learning-materials__head::before { background: var(--hp-ds-glow); }
 
 /* Phụ đề khóa học: dấu gạch giữa theo đỏ logo */
-html body .courses-section .section-head__subtitle { color: #1e3a8a; }
+html body .courses-section .section-head__subtitle { color: #2d3489; }
 html body .courses-section .section-head__subtitle .sep { color: #ea1e24; }
 
 @media (prefers-reduced-motion: reduce) {

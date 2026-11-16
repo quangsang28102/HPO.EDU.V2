@@ -2,7 +2,7 @@
    Dòng chào trên tiêu đề hero trang chủ: "Chào mừng các bạn đến với" (yêu cầu Giám đốc, 2026-11-02)
    → KỶ NGUYÊN AI / TRONG ĐÀO TẠO LÁI XE / Hệ sinh thái chuyển đổi số…
    Kiểu "Eyebrow" của Hiệp Phát Design System (user chọn Mẫu 1 trong 5 mẫu):
-   - Chữ in hoa, Be Vietnam Pro 700, giãn chữ .08em, màu primary #1e40af; 2 vạch đỏ #dc2626 hai bên.
+   - Chữ in hoa, Be Vietnam Pro 700, giãn chữ .08em, màu primary #2b26fb; 2 vạch đỏ #ea1e24 hai bên.
    - Không khung/nền → tiêu đề gradient vẫn là điểm nhấn duy nhất.
    - Nằm NGOÀI <h1> (CSS hero tô màu theo span:nth-child trong h1) → tiêu đề/SEO giữ nguyên.
    - Hiện ra trước tiêu đề (class hpo-slide-item, chạy lại mỗi lần slide 1 phát); 2 vạch đỏ kéo dài ra từ chữ.
@@ -19,7 +19,7 @@
   gap: .75em;
   max-width: 100%;
   margin: 0 auto clamp(22px, 3vh, 32px); /* chừa chỗ dấu hỏi chữ "Ỷ" của tiêu đề */
-  color: #1e40af;
+  color: #2b26fb;
   font-family: var(--ff-display, inherit);
   font-size: clamp(17px, 1.65vw, 24px);
   font-weight: 700;
@@ -36,7 +36,7 @@
   width: 32px;
   height: 3px;
   border-radius: 2px;
-  background: #dc2626;
+  background: #ea1e24;
 }
 .hpo-hero-welcome::before { transform-origin: right center; }
 .hpo-hero-welcome::after { transform-origin: left center; }
@@ -55,7 +55,7 @@
 @media (max-width: 700px) {
   /* trước: 192px trống phía trên tiêu đề (chỗ robot đứng cũ) → dòng chào nằm vào đây */
   .hpo-digital-left { padding-top: 44px; }
-  .hpo-hero-welcome { gap: .38em; margin-bottom: 14px; font-size: clamp(13px, 3.8vw, 15px); letter-spacing: .018em; }
+  .hpo-hero-welcome { gap: .38em; margin-bottom: 14px; font-size: clamp(14px, 3.8vw, 16px); letter-spacing: .018em; }
   .hpo-hero-welcome::before,
   .hpo-hero-welcome::after { width: 18px; }
 }

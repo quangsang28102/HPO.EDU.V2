@@ -1,7 +1,7 @@
 :root {
   --quiz-navy: #071a3a;
   --quiz-blue: #123f96;
-  --quiz-orange: #ff6b35;
+  --quiz-orange: #ea1e24;
   --quiz-green: #138a55;
   --quiz-red: #d9363e;
   --quiz-line: #dce4f0;
@@ -65,7 +65,7 @@
 .quiz-hero h1 span {
   display: block;
   margin-top: 0.12em;
-  color: #ff8356;
+  color: #ea1e24;
 }
 .quiz-hero__stats {
   grid-column: 2;
@@ -88,7 +88,7 @@
 }
 .quiz-hero__stats strong {
   display: block;
-  color: #ff8356;
+  color: #ea1e24;
   font:
     800 42px var(--ff-display),
     sans-serif;

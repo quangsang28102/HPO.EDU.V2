@@ -3,10 +3,10 @@
    Theo báo cáo plans/reports/ui-ux-audit-261103-trung-tam-giao-duc-nghe-nghiep (bước 2 + 3),
    kiểm bằng Impeccable detect (low-contrast, undersized-ui-text, dark-glow, unbalanced-heading).
    Bước 2 — MÀU:
-   - Token trang: --about-blue #123f96 → primary-strong #1e3a8a; --about-navy #071a3a → ink #0a1330;
-     --about-orange #ff6b35 → đỏ DS #dc2626 (cam DS chỉ để trang trí; chữ trắng trên cam / chữ cam trên trắng
-     chỉ 2,4–2,8:1, dưới chuẩn 4,5:1). Đỏ #dc2626: chữ trắng 4,83:1.
-   - Chữ nhấn trên nền tối (#ff8356, #8bb2ff, #8fb3f4, #9bb8ed) → vàng DS #facc15.
+   - Token trang: --about-blue #123f96 → primary-strong #2d3489; --about-navy #071a3a → ink #0a1330;
+     --about-orange #ff6b35 → đỏ DS #ea1e24 (cam DS chỉ để trang trí; chữ trắng trên cam / chữ cam trên trắng
+     chỉ 2,4–2,8:1, dưới chuẩn 4,5:1). Đỏ #ea1e24: chữ trắng 4,83:1.
+   - Chữ nhấn trên nền tối (#ff8356, #8bb2ff, #8fb3f4, #9bb8ed) → vàng DS #faec1a.
    - "Tiết kiệm …" → nền xanh lá đặc #15803d chữ trắng (giống trang Học phí).
    - Bỏ quầng sáng cam nhấp nháy quanh nút (consultPulse) → bóng trung tính.
    Bước 3 — CHỮ: nhãn phụ ≥13–14px đậm, mô tả ≥15px, bỏ in hoa ở nhãn nhỏ; h2 về thang 32–48px
@@ -16,25 +16,25 @@
 
 /* ---------- Bước 2: màu ---------- */
 html body.about-page {
-  --about-blue: #1e3a8a;
+  --about-blue: #2d3489;
   --about-navy: #0a1330;
-  --about-orange: #dc2626;
+  --about-orange: #ea1e24;
 }
 
 /* Nút chính (hero, cuối trang, thẻ khóa học): đỏ DS, bóng trung tính, không nhấp nháy quầng cam */
 html body .btn-hero-consult,
 html body .cta-actions .btn-final-consult,
 html body .course-cta {
-  border-color: #dc2626;
-  background: #dc2626;
+  border-color: #ea1e24;
+  background: #ea1e24;
   box-shadow: 0 14px 30px -14px rgba(10, 19, 48, .45);
   animation: none;
 }
 html body .btn-hero-consult:hover,
 html body .cta-actions .btn-final-consult:hover,
 html body .course-cta:hover {
-  border-color: #b91c1c;
-  background: #b91c1c;
+  border-color: #2d3489;
+  background: #2d3489;
   box-shadow: 0 18px 36px -14px rgba(10, 19, 48, .5);
 }
 
@@ -43,18 +43,18 @@ html body .hero-proof strong,
 html body .courses-offer strong,
 html body .facility-card__overlay > span,
 html body .digital h2 span,
-html body .courses-head h2 span { color: #facc15; }
-html body .section-label--light { color: #facc15; }
+html body .courses-head h2 span { color: #faec1a; }
+html body .section-label--light { color: #faec1a; }
 
 /* Số liệu / nhãn trên nền sáng */
 html body .exam-center__stats strong,
-html body .course-saving strong { color: #dc2626; }
-html body .event-meta { color: #1e40af; }
+html body .course-saving strong { color: #ea1e24; }
+html body .event-meta { color: #2b26fb; }
 
 /* Nhãn khóa học */
 html body .course-deal { background: #15803d; color: #fff; }
-html body .course-badge { background: #dc2626; }
-html body .partner-feature__image > span { background: #dc2626; }
+html body .course-badge { background: #ea1e24; }
+html body .partner-feature__image > span { background: #ea1e24; }
 
 /* ---------- Bước 3: chữ ---------- */
 /* Tiêu đề section: thang 32–48px (h1 hero giữ nguyên), chia dòng cân đối */

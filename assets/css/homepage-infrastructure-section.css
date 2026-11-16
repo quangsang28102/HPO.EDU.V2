@@ -1,7 +1,7 @@
 /* Section "Hệ thống hạ tầng kỹ thuật hiện đại, đồng bộ, thông suốt" (trang chủ).
    Giữ khung của .digital-learning-materials (awards.css); phần thân dùng class infra-*.
-   Màu theo Hiệp Phát Design System (tokens.css): logo-blue #2b26fb, primary-strong #1e3a8a,
-   logo-red #ea1e24, red-strong #b91c1c, logo-yellow #faec1a, ink #0a1330, ink-soft #334155.
+   Màu theo Hiệp Phát Design System (tokens.css): logo-blue #2b26fb, primary-strong #2d3489,
+   logo-red #ea1e24, red-strong #ea1e24, logo-yellow #faec1a, ink #0a1330, ink-soft #334155.
    Hiệu ứng hiện dần khi cuộn dùng sẵn [data-reveal] (core.js + awards.css). */
 
 /* ---- Tiêu đề: "Xanh Hiệp Phát" (dòng 1) + "Đỏ Hiệp Phát" (dòng 2), thanh dẫn xanh logo → vàng HP đặt TRÊN tiêu đề ---- */
@@ -15,11 +15,11 @@
   animation: infra-title-sheen 7s ease-in-out infinite alternate;
 }
 #digital-platform-title .infra-title__line--blue {
-  color: #1e3a8a; background-image: linear-gradient(100deg, #1e3a8a 0%, #2b26fb 45%, #2b26fb 55%, #1e3a8a 100%);
+  color: #2d3489; background-image: linear-gradient(100deg, #2d3489 0%, #2b26fb 45%, #2b26fb 55%, #2d3489 100%);
   filter: drop-shadow(0 8px 18px rgba(43, 38, 251, .14));
 }
 #digital-platform-title .infra-title__line--red {
-  color: #b91c1c; background-image: linear-gradient(100deg, #b91c1c 0%, #ea1e24 45%, #ea1e24 55%, #b91c1c 100%);
+  color: #ea1e24; background-image: linear-gradient(100deg, #ea1e24 0%, #ea1e24 45%, #ea1e24 55%, #ea1e24 100%);
   filter: drop-shadow(0 8px 18px rgba(234, 30, 36, .12));
 }
 @keyframes infra-title-sheen { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
@@ -29,7 +29,7 @@
 }
 .digital-learning-materials[aria-labelledby="digital-platform-title"] .digital-learning-materials__head::after { /* "Thanh dẫn" của DS */
   top: 0; bottom: auto; width: 96px; height: 6px; border-radius: 3px;
-  background: linear-gradient(90deg, #2b26fb, #faec1a); box-shadow: 0 4px 12px rgba(43, 38, 251, .2);
+  background: linear-gradient(90deg, #2b26fb, #2d3489); box-shadow: 0 4px 12px rgba(43, 38, 251, .2);
 }
 
 .infra-layout {

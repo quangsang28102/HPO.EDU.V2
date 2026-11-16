@@ -10,7 +10,7 @@
    ========================================================================== */
 
 .floats .float-label { display: none; }
-.floats .float-register { background: #d61a20; }
+.floats .float-register { background: #ea1e24; }
 .floats .float-top { display: none; }
 .floats.is-scrolled .float-top { display: flex; }
 /* Đầu robot (nút mở trợ lý) lớn hơn nút thường một chút để dễ nhận ra */
@@ -30,7 +30,7 @@
     height: 40px;
     border: 1px solid #dbe3f3;
     background: #fff;
-    color: #1e3a8a;
+    color: #2d3489;
     box-shadow: 0 4px 14px rgba(10, 19, 48, 0.12);
   }
   .floats .float-btn.float-top svg { width: 18px; height: 18px; }
@@ -48,7 +48,7 @@
 }
 
 @media (max-width: 600px) {
-  body { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
+  body { padding-bottom: calc(65px + env(safe-area-inset-bottom, 0px)); }
   .floats {
     left: 0;
     right: 0;
@@ -75,7 +75,7 @@
   .floats .float-btn:hover { transform: none; }
   .floats .float-btn svg { flex: none; width: 20px; height: 20px; }
   .floats .float-label { display: inline; white-space: nowrap; }
-  .floats .float-phone { background: #eef2ff; color: #1e3a8a; }
+  .floats .float-phone { background: #eef2ff; color: #2d3489; }
   .floats .float-top,
   .floats.is-scrolled .float-top { display: none; }
   .floats > #hpo-robot-restore {

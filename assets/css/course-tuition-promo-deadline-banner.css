@@ -28,7 +28,7 @@
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: #dc2626;
+  background: #ea1e24;
   color: #fff;
   box-shadow: 0 6px 14px rgba(220, 38, 38, 0.3);
 }
@@ -43,7 +43,7 @@
 }
 .courses-section .course-deadline__label {
   flex: none;
-  color: #b91c1c;
+  color: #ea1e24;
   font-size: 16px;
   font-weight: 800;
   letter-spacing: 0.04em;
@@ -51,7 +51,7 @@
 }
 .courses-section .course-deadline__text { flex: 1 1 320px; min-width: 0; }
 .courses-section .course-deadline__text strong {
-  color: #dc2626;
+  color: #ea1e24;
   font-weight: 800;
   white-space: nowrap;
 }

@@ -28,7 +28,7 @@
 .hpo-digital-title span { white-space: nowrap; }
 .hpo-digital-title span:nth-child(1) {
   padding: 0;
-  color: #1556ae;
+  color: #2b26fb;
   font-size: 1em;
   letter-spacing: inherit;
 }
@@ -37,7 +37,7 @@
   margin-top: 8px;
   padding: 0;
   background: none;
-  color: #e51f2b;
+  color: #ea1e24;
   font-size: .81em;
   line-height: 1.1;
   filter: none;

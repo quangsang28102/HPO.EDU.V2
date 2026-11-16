@@ -1,11 +1,11 @@
 :root {
   --blue-50: #eff6ff;
   --blue-100: #dbeafe;
-  --blue-600: #1e40af;
-  --blue-700: #1d3b8f;
+  --blue-600: #2b26fb;
+  --blue-700: #2d3489;
   --blue-900: #172554;
   --navy: #0a1330;
-  --accent: #ff6b35;
+  --accent: #ea1e24;
   --accent-soft: #fff0e8;
   --green: #22c55e;
   --green-soft: #e8f8ef;
@@ -148,7 +148,7 @@ select {
 }
 
 em {
-  color: var(--accent);
+  color: var(--em-red);
   font-family: var(--ff-serif);
   font-style: italic;
   font-weight: 700;
@@ -1697,7 +1697,7 @@ em {
   margin: 0;
   border-radius: 999px;
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--em-red);
   padding: 7px 12px;
   font-family: var(--ff-display);
   font-size: 13px;
@@ -1817,7 +1817,7 @@ em {
 }
 
 .condition-emphasis {
-  color: #dc2626;
+  color: #ea1e24;
 }
 
 .condition-card p,
@@ -2477,7 +2477,7 @@ em {
   min-height: 36px;
   border-radius: 999px;
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--em-red);
   font-family: var(--ff-display);
   font-size: 13px;
   font-weight: 800;
@@ -2764,7 +2764,7 @@ em {
 
 .license-photo {
   fill: #dbeafe;
-  stroke: #1e40af;
+  stroke: #2b26fb;
   stroke-width: 5;
 }
 
@@ -2773,7 +2773,7 @@ em {
 }
 
 .license-line {
-  fill: #1e40af;
+  fill: #2b26fb;
   opacity: 0.82;
 }
 

@@ -1686,13 +1686,13 @@
 }
 
 #hpo-ky-thuat-tabs a[data-hpo-tab].is-active {
-  border-color: #dc2626;
+  border-color: #ea1e24;
   box-shadow: 0 12px 26px rgba(220, 38, 38, 0.18);
   background: linear-gradient(180deg, #fff 0%, #fff1f2 100%);
 }
 
 #hpo-ky-thuat-tabs a[data-hpo-tab].is-active .hpo-tab-title {
-  color: #dc2626;
+  color: #ea1e24;
 }
 
 #hpo-ky-thuat-tabs .hpo-tab-thumb {
@@ -1756,7 +1756,7 @@
 }
 
 #hpo-ky-thuat-tabs .hpo-tab-meta b.is-red {
-  color: #dc2626;
+  color: #ea1e24;
 }
 
 #hpo-ky-thuat-tabs .hpo-tab-meta b.is-yellow {

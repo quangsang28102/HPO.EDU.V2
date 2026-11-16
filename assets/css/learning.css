@@ -249,10 +249,10 @@
   flex-shrink: 0;
 }
 .phan--I .phan-stripe {
-  background: linear-gradient(180deg, #3b82f6, #1e40af);
+  background: linear-gradient(180deg, #2b26fb, #2b26fb);
 }
 .phan--II .phan-stripe {
-  background: linear-gradient(180deg, #ff6b35, #dc2626);
+  background: linear-gradient(180deg, #ff6b35, #ea1e24);
 }
 .phan--III .phan-stripe {
   background: linear-gradient(180deg, #22c55e, #15803d);
@@ -274,7 +274,7 @@
   flex-shrink: 0;
 }
 .phan--I .phan-roman {
-  color: #1e40af;
+  color: #2b26fb;
 }
 .phan--II .phan-roman {
   color: #ef4822;
@@ -359,7 +359,7 @@
   display: none;
 }
 .phan--I .phan-desc::before {
-  color: #1e40af;
+  color: #2b26fb;
   background: #eff4ff;
   border-color: #dbe5fa;
 }
@@ -430,7 +430,7 @@
   background: #dbeafe;
 }
 .phan--I.is-open .phan-caret {
-  color: #1e40af;
+  color: #2b26fb;
 }
 .phan--II.is-open .phan-caret {
   color: #ef4822;
@@ -508,7 +508,7 @@
     color 0.25s;
 }
 .phan--I .chap.is-featured .chap-num-wrap {
-  background: #1e40af;
+  background: #2b26fb;
   color: #fff;
   box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
 }
@@ -560,7 +560,7 @@
 }
 .tag-blue {
   background: #dbeafe;
-  color: #1e40af;
+  color: #2b26fb;
 }
 .tag-fire {
   background: #fff0eb;
@@ -690,7 +690,7 @@
   font-weight: 700;
 }
 .bb-shape .bb-color-red {
-  color: #dc2626;
+  color: #ea1e24;
 }
 .bb-shape .bb-color-yellow {
   color: #c58500;
@@ -705,7 +705,7 @@
   font-family: var(--ff-display);
   font-weight: 700;
   font-size: 18px;
-  color: #1e40af;
+  color: #2b26fb;
   letter-spacing: -0.02em;
   line-height: 1;
 }
@@ -713,7 +713,7 @@
   font-family: var(--ff-display);
   font-weight: 600;
   font-size: 15px;
-  color: #1e40af;
+  color: #2b26fb;
   letter-spacing: 0.02em;
   margin-left: 4px;
   text-transform: lowercase;
@@ -804,7 +804,7 @@
 }
 
 .bb-view-close:hover {
-  color: #dc2626;
+  color: #ea1e24;
   border-color: #fecaca;
   background: #fff1f2;
 }
@@ -971,13 +971,13 @@
 }
 
 #bbViewModal #hpo-sign-tabs a[data-hpo-tab].is-active {
-  border-color: #dc2626;
+  border-color: #ea1e24;
   box-shadow: 0 12px 26px rgba(220, 38, 38, 0.18);
   background: linear-gradient(180deg, #fff 0%, #fff1f2 100%);
 }
 
 #bbViewModal #hpo-sign-tabs a[data-hpo-tab].is-active .hpo-tab-title {
-  color: #dc2626;
+  color: #ea1e24;
 }
 
 #bbViewModal #hpo-sign-tabs .hpo-tab-thumb {
@@ -1041,7 +1041,7 @@
 }
 
 #bbViewModal #hpo-sign-tabs .hpo-tab-meta b.is-red {
-  color: #dc2626;
+  color: #ea1e24;
 }
 
 #bbViewModal #hpo-sign-tabs .hpo-tab-meta b.is-yellow {
@@ -1379,7 +1379,7 @@
 }
 
 .sh-view-close:hover {
-  color: #dc2626;
+  color: #ea1e24;
   border-color: #fecaca;
   background: #fff1f2;
 }
@@ -1527,7 +1527,7 @@
 }
 
 #shViewModal .sh-tab.is-active {
-  border-color: #dc2626;
+  border-color: #ea1e24;
   background: linear-gradient(180deg, #fff 0%, #fff1f2 100%);
   box-shadow: 0 12px 26px rgba(220, 38, 38, 0.18);
 }
@@ -1548,8 +1548,8 @@
 }
 
 #shViewModal .sh-tab.is-active .sh-badge {
-  border-color: #dc2626;
-  background: #dc2626;
+  border-color: #ea1e24;
+  background: #ea1e24;
   color: #fff;
 }
 
@@ -1568,7 +1568,7 @@
 }
 
 #shViewModal .sh-tab.is-active .sh-tab-name {
-  color: #dc2626;
+  color: #ea1e24;
 }
 
 #shViewModal #hpo-sh-content {
@@ -1855,7 +1855,7 @@
 }
 
 .lsh-view-close:hover {
-  color: #dc2626;
+  color: #ea1e24;
   border-color: #fecaca;
   background: #fff1f2;
 }
@@ -1993,9 +1993,9 @@
 }
 
 #lshViewModal #hpo-shl-tabs a[data-shl-tab].is-active {
-  border-color: #dc2626;
+  border-color: #ea1e24;
   background: linear-gradient(180deg, #fff 0%, #fff1f2 100%);
-  color: #dc2626;
+  color: #ea1e24;
   box-shadow: 0 12px 26px rgba(220, 38, 38, 0.18);
 }
 
@@ -2283,7 +2283,7 @@
 }
 
 .engine-view-close:hover {
-  color: #dc2626;
+  color: #ea1e24;
   border-color: #fecaca;
   background: #fff1f2;
 }
@@ -2604,7 +2604,7 @@
   padding: 3px 10px;
   border-radius: 999px;
   background: #dbeafe;
-  color: #1e40af;
+  color: #2b26fb;
   font-family: var(--ff-display);
   font-size: 12px;
   font-weight: 700;
@@ -2626,7 +2626,7 @@
   margin-right: 10px;
 }
 .phan--I .phan-chip {
-  background: #1e40af;
+  background: #2b26fb;
 }
 .phan--II .phan-chip {
   background: #ef4822;
@@ -2643,7 +2643,7 @@
   color: #0a1330;
 }
 .phan--I .phan-count-meta {
-  color: #1e40af;
+  color: #2b26fb;
 }
 :is(#phan-chap-01-I, #phan-chap-01-I-static) .phan-stripe {
   background: #e21d3b !important;
@@ -2709,7 +2709,7 @@
 }
 
 .phan--I .chap-chip {
-  background: #1e40af;
+  background: #2b26fb;
 }
 .phan--II .chap-chip {
   background: #ef4822;
@@ -3073,7 +3073,7 @@ a.chap[data-engine-view]:focus-visible {
 .chap-summary-item em {
   font-style: normal;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--em-red);
   font-size: 12.5px;
   letter-spacing: 0.01em;
   display: block;

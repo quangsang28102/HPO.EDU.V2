@@ -11,7 +11,7 @@
 .cbm-policy__hero { margin-bottom: 24px; text-align: center; }
 .cbm-policy__eyebrow {
   margin: 0 0 10px;
-  color: #1e40af;
+  color: #2b26fb;
   font-size: 15px;
   font-weight: 800;
   letter-spacing: .06em;
@@ -67,14 +67,14 @@
   align-items: center;
   min-height: 44px;
   padding: 5px 4px;
-  color: #1e40af;
+  color: #2b26fb;
   font-size: 16px;
   line-height: 1.35;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
 .cbm-policy__toc a:hover { color: #0a1330; }
-.cbm-policy a:focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; border-radius: 4px; }
+.cbm-policy a:focus-visible { outline: 3px solid #2b26fb; outline-offset: 3px; border-radius: 4px; }
 .cbm-policy__content { font-size: 17px; line-height: 1.7; overflow-wrap: anywhere; }
 .cbm-policy__content section + section { margin-top: 30px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
 .cbm-policy__content h2 {
@@ -92,7 +92,7 @@
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  color: #1e40af;
+  color: #2b26fb;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }

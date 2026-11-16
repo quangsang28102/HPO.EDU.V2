@@ -41,9 +41,9 @@
   --navy-900: #0a1f4d;
   --navy-800: #0f2d6b;
   --blue-700: #1d4ed8;
-  --blue-500: #3b82f6;
+  --blue-500: #2b26fb;
   --blue-50: #f0f6ff;
-  --red-600: #dc2626;
+  --red-600: #ea1e24;
   --red-700: #c8102e;
   --gold-500: #f2b51d;
   --ink: #0f1f3d;
@@ -325,7 +325,7 @@
 }
 .course-info-section .course-info-panel__link:focus-visible,
 .course-info-section .course-info-panel__contact:focus-visible{
-  outline: 3px solid #3b82f6;
+  outline: 3px solid #2b26fb;
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -430,7 +430,7 @@
 .courses-section .course-card__badge{
   flex: none; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px;
   font-size: 19px; font-weight: 800; color: #fff;
-  background: linear-gradient(145deg, #4f8dfb 0%, var(--blue-700) 55%, #1e3a8a 100%);
+  background: linear-gradient(145deg, #4f8dfb 0%, var(--blue-700) 55%, #2d3489 100%);
   box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.16), inset 0 2px 0 rgba(255, 255, 255, 0.25), 0 8px 14px -8px rgba(29, 78, 216, 0.8);
 }
 .courses-section .course-card__badge--c1{ font-size: 16px; letter-spacing: -0.02em; }

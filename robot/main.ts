@@ -60,7 +60,6 @@ function mount() {
   dockGreeting.className = "is-hidden";
   dockGreeting.textContent = GREETING_TEXT;
   restoreButton.append(dockGreeting);
-  restoreButton.setAttribute("aria-describedby", dockGreeting.id);
   restoreButton.hidden = true;
   const greeting = document.createElement("span");
   greeting.id = "hpo-robot-greeting";
@@ -136,7 +135,7 @@ function mount() {
   // Robot đứng trên trang khi trang còn ở đầu (trang chủ: cả khi băng chuyền sang slide
   // "Giới thiệu công ty"); lướt xuống thì robot thu vào nút đầu robot ở góc.
   const phoneLayout = matchMedia("(max-width: 600px)");
-  let docked = phoneLayout.matches;
+  let docked = !homeHero || phoneLayout.matches;
   try {
     robotHidden = localStorage.getItem("hpo-robot-hidden") === "true";
   } catch {
@@ -387,7 +386,7 @@ function mount() {
       const now = performance.now();
       const away = scrollY > innerHeight * 0.25;
       // Điện thoại: robot luôn đứng cố định trên thanh nút đáy (không bật ra trang khi lướt lên đầu).
-      const nextDocked = away || phoneLayout.matches || Number.isNaN(companySlideTop());
+      const nextDocked = !homeHero || away || phoneLayout.matches || Number.isNaN(companySlideTop());
       if (nextDocked === docked) {
         if (!docked && homeHero) placeSoon();
         return;
@@ -615,20 +614,20 @@ function mount() {
     viewer.open();
     updateGreeting();
   });
-  // Bong bóng chào cạnh đầu robot: tự hiện ~6 giây sau khi tải trang (nếu robot đang ở
-  // dạng nút), hiện lại khi rê chuột/focus; luôn tự ẩn để không che nội dung lâu.
+  // Bong bóng cạnh nút chỉ hiện khi rê chuột hoặc nhận focus, tránh che nội dung khi tải trang.
   let dockGreetingTimer = 0;
   const hideDockGreeting = () => {
     window.clearTimeout(dockGreetingTimer);
     dockGreeting.classList.add("is-hidden");
+    restoreButton.removeAttribute("aria-describedby");
   };
   const showDockGreeting = (duration: number) => {
     if (restoreButton.hidden || viewer.isOpen) return;
     dockGreeting.classList.remove("is-hidden");
+    restoreButton.setAttribute("aria-describedby", dockGreeting.id);
     window.clearTimeout(dockGreetingTimer);
     dockGreetingTimer = window.setTimeout(hideDockGreeting, duration);
   };
-  window.setTimeout(() => showDockGreeting(6000), 1200);
   restoreButton.addEventListener("pointerenter", (event) => {
     if (event.pointerType === "mouse") showDockGreeting(4000);
   });

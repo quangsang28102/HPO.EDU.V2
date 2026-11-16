@@ -1,7 +1,7 @@
 .about-page {
   --about-blue: #123f96;
   --about-navy: #071a3a;
-  --about-orange: #ff6b35;
+  --about-orange: #ea1e24;
   background: #fff;
   color: #000;
 }
@@ -76,7 +76,7 @@
 }
 .about-hero h1 em {
   font-style: normal;
-  color: #ff8356;
+  color: #ea1e24;
 }
 .about-hero__content > p {
   max-width: 650px;
@@ -106,7 +106,7 @@
   isolation: isolate;
   overflow: hidden;
   padding: 16px 27px;
-  border-color: #ff8356;
+  border-color: #ea1e24;
   background: var(--about-orange);
   color: #fff;
   box-shadow: 0 18px 42px -10px rgba(255, 107, 53, 0.72);
@@ -218,7 +218,7 @@
 .hero-proof strong {
   display: block;
   font: 700 26px var(--ff-display);
-  color: #ff8356;
+  color: #ea1e24;
 }
 .hero-proof span {
   font-size: 12px;
@@ -507,7 +507,7 @@
 }
 .facility-card__overlay > span {
   font: 700 14px var(--ff-display);
-  color: #ff8356;
+  color: #ea1e24;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   width: 34px;
@@ -1036,7 +1036,7 @@
 .courses-offer strong {
   display: block;
   margin: 4px 0;
-  color: #ff8356;
+  color: #ea1e24;
   font: 800 25px var(--ff-display);
 }
 .course-grid {
@@ -1213,7 +1213,7 @@
   align-items: center;
   margin-top: 15px;
   padding: 13px 15px 13px 17px;
-  border: 1px solid #ff8356;
+  border: 1px solid #ff6b35;
   background: var(--about-orange);
   color: #fff;
   box-shadow: 0 14px 28px -14px rgba(255, 107, 53, 0.75);
@@ -1481,7 +1481,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  border-color: #ff8356;
+  border-color: #ea1e24;
   background: var(--about-orange);
   color: #fff;
   box-shadow: 0 18px 42px -10px rgba(255, 107, 53, 0.62);

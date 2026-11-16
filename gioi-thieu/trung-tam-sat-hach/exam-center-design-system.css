@@ -7,10 +7,10 @@
    ========================================================================== */
 
 /* Nhãn "LOẠI 1 ĐẠT QUY CHUẨN QUỐC GIA" trên ảnh (nền xanh): chữ nhấn cam → vàng DS */
-html body.exam-page .exam-intro__visual > span strong { color: #facc15; }
+html body.exam-page .exam-intro__visual > span strong { color: #faec1a; }
 
 /* Số thứ tự 01/02 trên ảnh cơ sở vật chất (nền tối): cam → vàng DS; chú thích ảnh 14 → 15px */
-html body.exam-page .exam-gallery__label > span { color: #facc15; }
+html body.exam-page .exam-gallery__label > span { color: #faec1a; }
 html body.exam-page .exam-gallery__label p { font-size: 15px; }
 
 /* Nút mũi tên băng chuyền: vùng bấm 44px (trước 34–38px) */

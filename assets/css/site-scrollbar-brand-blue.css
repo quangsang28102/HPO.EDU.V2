@@ -1,6 +1,6 @@
 /* ==========================================================================
    Thanh cuộn của trang theo màu logo Hiệp Phát (giống cách SAPP dùng màu thương hiệu)
-   - Con trượt xanh logo #2b26fb (6.7:1 trên rãnh), rê chuột → navy #1e3a8a; rãnh xám xanh nhạt.
+   - Con trượt xanh logo #2b26fb (6.7:1 trên rãnh), rê chuột → navy #2d3489; rãnh xám xanh nhạt.
    - Vàng logo #faec1a chỉ ~1.1:1 trên rãnh sáng → gần như không thấy, nên không dùng.
    - Chỉ áp cho thanh cuộn của cả trang (html), không đụng các vùng cuộn riêng đã có kiểu.
    - Chrome/Edge/Safari: ::-webkit-scrollbar; Firefox: scrollbar-color (chỉ khi không hỗ trợ
@@ -15,8 +15,8 @@ html::-webkit-scrollbar-thumb {
   border-radius: 999px;
   background: #2b26fb;
 }
-html::-webkit-scrollbar-thumb:hover { background: #1e3a8a; }
-html::-webkit-scrollbar-thumb:active { background: #1e3a8a; }
+html::-webkit-scrollbar-thumb:hover { background: #2d3489; }
+html::-webkit-scrollbar-thumb:active { background: #2d3489; }
 
 @supports not selector(::-webkit-scrollbar) {
   html { scrollbar-color: #2b26fb #eef1f8; }

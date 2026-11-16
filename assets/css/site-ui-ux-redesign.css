@@ -1,0 +1,327 @@
+/* Shared readability and interaction fixes for all public pages. */
+:root {
+  --blue-500: #2b26fb;
+  --blue-600: #2b26fb;
+  --blue-700: #2d3489;
+  --em-red: #ea1e24;
+}
+
+html body {
+  font-size: 17px;
+}
+
+html body :is(main, #main-content) :is(p, li, td, th, blockquote, dd, dt) {
+  font-size: 17px !important;
+}
+
+html body :is(small, caption, figcaption, label, legend, [class*="eyebrow"], [class*="__label"], [class*="__meta"]) {
+  font-size: max(14px, 0.875em) !important;
+}
+
+html body :is(main, #main-content) :is(p, li, td, th) > a {
+  font-size: inherit !important;
+}
+
+/* The home page is built from sections and has no main element. */
+html body.hpo-home-robot :is(section, .company-slider, .strip--highlights) :is(p, li, td, th, blockquote, dd, dt) {
+  font-size: 17px !important;
+}
+
+html body :is(.topbar-item, .brand-cert__tag, .brand-cert__link, .chap-chip, .phan-chip, .phan-count-meta, .chap-num-wrap, .strip-press__count, .strip-press__more, .course-card__type, .course-info-panel__badge, .price__label, .hpo-sys-eyebrow, .award-slider__heading-sub, .infra-pillar__num, .infra-stage__badge) {
+  font-size: 14px !important;
+}
+
+html body .pv-num {
+  font-size: 14px !important;
+}
+
+html body .brand-cert__facts :is(dt, dd) {
+  font-size: 14px !important;
+}
+
+html body .brand-cert :is(b, strong) {
+  font-size: 14px !important;
+}
+
+html body .brand-cert__zoom {
+  font-size: 14px !important;
+}
+
+html body #awardSlider :is(.award-slide__topline strong, .award-slider__choice-copy strong, .award-slider__choice-copy small) {
+  font-size: 14px !important;
+}
+
+html body .strip--press .strip-press__text > span {
+  font-size: 14px !important;
+}
+
+html body .course-info-section .course-info-panel__list li {
+  font-size: 17px !important;
+}
+
+html body .course-info-section .course-info-panel__contact {
+  font-size: 16px !important;
+}
+
+html body .course-info-section .course-info-panel__contact > span {
+  font-size: inherit !important;
+}
+
+html body .course-info-section .course-info-panel__badge {
+  font-size: 14px !important;
+}
+
+html body .course-info-section .course-info-panel__list li > span:not(.course-info-panel__check),
+html body .course-info-section .course-info-panel__list li strong {
+  font-size: inherit !important;
+}
+
+html body.hpo-home-robot .phan-desc {
+  font-size: 17px !important;
+}
+
+html body :is(.bb-shape, .bb-shape-color) {
+  font-size: 14px !important;
+}
+
+/* Keep supporting labels legible without giving them body-copy weight. */
+html body :is(
+  .section-head__subtitle,
+  .lookup-kicker,
+  .hero-proof span,
+  .hero-phone span,
+  .exam-center__cert span,
+  .partner-list span,
+  .partner-tags span,
+  .partner-feature__image > span,
+  .qr-privacy,
+  .cbm-policy__effective,
+  .uu-reg__consent
+) {
+  font-size: 14px !important;
+}
+
+html body :is(.lookup-panel__note, .event-content p, .partner-list p, .uu-reg__note) {
+  font-size: 15px !important;
+}
+
+html body .courses-section .section-head__subtitle {
+  font-size: clamp(14px, 1.3vw, 16px) !important;
+}
+
+html body .courses-section .promo__ribbon {
+  font-size: clamp(15px, 1.35vw, 18px) !important;
+}
+
+html body .courses-section .promo__note {
+  font-size: 14px !important;
+}
+
+html body :is(.course-card__type, .course-info-panel__badge) {
+  font-size: 14px !important;
+}
+
+html body .courses-section .price__label {
+  font-size: 14px !important;
+}
+
+/* Restore the amount hierarchy removed by the shared body-text minimum. */
+html body .courses-section .price__value {
+  font-size: clamp(17px, 1.42vw, 20px) !important;
+}
+
+html body .courses-section .price--deal .price__value {
+  font-size: clamp(17px, 1.62vw, 23px) !important;
+}
+
+html body .courses-section .price--duration .price__value {
+  font-size: 17px !important;
+}
+
+html body.about-page :is(main, #main-content) :is(.exam-center__lead, .feature-grid p, .exam-center__benefits li) {
+  font-size: 18px !important;
+}
+
+html body.about-page :is(main, #main-content) .intro-lead {
+  font-size: clamp(19px, 1.5vw, 23px) !important;
+}
+
+html body.process-page :is(main, #main-content) .section-head > p {
+  font-size: 18px !important;
+}
+
+html body.process-page :is(main, #main-content) .process-hero__lead {
+  font-size: 19px !important;
+}
+
+html body.uu-dai-page :is(.uu-reg__lead, .tn-offer__label) {
+  font-size: 18px !important;
+}
+
+html body.uu-dai-page .tn-offer__price {
+  font-size: clamp(22px, 3vw, 30px) !important;
+}
+
+html body.uu-dai-page :is(.tn-offer__date, .tn-message__text) {
+  font-size: 19px !important;
+}
+
+html body :is(.calling-avatar, .calling-title, .calling-sub) {
+  font-size: 14px !important;
+}
+
+html body.qr-lookup-page :is(main, #main-content) :is(
+  .qr-card__heading p,
+  .qr-guide__eyebrow,
+  .qr-guide li p,
+  .qr-guide__warning p,
+  .qr-student > p,
+  .qr-student dt,
+  .qr-privacy
+) {
+  font-size: 14px !important;
+}
+
+html body.qr-lookup-page :is(main, #main-content) :is(.qr-note p, .qr-result__notice p, .qr-code-panel > p) {
+  font-size: 15px !important;
+}
+
+html body.qr-lookup-page .qr-note > span {
+  font-size: 14px !important;
+}
+
+html body.qr-lookup-page :is(main, #main-content) .qr-student dd {
+  font-size: 16px !important;
+}
+
+/* Preserve the home page's smaller label scale over its 17px section text. */
+html body.hpo-home-robot section.hpo-digital-hero .hpo-sys-eyebrow,
+html body.hpo-home-robot section#awardSlider .award-slider__heading-sub {
+  font-size: 14px !important;
+}
+
+html body.hpo-home-robot section.courses-section .section-head__subtitle {
+  font-size: clamp(14px, 1.3vw, 16px) !important;
+}
+
+html body.hpo-home-robot section.courses-section .promo__ribbon {
+  font-size: clamp(15px, 1.35vw, 18px) !important;
+}
+
+html body.hpo-home-robot section.courses-section .promo__note,
+html body.hpo-home-robot section.courses-section .price__label {
+  font-size: 14px !important;
+}
+
+html body.hpo-home-robot section.brand-protection .brand-cert__facts :is(dt, dd) {
+  font-size: 14px !important;
+}
+
+html body.hpo-home-robot :is(section, .company-slider, .strip--highlights) .uu-reg__lead {
+  font-size: 18px !important;
+}
+
+html body.hpo-home-robot :is(section, .company-slider, .strip--highlights) :is(.uu-reg__note, .event-content p, .partner-list p) {
+  font-size: 15px !important;
+}
+
+@media (max-width: 767px) {
+  html body.process-page :is(main, #main-content) .section-head > p {
+    font-size: 17px !important;
+  }
+
+  html body .courses-section .price__value {
+    font-size: 18px !important;
+  }
+
+  html body .courses-section .price--deal .price__value {
+    font-size: 21px !important;
+  }
+
+  html body.hpo-home-robot section.courses-section .price__value {
+    font-size: 18px !important;
+  }
+
+  html body.hpo-home-robot section.courses-section .price--deal .price__value {
+    font-size: 21px !important;
+  }
+}
+
+html body :is(main, #main-content) :is(button, [role="button"], select, input[type="button"], input[type="submit"], input[type="reset"], a.btn, a[class*="cta"]) {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+html body :is(main, #main-content) :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea) {
+  min-height: 44px;
+  font-size: 17px;
+}
+
+html body #navbar.nav .nav-links .nav-item > a,
+html body #navbar.nav .nav-dropdown a,
+html body .mobile-menu-list a,
+html body .footer-social a {
+  min-height: 44px;
+}
+
+html body :focus-visible {
+  outline: 3px solid #2b26fb;
+  outline-offset: 3px;
+}
+
+html body .footer :is(.footer-desc, .footer-contact-item, .footer-app-desc, .footer-loc strong, .footer-loc p, .footer-loc a, .footer-bottom) {
+  font-size: max(14px, 0.875rem) !important;
+}
+
+/* The mobile process navigation now shows every step at once. */
+@media (max-width: 640px) {
+  html body .process-subnav__scroller {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    min-height: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: visible;
+  }
+
+  html body .process-subnav__link {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-height: 84px;
+    padding: 8px 5px;
+  }
+
+  html body .process-subnav__link::after {
+    display: none;
+  }
+
+  html body .process-subnav__step {
+    flex: 0 0 34px;
+    width: 34px;
+    height: 34px;
+  }
+
+  html body .process-subnav__label {
+    min-height: 0;
+    padding: 2px 4px;
+    font-size: 14px;
+    line-height: 1.25;
+    white-space: normal;
+  }
+}
+
+/* The promo landing page reuses the homepage hero copy, but no hero robot is shown there. */
+html body.uu-dai-page main > .hpo-digital-hero {
+  min-height: 0;
+}
+
+html body.uu-dai-page main > .hpo-digital-hero .hpo-digital-left {
+  padding-top: clamp(34px, 4.4vh, 56px);
+}
+
+@media (max-width: 700px) {
+  html body.uu-dai-page main > .hpo-digital-hero .hpo-digital-left {
+    padding-top: 34px;
+  }
+}

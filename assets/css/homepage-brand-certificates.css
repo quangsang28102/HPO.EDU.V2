@@ -1,12 +1,12 @@
 /* Section "Thương hiệu" (#so-huu-tri-tue): lưới văn bằng bảo hộ, thay cho .brand-protection__list cũ.
    Giữ header của section (màu tiêu đề do homepage-headings-design-system.css). Class mới: brand-cert-*.
-   Màu theo Hiệp Phát Design System: logo-blue #2b26fb, primary-strong #1e3a8a, ink #0a1330, ink-soft #334155,
+   Màu theo Hiệp Phát Design System: logo-blue #2b26fb, primary-strong #2d3489, ink #0a1330, ink-soft #334155,
    line #e6ebf5, primary-soft #eff6ff. Lightbox giữ nhóm data-img-group="brand-protection" (media.js).
    5 thẻ (2026-11-02 hiện lại 04, 05): ≥1025px 3 + 2 căn giữa; 641–1024px 2 + 2 + 1 căn giữa; ≤640px 1 cột. */
 
 .brand-cert-grid {
   --cert-blue: #2b26fb;
-  --cert-navy: #1e3a8a;
+  --cert-navy: #2d3489;
   --cert-ink: #0a1330;
   --cert-soft: #334155;
   --cert-line: #e6ebf5;
@@ -62,7 +62,7 @@
 .brand-cert__num {
   position: absolute; z-index: 1; right: 18px; top: 10px;
   font-family: var(--ff-display, inherit); font-size: 40px; font-weight: 900; line-height: 1; letter-spacing: -.04em;
-  color: #1e40af; /* chữ đặc, không viền — DS primary */
+  color: #2b26fb; /* chữ đặc, không viền — DS primary */
 }
 .brand-cert__zoom {
   position: absolute; z-index: 1; right: 14px; bottom: 14px; padding: 7px 12px; border-radius: 999px;

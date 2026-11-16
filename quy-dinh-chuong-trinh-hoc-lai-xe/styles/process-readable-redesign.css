@@ -11,30 +11,30 @@
    0. Hiệp Phát Design System (tokens.css) cho trang này
    - Chữ: tiêu đề Be Vietnam Pro (h1 32→52, h2 28→40, h3 20→24, h4 18), nội dung SVN-Gilroy
      (lead 19, body 18, small 16), eyebrow 16 đậm 700 giãn .08em, nút 17.
-   - Màu chữ: ink #0a1330 (chính), ink-soft #334155 (mô tả), primary #1e40af (eyebrow, số bước),
-     red #dc2626 (chữ nhấn, nút đăng ký), green #15803d (mức đạt); trên nền navy: tiêu đề trắng,
-     chữ #dbe4f5, nhấn vàng #facc15.
+   - Màu chữ: ink #0a1330 (chính), ink-soft #334155 (mô tả), primary #2b26fb (eyebrow, số bước),
+     red #ea1e24 (chữ nhấn, nút đăng ký), green #15803d (mức đạt); trên nền navy: tiêu đề trắng,
+     chữ #dbe4f5, nhấn vàng #faec1a.
    - Cam #ff6b35 (web V1) chỉ được trang trí, KHÔNG làm màu chữ → token --accent của trang đổi sang
-     red. Riêng hàng "Đào tạo thực hành" dùng cặp nhãn Thực hành: orange-strong #c2410c trên orange-soft #fff4ed.
+     red. Riêng hàng "Đào tạo thực hành" dùng đỏ thương hiệu #ea1e24 trên nền cam nhạt trang trí #fff4ed.
    - Tiêu đề 2 vế giống trang chủ (homepage-headings-design-system.css): vế 1 gradient
-     "Xanh Hiệp Phát" #1e3a8a → #2b26fb, vế nhấn (em) gradient "Đỏ Hiệp Phát" #b91c1c → #ea1e24.
+     "Xanh Hiệp Phát" #2d3489 → #2b26fb, vế nhấn (em) gradient "Đỏ Hiệp Phát" #ea1e24 → #ea1e24.
    ========================================================================== */
 html body.process-page {
   --hp-ink: #0a1330;
   --hp-ink-soft: #334155;
-  --hp-primary: #1e40af;
-  --hp-primary-strong: #1e3a8a;
+  --hp-primary: #2b26fb;
+  --hp-primary-strong: #2d3489;
   --hp-primary-soft: #eff6ff;
-  --hp-red: #dc2626;
-  --hp-red-hover: #b91c1c;
+  --hp-red: #ea1e24;
+  --hp-red-hover: #2d3489;
   --hp-ink-on-navy: #dbe4f5;
-  --hp-yellow: #facc15;
-  --hp-title-blue: linear-gradient(100deg, #1e3a8a 0%, #2b26fb 45%, #2b26fb 55%, #1e3a8a 100%);
-  --hp-title-red: linear-gradient(100deg, #b91c1c 0%, #ea1e24 45%, #ea1e24 55%, #b91c1c 100%);
-  --hp-lead-bar: linear-gradient(90deg, #2b26fb, #faec1a);
+  --hp-yellow: #faec1a;
+  --hp-title-blue: linear-gradient(100deg, #2d3489 0%, #2b26fb 45%, #2b26fb 55%, #2d3489 100%);
+  --hp-title-red: linear-gradient(100deg, #ea1e24 0%, #ea1e24 45%, #ea1e24 55%, #ea1e24 100%);
+  --hp-lead-bar: linear-gradient(90deg, #2b26fb, #2d3489);
   /* token của trang (process.css) → giá trị DS */
   --navy: #0a1330;
-  --accent: #dc2626;
+  --accent: #ea1e24;
   --accent-soft: #fef2f2;
   --green: #15803d;
   --green-soft: #f0fdf4;
@@ -118,7 +118,8 @@ html body.process-page .review-card__result { border-left-color: var(--green); b
 html body.process-page .training-table__section--practice th,
 html body.process-page .training-table__section--practice td { background: #fff4ed; }
 html body.process-page .training-table__section--practice .mon-cell,
-html body.process-page .training-table__section--practice .mon-cell::after { color: #c2410c; }
+html body.process-page .training-table__section--practice .mon-cell::after { color: #ea1e24; }
+html body.process-page .training-table__section--practice .mon-cell { color: #ea1e24; }
 
 /* Mô tả trong thẻ: ink-soft */
 html body.process-page .info-card p,
@@ -245,15 +246,15 @@ html body.process-page .platform-v2-curriculum .phan-count-meta { font-size: 13p
 html body.process-page .training-table-card .training-table thead tr th { font-size: 14.5px; }
 /* Màu chữ 6 môn theo DS (bảng màu gốc có tím #6d28d9, vàng #f4c430 1.6:1 trên trắng — ngoài DS).
    Vạch màu bên trái thẻ giữ nguyên (trang trí). Cùng lý do !important như trên. */
-html body.process-page .platform-v2-curriculum .syll-row[data-mon="01"] { --hp-subject: #dc2626; }
-html body.process-page .platform-v2-curriculum .syll-row[data-mon="02"] { --hp-subject: #1e40af; }
+html body.process-page .platform-v2-curriculum .syll-row[data-mon="01"] { --hp-subject: #ea1e24; }
+html body.process-page .platform-v2-curriculum .syll-row[data-mon="02"] { --hp-subject: #2b26fb; }
 html body.process-page .platform-v2-curriculum .syll-row[data-mon="03"] { --hp-subject: #78350f; }
 html body.process-page .platform-v2-curriculum .syll-row[data-mon="04"] { --hp-subject: #15803d; }
-html body.process-page .platform-v2-curriculum .syll-row[data-mon="05"] { --hp-subject: #c2410c; }
+html body.process-page .platform-v2-curriculum .syll-row[data-mon="05"] { --hp-subject: #2b26fb; }
 html body.process-page .platform-v2-curriculum .syll-row[data-mon="06"] { --hp-subject: #2d3489; }
 html body.process-page .platform-v2-curriculum .syll-row .syll-num,
 html body.process-page .platform-v2-curriculum .syll-row .syll-meta,
-html body.process-page .platform-v2-curriculum .syll-row .syll-tag { color: var(--hp-subject, #1e40af) !important; }
+html body.process-page .platform-v2-curriculum .syll-row .syll-tag { color: var(--hp-subject, #2b26fb) !important; }
 html body.process-page .platform-v2-curriculum .syll-row .syll-title { color: #0a1330 !important; }
 html body.process-page .platform-v2-curriculum .phan-title,
 html body.process-page .platform-v2-curriculum .chap-title { color: #0a1330 !important; }
@@ -261,14 +262,14 @@ html body.process-page .platform-v2-curriculum .phan-desc,
 html body.process-page .platform-v2-curriculum .chap-desc { color: #334155 !important; }
 /* Nhãn "số chương" của từng Phần: learning.css khóa màu bằng selector id + !important → cần #main-content */
 html body.process-page #main-content .phan-title .phan-count-meta { color: #334155 !important; }
-html body.process-page #main-content .phan--I .phan-title .phan-count-meta { color: #dc2626 !important; }
+html body.process-page #main-content .phan--I .phan-title .phan-count-meta { color: #ea1e24 !important; }
 html body.process-page #main-content .phan--II .phan-title .phan-count-meta { color: #15803d !important; }
-html body.process-page #main-content .phan--III .phan-title .phan-count-meta { color: #c2410c !important; }
+html body.process-page #main-content .phan--III .phan-title .phan-count-meta { color: #ea1e24 !important; }
 html body.process-page .platform-v2-curriculum .sa-text { color: #0a1330 !important; }
-html body.process-page .platform-v2-curriculum .curr-head--chapters .eyebrow { color: #1e40af !important; font-size: 16px !important; letter-spacing: .08em !important; }
+html body.process-page .platform-v2-curriculum .curr-head--chapters .eyebrow { color: #2b26fb !important; font-size: 16px !important; letter-spacing: .08em !important; }
 html body.process-page .platform-v2-curriculum .curr-head--chapters .sec-title--new-color { color: #0a1330 !important; -webkit-text-fill-color: #0a1330 !important; }
-html body.process-page .platform-v2-curriculum .curr-head--chapters .sec-title--new-color em { color: #1e40af !important; -webkit-text-fill-color: #1e40af !important; font-family: inherit; font-weight: inherit; }
-html body.process-page .bb-shape-color { color: #1e40af; }
+html body.process-page .platform-v2-curriculum .curr-head--chapters .sec-title--new-color em { color: #2b26fb !important; -webkit-text-fill-color: #2b26fb !important; font-family: inherit; font-weight: inherit; }
+html body.process-page .bb-shape-color { color: #2b26fb; }
 html body .bb-name { font-size: 16px; }
 html body.process-page .bb-card .bb-name,
 html body.process-page .bb-card .bb-shape { color: #0a1330; }
@@ -387,14 +388,14 @@ html body.process-page .platform-v2-curriculum .curr-head--chapters .eyebrow { d
 html body.process-page .platform-v2-curriculum .curr-head--chapters .sec-title--new-color { font-size: clamp(21px, 1.8vw, 24px) !important; letter-spacing: -.015em; }
 html body.process-page .platform-v2-curriculum .syll-list--chapters { border-color: #dbe3f0; box-shadow: none; }
 html body.process-page .platform-v2-curriculum .syll-list--chapters .syll-row { padding: 16px 20px !important; box-shadow: none !important; }
-html body.process-page .platform-v2-curriculum .syll-row .syll-num { color: var(--hp-subject, #1e40af) !important; font-size: 20px !important; font-weight: 800; }
+html body.process-page .platform-v2-curriculum .syll-row .syll-num { color: var(--hp-subject, #2b26fb) !important; font-size: 20px !important; font-weight: 800; }
 html body.process-page .platform-v2-curriculum .syll-list--chapters .syll-row .syll-title,
 html body.process-page .platform-v2-curriculum .syll-list--chapters .syll-row .syll-title-main { font-size: clamp(18px, 1.5vw, 21px) !important; font-weight: 700 !important; line-height: 1.35 !important; }
 html body.process-page .platform-v2-curriculum.syll--chapters-color-bg .syll-list--chapters .syll-row .syll-meta {
   border: 0 !important; background: #eaf0fa !important; color: #334155 !important;
   font-size: 14px !important; font-weight: 600 !important; letter-spacing: 0 !important; text-transform: none !important; padding: 3px 10px !important;
 }
-html body.process-page .platform-v2-curriculum .syll-list--chapters .syll-row .syll-down { width: 40px !important; height: 40px !important; border: 1px solid #b8c5db !important; background: #fff !important; color: #1e40af !important; }
+html body.process-page .platform-v2-curriculum .syll-list--chapters .syll-row .syll-down { width: 40px !important; height: 40px !important; border: 1px solid #b8c5db !important; background: #fff !important; color: #2b26fb !important; }
 
 /* ---- Chữ phụ: ≥14px đậm (nhãn) / ≥15px (chú thích) ---- */
 html body.process-page .platform-v2-curriculum .chap-chip,
@@ -424,7 +425,7 @@ html body .training-table-note {
   margin: 0;
   padding: 18px 24px 20px;
   border-top: 1px solid #dbe4f5;
-  border-left: 4px solid var(--hp-primary, #1e40af);
+  border-left: 4px solid var(--hp-primary, #2b26fb);
   background: var(--hp-primary-soft, #eff6ff);
 }
 html body .training-table-note p {
@@ -435,8 +436,8 @@ html body .training-table-note p {
   line-height: 1.6;
   text-wrap: pretty;
 }
-html body .training-table-note strong { color: var(--hp-primary, #1e40af); }
-html body .training-table-note strong.training-table-note__emphasis { color: #dc2626; }
+html body .training-table-note strong { color: var(--hp-primary, #2b26fb); }
+html body .training-table-note strong.training-table-note__emphasis { color: #ea1e24; }
 html body .training-table-note__icon {
   flex: none;
   display: grid;
@@ -445,7 +446,7 @@ html body .training-table-note__icon {
   height: 26px;
   margin-top: 1px;
   border-radius: 50%;
-  background: var(--hp-primary, #1e40af);
+  background: var(--hp-primary, #2b26fb);
   color: #fff;
   font: 800 15px/1 var(--ff-display, system-ui), serif;
   font-style: italic;

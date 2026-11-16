@@ -3,10 +3,10 @@
    homepage-header-robot.css (file đó nạp sau style.css ở trang chủ). Breakpoint ẩn/hiện menu giữ nguyên như cũ. */
 
 #navbar.nav {
-  --hdr-navy: #13235a;
+  --hdr-navy: #2d3489;
   --hdr-ink: #1d2742;
-  --hdr-blue: #2643e9;
-  --hdr-blue-deep: #1b2fa8;
+  --hdr-blue: #2b26fb;
+  --hdr-blue-deep: #2d3489;
   --hdr-track: #f3f6fc;
   --hdr-track-line: #e4eaf5;
   --hdr-ease: cubic-bezier(.22, 1, .36, 1);
@@ -84,7 +84,7 @@
   animation: hdr-ring 2.6s ease-out infinite;
 }
 #navbar.nav .nav-phone:hover .nav-phone-icon { background: var(--hdr-blue); color: #fff; }
-#navbar.nav .nav-phone-text small { font-size: 10.5px; font-weight: 600; letter-spacing: .12em; color: #7a849c; }
+#navbar.nav .nav-phone-text small { font-size: 14px; font-weight: 600; letter-spacing: .08em; color: #7a849c; }
 #navbar.nav .nav-phone-text strong { font-size: 15.5px; color: var(--hdr-navy); letter-spacing: .01em; }
 #navbar.nav .nav-phone:hover .nav-phone-text strong { color: var(--hdr-blue); }
 
@@ -92,7 +92,7 @@
 #navbar.nav .nav-actions .btn-primary {
   gap: 12px; height: 48px; padding: 0 7px 0 22px; border-radius: 999px;
   font-size: 15px; font-weight: 600; letter-spacing: 0;
-  background: linear-gradient(135deg, #3355ff 0%, var(--hdr-blue) 45%, var(--hdr-blue-deep) 100%);
+  background: linear-gradient(135deg, #2b26fb 0%, var(--hdr-blue) 45%, var(--hdr-blue-deep) 100%);
   box-shadow: 0 10px 22px -10px rgba(38, 67, 233, .75), inset 0 1px 0 rgba(255, 255, 255, .2);
 }
 #navbar.nav .nav-actions .btn-primary svg {
@@ -115,7 +115,7 @@
 }
 @media (max-width: 1660px) {
   #navbar.nav .nav-links { padding: 4px; }
-  #navbar.nav .nav-links .nav-item > a { height: 38px; padding: 0 9px; font-size: 13.5px; }
+  #navbar.nav .nav-links .nav-item > a { height: 38px; padding: 0 9px; font-size: 14px; }
   #navbar.nav .nav-actions .btn-primary { height: 44px; padding-left: 18px; font-size: 14px; }
   #navbar.nav .nav-actions .btn-primary svg { width: 30px; height: 30px; padding: 8px; }
 }
@@ -128,7 +128,7 @@
 }
 @media (max-width: 1400px) {
   #navbar.nav .nav-links { gap: 0; }
-  #navbar.nav .nav-links .nav-item > a { padding: 0 7px; font-size: 13px; gap: 5px; }
+  #navbar.nav .nav-links .nav-item > a { padding: 0 5px; font-size: 14px; gap: 5px; }
 }
 /* Khi menu chuyển sang nút ☰: đẩy cụm nút sang phải (trang con trước đây bị dính sát logo) */
 @media (max-width: 1280px) {
@@ -136,7 +136,7 @@
 }
 /* Nút "Đăng ký học" ở màn nhỏ: giữ gọn như cũ */
 @media (max-width: 600px) {
-  #navbar.nav .nav-actions .btn-primary { height: 42px; gap: 8px; padding: 0 5px 0 14px; font-size: 13px; }
+  #navbar.nav .nav-actions .btn-primary { height: 44px; gap: 8px; padding: 0 5px 0 14px; font-size: 14px; }
   #navbar.nav .nav-actions .btn-primary svg { width: 30px; height: 30px; padding: 8px; }
 }
 @media (prefers-reduced-motion: reduce) {

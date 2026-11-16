@@ -1,6 +1,6 @@
-:root { --lookup-navy: #081536; --lookup-blue: #173f9f; --lookup-gold: #d5a52d; }
+:root { --lookup-navy: #2d3489; --lookup-blue: #2b26fb; --lookup-gold: #faec1a; }
 .hospital-page { background: #f5f7fb; color: var(--ink-900); }
-.lookup-hero { position: relative; overflow: hidden; padding: 76px 0 68px; color: #fff; background: linear-gradient(128deg, #071432 0%, #102962 68%, #174c98 100%); }
+.lookup-hero { position: relative; overflow: hidden; padding: 76px 0 68px; color: #fff; background: linear-gradient(128deg, #0a1330 0%, #2d3489 68%, #2b26fb 100%); }
 .lookup-hero::before { content: ""; position: absolute; inset: 0; opacity: .18; background-image: radial-gradient(circle at 82% 18%, #fff 0 1px, transparent 1.5px); background-size: 22px 22px; }
 .lookup-hero::after { content: "+"; position: absolute; right: 7vw; top: -100px; color: rgba(255,255,255,.055); font: 500 420px/1 var(--ff-display),sans-serif; }
 .lookup-hero__inner { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: end; gap: 64px; }

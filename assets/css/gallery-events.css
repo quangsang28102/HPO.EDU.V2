@@ -418,7 +418,7 @@
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--em-red);
   margin-bottom: 18px;
 }
 .spot-album-eyebrow::before {
@@ -808,7 +808,7 @@
   justify-content: center;
 }
 .marq-head .eyebrow {
-  color: var(--accent);
+  color: var(--em-red);
 }
 .marq-head .eyebrow::before {
   background: var(--accent);
@@ -1070,7 +1070,7 @@
 }
 .banner-marq-head .eyebrow {
   justify-content: center;
-  color: var(--accent);
+  color: var(--em-red);
 }
 .banner-marq-head .eyebrow::before {
   background: var(--accent);
@@ -1651,7 +1651,7 @@
 }
 .evt-award {
   position: relative;
-  background: linear-gradient(160deg, #1e3a8a 0%, #172554 55%, #0b1234 100%);
+  background: linear-gradient(160deg, #2d3489 0%, #172554 55%, #0b1234 100%);
   border-radius: 20px;
   padding: 10px 10px 4px;
   border: 0.5px solid rgba(255, 255, 255, 0.14);

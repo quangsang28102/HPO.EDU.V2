@@ -11,7 +11,7 @@ html body .strip.strip--highlights {
   background: linear-gradient(180deg, #ffffff 0%, #f4f7fe 100%);
   border-top: 1px solid #e5eaf5;
   border-bottom: 1px solid #e5eaf5;
-  color: #1e3a8a;
+  color: #2d3489;
   -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
           mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
 }
@@ -41,7 +41,7 @@ html body .strip--highlights .strip-chip {
   line-height: 1.2;
   white-space: nowrap;
 }
-html body .strip--highlights .strip-chip b { color: #1e3a8a; font-weight: 700; }
+html body .strip--highlights .strip-chip b { color: #2d3489; font-weight: 700; }
 html body .strip--highlights .strip-chip__desc { color: #475569; }
 html body .strip--highlights .strip-chip__icon {
   display: grid;
@@ -80,7 +80,7 @@ html body .strip--press .strip-press__label {
   margin: 0;
   padding: 0 18px 0 clamp(16px, 2vw, 28px); /* thẳng lề trái header (28px) */
   border-right: 1px solid #dbe3f3;
-  color: #1e3a8a;
+  color: #2d3489;
   font-size: 13px;
   font-weight: 800;
   line-height: 1.2;
@@ -93,7 +93,7 @@ html body .strip--press .strip-press__label-icon {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: #1e40af;
+  background: #2b26fb;
   color: #fff;
 }
 html body .strip--press .strip-press__label-icon svg,
@@ -136,7 +136,7 @@ html body .strip--press .strip-chip__go {
 }
 html body .strip--press .strip-chip--press:hover,
 html body .strip--press .strip-chip--press:focus-visible {
-  border-color: #1e40af;
+  border-color: #2b26fb;
   box-shadow: 0 8px 22px rgba(30, 64, 175, .16);
   transform: translateY(-2px);
   outline: none;
@@ -144,7 +144,7 @@ html body .strip--press .strip-chip--press:focus-visible {
 html body .strip--press .strip-chip--press:hover .strip-chip__desc,
 html body .strip--press .strip-chip--press:focus-visible .strip-chip__desc { color: #0a1330; }
 html body .strip--press .strip-chip--press:hover .strip-chip__go,
-html body .strip--press .strip-chip--press:focus-visible .strip-chip__go { color: #1e40af; transform: translate(2px, -2px); }
+html body .strip--press .strip-chip--press:focus-visible .strip-chip__go { color: #2b26fb; transform: translate(2px, -2px); }
 /* chừa chỗ cho thẻ nhích lên 2px khi rê chuột (vùng chạy có overflow: hidden) */
 html body .strip--press .strip-track { padding-top: 18px; padding-bottom: 18px; }
 
